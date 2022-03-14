@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@openapitools/openapi-generator-cli": "^2.4.26",
+    "version-bump": "^0.1.0"
+  }
+}

@@ -1,2 +1,2 @@
 # telehealth-dart-client
-Telehealth Dart client
+Dart client for telehealth project
