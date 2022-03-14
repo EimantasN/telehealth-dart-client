@@ -28,7 +28,9 @@ part 'auth/http_basic_auth.dart';
 part 'auth/http_bearer_auth.dart';
 
 part 'api/graph_api.dart';
+part 'api/user_api.dart';
 
+part 'model/user_info_dto.dart';
 
 
 const _delimiters = {'csv': ',', 'ssv': ' ', 'tsv': '\t', 'pipes': '|'};
