@@ -192,6 +192,14 @@ class ApiClient {
           return valueString == 'true' || valueString == '1';
         case 'DateTime':
           return value is DateTime ? value : DateTime.tryParse(value);
+        case 'CreateFolderCmd':
+          return CreateFolderCmd.fromJson(value);
+        case 'FileDto':
+          return FileDto.fromJson(value);
+        case 'FolderDto':
+          return FolderDto.fromJson(value);
+        case 'ItemsVm':
+          return ItemsVm.fromJson(value);
         case 'UserInfoDto':
           return UserInfoDto.fromJson(value);
         default:

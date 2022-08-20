@@ -28,8 +28,13 @@ part 'auth/http_basic_auth.dart';
 part 'auth/http_bearer_auth.dart';
 
 part 'api/graph_api.dart';
+part 'api/library_api.dart';
 part 'api/user_api.dart';
 
+part 'model/create_folder_cmd.dart';
+part 'model/file_dto.dart';
+part 'model/folder_dto.dart';
+part 'model/items_vm.dart';
 part 'model/user_info_dto.dart';
 
 
