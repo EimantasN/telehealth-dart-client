@@ -20,6 +20,7 @@ class FileDto {
     this.size,
     this.healthCareProvider,
     this.labaratory,
+    this.created,
     this.folderId,
   });
 
@@ -37,6 +38,8 @@ class FileDto {
 
   String? labaratory;
 
+  DateTime? created;
+
   int? folderId;
 
   @override
@@ -48,6 +51,7 @@ class FileDto {
      other.size == size &&
      other.healthCareProvider == healthCareProvider &&
      other.labaratory == labaratory &&
+     other.created == created &&
      other.folderId == folderId;
 
   @override
@@ -60,10 +64,11 @@ class FileDto {
     (size == null ? 0 : size!.hashCode) +
     (healthCareProvider == null ? 0 : healthCareProvider!.hashCode) +
     (labaratory == null ? 0 : labaratory!.hashCode) +
+    (created == null ? 0 : created!.hashCode) +
     (folderId == null ? 0 : folderId!.hashCode);
 
   @override
-  String toString() => 'FileDto[name=$name, extension_=$extension_, mineType=$mineType, doctor=$doctor, size=$size, healthCareProvider=$healthCareProvider, labaratory=$labaratory, folderId=$folderId]';
+  String toString() => 'FileDto[name=$name, extension_=$extension_, mineType=$mineType, doctor=$doctor, size=$size, healthCareProvider=$healthCareProvider, labaratory=$labaratory, created=$created, folderId=$folderId]';
 
   Map<String, dynamic> toJson() {
     final _json = <String, dynamic>{};
@@ -102,6 +107,11 @@ class FileDto {
     } else {
       _json[r'labaratory'] = null;
     }
+    if (created != null) {
+      _json[r'created'] = created!.toUtc().toIso8601String();
+    } else {
+      _json[r'created'] = null;
+    }
     if (folderId != null) {
       _json[r'folderId'] = folderId;
     } else {
@@ -136,6 +146,7 @@ class FileDto {
         size: mapValueOfType<int>(json, r'size'),
         healthCareProvider: mapValueOfType<String>(json, r'healthCareProvider'),
         labaratory: mapValueOfType<String>(json, r'labaratory'),
+        created: mapDateTime(json, r'created', ''),
         folderId: mapValueOfType<int>(json, r'folderId'),
       );
     }

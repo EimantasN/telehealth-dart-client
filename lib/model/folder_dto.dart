@@ -15,6 +15,7 @@ class FolderDto {
   FolderDto({
     this.name,
     this.size,
+    this.created,
     this.parentId,
   });
 
@@ -28,12 +29,15 @@ class FolderDto {
   ///
   int? size;
 
+  DateTime? created;
+
   int? parentId;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is FolderDto &&
      other.name == name &&
      other.size == size &&
+     other.created == created &&
      other.parentId == parentId;
 
   @override
@@ -41,10 +45,11 @@ class FolderDto {
     // ignore: unnecessary_parenthesis
     (name == null ? 0 : name!.hashCode) +
     (size == null ? 0 : size!.hashCode) +
+    (created == null ? 0 : created!.hashCode) +
     (parentId == null ? 0 : parentId!.hashCode);
 
   @override
-  String toString() => 'FolderDto[name=$name, size=$size, parentId=$parentId]';
+  String toString() => 'FolderDto[name=$name, size=$size, created=$created, parentId=$parentId]';
 
   Map<String, dynamic> toJson() {
     final _json = <String, dynamic>{};
@@ -57,6 +62,11 @@ class FolderDto {
       _json[r'size'] = size;
     } else {
       _json[r'size'] = null;
+    }
+    if (created != null) {
+      _json[r'created'] = created!.toUtc().toIso8601String();
+    } else {
+      _json[r'created'] = null;
     }
     if (parentId != null) {
       _json[r'parentId'] = parentId;
@@ -87,6 +97,7 @@ class FolderDto {
       return FolderDto(
         name: mapValueOfType<String>(json, r'name'),
         size: mapValueOfType<int>(json, r'size'),
+        created: mapDateTime(json, r'created', ''),
         parentId: mapValueOfType<int>(json, r'parentId'),
       );
     }
