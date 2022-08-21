@@ -63,6 +63,57 @@ class LibraryApi {
     return null;
   }
 
+  /// Performs an HTTP 'GET /api/Library/Download' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] id:
+  Future<Response> libraryDownloadWithHttpInfo({ int? id, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/Library/Download';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (id != null) {
+      queryParams.addAll(_queryParams('', 'id', id));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] id:
+  Future<MultipartFile?> libraryDownload({ int? id, }) async {
+    final response = await libraryDownloadWithHttpInfo( id: id, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MultipartFile',) as MultipartFile;
+    
+    }
+    return null;
+  }
+
   /// Performs an HTTP 'POST /api/Library/FileUpload' operation and returns the [Response].
   /// Parameters:
   ///
