@@ -13,6 +13,7 @@ part of openapi.api;
 class FileDto {
   /// Returns a new [FileDto] instance.
   FileDto({
+    this.id,
     this.name,
     this.extension_,
     this.mineType,
@@ -23,6 +24,14 @@ class FileDto {
     this.created,
     this.folderId,
   });
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? id;
 
   String? name;
 
@@ -44,6 +53,7 @@ class FileDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is FileDto &&
+     other.id == id &&
      other.name == name &&
      other.extension_ == extension_ &&
      other.mineType == mineType &&
@@ -57,6 +67,7 @@ class FileDto {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (id == null ? 0 : id!.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (extension_ == null ? 0 : extension_!.hashCode) +
     (mineType == null ? 0 : mineType!.hashCode) +
@@ -68,10 +79,15 @@ class FileDto {
     (folderId == null ? 0 : folderId!.hashCode);
 
   @override
-  String toString() => 'FileDto[name=$name, extension_=$extension_, mineType=$mineType, doctor=$doctor, size=$size, healthCareProvider=$healthCareProvider, labaratory=$labaratory, created=$created, folderId=$folderId]';
+  String toString() => 'FileDto[id=$id, name=$name, extension_=$extension_, mineType=$mineType, doctor=$doctor, size=$size, healthCareProvider=$healthCareProvider, labaratory=$labaratory, created=$created, folderId=$folderId]';
 
   Map<String, dynamic> toJson() {
     final _json = <String, dynamic>{};
+    if (id != null) {
+      _json[r'id'] = id;
+    } else {
+      _json[r'id'] = null;
+    }
     if (name != null) {
       _json[r'name'] = name;
     } else {
@@ -139,6 +155,7 @@ class FileDto {
       }());
 
       return FileDto(
+        id: mapValueOfType<int>(json, r'id'),
         name: mapValueOfType<String>(json, r'name'),
         extension_: mapValueOfType<String>(json, r'extension'),
         mineType: mapValueOfType<String>(json, r'mineType'),
