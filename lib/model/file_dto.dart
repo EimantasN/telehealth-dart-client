@@ -16,6 +16,10 @@ class FileDto {
     this.name,
     this.extension_,
     this.mineType,
+    this.doctor,
+    this.size,
+    this.healthCareProvider,
+    this.labaratory,
     this.folderId,
   });
 
@@ -25,6 +29,14 @@ class FileDto {
 
   String? mineType;
 
+  String? doctor;
+
+  int? size;
+
+  String? healthCareProvider;
+
+  String? labaratory;
+
   int? folderId;
 
   @override
@@ -32,6 +44,10 @@ class FileDto {
      other.name == name &&
      other.extension_ == extension_ &&
      other.mineType == mineType &&
+     other.doctor == doctor &&
+     other.size == size &&
+     other.healthCareProvider == healthCareProvider &&
+     other.labaratory == labaratory &&
      other.folderId == folderId;
 
   @override
@@ -40,10 +56,14 @@ class FileDto {
     (name == null ? 0 : name!.hashCode) +
     (extension_ == null ? 0 : extension_!.hashCode) +
     (mineType == null ? 0 : mineType!.hashCode) +
+    (doctor == null ? 0 : doctor!.hashCode) +
+    (size == null ? 0 : size!.hashCode) +
+    (healthCareProvider == null ? 0 : healthCareProvider!.hashCode) +
+    (labaratory == null ? 0 : labaratory!.hashCode) +
     (folderId == null ? 0 : folderId!.hashCode);
 
   @override
-  String toString() => 'FileDto[name=$name, extension_=$extension_, mineType=$mineType, folderId=$folderId]';
+  String toString() => 'FileDto[name=$name, extension_=$extension_, mineType=$mineType, doctor=$doctor, size=$size, healthCareProvider=$healthCareProvider, labaratory=$labaratory, folderId=$folderId]';
 
   Map<String, dynamic> toJson() {
     final _json = <String, dynamic>{};
@@ -61,6 +81,26 @@ class FileDto {
       _json[r'mineType'] = mineType;
     } else {
       _json[r'mineType'] = null;
+    }
+    if (doctor != null) {
+      _json[r'doctor'] = doctor;
+    } else {
+      _json[r'doctor'] = null;
+    }
+    if (size != null) {
+      _json[r'size'] = size;
+    } else {
+      _json[r'size'] = null;
+    }
+    if (healthCareProvider != null) {
+      _json[r'healthCareProvider'] = healthCareProvider;
+    } else {
+      _json[r'healthCareProvider'] = null;
+    }
+    if (labaratory != null) {
+      _json[r'labaratory'] = labaratory;
+    } else {
+      _json[r'labaratory'] = null;
     }
     if (folderId != null) {
       _json[r'folderId'] = folderId;
@@ -92,6 +132,10 @@ class FileDto {
         name: mapValueOfType<String>(json, r'name'),
         extension_: mapValueOfType<String>(json, r'extension'),
         mineType: mapValueOfType<String>(json, r'mineType'),
+        doctor: mapValueOfType<String>(json, r'doctor'),
+        size: mapValueOfType<int>(json, r'size'),
+        healthCareProvider: mapValueOfType<String>(json, r'healthCareProvider'),
+        labaratory: mapValueOfType<String>(json, r'labaratory'),
         folderId: mapValueOfType<int>(json, r'folderId'),
       );
     }

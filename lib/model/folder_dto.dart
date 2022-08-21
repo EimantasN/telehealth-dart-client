@@ -14,26 +14,37 @@ class FolderDto {
   /// Returns a new [FolderDto] instance.
   FolderDto({
     this.name,
+    this.size,
     this.parentId,
   });
 
   String? name;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? size;
 
   int? parentId;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is FolderDto &&
      other.name == name &&
+     other.size == size &&
      other.parentId == parentId;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (name == null ? 0 : name!.hashCode) +
+    (size == null ? 0 : size!.hashCode) +
     (parentId == null ? 0 : parentId!.hashCode);
 
   @override
-  String toString() => 'FolderDto[name=$name, parentId=$parentId]';
+  String toString() => 'FolderDto[name=$name, size=$size, parentId=$parentId]';
 
   Map<String, dynamic> toJson() {
     final _json = <String, dynamic>{};
@@ -41,6 +52,11 @@ class FolderDto {
       _json[r'name'] = name;
     } else {
       _json[r'name'] = null;
+    }
+    if (size != null) {
+      _json[r'size'] = size;
+    } else {
+      _json[r'size'] = null;
     }
     if (parentId != null) {
       _json[r'parentId'] = parentId;
@@ -70,6 +86,7 @@ class FolderDto {
 
       return FolderDto(
         name: mapValueOfType<String>(json, r'name'),
+        size: mapValueOfType<int>(json, r'size'),
         parentId: mapValueOfType<int>(json, r'parentId'),
       );
     }
