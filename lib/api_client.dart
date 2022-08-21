@@ -196,6 +196,8 @@ class ApiClient {
           return CreateFolderCmd.fromJson(value);
         case 'FileDto':
           return FileDto.fromJson(value);
+        case 'FileUploadCmd':
+          return FileUploadCmd.fromJson(value);
         case 'FolderDto':
           return FolderDto.fromJson(value);
         case 'ItemsVm':

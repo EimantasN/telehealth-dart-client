@@ -33,6 +33,7 @@ part 'api/user_api.dart';
 
 part 'model/create_folder_cmd.dart';
 part 'model/file_dto.dart';
+part 'model/file_upload_cmd.dart';
 part 'model/folder_dto.dart';
 part 'model/items_vm.dart';
 part 'model/user_info_dto.dart';
