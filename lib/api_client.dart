@@ -192,6 +192,10 @@ class ApiClient {
           return valueString == 'true' || valueString == '1';
         case 'DateTime':
           return value is DateTime ? value : DateTime.tryParse(value);
+        case 'CopyLinkCmd':
+          return CopyLinkCmd.fromJson(value);
+        case 'CopyLinkResponse':
+          return CopyLinkResponse.fromJson(value);
         case 'CreateFolderCmd':
           return CreateFolderCmd.fromJson(value);
         case 'FileDto':

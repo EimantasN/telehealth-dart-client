@@ -31,6 +31,8 @@ part 'api/graph_api.dart';
 part 'api/library_api.dart';
 part 'api/user_api.dart';
 
+part 'model/copy_link_cmd.dart';
+part 'model/copy_link_response.dart';
 part 'model/create_folder_cmd.dart';
 part 'model/file_dto.dart';
 part 'model/file_upload_cmd.dart';
