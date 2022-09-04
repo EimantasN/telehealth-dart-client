@@ -13,19 +13,10 @@ part of openapi.api;
 class ShareLinkResponse {
   /// Returns a new [ShareLinkResponse] instance.
   ShareLinkResponse({
-    this.fileId,
     this.url,
     this.validUntil,
     this.successful,
   });
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? fileId;
 
   String? url;
 
@@ -47,7 +38,6 @@ class ShareLinkResponse {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ShareLinkResponse &&
-     other.fileId == fileId &&
      other.url == url &&
      other.validUntil == validUntil &&
      other.successful == successful;
@@ -55,21 +45,15 @@ class ShareLinkResponse {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (fileId == null ? 0 : fileId!.hashCode) +
     (url == null ? 0 : url!.hashCode) +
     (validUntil == null ? 0 : validUntil!.hashCode) +
     (successful == null ? 0 : successful!.hashCode);
 
   @override
-  String toString() => 'ShareLinkResponse[fileId=$fileId, url=$url, validUntil=$validUntil, successful=$successful]';
+  String toString() => 'ShareLinkResponse[url=$url, validUntil=$validUntil, successful=$successful]';
 
   Map<String, dynamic> toJson() {
     final _json = <String, dynamic>{};
-    if (fileId != null) {
-      _json[r'fileId'] = fileId;
-    } else {
-      _json[r'fileId'] = null;
-    }
     if (url != null) {
       _json[r'url'] = url;
     } else {
@@ -107,7 +91,6 @@ class ShareLinkResponse {
       }());
 
       return ShareLinkResponse(
-        fileId: mapValueOfType<int>(json, r'fileId'),
         url: mapValueOfType<String>(json, r'url'),
         validUntil: mapDateTime(json, r'validUntil', ''),
         successful: mapValueOfType<bool>(json, r'successful'),

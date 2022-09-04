@@ -29,6 +29,7 @@ part 'auth/http_bearer_auth.dart';
 
 part 'api/graph_api.dart';
 part 'api/library_api.dart';
+part 'api/share_api.dart';
 part 'api/user_api.dart';
 
 part 'model/create_folder_cmd.dart';
