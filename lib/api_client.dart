@@ -192,10 +192,6 @@ class ApiClient {
           return valueString == 'true' || valueString == '1';
         case 'DateTime':
           return value is DateTime ? value : DateTime.tryParse(value);
-        case 'CopyLinkCmd':
-          return CopyLinkCmd.fromJson(value);
-        case 'CopyLinkResponse':
-          return CopyLinkResponse.fromJson(value);
         case 'CreateFolderCmd':
           return CreateFolderCmd.fromJson(value);
         case 'FileDto':
@@ -206,6 +202,10 @@ class ApiClient {
           return FolderDto.fromJson(value);
         case 'ItemsVm':
           return ItemsVm.fromJson(value);
+        case 'ShareLinkCmd':
+          return ShareLinkCmd.fromJson(value);
+        case 'ShareLinkResponse':
+          return ShareLinkResponse.fromJson(value);
         case 'UserInfoDto':
           return UserInfoDto.fromJson(value);
         default:

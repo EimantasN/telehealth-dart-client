@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class CopyLinkResponse {
-  /// Returns a new [CopyLinkResponse] instance.
-  CopyLinkResponse({
+class ShareLinkResponse {
+  /// Returns a new [ShareLinkResponse] instance.
+  ShareLinkResponse({
     this.fileId,
     this.url,
     this.validUntil,
@@ -46,7 +46,7 @@ class CopyLinkResponse {
   bool? successful;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is CopyLinkResponse &&
+  bool operator ==(Object other) => identical(this, other) || other is ShareLinkResponse &&
      other.fileId == fileId &&
      other.url == url &&
      other.validUntil == validUntil &&
@@ -61,7 +61,7 @@ class CopyLinkResponse {
     (successful == null ? 0 : successful!.hashCode);
 
   @override
-  String toString() => 'CopyLinkResponse[fileId=$fileId, url=$url, validUntil=$validUntil, successful=$successful]';
+  String toString() => 'ShareLinkResponse[fileId=$fileId, url=$url, validUntil=$validUntil, successful=$successful]';
 
   Map<String, dynamic> toJson() {
     final _json = <String, dynamic>{};
@@ -88,10 +88,10 @@ class CopyLinkResponse {
     return _json;
   }
 
-  /// Returns a new [CopyLinkResponse] instance and imports its values from
+  /// Returns a new [ShareLinkResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static CopyLinkResponse? fromJson(dynamic value) {
+  static ShareLinkResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -100,13 +100,13 @@ class CopyLinkResponse {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CopyLinkResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CopyLinkResponse[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ShareLinkResponse[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ShareLinkResponse[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return CopyLinkResponse(
+      return ShareLinkResponse(
         fileId: mapValueOfType<int>(json, r'fileId'),
         url: mapValueOfType<String>(json, r'url'),
         validUntil: mapDateTime(json, r'validUntil', ''),
@@ -116,11 +116,11 @@ class CopyLinkResponse {
     return null;
   }
 
-  static List<CopyLinkResponse>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <CopyLinkResponse>[];
+  static List<ShareLinkResponse>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ShareLinkResponse>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = CopyLinkResponse.fromJson(row);
+        final value = ShareLinkResponse.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -129,12 +129,12 @@ class CopyLinkResponse {
     return result.toList(growable: growable);
   }
 
-  static Map<String, CopyLinkResponse> mapFromJson(dynamic json) {
-    final map = <String, CopyLinkResponse>{};
+  static Map<String, ShareLinkResponse> mapFromJson(dynamic json) {
+    final map = <String, ShareLinkResponse>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = CopyLinkResponse.fromJson(entry.value);
+        final value = ShareLinkResponse.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -143,13 +143,13 @@ class CopyLinkResponse {
     return map;
   }
 
-  // maps a json object with a list of CopyLinkResponse-objects as value to a dart map
-  static Map<String, List<CopyLinkResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<CopyLinkResponse>>{};
+  // maps a json object with a list of ShareLinkResponse-objects as value to a dart map
+  static Map<String, List<ShareLinkResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ShareLinkResponse>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = CopyLinkResponse.listFromJson(entry.value, growable: growable,);
+        final value = ShareLinkResponse.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }

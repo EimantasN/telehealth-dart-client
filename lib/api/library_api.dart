@@ -16,16 +16,16 @@ class LibraryApi {
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'POST /api/Library/CopyLink' operation and returns the [Response].
+  /// Performs an HTTP 'POST /api/Library/ShareLink' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [CopyLinkCmd] copyLinkCmd (required):
-  Future<Response> libraryCopyLinkWithHttpInfo(CopyLinkCmd copyLinkCmd,) async {
+  /// * [ShareLinkCmd] shareLinkCmd (required):
+  Future<Response> libraryCopyLinkWithHttpInfo(ShareLinkCmd shareLinkCmd,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/Library/CopyLink';
+    final path = r'/api/Library/ShareLink';
 
     // ignore: prefer_final_locals
-    Object? postBody = copyLinkCmd;
+    Object? postBody = shareLinkCmd;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -47,9 +47,9 @@ class LibraryApi {
 
   /// Parameters:
   ///
-  /// * [CopyLinkCmd] copyLinkCmd (required):
-  Future<CopyLinkResponse?> libraryCopyLink(CopyLinkCmd copyLinkCmd,) async {
-    final response = await libraryCopyLinkWithHttpInfo(copyLinkCmd,);
+  /// * [ShareLinkCmd] shareLinkCmd (required):
+  Future<ShareLinkResponse?> libraryCopyLink(ShareLinkCmd shareLinkCmd,) async {
+    final response = await libraryCopyLinkWithHttpInfo(shareLinkCmd,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -57,7 +57,7 @@ class LibraryApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CopyLinkResponse',) as CopyLinkResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ShareLinkResponse',) as ShareLinkResponse;
     
     }
     return null;

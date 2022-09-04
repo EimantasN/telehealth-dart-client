@@ -10,16 +10,16 @@
 
 part of openapi.api;
 
-class CopyLinkCmd {
-  /// Returns a new [CopyLinkCmd] instance.
-  CopyLinkCmd({
+class ShareLinkCmd {
+  /// Returns a new [ShareLinkCmd] instance.
+  ShareLinkCmd({
     this.fileIds = const [],
   });
 
   List<int> fileIds;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is CopyLinkCmd &&
+  bool operator ==(Object other) => identical(this, other) || other is ShareLinkCmd &&
      other.fileIds == fileIds;
 
   @override
@@ -28,7 +28,7 @@ class CopyLinkCmd {
     (fileIds.hashCode);
 
   @override
-  String toString() => 'CopyLinkCmd[fileIds=$fileIds]';
+  String toString() => 'ShareLinkCmd[fileIds=$fileIds]';
 
   Map<String, dynamic> toJson() {
     final _json = <String, dynamic>{};
@@ -36,10 +36,10 @@ class CopyLinkCmd {
     return _json;
   }
 
-  /// Returns a new [CopyLinkCmd] instance and imports its values from
+  /// Returns a new [ShareLinkCmd] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static CopyLinkCmd? fromJson(dynamic value) {
+  static ShareLinkCmd? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -48,13 +48,13 @@ class CopyLinkCmd {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CopyLinkCmd[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CopyLinkCmd[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ShareLinkCmd[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ShareLinkCmd[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return CopyLinkCmd(
+      return ShareLinkCmd(
         fileIds: json[r'fileIds'] is List
             ? (json[r'fileIds'] as List).cast<int>()
             : const [],
@@ -63,11 +63,11 @@ class CopyLinkCmd {
     return null;
   }
 
-  static List<CopyLinkCmd>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <CopyLinkCmd>[];
+  static List<ShareLinkCmd>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ShareLinkCmd>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = CopyLinkCmd.fromJson(row);
+        final value = ShareLinkCmd.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -76,12 +76,12 @@ class CopyLinkCmd {
     return result.toList(growable: growable);
   }
 
-  static Map<String, CopyLinkCmd> mapFromJson(dynamic json) {
-    final map = <String, CopyLinkCmd>{};
+  static Map<String, ShareLinkCmd> mapFromJson(dynamic json) {
+    final map = <String, ShareLinkCmd>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = CopyLinkCmd.fromJson(entry.value);
+        final value = ShareLinkCmd.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -90,13 +90,13 @@ class CopyLinkCmd {
     return map;
   }
 
-  // maps a json object with a list of CopyLinkCmd-objects as value to a dart map
-  static Map<String, List<CopyLinkCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<CopyLinkCmd>>{};
+  // maps a json object with a list of ShareLinkCmd-objects as value to a dart map
+  static Map<String, List<ShareLinkCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ShareLinkCmd>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = CopyLinkCmd.listFromJson(entry.value, growable: growable,);
+        final value = ShareLinkCmd.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }
