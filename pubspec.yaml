@@ -2,7 +2,7 @@
 # AUTO-GENERATED FILE, DO NOT MODIFY!
 #
 
-name: 'telehealth_api'
+name: 'viallies_api'
 version: '1.0.0'
 description: 'TeleHealth API client'
 homepage: 'https://github.com/EimantasN/telehealth-dart-client'
