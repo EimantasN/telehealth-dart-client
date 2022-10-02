@@ -84,48 +84,48 @@ class FileUploadCmd {
   String toString() => 'FileUploadCmd[name=$name, extension_=$extension_, mineType=$mineType, doctor=$doctor, healthCareProvider=$healthCareProvider, labaratory=$labaratory, base64=$base64, folderId=$folderId]';
 
   Map<String, dynamic> toJson() {
-    final _json = <String, dynamic>{};
-    if (name != null) {
-      _json[r'name'] = name;
+    final json = <String, dynamic>{};
+    if (this.name != null) {
+      json[r'name'] = this.name;
     } else {
-      _json[r'name'] = null;
+      json[r'name'] = null;
     }
-    if (extension_ != null) {
-      _json[r'extension'] = extension_;
+    if (this.extension_ != null) {
+      json[r'extension'] = this.extension_;
     } else {
-      _json[r'extension'] = null;
+      json[r'extension'] = null;
     }
-    if (mineType != null) {
-      _json[r'mineType'] = mineType;
+    if (this.mineType != null) {
+      json[r'mineType'] = this.mineType;
     } else {
-      _json[r'mineType'] = null;
+      json[r'mineType'] = null;
     }
-    if (doctor != null) {
-      _json[r'doctor'] = doctor;
+    if (this.doctor != null) {
+      json[r'doctor'] = this.doctor;
     } else {
-      _json[r'doctor'] = null;
+      json[r'doctor'] = null;
     }
-    if (healthCareProvider != null) {
-      _json[r'healthCareProvider'] = healthCareProvider;
+    if (this.healthCareProvider != null) {
+      json[r'healthCareProvider'] = this.healthCareProvider;
     } else {
-      _json[r'healthCareProvider'] = null;
+      json[r'healthCareProvider'] = null;
     }
-    if (labaratory != null) {
-      _json[r'labaratory'] = labaratory;
+    if (this.labaratory != null) {
+      json[r'labaratory'] = this.labaratory;
     } else {
-      _json[r'labaratory'] = null;
+      json[r'labaratory'] = null;
     }
-    if (base64 != null) {
-      _json[r'base64'] = base64;
+    if (this.base64 != null) {
+      json[r'base64'] = this.base64;
     } else {
-      _json[r'base64'] = null;
+      json[r'base64'] = null;
     }
-    if (folderId != null) {
-      _json[r'folderId'] = folderId;
+    if (this.folderId != null) {
+      json[r'folderId'] = this.folderId;
     } else {
-      _json[r'folderId'] = null;
+      json[r'folderId'] = null;
     }
-    return _json;
+    return json;
   }
 
   /// Returns a new [FileUploadCmd] instance and imports its values from

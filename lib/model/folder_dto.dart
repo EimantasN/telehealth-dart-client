@@ -63,33 +63,33 @@ class FolderDto {
   String toString() => 'FolderDto[id=$id, name=$name, size=$size, created=$created, parentId=$parentId]';
 
   Map<String, dynamic> toJson() {
-    final _json = <String, dynamic>{};
-    if (id != null) {
-      _json[r'id'] = id;
+    final json = <String, dynamic>{};
+    if (this.id != null) {
+      json[r'id'] = this.id;
     } else {
-      _json[r'id'] = null;
+      json[r'id'] = null;
     }
-    if (name != null) {
-      _json[r'name'] = name;
+    if (this.name != null) {
+      json[r'name'] = this.name;
     } else {
-      _json[r'name'] = null;
+      json[r'name'] = null;
     }
-    if (size != null) {
-      _json[r'size'] = size;
+    if (this.size != null) {
+      json[r'size'] = this.size;
     } else {
-      _json[r'size'] = null;
+      json[r'size'] = null;
     }
-    if (created != null) {
-      _json[r'created'] = created!.toUtc().toIso8601String();
+    if (this.created != null) {
+      json[r'created'] = this.created!.toUtc().toIso8601String();
     } else {
-      _json[r'created'] = null;
+      json[r'created'] = null;
     }
-    if (parentId != null) {
-      _json[r'parentId'] = parentId;
+    if (this.parentId != null) {
+      json[r'parentId'] = this.parentId;
     } else {
-      _json[r'parentId'] = null;
+      json[r'parentId'] = null;
     }
-    return _json;
+    return json;
   }
 
   /// Returns a new [FolderDto] instance and imports its values from

@@ -36,10 +36,10 @@ class ItemsVm {
   String toString() => 'ItemsVm[folders=$folders, files=$files]';
 
   Map<String, dynamic> toJson() {
-    final _json = <String, dynamic>{};
-      _json[r'folders'] = folders;
-      _json[r'files'] = files;
-    return _json;
+    final json = <String, dynamic>{};
+      json[r'folders'] = this.folders;
+      json[r'files'] = this.files;
+    return json;
   }
 
   /// Returns a new [ItemsVm] instance and imports its values from

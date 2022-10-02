@@ -42,18 +42,18 @@ class CreateFolderCmd {
   String toString() => 'CreateFolderCmd[parentId=$parentId, folderName=$folderName]';
 
   Map<String, dynamic> toJson() {
-    final _json = <String, dynamic>{};
-    if (parentId != null) {
-      _json[r'parentId'] = parentId;
+    final json = <String, dynamic>{};
+    if (this.parentId != null) {
+      json[r'parentId'] = this.parentId;
     } else {
-      _json[r'parentId'] = null;
+      json[r'parentId'] = null;
     }
-    if (folderName != null) {
-      _json[r'folderName'] = folderName;
+    if (this.folderName != null) {
+      json[r'folderName'] = this.folderName;
     } else {
-      _json[r'folderName'] = null;
+      json[r'folderName'] = null;
     }
-    return _json;
+    return json;
   }
 
   /// Returns a new [CreateFolderCmd] instance and imports its values from

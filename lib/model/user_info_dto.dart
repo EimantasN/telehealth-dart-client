@@ -37,13 +37,13 @@ class UserInfoDto {
   String toString() => 'UserInfoDto[id=$id]';
 
   Map<String, dynamic> toJson() {
-    final _json = <String, dynamic>{};
-    if (id != null) {
-      _json[r'id'] = id;
+    final json = <String, dynamic>{};
+    if (this.id != null) {
+      json[r'id'] = this.id;
     } else {
-      _json[r'id'] = null;
+      json[r'id'] = null;
     }
-    return _json;
+    return json;
   }
 
   /// Returns a new [UserInfoDto] instance and imports its values from

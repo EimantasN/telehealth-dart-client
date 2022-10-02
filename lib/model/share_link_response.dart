@@ -53,23 +53,23 @@ class ShareLinkResponse {
   String toString() => 'ShareLinkResponse[url=$url, validUntil=$validUntil, successful=$successful]';
 
   Map<String, dynamic> toJson() {
-    final _json = <String, dynamic>{};
-    if (url != null) {
-      _json[r'url'] = url;
+    final json = <String, dynamic>{};
+    if (this.url != null) {
+      json[r'url'] = this.url;
     } else {
-      _json[r'url'] = null;
+      json[r'url'] = null;
     }
-    if (validUntil != null) {
-      _json[r'validUntil'] = validUntil!.toUtc().toIso8601String();
+    if (this.validUntil != null) {
+      json[r'validUntil'] = this.validUntil!.toUtc().toIso8601String();
     } else {
-      _json[r'validUntil'] = null;
+      json[r'validUntil'] = null;
     }
-    if (successful != null) {
-      _json[r'successful'] = successful;
+    if (this.successful != null) {
+      json[r'successful'] = this.successful;
     } else {
-      _json[r'successful'] = null;
+      json[r'successful'] = null;
     }
-    return _json;
+    return json;
   }
 
   /// Returns a new [ShareLinkResponse] instance and imports its values from

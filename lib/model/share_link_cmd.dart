@@ -31,9 +31,9 @@ class ShareLinkCmd {
   String toString() => 'ShareLinkCmd[fileIds=$fileIds]';
 
   Map<String, dynamic> toJson() {
-    final _json = <String, dynamic>{};
-      _json[r'fileIds'] = fileIds;
-    return _json;
+    final json = <String, dynamic>{};
+      json[r'fileIds'] = this.fileIds;
+    return json;
   }
 
   /// Returns a new [ShareLinkCmd] instance and imports its values from
