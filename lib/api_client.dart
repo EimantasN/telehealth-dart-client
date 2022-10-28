@@ -183,6 +183,8 @@ class ApiClient {
           return value is DateTime ? value : DateTime.tryParse(value);
         case 'CreateFolderCmd':
           return CreateFolderCmd.fromJson(value);
+        case 'CreateReminderCmd':
+          return CreateReminderCmd.fromJson(value);
         case 'FileDto':
           return FileDto.fromJson(value);
         case 'FileUploadCmd':
@@ -191,10 +193,16 @@ class ApiClient {
           return FolderDto.fromJson(value);
         case 'ItemsVm':
           return ItemsVm.fromJson(value);
+        case 'PaginatedListOfReminderDto':
+          return PaginatedListOfReminderDto.fromJson(value);
+        case 'ReminderDto':
+          return ReminderDto.fromJson(value);
         case 'ShareLinkCmd':
           return ShareLinkCmd.fromJson(value);
         case 'ShareLinkResponse':
           return ShareLinkResponse.fromJson(value);
+        case 'UpdateReminderCmd':
+          return UpdateReminderCmd.fromJson(value);
         case 'UserInfoDto':
           return UserInfoDto.fromJson(value);
         default:

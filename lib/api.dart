@@ -29,16 +29,21 @@ part 'auth/http_bearer_auth.dart';
 
 part 'api/graph_api.dart';
 part 'api/library_api.dart';
+part 'api/reminders_api.dart';
 part 'api/share_api.dart';
 part 'api/user_api.dart';
 
 part 'model/create_folder_cmd.dart';
+part 'model/create_reminder_cmd.dart';
 part 'model/file_dto.dart';
 part 'model/file_upload_cmd.dart';
 part 'model/folder_dto.dart';
 part 'model/items_vm.dart';
+part 'model/paginated_list_of_reminder_dto.dart';
+part 'model/reminder_dto.dart';
 part 'model/share_link_cmd.dart';
 part 'model/share_link_response.dart';
+part 'model/update_reminder_cmd.dart';
 part 'model/user_info_dto.dart';
 
 
