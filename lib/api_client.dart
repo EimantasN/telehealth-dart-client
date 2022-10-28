@@ -183,6 +183,8 @@ class ApiClient {
           return value is DateTime ? value : DateTime.tryParse(value);
         case 'CreateFolderCmd':
           return CreateFolderCmd.fromJson(value);
+        case 'CreateMedicationCmd':
+          return CreateMedicationCmd.fromJson(value);
         case 'CreateReminderCmd':
           return CreateReminderCmd.fromJson(value);
         case 'FileDto':
@@ -193,6 +195,10 @@ class ApiClient {
           return FolderDto.fromJson(value);
         case 'ItemsVm':
           return ItemsVm.fromJson(value);
+        case 'MedicationDto':
+          return MedicationDto.fromJson(value);
+        case 'PaginatedListOfMedicationDto':
+          return PaginatedListOfMedicationDto.fromJson(value);
         case 'PaginatedListOfReminderDto':
           return PaginatedListOfReminderDto.fromJson(value);
         case 'ReminderDto':
