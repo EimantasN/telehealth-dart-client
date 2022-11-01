@@ -17,7 +17,14 @@ class ReminderDto {
     this.title,
     this.type,
     this.status,
-    this.active,
+    this.message,
+    this.start,
+    this.end,
+    this.daily,
+    this.weekly,
+    this.monthly,
+    this.yearly,
+    this.custom,
     this.created,
     this.createdBy,
     this.modified,
@@ -62,7 +69,57 @@ class ReminderDto {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? active;
+  String? message;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? start;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? end;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? daily;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? weekly;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? monthly;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? yearly;
+
+  String? custom;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -84,7 +141,14 @@ class ReminderDto {
      other.title == title &&
      other.type == type &&
      other.status == status &&
-     other.active == active &&
+     other.message == message &&
+     other.start == start &&
+     other.end == end &&
+     other.daily == daily &&
+     other.weekly == weekly &&
+     other.monthly == monthly &&
+     other.yearly == yearly &&
+     other.custom == custom &&
      other.created == created &&
      other.createdBy == createdBy &&
      other.modified == modified &&
@@ -97,14 +161,21 @@ class ReminderDto {
     (title == null ? 0 : title!.hashCode) +
     (type == null ? 0 : type!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
-    (active == null ? 0 : active!.hashCode) +
+    (message == null ? 0 : message!.hashCode) +
+    (start == null ? 0 : start!.hashCode) +
+    (end == null ? 0 : end!.hashCode) +
+    (daily == null ? 0 : daily!.hashCode) +
+    (weekly == null ? 0 : weekly!.hashCode) +
+    (monthly == null ? 0 : monthly!.hashCode) +
+    (yearly == null ? 0 : yearly!.hashCode) +
+    (custom == null ? 0 : custom!.hashCode) +
     (created == null ? 0 : created!.hashCode) +
     (createdBy == null ? 0 : createdBy!.hashCode) +
     (modified == null ? 0 : modified!.hashCode) +
     (modifiedBy == null ? 0 : modifiedBy!.hashCode);
 
   @override
-  String toString() => 'ReminderDto[id=$id, title=$title, type=$type, status=$status, active=$active, created=$created, createdBy=$createdBy, modified=$modified, modifiedBy=$modifiedBy]';
+  String toString() => 'ReminderDto[id=$id, title=$title, type=$type, status=$status, message=$message, start=$start, end=$end, daily=$daily, weekly=$weekly, monthly=$monthly, yearly=$yearly, custom=$custom, created=$created, createdBy=$createdBy, modified=$modified, modifiedBy=$modifiedBy]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -128,10 +199,45 @@ class ReminderDto {
     } else {
       json[r'status'] = null;
     }
-    if (this.active != null) {
-      json[r'active'] = this.active;
+    if (this.message != null) {
+      json[r'message'] = this.message;
     } else {
-      json[r'active'] = null;
+      json[r'message'] = null;
+    }
+    if (this.start != null) {
+      json[r'start'] = this.start!.toUtc().toIso8601String();
+    } else {
+      json[r'start'] = null;
+    }
+    if (this.end != null) {
+      json[r'end'] = this.end!.toUtc().toIso8601String();
+    } else {
+      json[r'end'] = null;
+    }
+    if (this.daily != null) {
+      json[r'daily'] = this.daily;
+    } else {
+      json[r'daily'] = null;
+    }
+    if (this.weekly != null) {
+      json[r'weekly'] = this.weekly;
+    } else {
+      json[r'weekly'] = null;
+    }
+    if (this.monthly != null) {
+      json[r'monthly'] = this.monthly;
+    } else {
+      json[r'monthly'] = null;
+    }
+    if (this.yearly != null) {
+      json[r'yearly'] = this.yearly;
+    } else {
+      json[r'yearly'] = null;
+    }
+    if (this.custom != null) {
+      json[r'custom'] = this.custom;
+    } else {
+      json[r'custom'] = null;
     }
     if (this.created != null) {
       json[r'created'] = this.created!.toUtc().toIso8601String();
@@ -179,7 +285,14 @@ class ReminderDto {
         title: mapValueOfType<String>(json, r'title'),
         type: mapValueOfType<String>(json, r'type'),
         status: mapValueOfType<String>(json, r'status'),
-        active: mapValueOfType<bool>(json, r'active'),
+        message: mapValueOfType<String>(json, r'message'),
+        start: mapDateTime(json, r'start', ''),
+        end: mapDateTime(json, r'end', ''),
+        daily: mapValueOfType<bool>(json, r'daily'),
+        weekly: mapValueOfType<bool>(json, r'weekly'),
+        monthly: mapValueOfType<bool>(json, r'monthly'),
+        yearly: mapValueOfType<bool>(json, r'yearly'),
+        custom: mapValueOfType<String>(json, r'custom'),
         created: mapDateTime(json, r'created', ''),
         createdBy: mapValueOfType<String>(json, r'createdBy'),
         modified: mapDateTime(json, r'modified', ''),
