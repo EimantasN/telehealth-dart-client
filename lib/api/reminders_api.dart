@@ -66,8 +66,12 @@ class RemindersApi {
   /// Performs an HTTP 'DELETE /api/Reminders/Delete' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [int] reminderId:
-  Future<Response> remindersDeleteWithHttpInfo({ int? reminderId, }) async {
+  /// * [bool] isAll:
+  ///
+  /// * [List<int>] included:
+  ///
+  /// * [List<int>] excluded:
+  Future<Response> remindersDeleteWithHttpInfo({ bool? isAll, List<int>? included, List<int>? excluded, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/Reminders/Delete';
 
@@ -78,8 +82,14 @@ class RemindersApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (reminderId != null) {
-      queryParams.addAll(_queryParams('', 'ReminderId', reminderId));
+    if (isAll != null) {
+      queryParams.addAll(_queryParams('', 'isAll', isAll));
+    }
+    if (included != null) {
+      queryParams.addAll(_queryParams('multi', 'Included', included));
+    }
+    if (excluded != null) {
+      queryParams.addAll(_queryParams('multi', 'Excluded', excluded));
     }
 
     const contentTypes = <String>[];
@@ -98,9 +108,13 @@ class RemindersApi {
 
   /// Parameters:
   ///
-  /// * [int] reminderId:
-  Future<bool?> remindersDelete({ int? reminderId, }) async {
-    final response = await remindersDeleteWithHttpInfo( reminderId: reminderId, );
+  /// * [bool] isAll:
+  ///
+  /// * [List<int>] included:
+  ///
+  /// * [List<int>] excluded:
+  Future<bool?> remindersDelete({ bool? isAll, List<int>? included, List<int>? excluded, }) async {
+    final response = await remindersDeleteWithHttpInfo( isAll: isAll, included: included, excluded: excluded, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
