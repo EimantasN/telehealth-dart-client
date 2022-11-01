@@ -25,6 +25,7 @@ class ReminderDto {
     this.monthly,
     this.yearly,
     this.custom,
+    this.active,
     this.created,
     this.createdBy,
     this.modified,
@@ -127,6 +128,14 @@ class ReminderDto {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  bool? active;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? created;
 
   String? createdBy;
@@ -149,6 +158,7 @@ class ReminderDto {
      other.monthly == monthly &&
      other.yearly == yearly &&
      other.custom == custom &&
+     other.active == active &&
      other.created == created &&
      other.createdBy == createdBy &&
      other.modified == modified &&
@@ -169,13 +179,14 @@ class ReminderDto {
     (monthly == null ? 0 : monthly!.hashCode) +
     (yearly == null ? 0 : yearly!.hashCode) +
     (custom == null ? 0 : custom!.hashCode) +
+    (active == null ? 0 : active!.hashCode) +
     (created == null ? 0 : created!.hashCode) +
     (createdBy == null ? 0 : createdBy!.hashCode) +
     (modified == null ? 0 : modified!.hashCode) +
     (modifiedBy == null ? 0 : modifiedBy!.hashCode);
 
   @override
-  String toString() => 'ReminderDto[id=$id, title=$title, type=$type, status=$status, message=$message, start=$start, end=$end, daily=$daily, weekly=$weekly, monthly=$monthly, yearly=$yearly, custom=$custom, created=$created, createdBy=$createdBy, modified=$modified, modifiedBy=$modifiedBy]';
+  String toString() => 'ReminderDto[id=$id, title=$title, type=$type, status=$status, message=$message, start=$start, end=$end, daily=$daily, weekly=$weekly, monthly=$monthly, yearly=$yearly, custom=$custom, active=$active, created=$created, createdBy=$createdBy, modified=$modified, modifiedBy=$modifiedBy]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -239,6 +250,11 @@ class ReminderDto {
     } else {
       json[r'custom'] = null;
     }
+    if (this.active != null) {
+      json[r'active'] = this.active;
+    } else {
+      json[r'active'] = null;
+    }
     if (this.created != null) {
       json[r'created'] = this.created!.toUtc().toIso8601String();
     } else {
@@ -293,6 +309,7 @@ class ReminderDto {
         monthly: mapValueOfType<bool>(json, r'monthly'),
         yearly: mapValueOfType<bool>(json, r'yearly'),
         custom: mapValueOfType<String>(json, r'custom'),
+        active: mapValueOfType<bool>(json, r'active'),
         created: mapDateTime(json, r'created', ''),
         createdBy: mapValueOfType<String>(json, r'createdBy'),
         modified: mapDateTime(json, r'modified', ''),
