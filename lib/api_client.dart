@@ -187,6 +187,8 @@ class ApiClient {
           return CreateMedicationCmd.fromJson(value);
         case 'CreateReminderCmd':
           return CreateReminderCmd.fromJson(value);
+        case 'DynamicQueryOfPaginatedListOfReminderDto':
+          return DynamicQueryOfPaginatedListOfReminderDto.fromJson(value);
         case 'FileDto':
           return FileDto.fromJson(value);
         case 'FileUploadCmd':
@@ -197,10 +199,14 @@ class ApiClient {
           return FolderDto.fromJson(value);
         case 'GetReminderQuery':
           return GetReminderQuery.fromJson(value);
+        case 'GetReminderQueryAllOf':
+          return GetReminderQueryAllOf.fromJson(value);
         case 'ItemsVm':
           return ItemsVm.fromJson(value);
         case 'MedicationDto':
           return MedicationDto.fromJson(value);
+        case 'OrderModel':
+          return OrderModel.fromJson(value);
         case 'PaginatedListOfMedicationDto':
           return PaginatedListOfMedicationDto.fromJson(value);
         case 'PaginatedListOfReminderDto':

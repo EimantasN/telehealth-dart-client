@@ -10,46 +10,30 @@
 
 part of openapi.api;
 
-class FilterModel {
-  /// Returns a new [FilterModel] instance.
-  FilterModel({
+class OrderModel {
+  /// Returns a new [OrderModel] instance.
+  OrderModel({
     this.property,
     this.value,
-    this.method,
-    this.operator_,
   });
 
   String? property;
 
   String? value;
 
-  String? method;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? operator_;
-
   @override
-  bool operator ==(Object other) => identical(this, other) || other is FilterModel &&
+  bool operator ==(Object other) => identical(this, other) || other is OrderModel &&
      other.property == property &&
-     other.value == value &&
-     other.method == method &&
-     other.operator_ == operator_;
+     other.value == value;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (property == null ? 0 : property!.hashCode) +
-    (value == null ? 0 : value!.hashCode) +
-    (method == null ? 0 : method!.hashCode) +
-    (operator_ == null ? 0 : operator_!.hashCode);
+    (value == null ? 0 : value!.hashCode);
 
   @override
-  String toString() => 'FilterModel[property=$property, value=$value, method=$method, operator_=$operator_]';
+  String toString() => 'OrderModel[property=$property, value=$value]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -63,23 +47,13 @@ class FilterModel {
     } else {
       json[r'value'] = null;
     }
-    if (this.method != null) {
-      json[r'method'] = this.method;
-    } else {
-      json[r'method'] = null;
-    }
-    if (this.operator_ != null) {
-      json[r'operator'] = this.operator_;
-    } else {
-      json[r'operator'] = null;
-    }
     return json;
   }
 
-  /// Returns a new [FilterModel] instance and imports its values from
+  /// Returns a new [OrderModel] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static FilterModel? fromJson(dynamic value) {
+  static OrderModel? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -88,27 +62,25 @@ class FilterModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "FilterModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "FilterModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "OrderModel[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "OrderModel[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return FilterModel(
+      return OrderModel(
         property: mapValueOfType<String>(json, r'property'),
         value: mapValueOfType<String>(json, r'value'),
-        method: mapValueOfType<String>(json, r'method'),
-        operator_: mapValueOfType<String>(json, r'operator'),
       );
     }
     return null;
   }
 
-  static List<FilterModel>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <FilterModel>[];
+  static List<OrderModel>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <OrderModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = FilterModel.fromJson(row);
+        final value = OrderModel.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -117,12 +89,12 @@ class FilterModel {
     return result.toList(growable: growable);
   }
 
-  static Map<String, FilterModel> mapFromJson(dynamic json) {
-    final map = <String, FilterModel>{};
+  static Map<String, OrderModel> mapFromJson(dynamic json) {
+    final map = <String, OrderModel>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = FilterModel.fromJson(entry.value);
+        final value = OrderModel.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -131,13 +103,13 @@ class FilterModel {
     return map;
   }
 
-  // maps a json object with a list of FilterModel-objects as value to a dart map
-  static Map<String, List<FilterModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<FilterModel>>{};
+  // maps a json object with a list of OrderModel-objects as value to a dart map
+  static Map<String, List<OrderModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<OrderModel>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = FilterModel.listFromJson(entry.value, growable: growable,);
+        final value = OrderModel.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }

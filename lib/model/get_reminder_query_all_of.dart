@@ -10,27 +10,12 @@
 
 part of openapi.api;
 
-class GetReminderQuery {
-  /// Returns a new [GetReminderQuery] instance.
-  GetReminderQuery({
-    this.filters = const [],
-    this.orderBy = const [],
-    this.order,
+class GetReminderQueryAllOf {
+  /// Returns a new [GetReminderQueryAllOf] instance.
+  GetReminderQueryAllOf({
     this.pageNumber,
     this.pageSize,
   });
-
-  List<FilterModel> filters;
-
-  List<OrderModel> orderBy;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? order;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -49,34 +34,21 @@ class GetReminderQuery {
   int? pageSize;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is GetReminderQuery &&
-     other.filters == filters &&
-     other.orderBy == orderBy &&
-     other.order == order &&
+  bool operator ==(Object other) => identical(this, other) || other is GetReminderQueryAllOf &&
      other.pageNumber == pageNumber &&
      other.pageSize == pageSize;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (filters.hashCode) +
-    (orderBy.hashCode) +
-    (order == null ? 0 : order!.hashCode) +
     (pageNumber == null ? 0 : pageNumber!.hashCode) +
     (pageSize == null ? 0 : pageSize!.hashCode);
 
   @override
-  String toString() => 'GetReminderQuery[filters=$filters, orderBy=$orderBy, order=$order, pageNumber=$pageNumber, pageSize=$pageSize]';
+  String toString() => 'GetReminderQueryAllOf[pageNumber=$pageNumber, pageSize=$pageSize]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'filters'] = this.filters;
-      json[r'orderBy'] = this.orderBy;
-    if (this.order != null) {
-      json[r'order'] = this.order;
-    } else {
-      json[r'order'] = null;
-    }
     if (this.pageNumber != null) {
       json[r'pageNumber'] = this.pageNumber;
     } else {
@@ -90,10 +62,10 @@ class GetReminderQuery {
     return json;
   }
 
-  /// Returns a new [GetReminderQuery] instance and imports its values from
+  /// Returns a new [GetReminderQueryAllOf] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static GetReminderQuery? fromJson(dynamic value) {
+  static GetReminderQueryAllOf? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -102,16 +74,13 @@ class GetReminderQuery {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "GetReminderQuery[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "GetReminderQuery[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "GetReminderQueryAllOf[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "GetReminderQueryAllOf[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return GetReminderQuery(
-        filters: FilterModel.listFromJson(json[r'filters']) ?? const [],
-        orderBy: OrderModel.listFromJson(json[r'orderBy']) ?? const [],
-        order: mapValueOfType<String>(json, r'order'),
+      return GetReminderQueryAllOf(
         pageNumber: mapValueOfType<int>(json, r'pageNumber'),
         pageSize: mapValueOfType<int>(json, r'pageSize'),
       );
@@ -119,11 +88,11 @@ class GetReminderQuery {
     return null;
   }
 
-  static List<GetReminderQuery>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <GetReminderQuery>[];
+  static List<GetReminderQueryAllOf>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <GetReminderQueryAllOf>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = GetReminderQuery.fromJson(row);
+        final value = GetReminderQueryAllOf.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -132,12 +101,12 @@ class GetReminderQuery {
     return result.toList(growable: growable);
   }
 
-  static Map<String, GetReminderQuery> mapFromJson(dynamic json) {
-    final map = <String, GetReminderQuery>{};
+  static Map<String, GetReminderQueryAllOf> mapFromJson(dynamic json) {
+    final map = <String, GetReminderQueryAllOf>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = GetReminderQuery.fromJson(entry.value);
+        final value = GetReminderQueryAllOf.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -146,13 +115,13 @@ class GetReminderQuery {
     return map;
   }
 
-  // maps a json object with a list of GetReminderQuery-objects as value to a dart map
-  static Map<String, List<GetReminderQuery>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<GetReminderQuery>>{};
+  // maps a json object with a list of GetReminderQueryAllOf-objects as value to a dart map
+  static Map<String, List<GetReminderQueryAllOf>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<GetReminderQueryAllOf>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = GetReminderQuery.listFromJson(entry.value, growable: growable,);
+        final value = GetReminderQueryAllOf.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }

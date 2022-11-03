@@ -167,7 +167,13 @@ class MedicationApi {
   /// * [int] pageNumber:
   ///
   /// * [int] pageSize:
-  Future<Response> medicationListWithHttpInfo({ int? pageNumber, int? pageSize, }) async {
+  ///
+  /// * [List<FilterModel>] filters:
+  ///
+  /// * [List<OrderModel>] orderBy:
+  ///
+  /// * [String] order:
+  Future<Response> medicationListWithHttpInfo({ int? pageNumber, int? pageSize, List<FilterModel>? filters, List<OrderModel>? orderBy, String? order, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/Medication/List';
 
@@ -183,6 +189,15 @@ class MedicationApi {
     }
     if (pageSize != null) {
       queryParams.addAll(_queryParams('', 'PageSize', pageSize));
+    }
+    if (filters != null) {
+      queryParams.addAll(_queryParams('multi', 'Filters', filters));
+    }
+    if (orderBy != null) {
+      queryParams.addAll(_queryParams('multi', 'OrderBy', orderBy));
+    }
+    if (order != null) {
+      queryParams.addAll(_queryParams('', 'Order', order));
     }
 
     const contentTypes = <String>[];
@@ -204,8 +219,14 @@ class MedicationApi {
   /// * [int] pageNumber:
   ///
   /// * [int] pageSize:
-  Future<PaginatedListOfMedicationDto?> medicationList({ int? pageNumber, int? pageSize, }) async {
-    final response = await medicationListWithHttpInfo( pageNumber: pageNumber, pageSize: pageSize, );
+  ///
+  /// * [List<FilterModel>] filters:
+  ///
+  /// * [List<OrderModel>] orderBy:
+  ///
+  /// * [String] order:
+  Future<PaginatedListOfMedicationDto?> medicationList({ int? pageNumber, int? pageSize, List<FilterModel>? filters, List<OrderModel>? orderBy, String? order, }) async {
+    final response = await medicationListWithHttpInfo( pageNumber: pageNumber, pageSize: pageSize, filters: filters, orderBy: orderBy, order: order, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
