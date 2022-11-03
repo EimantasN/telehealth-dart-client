@@ -191,8 +191,12 @@ class ApiClient {
           return FileDto.fromJson(value);
         case 'FileUploadCmd':
           return FileUploadCmd.fromJson(value);
+        case 'FilterModel':
+          return FilterModel.fromJson(value);
         case 'FolderDto':
           return FolderDto.fromJson(value);
+        case 'GetReminderQuery':
+          return GetReminderQuery.fromJson(value);
         case 'ItemsVm':
           return ItemsVm.fromJson(value);
         case 'MedicationDto':

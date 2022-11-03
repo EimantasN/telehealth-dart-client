@@ -128,36 +128,27 @@ class RemindersApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /api/Reminders/List' operation and returns the [Response].
+  /// Performs an HTTP 'POST /api/Reminders/List' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [int] pageNumber:
-  ///
-  /// * [int] pageSize:
-  Future<Response> remindersListWithHttpInfo({ int? pageNumber, int? pageSize, }) async {
+  /// * [GetReminderQuery] getReminderQuery (required):
+  Future<Response> remindersListWithHttpInfo(GetReminderQuery getReminderQuery,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/Reminders/List';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = getReminderQuery;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (pageNumber != null) {
-      queryParams.addAll(_queryParams('', 'PageNumber', pageNumber));
-    }
-    if (pageSize != null) {
-      queryParams.addAll(_queryParams('', 'PageSize', pageSize));
-    }
-
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -168,11 +159,9 @@ class RemindersApi {
 
   /// Parameters:
   ///
-  /// * [int] pageNumber:
-  ///
-  /// * [int] pageSize:
-  Future<PaginatedListOfReminderDto?> remindersList({ int? pageNumber, int? pageSize, }) async {
-    final response = await remindersListWithHttpInfo( pageNumber: pageNumber, pageSize: pageSize, );
+  /// * [GetReminderQuery] getReminderQuery (required):
+  Future<PaginatedListOfReminderDto?> remindersList(GetReminderQuery getReminderQuery,) async {
+    final response = await remindersListWithHttpInfo(getReminderQuery,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
