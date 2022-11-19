@@ -31,6 +31,7 @@ part 'api/graph_api.dart';
 part 'api/library_api.dart';
 part 'api/medication_api.dart';
 part 'api/reminders_api.dart';
+part 'api/search_api.dart';
 part 'api/share_api.dart';
 part 'api/user_api.dart';
 
@@ -49,7 +50,9 @@ part 'model/medication_dto.dart';
 part 'model/order_model.dart';
 part 'model/paginated_list_of_medication_dto.dart';
 part 'model/paginated_list_of_reminder_dto.dart';
+part 'model/provider_dto.dart';
 part 'model/reminder_dto.dart';
+part 'model/search_provider_query.dart';
 part 'model/share_link_cmd.dart';
 part 'model/share_link_response.dart';
 part 'model/update_reminder_cmd.dart';

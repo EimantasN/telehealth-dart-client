@@ -211,8 +211,12 @@ class ApiClient {
           return PaginatedListOfMedicationDto.fromJson(value);
         case 'PaginatedListOfReminderDto':
           return PaginatedListOfReminderDto.fromJson(value);
+        case 'ProviderDto':
+          return ProviderDto.fromJson(value);
         case 'ReminderDto':
           return ReminderDto.fromJson(value);
+        case 'SearchProviderQuery':
+          return SearchProviderQuery.fromJson(value);
         case 'ShareLinkCmd':
           return ShareLinkCmd.fromJson(value);
         case 'ShareLinkResponse':
