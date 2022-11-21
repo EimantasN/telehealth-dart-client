@@ -14,7 +14,6 @@ class CreateMedicationCmd {
   /// Returns a new [CreateMedicationCmd] instance.
   CreateMedicationCmd({
     this.title,
-    this.frequency,
     this.timing,
     this.conditions,
     this.provider,
@@ -28,14 +27,6 @@ class CreateMedicationCmd {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? title;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? frequency;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -72,7 +63,6 @@ class CreateMedicationCmd {
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateMedicationCmd &&
      other.title == title &&
-     other.frequency == frequency &&
      other.timing == timing &&
      other.conditions == conditions &&
      other.provider == provider &&
@@ -82,14 +72,13 @@ class CreateMedicationCmd {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (title == null ? 0 : title!.hashCode) +
-    (frequency == null ? 0 : frequency!.hashCode) +
     (timing == null ? 0 : timing!.hashCode) +
     (conditions == null ? 0 : conditions!.hashCode) +
     (provider == null ? 0 : provider!.hashCode) +
     (activeCompounds == null ? 0 : activeCompounds!.hashCode);
 
   @override
-  String toString() => 'CreateMedicationCmd[title=$title, frequency=$frequency, timing=$timing, conditions=$conditions, provider=$provider, activeCompounds=$activeCompounds]';
+  String toString() => 'CreateMedicationCmd[title=$title, timing=$timing, conditions=$conditions, provider=$provider, activeCompounds=$activeCompounds]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -97,11 +86,6 @@ class CreateMedicationCmd {
       json[r'title'] = this.title;
     } else {
       json[r'title'] = null;
-    }
-    if (this.frequency != null) {
-      json[r'frequency'] = this.frequency;
-    } else {
-      json[r'frequency'] = null;
     }
     if (this.timing != null) {
       json[r'timing'] = this.timing;
@@ -146,7 +130,6 @@ class CreateMedicationCmd {
 
       return CreateMedicationCmd(
         title: mapValueOfType<String>(json, r'title'),
-        frequency: mapValueOfType<String>(json, r'frequency'),
         timing: mapValueOfType<String>(json, r'timing'),
         conditions: mapValueOfType<String>(json, r'conditions'),
         provider: mapValueOfType<String>(json, r'provider'),
