@@ -25,6 +25,8 @@ class ConsultationNoteListDto {
     this.prescriptions,
     this.recommendations,
     this.diagnose,
+    this.created,
+    this.modified,
   });
 
   ///
@@ -63,6 +65,22 @@ class ConsultationNoteListDto {
 
   String? diagnose;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? created;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? modified;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ConsultationNoteListDto &&
      other.title == title &&
@@ -76,7 +94,9 @@ class ConsultationNoteListDto {
      other.treatmentPlan == treatmentPlan &&
      other.prescriptions == prescriptions &&
      other.recommendations == recommendations &&
-     other.diagnose == diagnose;
+     other.diagnose == diagnose &&
+     other.created == created &&
+     other.modified == modified;
 
   @override
   int get hashCode =>
@@ -92,10 +112,12 @@ class ConsultationNoteListDto {
     (treatmentPlan == null ? 0 : treatmentPlan!.hashCode) +
     (prescriptions == null ? 0 : prescriptions!.hashCode) +
     (recommendations == null ? 0 : recommendations!.hashCode) +
-    (diagnose == null ? 0 : diagnose!.hashCode);
+    (diagnose == null ? 0 : diagnose!.hashCode) +
+    (created == null ? 0 : created!.hashCode) +
+    (modified == null ? 0 : modified!.hashCode);
 
   @override
-  String toString() => 'ConsultationNoteListDto[title=$title, dateOfNote=$dateOfNote, aim=$aim, complains=$complains, investigation=$investigation, treatment=$treatment, anamnesis=$anamnesis, labInvestigationPlan=$labInvestigationPlan, treatmentPlan=$treatmentPlan, prescriptions=$prescriptions, recommendations=$recommendations, diagnose=$diagnose]';
+  String toString() => 'ConsultationNoteListDto[title=$title, dateOfNote=$dateOfNote, aim=$aim, complains=$complains, investigation=$investigation, treatment=$treatment, anamnesis=$anamnesis, labInvestigationPlan=$labInvestigationPlan, treatmentPlan=$treatmentPlan, prescriptions=$prescriptions, recommendations=$recommendations, diagnose=$diagnose, created=$created, modified=$modified]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -159,6 +181,16 @@ class ConsultationNoteListDto {
     } else {
       json[r'diagnose'] = null;
     }
+    if (this.created != null) {
+      json[r'created'] = this.created!.toUtc().toIso8601String();
+    } else {
+      json[r'created'] = null;
+    }
+    if (this.modified != null) {
+      json[r'modified'] = this.modified!.toUtc().toIso8601String();
+    } else {
+      json[r'modified'] = null;
+    }
     return json;
   }
 
@@ -193,6 +225,8 @@ class ConsultationNoteListDto {
         prescriptions: mapValueOfType<String>(json, r'prescriptions'),
         recommendations: mapValueOfType<String>(json, r'recommendations'),
         diagnose: mapValueOfType<String>(json, r'diagnose'),
+        created: mapDateTime(json, r'created', ''),
+        modified: mapDateTime(json, r'modified', ''),
       );
     }
     return null;
