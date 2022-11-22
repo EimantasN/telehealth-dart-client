@@ -33,9 +33,12 @@ part 'api/medication_api.dart';
 part 'api/questionnaire_api.dart';
 part 'api/reminders_api.dart';
 part 'api/search_api.dart';
+part 'api/self_note_api.dart';
 part 'api/share_api.dart';
 part 'api/user_api.dart';
 
+part 'model/answer_dto.dart';
+part 'model/answer_submit_dto.dart';
 part 'model/create_folder_cmd.dart';
 part 'model/create_medication_cmd.dart';
 part 'model/create_reminder_cmd.dart';
@@ -60,6 +63,7 @@ part 'model/search_provider_query.dart';
 part 'model/section.dart';
 part 'model/share_link_cmd.dart';
 part 'model/share_link_response.dart';
+part 'model/submit_self_note_cmd.dart';
 part 'model/update_reminder_cmd.dart';
 part 'model/user_info_dto.dart';
 

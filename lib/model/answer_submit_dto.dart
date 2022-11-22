@@ -10,13 +10,11 @@
 
 part of openapi.api;
 
-class Question {
-  /// Returns a new [Question] instance.
-  Question({
-    this.id,
-    this.title,
-    this.view,
-    this.options = const [],
+class AnswerSubmitDto {
+  /// Returns a new [AnswerSubmitDto] instance.
+  AnswerSubmitDto({
+    this.questionId,
+    this.answerIndex,
   });
 
   ///
@@ -25,7 +23,7 @@ class Question {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? id;
+  int? questionId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -33,61 +31,41 @@ class Question {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? title;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? view;
-
-  List<String> options;
+  int? answerIndex;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is Question &&
-     other.id == id &&
-     other.title == title &&
-     other.view == view &&
-     other.options == options;
+  bool operator ==(Object other) => identical(this, other) || other is AnswerSubmitDto &&
+     other.questionId == questionId &&
+     other.answerIndex == answerIndex;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
-    (title == null ? 0 : title!.hashCode) +
-    (view == null ? 0 : view!.hashCode) +
-    (options.hashCode);
+    (questionId == null ? 0 : questionId!.hashCode) +
+    (answerIndex == null ? 0 : answerIndex!.hashCode);
 
   @override
-  String toString() => 'Question[id=$id, title=$title, view=$view, options=$options]';
+  String toString() => 'AnswerSubmitDto[questionId=$questionId, answerIndex=$answerIndex]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
-      json[r'id'] = this.id;
+    if (this.questionId != null) {
+      json[r'questionId'] = this.questionId;
     } else {
-      json[r'id'] = null;
+      json[r'questionId'] = null;
     }
-    if (this.title != null) {
-      json[r'title'] = this.title;
+    if (this.answerIndex != null) {
+      json[r'answerIndex'] = this.answerIndex;
     } else {
-      json[r'title'] = null;
+      json[r'answerIndex'] = null;
     }
-    if (this.view != null) {
-      json[r'view'] = this.view;
-    } else {
-      json[r'view'] = null;
-    }
-      json[r'options'] = this.options;
     return json;
   }
 
-  /// Returns a new [Question] instance and imports its values from
+  /// Returns a new [AnswerSubmitDto] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static Question? fromJson(dynamic value) {
+  static AnswerSubmitDto? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -96,29 +74,25 @@ class Question {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Question[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Question[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "AnswerSubmitDto[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "AnswerSubmitDto[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return Question(
-        id: mapValueOfType<int>(json, r'id'),
-        title: mapValueOfType<String>(json, r'title'),
-        view: mapValueOfType<String>(json, r'view'),
-        options: json[r'options'] is List
-            ? (json[r'options'] as List).cast<String>()
-            : const [],
+      return AnswerSubmitDto(
+        questionId: mapValueOfType<int>(json, r'questionId'),
+        answerIndex: mapValueOfType<int>(json, r'answerIndex'),
       );
     }
     return null;
   }
 
-  static List<Question>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <Question>[];
+  static List<AnswerSubmitDto>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <AnswerSubmitDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = Question.fromJson(row);
+        final value = AnswerSubmitDto.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -127,12 +101,12 @@ class Question {
     return result.toList(growable: growable);
   }
 
-  static Map<String, Question> mapFromJson(dynamic json) {
-    final map = <String, Question>{};
+  static Map<String, AnswerSubmitDto> mapFromJson(dynamic json) {
+    final map = <String, AnswerSubmitDto>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = Question.fromJson(entry.value);
+        final value = AnswerSubmitDto.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -141,13 +115,13 @@ class Question {
     return map;
   }
 
-  // maps a json object with a list of Question-objects as value to a dart map
-  static Map<String, List<Question>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<Question>>{};
+  // maps a json object with a list of AnswerSubmitDto-objects as value to a dart map
+  static Map<String, List<AnswerSubmitDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<AnswerSubmitDto>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = Question.listFromJson(entry.value, growable: growable,);
+        final value = AnswerSubmitDto.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }

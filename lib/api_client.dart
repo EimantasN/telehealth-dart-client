@@ -181,6 +181,10 @@ class ApiClient {
           return valueString == 'true' || valueString == '1';
         case 'DateTime':
           return value is DateTime ? value : DateTime.tryParse(value);
+        case 'AnswerDto':
+          return AnswerDto.fromJson(value);
+        case 'AnswerSubmitDto':
+          return AnswerSubmitDto.fromJson(value);
         case 'CreateFolderCmd':
           return CreateFolderCmd.fromJson(value);
         case 'CreateMedicationCmd':
@@ -229,6 +233,8 @@ class ApiClient {
           return ShareLinkCmd.fromJson(value);
         case 'ShareLinkResponse':
           return ShareLinkResponse.fromJson(value);
+        case 'SubmitSelfNoteCmd':
+          return SubmitSelfNoteCmd.fromJson(value);
         case 'UpdateReminderCmd':
           return UpdateReminderCmd.fromJson(value);
         case 'UserInfoDto':

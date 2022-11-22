@@ -10,22 +10,17 @@
 
 part of openapi.api;
 
-class Question {
-  /// Returns a new [Question] instance.
-  Question({
-    this.id,
+class SubmitSelfNoteCmd {
+  /// Returns a new [SubmitSelfNoteCmd] instance.
+  SubmitSelfNoteCmd({
+    this.answers = const [],
     this.title,
-    this.view,
-    this.options = const [],
+    this.place,
+    this.reason,
+    this.questionnaireId,
   });
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? id;
+  List<AnswerSubmitDto> answers;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -41,53 +36,68 @@ class Question {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? view;
+  String? place;
 
-  List<String> options;
+  String? reason;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? questionnaireId;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is Question &&
-     other.id == id &&
+  bool operator ==(Object other) => identical(this, other) || other is SubmitSelfNoteCmd &&
+     other.answers == answers &&
      other.title == title &&
-     other.view == view &&
-     other.options == options;
+     other.place == place &&
+     other.reason == reason &&
+     other.questionnaireId == questionnaireId;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
+    (answers.hashCode) +
     (title == null ? 0 : title!.hashCode) +
-    (view == null ? 0 : view!.hashCode) +
-    (options.hashCode);
+    (place == null ? 0 : place!.hashCode) +
+    (reason == null ? 0 : reason!.hashCode) +
+    (questionnaireId == null ? 0 : questionnaireId!.hashCode);
 
   @override
-  String toString() => 'Question[id=$id, title=$title, view=$view, options=$options]';
+  String toString() => 'SubmitSelfNoteCmd[answers=$answers, title=$title, place=$place, reason=$reason, questionnaireId=$questionnaireId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
-      json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
+      json[r'answers'] = this.answers;
     if (this.title != null) {
       json[r'title'] = this.title;
     } else {
       json[r'title'] = null;
     }
-    if (this.view != null) {
-      json[r'view'] = this.view;
+    if (this.place != null) {
+      json[r'place'] = this.place;
     } else {
-      json[r'view'] = null;
+      json[r'place'] = null;
     }
-      json[r'options'] = this.options;
+    if (this.reason != null) {
+      json[r'reason'] = this.reason;
+    } else {
+      json[r'reason'] = null;
+    }
+    if (this.questionnaireId != null) {
+      json[r'questionnaireId'] = this.questionnaireId;
+    } else {
+      json[r'questionnaireId'] = null;
+    }
     return json;
   }
 
-  /// Returns a new [Question] instance and imports its values from
+  /// Returns a new [SubmitSelfNoteCmd] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static Question? fromJson(dynamic value) {
+  static SubmitSelfNoteCmd? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -96,29 +106,28 @@ class Question {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Question[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Question[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "SubmitSelfNoteCmd[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "SubmitSelfNoteCmd[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return Question(
-        id: mapValueOfType<int>(json, r'id'),
+      return SubmitSelfNoteCmd(
+        answers: AnswerSubmitDto.listFromJson(json[r'answers']) ?? const [],
         title: mapValueOfType<String>(json, r'title'),
-        view: mapValueOfType<String>(json, r'view'),
-        options: json[r'options'] is List
-            ? (json[r'options'] as List).cast<String>()
-            : const [],
+        place: mapValueOfType<String>(json, r'place'),
+        reason: mapValueOfType<String>(json, r'reason'),
+        questionnaireId: mapValueOfType<int>(json, r'questionnaireId'),
       );
     }
     return null;
   }
 
-  static List<Question>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <Question>[];
+  static List<SubmitSelfNoteCmd>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <SubmitSelfNoteCmd>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = Question.fromJson(row);
+        final value = SubmitSelfNoteCmd.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -127,12 +136,12 @@ class Question {
     return result.toList(growable: growable);
   }
 
-  static Map<String, Question> mapFromJson(dynamic json) {
-    final map = <String, Question>{};
+  static Map<String, SubmitSelfNoteCmd> mapFromJson(dynamic json) {
+    final map = <String, SubmitSelfNoteCmd>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = Question.fromJson(entry.value);
+        final value = SubmitSelfNoteCmd.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -141,13 +150,13 @@ class Question {
     return map;
   }
 
-  // maps a json object with a list of Question-objects as value to a dart map
-  static Map<String, List<Question>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<Question>>{};
+  // maps a json object with a list of SubmitSelfNoteCmd-objects as value to a dart map
+  static Map<String, List<SubmitSelfNoteCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<SubmitSelfNoteCmd>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = Question.listFromJson(entry.value, growable: growable,);
+        final value = SubmitSelfNoteCmd.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }
