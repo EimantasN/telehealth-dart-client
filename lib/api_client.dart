@@ -191,6 +191,8 @@ class ApiClient {
           return CreateMedicationCmd.fromJson(value);
         case 'CreateReminderCmd':
           return CreateReminderCmd.fromJson(value);
+        case 'DynamicQueryOfPaginatedListOfMedicationListDto':
+          return DynamicQueryOfPaginatedListOfMedicationListDto.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfReminderDto':
           return DynamicQueryOfPaginatedListOfReminderDto.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfSelfNoteListDto':
@@ -205,20 +207,24 @@ class ApiClient {
           return FolderDto.fromJson(value);
         case 'FrequencyDto':
           return FrequencyDto.fromJson(value);
+        case 'GetMedicationsQuery':
+          return GetMedicationsQuery.fromJson(value);
+        case 'GetMedicationsQueryAllOf':
+          return GetMedicationsQueryAllOf.fromJson(value);
         case 'GetReminderQuery':
           return GetReminderQuery.fromJson(value);
-        case 'GetReminderQueryAllOf':
-          return GetReminderQueryAllOf.fromJson(value);
         case 'GetSelfNotesQuery':
           return GetSelfNotesQuery.fromJson(value);
         case 'ItemsVm':
           return ItemsVm.fromJson(value);
         case 'MedicationDto':
           return MedicationDto.fromJson(value);
+        case 'MedicationListDto':
+          return MedicationListDto.fromJson(value);
         case 'OrderModel':
           return OrderModel.fromJson(value);
-        case 'PaginatedListOfMedicationDto':
-          return PaginatedListOfMedicationDto.fromJson(value);
+        case 'PaginatedListOfMedicationListDto':
+          return PaginatedListOfMedicationListDto.fromJson(value);
         case 'PaginatedListOfReminderDto':
           return PaginatedListOfReminderDto.fromJson(value);
         case 'PaginatedListOfSelfNoteListDto':

@@ -114,11 +114,62 @@ class MedicationApi {
     return null;
   }
 
+  /// Performs an HTTP 'GET /api/Medication/Get' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] id:
+  Future<Response> medicationExportGETWithHttpInfo({ int? id, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/Medication/Get';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (id != null) {
+      queryParams.addAll(_queryParams('', 'Id', id));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] id:
+  Future<MedicationDto?> medicationExportGET({ int? id, }) async {
+    final response = await medicationExportGETWithHttpInfo( id: id, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MedicationDto',) as MedicationDto;
+    
+    }
+    return null;
+  }
+
   /// Performs an HTTP 'POST /api/Medication/Export' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [Object] body (required):
-  Future<Response> medicationExportWithHttpInfo(Object body,) async {
+  Future<Response> medicationExportPOSTWithHttpInfo(Object body,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/Medication/Export';
 
@@ -146,8 +197,8 @@ class MedicationApi {
   /// Parameters:
   ///
   /// * [Object] body (required):
-  Future<bool?> medicationExport(Object body,) async {
-    final response = await medicationExportWithHttpInfo(body,);
+  Future<bool?> medicationExportPOST(Object body,) async {
+    final response = await medicationExportPOSTWithHttpInfo(body,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -161,51 +212,27 @@ class MedicationApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /api/Medication/List' operation and returns the [Response].
+  /// Performs an HTTP 'POST /api/Medication/List' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [int] pageNumber:
-  ///
-  /// * [int] pageSize:
-  ///
-  /// * [List<FilterModel>] filters:
-  ///
-  /// * [List<OrderModel>] orderBy:
-  ///
-  /// * [String] order:
-  Future<Response> medicationListWithHttpInfo({ int? pageNumber, int? pageSize, List<FilterModel>? filters, List<OrderModel>? orderBy, String? order, }) async {
+  /// * [GetMedicationsQuery] getMedicationsQuery (required):
+  Future<Response> medicationListWithHttpInfo(GetMedicationsQuery getMedicationsQuery,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/Medication/List';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = getMedicationsQuery;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (pageNumber != null) {
-      queryParams.addAll(_queryParams('', 'PageNumber', pageNumber));
-    }
-    if (pageSize != null) {
-      queryParams.addAll(_queryParams('', 'PageSize', pageSize));
-    }
-    if (filters != null) {
-      queryParams.addAll(_queryParams('multi', 'Filters', filters));
-    }
-    if (orderBy != null) {
-      queryParams.addAll(_queryParams('multi', 'OrderBy', orderBy));
-    }
-    if (order != null) {
-      queryParams.addAll(_queryParams('', 'Order', order));
-    }
-
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -216,17 +243,9 @@ class MedicationApi {
 
   /// Parameters:
   ///
-  /// * [int] pageNumber:
-  ///
-  /// * [int] pageSize:
-  ///
-  /// * [List<FilterModel>] filters:
-  ///
-  /// * [List<OrderModel>] orderBy:
-  ///
-  /// * [String] order:
-  Future<PaginatedListOfMedicationDto?> medicationList({ int? pageNumber, int? pageSize, List<FilterModel>? filters, List<OrderModel>? orderBy, String? order, }) async {
-    final response = await medicationListWithHttpInfo( pageNumber: pageNumber, pageSize: pageSize, filters: filters, orderBy: orderBy, order: order, );
+  /// * [GetMedicationsQuery] getMedicationsQuery (required):
+  Future<PaginatedListOfMedicationListDto?> medicationList(GetMedicationsQuery getMedicationsQuery,) async {
+    final response = await medicationListWithHttpInfo(getMedicationsQuery,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -234,7 +253,7 @@ class MedicationApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PaginatedListOfMedicationDto',) as PaginatedListOfMedicationDto;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PaginatedListOfMedicationListDto',) as PaginatedListOfMedicationListDto;
     
     }
     return null;

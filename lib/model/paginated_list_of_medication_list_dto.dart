@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class PaginatedListOfMedicationDto {
-  /// Returns a new [PaginatedListOfMedicationDto] instance.
-  PaginatedListOfMedicationDto({
+class PaginatedListOfMedicationListDto {
+  /// Returns a new [PaginatedListOfMedicationListDto] instance.
+  PaginatedListOfMedicationListDto({
     this.items = const [],
     this.pageNumber,
     this.totalPages,
@@ -21,7 +21,7 @@ class PaginatedListOfMedicationDto {
     this.hasNextPage,
   });
 
-  List<MedicationDto> items;
+  List<MedicationListDto> items;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -64,7 +64,7 @@ class PaginatedListOfMedicationDto {
   bool? hasNextPage;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PaginatedListOfMedicationDto &&
+  bool operator ==(Object other) => identical(this, other) || other is PaginatedListOfMedicationListDto &&
      other.items == items &&
      other.pageNumber == pageNumber &&
      other.totalPages == totalPages &&
@@ -83,7 +83,7 @@ class PaginatedListOfMedicationDto {
     (hasNextPage == null ? 0 : hasNextPage!.hashCode);
 
   @override
-  String toString() => 'PaginatedListOfMedicationDto[items=$items, pageNumber=$pageNumber, totalPages=$totalPages, totalCount=$totalCount, hasPreviousPage=$hasPreviousPage, hasNextPage=$hasNextPage]';
+  String toString() => 'PaginatedListOfMedicationListDto[items=$items, pageNumber=$pageNumber, totalPages=$totalPages, totalCount=$totalCount, hasPreviousPage=$hasPreviousPage, hasNextPage=$hasNextPage]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -116,10 +116,10 @@ class PaginatedListOfMedicationDto {
     return json;
   }
 
-  /// Returns a new [PaginatedListOfMedicationDto] instance and imports its values from
+  /// Returns a new [PaginatedListOfMedicationListDto] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PaginatedListOfMedicationDto? fromJson(dynamic value) {
+  static PaginatedListOfMedicationListDto? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -128,14 +128,14 @@ class PaginatedListOfMedicationDto {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PaginatedListOfMedicationDto[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PaginatedListOfMedicationDto[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "PaginatedListOfMedicationListDto[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "PaginatedListOfMedicationListDto[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PaginatedListOfMedicationDto(
-        items: MedicationDto.listFromJson(json[r'items']) ?? const [],
+      return PaginatedListOfMedicationListDto(
+        items: MedicationListDto.listFromJson(json[r'items']) ?? const [],
         pageNumber: mapValueOfType<int>(json, r'pageNumber'),
         totalPages: mapValueOfType<int>(json, r'totalPages'),
         totalCount: mapValueOfType<int>(json, r'totalCount'),
@@ -146,11 +146,11 @@ class PaginatedListOfMedicationDto {
     return null;
   }
 
-  static List<PaginatedListOfMedicationDto>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PaginatedListOfMedicationDto>[];
+  static List<PaginatedListOfMedicationListDto>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PaginatedListOfMedicationListDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PaginatedListOfMedicationDto.fromJson(row);
+        final value = PaginatedListOfMedicationListDto.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -159,12 +159,12 @@ class PaginatedListOfMedicationDto {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PaginatedListOfMedicationDto> mapFromJson(dynamic json) {
-    final map = <String, PaginatedListOfMedicationDto>{};
+  static Map<String, PaginatedListOfMedicationListDto> mapFromJson(dynamic json) {
+    final map = <String, PaginatedListOfMedicationListDto>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PaginatedListOfMedicationDto.fromJson(entry.value);
+        final value = PaginatedListOfMedicationListDto.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -173,13 +173,13 @@ class PaginatedListOfMedicationDto {
     return map;
   }
 
-  // maps a json object with a list of PaginatedListOfMedicationDto-objects as value to a dart map
-  static Map<String, List<PaginatedListOfMedicationDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PaginatedListOfMedicationDto>>{};
+  // maps a json object with a list of PaginatedListOfMedicationListDto-objects as value to a dart map
+  static Map<String, List<PaginatedListOfMedicationListDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<PaginatedListOfMedicationListDto>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PaginatedListOfMedicationDto.listFromJson(entry.value, growable: growable,);
+        final value = PaginatedListOfMedicationListDto.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }

@@ -13,27 +13,19 @@ part of openapi.api;
 class MedicationDto {
   /// Returns a new [MedicationDto] instance.
   MedicationDto({
-    this.id,
     this.title,
-    this.frequency,
-    this.timing,
-    this.conditions,
+    this.start,
+    this.end,
+    this.condition,
     this.provider,
     this.activeCompounds,
+    this.manufacture,
+    this.numberInBox,
+    this.recomendation,
+    this.notice,
     this.doctorId,
-    this.created,
-    this.createdBy,
-    this.modified,
-    this.modifiedBy,
+    this.frequencies = const [],
   });
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? id;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -43,128 +35,83 @@ class MedicationDto {
   ///
   String? title;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? frequency;
+  DateTime? start;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? timing;
+  DateTime? end;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? conditions;
+  String? condition;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? provider;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? activeCompounds;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
+  String? manufacture;
+
+  int? numberInBox;
+
+  String? recomendation;
+
+  String? notice;
+
   int? doctorId;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? created;
-
-  String? createdBy;
-
-  DateTime? modified;
-
-  String? modifiedBy;
+  List<FrequencyDto> frequencies;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is MedicationDto &&
-     other.id == id &&
      other.title == title &&
-     other.frequency == frequency &&
-     other.timing == timing &&
-     other.conditions == conditions &&
+     other.start == start &&
+     other.end == end &&
+     other.condition == condition &&
      other.provider == provider &&
      other.activeCompounds == activeCompounds &&
+     other.manufacture == manufacture &&
+     other.numberInBox == numberInBox &&
+     other.recomendation == recomendation &&
+     other.notice == notice &&
      other.doctorId == doctorId &&
-     other.created == created &&
-     other.createdBy == createdBy &&
-     other.modified == modified &&
-     other.modifiedBy == modifiedBy;
+     other.frequencies == frequencies;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
     (title == null ? 0 : title!.hashCode) +
-    (frequency == null ? 0 : frequency!.hashCode) +
-    (timing == null ? 0 : timing!.hashCode) +
-    (conditions == null ? 0 : conditions!.hashCode) +
+    (start == null ? 0 : start!.hashCode) +
+    (end == null ? 0 : end!.hashCode) +
+    (condition == null ? 0 : condition!.hashCode) +
     (provider == null ? 0 : provider!.hashCode) +
     (activeCompounds == null ? 0 : activeCompounds!.hashCode) +
+    (manufacture == null ? 0 : manufacture!.hashCode) +
+    (numberInBox == null ? 0 : numberInBox!.hashCode) +
+    (recomendation == null ? 0 : recomendation!.hashCode) +
+    (notice == null ? 0 : notice!.hashCode) +
     (doctorId == null ? 0 : doctorId!.hashCode) +
-    (created == null ? 0 : created!.hashCode) +
-    (createdBy == null ? 0 : createdBy!.hashCode) +
-    (modified == null ? 0 : modified!.hashCode) +
-    (modifiedBy == null ? 0 : modifiedBy!.hashCode);
+    (frequencies.hashCode);
 
   @override
-  String toString() => 'MedicationDto[id=$id, title=$title, frequency=$frequency, timing=$timing, conditions=$conditions, provider=$provider, activeCompounds=$activeCompounds, doctorId=$doctorId, created=$created, createdBy=$createdBy, modified=$modified, modifiedBy=$modifiedBy]';
+  String toString() => 'MedicationDto[title=$title, start=$start, end=$end, condition=$condition, provider=$provider, activeCompounds=$activeCompounds, manufacture=$manufacture, numberInBox=$numberInBox, recomendation=$recomendation, notice=$notice, doctorId=$doctorId, frequencies=$frequencies]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
-      json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
     if (this.title != null) {
       json[r'title'] = this.title;
     } else {
       json[r'title'] = null;
     }
-    if (this.frequency != null) {
-      json[r'frequency'] = this.frequency;
+    if (this.start != null) {
+      json[r'start'] = this.start!.toUtc().toIso8601String();
     } else {
-      json[r'frequency'] = null;
+      json[r'start'] = null;
     }
-    if (this.timing != null) {
-      json[r'timing'] = this.timing;
+    if (this.end != null) {
+      json[r'end'] = this.end!.toUtc().toIso8601String();
     } else {
-      json[r'timing'] = null;
+      json[r'end'] = null;
     }
-    if (this.conditions != null) {
-      json[r'conditions'] = this.conditions;
+    if (this.condition != null) {
+      json[r'condition'] = this.condition;
     } else {
-      json[r'conditions'] = null;
+      json[r'condition'] = null;
     }
     if (this.provider != null) {
       json[r'provider'] = this.provider;
@@ -176,31 +123,32 @@ class MedicationDto {
     } else {
       json[r'activeCompounds'] = null;
     }
+    if (this.manufacture != null) {
+      json[r'manufacture'] = this.manufacture;
+    } else {
+      json[r'manufacture'] = null;
+    }
+    if (this.numberInBox != null) {
+      json[r'numberInBox'] = this.numberInBox;
+    } else {
+      json[r'numberInBox'] = null;
+    }
+    if (this.recomendation != null) {
+      json[r'recomendation'] = this.recomendation;
+    } else {
+      json[r'recomendation'] = null;
+    }
+    if (this.notice != null) {
+      json[r'notice'] = this.notice;
+    } else {
+      json[r'notice'] = null;
+    }
     if (this.doctorId != null) {
       json[r'doctorId'] = this.doctorId;
     } else {
       json[r'doctorId'] = null;
     }
-    if (this.created != null) {
-      json[r'created'] = this.created!.toUtc().toIso8601String();
-    } else {
-      json[r'created'] = null;
-    }
-    if (this.createdBy != null) {
-      json[r'createdBy'] = this.createdBy;
-    } else {
-      json[r'createdBy'] = null;
-    }
-    if (this.modified != null) {
-      json[r'modified'] = this.modified!.toUtc().toIso8601String();
-    } else {
-      json[r'modified'] = null;
-    }
-    if (this.modifiedBy != null) {
-      json[r'modifiedBy'] = this.modifiedBy;
-    } else {
-      json[r'modifiedBy'] = null;
-    }
+      json[r'frequencies'] = this.frequencies;
     return json;
   }
 
@@ -223,18 +171,18 @@ class MedicationDto {
       }());
 
       return MedicationDto(
-        id: mapValueOfType<int>(json, r'id'),
         title: mapValueOfType<String>(json, r'title'),
-        frequency: mapValueOfType<String>(json, r'frequency'),
-        timing: mapValueOfType<String>(json, r'timing'),
-        conditions: mapValueOfType<String>(json, r'conditions'),
+        start: mapDateTime(json, r'start', ''),
+        end: mapDateTime(json, r'end', ''),
+        condition: mapValueOfType<String>(json, r'condition'),
         provider: mapValueOfType<String>(json, r'provider'),
         activeCompounds: mapValueOfType<String>(json, r'activeCompounds'),
+        manufacture: mapValueOfType<String>(json, r'manufacture'),
+        numberInBox: mapValueOfType<int>(json, r'numberInBox'),
+        recomendation: mapValueOfType<String>(json, r'recomendation'),
+        notice: mapValueOfType<String>(json, r'notice'),
         doctorId: mapValueOfType<int>(json, r'doctorId'),
-        created: mapDateTime(json, r'created', ''),
-        createdBy: mapValueOfType<String>(json, r'createdBy'),
-        modified: mapDateTime(json, r'modified', ''),
-        modifiedBy: mapValueOfType<String>(json, r'modifiedBy'),
+        frequencies: FrequencyDto.listFromJson(json[r'frequencies']) ?? const [],
       );
     }
     return null;
