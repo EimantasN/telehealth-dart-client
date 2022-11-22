@@ -131,13 +131,13 @@ class RemindersApi {
   /// Performs an HTTP 'POST /api/Reminders/List' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [GetReminderQuery] getReminderQuery (required):
-  Future<Response> remindersListWithHttpInfo(GetReminderQuery getReminderQuery,) async {
+  /// * [GetRemindersQuery] getRemindersQuery (required):
+  Future<Response> remindersListWithHttpInfo(GetRemindersQuery getRemindersQuery,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/Reminders/List';
 
     // ignore: prefer_final_locals
-    Object? postBody = getReminderQuery;
+    Object? postBody = getRemindersQuery;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -159,9 +159,9 @@ class RemindersApi {
 
   /// Parameters:
   ///
-  /// * [GetReminderQuery] getReminderQuery (required):
-  Future<PaginatedListOfReminderDto?> remindersList(GetReminderQuery getReminderQuery,) async {
-    final response = await remindersListWithHttpInfo(getReminderQuery,);
+  /// * [GetRemindersQuery] getRemindersQuery (required):
+  Future<PaginatedListOfReminderDto?> remindersList(GetRemindersQuery getRemindersQuery,) async {
+    final response = await remindersListWithHttpInfo(getRemindersQuery,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

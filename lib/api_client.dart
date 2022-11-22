@@ -185,12 +185,20 @@ class ApiClient {
           return AnswerDto.fromJson(value);
         case 'AnswerSubmitDto':
           return AnswerSubmitDto.fromJson(value);
+        case 'ConsultationNoteDto':
+          return ConsultationNoteDto.fromJson(value);
+        case 'ConsultationNoteListDto':
+          return ConsultationNoteListDto.fromJson(value);
+        case 'CreateConsultationNodeCmd':
+          return CreateConsultationNodeCmd.fromJson(value);
         case 'CreateFolderCmd':
           return CreateFolderCmd.fromJson(value);
         case 'CreateMedicationCmd':
           return CreateMedicationCmd.fromJson(value);
         case 'CreateReminderCmd':
           return CreateReminderCmd.fromJson(value);
+        case 'DynamicQueryOfPaginatedListOfConsultationNoteListDto':
+          return DynamicQueryOfPaginatedListOfConsultationNoteListDto.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfMedicationListDto':
           return DynamicQueryOfPaginatedListOfMedicationListDto.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfReminderDto':
@@ -207,12 +215,14 @@ class ApiClient {
           return FolderDto.fromJson(value);
         case 'FrequencyDto':
           return FrequencyDto.fromJson(value);
+        case 'GetConsultationNotesQuery':
+          return GetConsultationNotesQuery.fromJson(value);
+        case 'GetConsultationNotesQueryAllOf':
+          return GetConsultationNotesQueryAllOf.fromJson(value);
         case 'GetMedicationsQuery':
           return GetMedicationsQuery.fromJson(value);
-        case 'GetMedicationsQueryAllOf':
-          return GetMedicationsQueryAllOf.fromJson(value);
-        case 'GetReminderQuery':
-          return GetReminderQuery.fromJson(value);
+        case 'GetRemindersQuery':
+          return GetRemindersQuery.fromJson(value);
         case 'GetSelfNotesQuery':
           return GetSelfNotesQuery.fromJson(value);
         case 'ItemsVm':
@@ -223,6 +233,8 @@ class ApiClient {
           return MedicationListDto.fromJson(value);
         case 'OrderModel':
           return OrderModel.fromJson(value);
+        case 'PaginatedListOfConsultationNoteListDto':
+          return PaginatedListOfConsultationNoteListDto.fromJson(value);
         case 'PaginatedListOfMedicationListDto':
           return PaginatedListOfMedicationListDto.fromJson(value);
         case 'PaginatedListOfReminderDto':

@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class GetMedicationsQueryAllOf {
-  /// Returns a new [GetMedicationsQueryAllOf] instance.
-  GetMedicationsQueryAllOf({
+class GetConsultationNotesQueryAllOf {
+  /// Returns a new [GetConsultationNotesQueryAllOf] instance.
+  GetConsultationNotesQueryAllOf({
     this.pageNumber,
     this.pageSize,
   });
@@ -34,7 +34,7 @@ class GetMedicationsQueryAllOf {
   int? pageSize;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is GetMedicationsQueryAllOf &&
+  bool operator ==(Object other) => identical(this, other) || other is GetConsultationNotesQueryAllOf &&
      other.pageNumber == pageNumber &&
      other.pageSize == pageSize;
 
@@ -45,7 +45,7 @@ class GetMedicationsQueryAllOf {
     (pageSize == null ? 0 : pageSize!.hashCode);
 
   @override
-  String toString() => 'GetMedicationsQueryAllOf[pageNumber=$pageNumber, pageSize=$pageSize]';
+  String toString() => 'GetConsultationNotesQueryAllOf[pageNumber=$pageNumber, pageSize=$pageSize]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -62,10 +62,10 @@ class GetMedicationsQueryAllOf {
     return json;
   }
 
-  /// Returns a new [GetMedicationsQueryAllOf] instance and imports its values from
+  /// Returns a new [GetConsultationNotesQueryAllOf] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static GetMedicationsQueryAllOf? fromJson(dynamic value) {
+  static GetConsultationNotesQueryAllOf? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -74,13 +74,13 @@ class GetMedicationsQueryAllOf {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "GetMedicationsQueryAllOf[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "GetMedicationsQueryAllOf[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "GetConsultationNotesQueryAllOf[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "GetConsultationNotesQueryAllOf[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return GetMedicationsQueryAllOf(
+      return GetConsultationNotesQueryAllOf(
         pageNumber: mapValueOfType<int>(json, r'pageNumber'),
         pageSize: mapValueOfType<int>(json, r'pageSize'),
       );
@@ -88,11 +88,11 @@ class GetMedicationsQueryAllOf {
     return null;
   }
 
-  static List<GetMedicationsQueryAllOf>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <GetMedicationsQueryAllOf>[];
+  static List<GetConsultationNotesQueryAllOf>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <GetConsultationNotesQueryAllOf>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = GetMedicationsQueryAllOf.fromJson(row);
+        final value = GetConsultationNotesQueryAllOf.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -101,12 +101,12 @@ class GetMedicationsQueryAllOf {
     return result.toList(growable: growable);
   }
 
-  static Map<String, GetMedicationsQueryAllOf> mapFromJson(dynamic json) {
-    final map = <String, GetMedicationsQueryAllOf>{};
+  static Map<String, GetConsultationNotesQueryAllOf> mapFromJson(dynamic json) {
+    final map = <String, GetConsultationNotesQueryAllOf>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = GetMedicationsQueryAllOf.fromJson(entry.value);
+        final value = GetConsultationNotesQueryAllOf.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -115,13 +115,13 @@ class GetMedicationsQueryAllOf {
     return map;
   }
 
-  // maps a json object with a list of GetMedicationsQueryAllOf-objects as value to a dart map
-  static Map<String, List<GetMedicationsQueryAllOf>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<GetMedicationsQueryAllOf>>{};
+  // maps a json object with a list of GetConsultationNotesQueryAllOf-objects as value to a dart map
+  static Map<String, List<GetConsultationNotesQueryAllOf>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<GetConsultationNotesQueryAllOf>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = GetMedicationsQueryAllOf.listFromJson(entry.value, growable: growable,);
+        final value = GetConsultationNotesQueryAllOf.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }
