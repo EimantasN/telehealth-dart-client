@@ -193,6 +193,8 @@ class ApiClient {
           return CreateReminderCmd.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfReminderDto':
           return DynamicQueryOfPaginatedListOfReminderDto.fromJson(value);
+        case 'DynamicQueryOfPaginatedListOfSelfNoteListDto':
+          return DynamicQueryOfPaginatedListOfSelfNoteListDto.fromJson(value);
         case 'FileDto':
           return FileDto.fromJson(value);
         case 'FileUploadCmd':
@@ -205,6 +207,8 @@ class ApiClient {
           return GetReminderQuery.fromJson(value);
         case 'GetReminderQueryAllOf':
           return GetReminderQueryAllOf.fromJson(value);
+        case 'GetSelfNotesQuery':
+          return GetSelfNotesQuery.fromJson(value);
         case 'ItemsVm':
           return ItemsVm.fromJson(value);
         case 'MedicationDto':
@@ -215,6 +219,8 @@ class ApiClient {
           return PaginatedListOfMedicationDto.fromJson(value);
         case 'PaginatedListOfReminderDto':
           return PaginatedListOfReminderDto.fromJson(value);
+        case 'PaginatedListOfSelfNoteListDto':
+          return PaginatedListOfSelfNoteListDto.fromJson(value);
         case 'ProviderDto':
           return ProviderDto.fromJson(value);
         case 'Question':
@@ -229,6 +235,10 @@ class ApiClient {
           return SearchProviderQuery.fromJson(value);
         case 'Section':
           return Section.fromJson(value);
+        case 'SelfNoteDto':
+          return SelfNoteDto.fromJson(value);
+        case 'SelfNoteListDto':
+          return SelfNoteListDto.fromJson(value);
         case 'ShareLinkCmd':
           return ShareLinkCmd.fromJson(value);
         case 'ShareLinkResponse':

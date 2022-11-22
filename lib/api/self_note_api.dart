@@ -84,6 +84,104 @@ class SelfNoteApi {
     return null;
   }
 
+  /// Performs an HTTP 'GET /api/SelfNote/Get' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] id:
+  Future<Response> selfNoteGetWithHttpInfo({ int? id, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/SelfNote/Get';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (id != null) {
+      queryParams.addAll(_queryParams('', 'Id', id));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] id:
+  Future<SelfNoteDto?> selfNoteGet({ int? id, }) async {
+    final response = await selfNoteGetWithHttpInfo( id: id, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SelfNoteDto',) as SelfNoteDto;
+    
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'POST /api/SelfNote/List' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [GetSelfNotesQuery] getSelfNotesQuery (required):
+  Future<Response> selfNoteListWithHttpInfo(GetSelfNotesQuery getSelfNotesQuery,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/SelfNote/List';
+
+    // ignore: prefer_final_locals
+    Object? postBody = getSelfNotesQuery;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [GetSelfNotesQuery] getSelfNotesQuery (required):
+  Future<PaginatedListOfSelfNoteListDto?> selfNoteList(GetSelfNotesQuery getSelfNotesQuery,) async {
+    final response = await selfNoteListWithHttpInfo(getSelfNotesQuery,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PaginatedListOfSelfNoteListDto',) as PaginatedListOfSelfNoteListDto;
+    
+    }
+    return null;
+  }
+
   /// Performs an HTTP 'POST /api/SelfNote/Submit' operation and returns the [Response].
   /// Parameters:
   ///
