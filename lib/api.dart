@@ -48,6 +48,7 @@ part 'model/file_dto.dart';
 part 'model/file_upload_cmd.dart';
 part 'model/filter_model.dart';
 part 'model/folder_dto.dart';
+part 'model/frequency_dto.dart';
 part 'model/get_reminder_query.dart';
 part 'model/get_reminder_query_all_of.dart';
 part 'model/get_self_notes_query.dart';

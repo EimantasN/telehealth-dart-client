@@ -203,6 +203,8 @@ class ApiClient {
           return FilterModel.fromJson(value);
         case 'FolderDto':
           return FolderDto.fromJson(value);
+        case 'FrequencyDto':
+          return FrequencyDto.fromJson(value);
         case 'GetReminderQuery':
           return GetReminderQuery.fromJson(value);
         case 'GetReminderQueryAllOf':

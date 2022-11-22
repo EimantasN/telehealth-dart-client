@@ -14,10 +14,16 @@ class CreateMedicationCmd {
   /// Returns a new [CreateMedicationCmd] instance.
   CreateMedicationCmd({
     this.title,
-    this.timing,
-    this.conditions,
+    this.start,
+    this.end,
+    this.condition,
     this.provider,
     this.activeCompounds,
+    this.manufacture,
+    this.numberInBox,
+    this.recomendation,
+    this.notice,
+    this.frequencies = const [],
   });
 
   ///
@@ -28,57 +34,57 @@ class CreateMedicationCmd {
   ///
   String? title;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? timing;
+  DateTime? start;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? conditions;
+  DateTime? end;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
+  String? condition;
+
   String? provider;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? activeCompounds;
+
+  String? manufacture;
+
+  int? numberInBox;
+
+  String? recomendation;
+
+  String? notice;
+
+  List<FrequencyDto> frequencies;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateMedicationCmd &&
      other.title == title &&
-     other.timing == timing &&
-     other.conditions == conditions &&
+     other.start == start &&
+     other.end == end &&
+     other.condition == condition &&
      other.provider == provider &&
-     other.activeCompounds == activeCompounds;
+     other.activeCompounds == activeCompounds &&
+     other.manufacture == manufacture &&
+     other.numberInBox == numberInBox &&
+     other.recomendation == recomendation &&
+     other.notice == notice &&
+     other.frequencies == frequencies;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (title == null ? 0 : title!.hashCode) +
-    (timing == null ? 0 : timing!.hashCode) +
-    (conditions == null ? 0 : conditions!.hashCode) +
+    (start == null ? 0 : start!.hashCode) +
+    (end == null ? 0 : end!.hashCode) +
+    (condition == null ? 0 : condition!.hashCode) +
     (provider == null ? 0 : provider!.hashCode) +
-    (activeCompounds == null ? 0 : activeCompounds!.hashCode);
+    (activeCompounds == null ? 0 : activeCompounds!.hashCode) +
+    (manufacture == null ? 0 : manufacture!.hashCode) +
+    (numberInBox == null ? 0 : numberInBox!.hashCode) +
+    (recomendation == null ? 0 : recomendation!.hashCode) +
+    (notice == null ? 0 : notice!.hashCode) +
+    (frequencies.hashCode);
 
   @override
-  String toString() => 'CreateMedicationCmd[title=$title, timing=$timing, conditions=$conditions, provider=$provider, activeCompounds=$activeCompounds]';
+  String toString() => 'CreateMedicationCmd[title=$title, start=$start, end=$end, condition=$condition, provider=$provider, activeCompounds=$activeCompounds, manufacture=$manufacture, numberInBox=$numberInBox, recomendation=$recomendation, notice=$notice, frequencies=$frequencies]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -87,15 +93,20 @@ class CreateMedicationCmd {
     } else {
       json[r'title'] = null;
     }
-    if (this.timing != null) {
-      json[r'timing'] = this.timing;
+    if (this.start != null) {
+      json[r'start'] = this.start!.toUtc().toIso8601String();
     } else {
-      json[r'timing'] = null;
+      json[r'start'] = null;
     }
-    if (this.conditions != null) {
-      json[r'conditions'] = this.conditions;
+    if (this.end != null) {
+      json[r'end'] = this.end!.toUtc().toIso8601String();
     } else {
-      json[r'conditions'] = null;
+      json[r'end'] = null;
+    }
+    if (this.condition != null) {
+      json[r'condition'] = this.condition;
+    } else {
+      json[r'condition'] = null;
     }
     if (this.provider != null) {
       json[r'provider'] = this.provider;
@@ -107,6 +118,27 @@ class CreateMedicationCmd {
     } else {
       json[r'activeCompounds'] = null;
     }
+    if (this.manufacture != null) {
+      json[r'manufacture'] = this.manufacture;
+    } else {
+      json[r'manufacture'] = null;
+    }
+    if (this.numberInBox != null) {
+      json[r'numberInBox'] = this.numberInBox;
+    } else {
+      json[r'numberInBox'] = null;
+    }
+    if (this.recomendation != null) {
+      json[r'recomendation'] = this.recomendation;
+    } else {
+      json[r'recomendation'] = null;
+    }
+    if (this.notice != null) {
+      json[r'notice'] = this.notice;
+    } else {
+      json[r'notice'] = null;
+    }
+      json[r'frequencies'] = this.frequencies;
     return json;
   }
 
@@ -130,10 +162,16 @@ class CreateMedicationCmd {
 
       return CreateMedicationCmd(
         title: mapValueOfType<String>(json, r'title'),
-        timing: mapValueOfType<String>(json, r'timing'),
-        conditions: mapValueOfType<String>(json, r'conditions'),
+        start: mapDateTime(json, r'start', ''),
+        end: mapDateTime(json, r'end', ''),
+        condition: mapValueOfType<String>(json, r'condition'),
         provider: mapValueOfType<String>(json, r'provider'),
         activeCompounds: mapValueOfType<String>(json, r'activeCompounds'),
+        manufacture: mapValueOfType<String>(json, r'manufacture'),
+        numberInBox: mapValueOfType<int>(json, r'numberInBox'),
+        recomendation: mapValueOfType<String>(json, r'recomendation'),
+        notice: mapValueOfType<String>(json, r'notice'),
+        frequencies: FrequencyDto.listFromJson(json[r'frequencies']) ?? const [],
       );
     }
     return null;
