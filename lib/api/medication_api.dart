@@ -66,8 +66,12 @@ class MedicationApi {
   /// Performs an HTTP 'DELETE /api/Medication/Delete' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [int] medicationId:
-  Future<Response> medicationDeleteWithHttpInfo({ int? medicationId, }) async {
+  /// * [bool] isAll:
+  ///
+  /// * [List<int>] included:
+  ///
+  /// * [List<int>] excluded:
+  Future<Response> medicationDeleteWithHttpInfo({ bool? isAll, List<int>? included, List<int>? excluded, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/Medication/Delete';
 
@@ -78,8 +82,14 @@ class MedicationApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (medicationId != null) {
-      queryParams.addAll(_queryParams('', 'MedicationId', medicationId));
+    if (isAll != null) {
+      queryParams.addAll(_queryParams('', 'isAll', isAll));
+    }
+    if (included != null) {
+      queryParams.addAll(_queryParams('multi', 'Included', included));
+    }
+    if (excluded != null) {
+      queryParams.addAll(_queryParams('multi', 'Excluded', excluded));
     }
 
     const contentTypes = <String>[];
@@ -98,9 +108,13 @@ class MedicationApi {
 
   /// Parameters:
   ///
-  /// * [int] medicationId:
-  Future<bool?> medicationDelete({ int? medicationId, }) async {
-    final response = await medicationDeleteWithHttpInfo( medicationId: medicationId, );
+  /// * [bool] isAll:
+  ///
+  /// * [List<int>] included:
+  ///
+  /// * [List<int>] excluded:
+  Future<bool?> medicationDelete({ bool? isAll, List<int>? included, List<int>? excluded, }) async {
+    final response = await medicationDeleteWithHttpInfo( isAll: isAll, included: included, excluded: excluded, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

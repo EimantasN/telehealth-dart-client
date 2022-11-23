@@ -63,6 +63,71 @@ class ConsultationNoteApi {
     return null;
   }
 
+  /// Performs an HTTP 'DELETE /api/ConsultationNote/Delete' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [bool] isAll:
+  ///
+  /// * [List<int>] included:
+  ///
+  /// * [List<int>] excluded:
+  Future<Response> consultationNoteDeleteWithHttpInfo({ bool? isAll, List<int>? included, List<int>? excluded, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/ConsultationNote/Delete';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (isAll != null) {
+      queryParams.addAll(_queryParams('', 'isAll', isAll));
+    }
+    if (included != null) {
+      queryParams.addAll(_queryParams('multi', 'Included', included));
+    }
+    if (excluded != null) {
+      queryParams.addAll(_queryParams('multi', 'Excluded', excluded));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [bool] isAll:
+  ///
+  /// * [List<int>] included:
+  ///
+  /// * [List<int>] excluded:
+  Future<bool?> consultationNoteDelete({ bool? isAll, List<int>? included, List<int>? excluded, }) async {
+    final response = await consultationNoteDeleteWithHttpInfo( isAll: isAll, included: included, excluded: excluded, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
+    
+    }
+    return null;
+  }
+
   /// Performs an HTTP 'GET /api/ConsultationNote/Get' operation and returns the [Response].
   /// Parameters:
   ///

@@ -28,7 +28,6 @@ part 'auth/http_basic_auth.dart';
 part 'auth/http_bearer_auth.dart';
 
 part 'api/consultation_note_api.dart';
-part 'api/graph_api.dart';
 part 'api/library_api.dart';
 part 'api/medication_api.dart';
 part 'api/questionnaire_api.dart';
