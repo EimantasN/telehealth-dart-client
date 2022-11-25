@@ -189,6 +189,8 @@ class ApiClient {
           return ConsultationNoteDto.fromJson(value);
         case 'ConsultationNoteListDto':
           return ConsultationNoteListDto.fromJson(value);
+        case 'CreateConnectionCmd':
+          return CreateConnectionCmd.fromJson(value);
         case 'CreateConsultationNodeCmd':
           return CreateConsultationNodeCmd.fromJson(value);
         case 'CreateFolderCmd':
@@ -197,6 +199,8 @@ class ApiClient {
           return CreateMedicationCmd.fromJson(value);
         case 'CreateReminderCmd':
           return CreateReminderCmd.fromJson(value);
+        case 'DynamicQueryOfPaginatedListOfConnectionListItemDto':
+          return DynamicQueryOfPaginatedListOfConnectionListItemDto.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfConsultationNoteListDto':
           return DynamicQueryOfPaginatedListOfConsultationNoteListDto.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfMedicationListDto':
@@ -215,10 +219,12 @@ class ApiClient {
           return FolderDto.fromJson(value);
         case 'FrequencyDto':
           return FrequencyDto.fromJson(value);
+        case 'GetConnectionsQuery':
+          return GetConnectionsQuery.fromJson(value);
+        case 'GetConnectionsQueryAllOf':
+          return GetConnectionsQueryAllOf.fromJson(value);
         case 'GetConsultationNotesQuery':
           return GetConsultationNotesQuery.fromJson(value);
-        case 'GetConsultationNotesQueryAllOf':
-          return GetConsultationNotesQueryAllOf.fromJson(value);
         case 'GetMedicationsQuery':
           return GetMedicationsQuery.fromJson(value);
         case 'GetRemindersQuery':
@@ -233,6 +239,8 @@ class ApiClient {
           return MedicationListDto.fromJson(value);
         case 'OrderModel':
           return OrderModel.fromJson(value);
+        case 'PaginatedListOfConnectionListItemDto':
+          return PaginatedListOfConnectionListItemDto.fromJson(value);
         case 'PaginatedListOfConsultationNoteListDto':
           return PaginatedListOfConsultationNoteListDto.fromJson(value);
         case 'PaginatedListOfMedicationListDto':

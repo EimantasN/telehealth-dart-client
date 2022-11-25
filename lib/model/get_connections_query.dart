@@ -10,12 +10,27 @@
 
 part of openapi.api;
 
-class GetConsultationNotesQueryAllOf {
-  /// Returns a new [GetConsultationNotesQueryAllOf] instance.
-  GetConsultationNotesQueryAllOf({
+class GetConnectionsQuery {
+  /// Returns a new [GetConnectionsQuery] instance.
+  GetConnectionsQuery({
+    this.filters = const [],
+    this.orderBy = const [],
+    this.order,
     this.pageNumber,
     this.pageSize,
   });
+
+  List<FilterModel> filters;
+
+  List<OrderModel> orderBy;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? order;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -34,21 +49,34 @@ class GetConsultationNotesQueryAllOf {
   int? pageSize;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is GetConsultationNotesQueryAllOf &&
+  bool operator ==(Object other) => identical(this, other) || other is GetConnectionsQuery &&
+     other.filters == filters &&
+     other.orderBy == orderBy &&
+     other.order == order &&
      other.pageNumber == pageNumber &&
      other.pageSize == pageSize;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (filters.hashCode) +
+    (orderBy.hashCode) +
+    (order == null ? 0 : order!.hashCode) +
     (pageNumber == null ? 0 : pageNumber!.hashCode) +
     (pageSize == null ? 0 : pageSize!.hashCode);
 
   @override
-  String toString() => 'GetConsultationNotesQueryAllOf[pageNumber=$pageNumber, pageSize=$pageSize]';
+  String toString() => 'GetConnectionsQuery[filters=$filters, orderBy=$orderBy, order=$order, pageNumber=$pageNumber, pageSize=$pageSize]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+      json[r'filters'] = this.filters;
+      json[r'orderBy'] = this.orderBy;
+    if (this.order != null) {
+      json[r'order'] = this.order;
+    } else {
+      json[r'order'] = null;
+    }
     if (this.pageNumber != null) {
       json[r'pageNumber'] = this.pageNumber;
     } else {
@@ -62,10 +90,10 @@ class GetConsultationNotesQueryAllOf {
     return json;
   }
 
-  /// Returns a new [GetConsultationNotesQueryAllOf] instance and imports its values from
+  /// Returns a new [GetConnectionsQuery] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static GetConsultationNotesQueryAllOf? fromJson(dynamic value) {
+  static GetConnectionsQuery? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -74,13 +102,16 @@ class GetConsultationNotesQueryAllOf {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "GetConsultationNotesQueryAllOf[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "GetConsultationNotesQueryAllOf[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "GetConnectionsQuery[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "GetConnectionsQuery[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return GetConsultationNotesQueryAllOf(
+      return GetConnectionsQuery(
+        filters: FilterModel.listFromJson(json[r'filters']) ?? const [],
+        orderBy: OrderModel.listFromJson(json[r'orderBy']) ?? const [],
+        order: mapValueOfType<String>(json, r'order'),
         pageNumber: mapValueOfType<int>(json, r'pageNumber'),
         pageSize: mapValueOfType<int>(json, r'pageSize'),
       );
@@ -88,11 +119,11 @@ class GetConsultationNotesQueryAllOf {
     return null;
   }
 
-  static List<GetConsultationNotesQueryAllOf>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <GetConsultationNotesQueryAllOf>[];
+  static List<GetConnectionsQuery>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <GetConnectionsQuery>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = GetConsultationNotesQueryAllOf.fromJson(row);
+        final value = GetConnectionsQuery.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -101,12 +132,12 @@ class GetConsultationNotesQueryAllOf {
     return result.toList(growable: growable);
   }
 
-  static Map<String, GetConsultationNotesQueryAllOf> mapFromJson(dynamic json) {
-    final map = <String, GetConsultationNotesQueryAllOf>{};
+  static Map<String, GetConnectionsQuery> mapFromJson(dynamic json) {
+    final map = <String, GetConnectionsQuery>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = GetConsultationNotesQueryAllOf.fromJson(entry.value);
+        final value = GetConnectionsQuery.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -115,13 +146,13 @@ class GetConsultationNotesQueryAllOf {
     return map;
   }
 
-  // maps a json object with a list of GetConsultationNotesQueryAllOf-objects as value to a dart map
-  static Map<String, List<GetConsultationNotesQueryAllOf>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<GetConsultationNotesQueryAllOf>>{};
+  // maps a json object with a list of GetConnectionsQuery-objects as value to a dart map
+  static Map<String, List<GetConnectionsQuery>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<GetConnectionsQuery>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = GetConsultationNotesQueryAllOf.listFromJson(entry.value, growable: growable,);
+        final value = GetConnectionsQuery.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }
