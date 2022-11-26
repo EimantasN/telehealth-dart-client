@@ -81,6 +81,7 @@ part 'model/question.dart';
 part 'model/questionnaire.dart';
 part 'model/questionnaire_dto.dart';
 part 'model/reminder_dto.dart';
+part 'model/requested_permission_dto.dart';
 part 'model/search_provider_query.dart';
 part 'model/section.dart';
 part 'model/self_note_dto.dart';

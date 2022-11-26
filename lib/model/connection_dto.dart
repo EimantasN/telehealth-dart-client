@@ -37,6 +37,7 @@ class ConnectionDto {
     this.created,
     this.modified,
     this.permissions = const [],
+    this.requestedPermissions = const [],
   });
 
   ///
@@ -129,6 +130,8 @@ class ConnectionDto {
 
   List<PermissionDto> permissions;
 
+  List<RequestedPermissionDto> requestedPermissions;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ConnectionDto &&
      other.id == id &&
@@ -154,7 +157,8 @@ class ConnectionDto {
      other.ecg == ecg &&
      other.created == created &&
      other.modified == modified &&
-     other.permissions == permissions;
+     other.permissions == permissions &&
+     other.requestedPermissions == requestedPermissions;
 
   @override
   int get hashCode =>
@@ -182,10 +186,11 @@ class ConnectionDto {
     (ecg == null ? 0 : ecg!.hashCode) +
     (created == null ? 0 : created!.hashCode) +
     (modified == null ? 0 : modified!.hashCode) +
-    (permissions.hashCode);
+    (permissions.hashCode) +
+    (requestedPermissions.hashCode);
 
   @override
-  String toString() => 'ConnectionDto[id=$id, endTime=$endTime, connected=$connected, patientId=$patientId, doctorId=$doctorId, state=$state, overall=$overall, sleepDuration=$sleepDuration, sleepCycles=$sleepCycles, sleeScore=$sleeScore, steps=$steps, distance=$distance, vO2Max=$vO2Max, weight=$weight, muscleMass=$muscleMass, waterMass=$waterMass, fatMass=$fatMass, boneMass=$boneMass, bloodPressure=$bloodPressure, heartRate=$heartRate, ecg=$ecg, created=$created, modified=$modified, permissions=$permissions]';
+  String toString() => 'ConnectionDto[id=$id, endTime=$endTime, connected=$connected, patientId=$patientId, doctorId=$doctorId, state=$state, overall=$overall, sleepDuration=$sleepDuration, sleepCycles=$sleepCycles, sleeScore=$sleeScore, steps=$steps, distance=$distance, vO2Max=$vO2Max, weight=$weight, muscleMass=$muscleMass, waterMass=$waterMass, fatMass=$fatMass, boneMass=$boneMass, bloodPressure=$bloodPressure, heartRate=$heartRate, ecg=$ecg, created=$created, modified=$modified, permissions=$permissions, requestedPermissions=$requestedPermissions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -305,6 +310,7 @@ class ConnectionDto {
       json[r'modified'] = null;
     }
       json[r'permissions'] = this.permissions;
+      json[r'requestedPermissions'] = this.requestedPermissions;
     return json;
   }
 
@@ -351,6 +357,7 @@ class ConnectionDto {
         created: mapDateTime(json, r'created', ''),
         modified: mapDateTime(json, r'modified', ''),
         permissions: PermissionDto.listFromJson(json[r'permissions']) ?? const [],
+        requestedPermissions: RequestedPermissionDto.listFromJson(json[r'requestedPermissions']) ?? const [],
       );
     }
     return null;

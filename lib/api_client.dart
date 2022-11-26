@@ -267,6 +267,8 @@ class ApiClient {
           return QuestionnaireDto.fromJson(value);
         case 'ReminderDto':
           return ReminderDto.fromJson(value);
+        case 'RequestedPermissionDto':
+          return RequestedPermissionDto.fromJson(value);
         case 'SearchProviderQuery':
           return SearchProviderQuery.fromJson(value);
         case 'Section':
