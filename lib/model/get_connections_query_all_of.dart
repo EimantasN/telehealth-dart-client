@@ -15,7 +15,6 @@ class GetConnectionsQueryAllOf {
   GetConnectionsQueryAllOf({
     this.pageNumber,
     this.pageSize,
-    this.doctor,
   });
 
   ///
@@ -34,29 +33,19 @@ class GetConnectionsQueryAllOf {
   ///
   int? pageSize;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? doctor;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is GetConnectionsQueryAllOf &&
      other.pageNumber == pageNumber &&
-     other.pageSize == pageSize &&
-     other.doctor == doctor;
+     other.pageSize == pageSize;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (pageNumber == null ? 0 : pageNumber!.hashCode) +
-    (pageSize == null ? 0 : pageSize!.hashCode) +
-    (doctor == null ? 0 : doctor!.hashCode);
+    (pageSize == null ? 0 : pageSize!.hashCode);
 
   @override
-  String toString() => 'GetConnectionsQueryAllOf[pageNumber=$pageNumber, pageSize=$pageSize, doctor=$doctor]';
+  String toString() => 'GetConnectionsQueryAllOf[pageNumber=$pageNumber, pageSize=$pageSize]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -69,11 +58,6 @@ class GetConnectionsQueryAllOf {
       json[r'pageSize'] = this.pageSize;
     } else {
       json[r'pageSize'] = null;
-    }
-    if (this.doctor != null) {
-      json[r'doctor'] = this.doctor;
-    } else {
-      json[r'doctor'] = null;
     }
     return json;
   }
@@ -99,7 +83,6 @@ class GetConnectionsQueryAllOf {
       return GetConnectionsQueryAllOf(
         pageNumber: mapValueOfType<int>(json, r'pageNumber'),
         pageSize: mapValueOfType<int>(json, r'pageSize'),
-        doctor: mapValueOfType<int>(json, r'doctor'),
       );
     }
     return null;
