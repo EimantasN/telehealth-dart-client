@@ -15,6 +15,7 @@ class ConnectionDto {
   ConnectionDto({
     this.id,
     this.endTime,
+    this.connected,
     this.patientId,
     this.doctorId,
     this.state,
@@ -53,6 +54,8 @@ class ConnectionDto {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? endTime;
+
+  DateTime? connected;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -130,6 +133,7 @@ class ConnectionDto {
   bool operator ==(Object other) => identical(this, other) || other is ConnectionDto &&
      other.id == id &&
      other.endTime == endTime &&
+     other.connected == connected &&
      other.patientId == patientId &&
      other.doctorId == doctorId &&
      other.state == state &&
@@ -157,6 +161,7 @@ class ConnectionDto {
     // ignore: unnecessary_parenthesis
     (id == null ? 0 : id!.hashCode) +
     (endTime == null ? 0 : endTime!.hashCode) +
+    (connected == null ? 0 : connected!.hashCode) +
     (patientId == null ? 0 : patientId!.hashCode) +
     (doctorId == null ? 0 : doctorId!.hashCode) +
     (state == null ? 0 : state!.hashCode) +
@@ -180,7 +185,7 @@ class ConnectionDto {
     (permissions.hashCode);
 
   @override
-  String toString() => 'ConnectionDto[id=$id, endTime=$endTime, patientId=$patientId, doctorId=$doctorId, state=$state, overall=$overall, sleepDuration=$sleepDuration, sleepCycles=$sleepCycles, sleeScore=$sleeScore, steps=$steps, distance=$distance, vO2Max=$vO2Max, weight=$weight, muscleMass=$muscleMass, waterMass=$waterMass, fatMass=$fatMass, boneMass=$boneMass, bloodPressure=$bloodPressure, heartRate=$heartRate, ecg=$ecg, created=$created, modified=$modified, permissions=$permissions]';
+  String toString() => 'ConnectionDto[id=$id, endTime=$endTime, connected=$connected, patientId=$patientId, doctorId=$doctorId, state=$state, overall=$overall, sleepDuration=$sleepDuration, sleepCycles=$sleepCycles, sleeScore=$sleeScore, steps=$steps, distance=$distance, vO2Max=$vO2Max, weight=$weight, muscleMass=$muscleMass, waterMass=$waterMass, fatMass=$fatMass, boneMass=$boneMass, bloodPressure=$bloodPressure, heartRate=$heartRate, ecg=$ecg, created=$created, modified=$modified, permissions=$permissions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -193,6 +198,11 @@ class ConnectionDto {
       json[r'endTime'] = this.endTime!.toUtc().toIso8601String();
     } else {
       json[r'endTime'] = null;
+    }
+    if (this.connected != null) {
+      json[r'connected'] = this.connected!.toUtc().toIso8601String();
+    } else {
+      json[r'connected'] = null;
     }
     if (this.patientId != null) {
       json[r'patientId'] = this.patientId;
@@ -319,6 +329,7 @@ class ConnectionDto {
       return ConnectionDto(
         id: mapValueOfType<int>(json, r'id'),
         endTime: mapDateTime(json, r'endTime', ''),
+        connected: mapDateTime(json, r'connected', ''),
         patientId: mapValueOfType<int>(json, r'patientId'),
         doctorId: mapValueOfType<int>(json, r'doctorId'),
         state: mapValueOfType<String>(json, r'state'),
