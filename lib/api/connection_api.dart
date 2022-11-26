@@ -132,7 +132,7 @@ class ConnectionApi {
   /// Parameters:
   ///
   /// * [int] id:
-  Future<Response> connectionExportWithHttpInfo({ int? id, }) async {
+  Future<Response> connectionGetWithHttpInfo({ int? id, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/Connection/Get';
 
@@ -164,8 +164,8 @@ class ConnectionApi {
   /// Parameters:
   ///
   /// * [int] id:
-  Future<ConnectionDto?> connectionExport({ int? id, }) async {
-    final response = await connectionExportWithHttpInfo( id: id, );
+  Future<ConnectionDto?> connectionGet({ int? id, }) async {
+    final response = await connectionGetWithHttpInfo( id: id, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
