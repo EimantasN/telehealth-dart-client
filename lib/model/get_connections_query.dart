@@ -18,6 +18,7 @@ class GetConnectionsQuery {
     this.order,
     this.pageNumber,
     this.pageSize,
+    this.doctor,
   });
 
   List<FilterModel> filters;
@@ -48,13 +49,22 @@ class GetConnectionsQuery {
   ///
   int? pageSize;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? doctor;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is GetConnectionsQuery &&
      other.filters == filters &&
      other.orderBy == orderBy &&
      other.order == order &&
      other.pageNumber == pageNumber &&
-     other.pageSize == pageSize;
+     other.pageSize == pageSize &&
+     other.doctor == doctor;
 
   @override
   int get hashCode =>
@@ -63,10 +73,11 @@ class GetConnectionsQuery {
     (orderBy.hashCode) +
     (order == null ? 0 : order!.hashCode) +
     (pageNumber == null ? 0 : pageNumber!.hashCode) +
-    (pageSize == null ? 0 : pageSize!.hashCode);
+    (pageSize == null ? 0 : pageSize!.hashCode) +
+    (doctor == null ? 0 : doctor!.hashCode);
 
   @override
-  String toString() => 'GetConnectionsQuery[filters=$filters, orderBy=$orderBy, order=$order, pageNumber=$pageNumber, pageSize=$pageSize]';
+  String toString() => 'GetConnectionsQuery[filters=$filters, orderBy=$orderBy, order=$order, pageNumber=$pageNumber, pageSize=$pageSize, doctor=$doctor]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -86,6 +97,11 @@ class GetConnectionsQuery {
       json[r'pageSize'] = this.pageSize;
     } else {
       json[r'pageSize'] = null;
+    }
+    if (this.doctor != null) {
+      json[r'doctor'] = this.doctor;
+    } else {
+      json[r'doctor'] = null;
     }
     return json;
   }
@@ -114,6 +130,7 @@ class GetConnectionsQuery {
         order: mapValueOfType<String>(json, r'order'),
         pageNumber: mapValueOfType<int>(json, r'pageNumber'),
         pageSize: mapValueOfType<int>(json, r'pageSize'),
+        doctor: mapValueOfType<int>(json, r'doctor'),
       );
     }
     return null;

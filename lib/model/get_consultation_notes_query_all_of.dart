@@ -10,12 +10,11 @@
 
 part of openapi.api;
 
-class GetConnectionsQueryAllOf {
-  /// Returns a new [GetConnectionsQueryAllOf] instance.
-  GetConnectionsQueryAllOf({
+class GetConsultationNotesQueryAllOf {
+  /// Returns a new [GetConsultationNotesQueryAllOf] instance.
+  GetConsultationNotesQueryAllOf({
     this.pageNumber,
     this.pageSize,
-    this.doctor,
   });
 
   ///
@@ -34,29 +33,19 @@ class GetConnectionsQueryAllOf {
   ///
   int? pageSize;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? doctor;
-
   @override
-  bool operator ==(Object other) => identical(this, other) || other is GetConnectionsQueryAllOf &&
+  bool operator ==(Object other) => identical(this, other) || other is GetConsultationNotesQueryAllOf &&
      other.pageNumber == pageNumber &&
-     other.pageSize == pageSize &&
-     other.doctor == doctor;
+     other.pageSize == pageSize;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (pageNumber == null ? 0 : pageNumber!.hashCode) +
-    (pageSize == null ? 0 : pageSize!.hashCode) +
-    (doctor == null ? 0 : doctor!.hashCode);
+    (pageSize == null ? 0 : pageSize!.hashCode);
 
   @override
-  String toString() => 'GetConnectionsQueryAllOf[pageNumber=$pageNumber, pageSize=$pageSize, doctor=$doctor]';
+  String toString() => 'GetConsultationNotesQueryAllOf[pageNumber=$pageNumber, pageSize=$pageSize]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -70,18 +59,13 @@ class GetConnectionsQueryAllOf {
     } else {
       json[r'pageSize'] = null;
     }
-    if (this.doctor != null) {
-      json[r'doctor'] = this.doctor;
-    } else {
-      json[r'doctor'] = null;
-    }
     return json;
   }
 
-  /// Returns a new [GetConnectionsQueryAllOf] instance and imports its values from
+  /// Returns a new [GetConsultationNotesQueryAllOf] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static GetConnectionsQueryAllOf? fromJson(dynamic value) {
+  static GetConsultationNotesQueryAllOf? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -90,26 +74,25 @@ class GetConnectionsQueryAllOf {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "GetConnectionsQueryAllOf[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "GetConnectionsQueryAllOf[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "GetConsultationNotesQueryAllOf[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "GetConsultationNotesQueryAllOf[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return GetConnectionsQueryAllOf(
+      return GetConsultationNotesQueryAllOf(
         pageNumber: mapValueOfType<int>(json, r'pageNumber'),
         pageSize: mapValueOfType<int>(json, r'pageSize'),
-        doctor: mapValueOfType<int>(json, r'doctor'),
       );
     }
     return null;
   }
 
-  static List<GetConnectionsQueryAllOf>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <GetConnectionsQueryAllOf>[];
+  static List<GetConsultationNotesQueryAllOf>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <GetConsultationNotesQueryAllOf>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = GetConnectionsQueryAllOf.fromJson(row);
+        final value = GetConsultationNotesQueryAllOf.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -118,12 +101,12 @@ class GetConnectionsQueryAllOf {
     return result.toList(growable: growable);
   }
 
-  static Map<String, GetConnectionsQueryAllOf> mapFromJson(dynamic json) {
-    final map = <String, GetConnectionsQueryAllOf>{};
+  static Map<String, GetConsultationNotesQueryAllOf> mapFromJson(dynamic json) {
+    final map = <String, GetConsultationNotesQueryAllOf>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = GetConnectionsQueryAllOf.fromJson(entry.value);
+        final value = GetConsultationNotesQueryAllOf.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -132,13 +115,13 @@ class GetConnectionsQueryAllOf {
     return map;
   }
 
-  // maps a json object with a list of GetConnectionsQueryAllOf-objects as value to a dart map
-  static Map<String, List<GetConnectionsQueryAllOf>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<GetConnectionsQueryAllOf>>{};
+  // maps a json object with a list of GetConsultationNotesQueryAllOf-objects as value to a dart map
+  static Map<String, List<GetConsultationNotesQueryAllOf>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<GetConsultationNotesQueryAllOf>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = GetConnectionsQueryAllOf.listFromJson(entry.value, growable: growable,);
+        final value = GetConsultationNotesQueryAllOf.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }
