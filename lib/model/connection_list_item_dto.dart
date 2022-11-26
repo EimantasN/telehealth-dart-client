@@ -13,6 +13,7 @@ part of openapi.api;
 class ConnectionListItemDto {
   /// Returns a new [ConnectionListItemDto] instance.
   ConnectionListItemDto({
+    this.id,
     this.patientId,
     this.doctorId,
     this.state,
@@ -21,6 +22,14 @@ class ConnectionListItemDto {
     this.created,
     this.modified,
   });
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? id;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -74,6 +83,7 @@ class ConnectionListItemDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ConnectionListItemDto &&
+     other.id == id &&
      other.patientId == patientId &&
      other.doctorId == doctorId &&
      other.state == state &&
@@ -85,6 +95,7 @@ class ConnectionListItemDto {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (id == null ? 0 : id!.hashCode) +
     (patientId == null ? 0 : patientId!.hashCode) +
     (doctorId == null ? 0 : doctorId!.hashCode) +
     (state == null ? 0 : state!.hashCode) +
@@ -94,10 +105,15 @@ class ConnectionListItemDto {
     (modified == null ? 0 : modified!.hashCode);
 
   @override
-  String toString() => 'ConnectionListItemDto[patientId=$patientId, doctorId=$doctorId, state=$state, endTime=$endTime, connected=$connected, created=$created, modified=$modified]';
+  String toString() => 'ConnectionListItemDto[id=$id, patientId=$patientId, doctorId=$doctorId, state=$state, endTime=$endTime, connected=$connected, created=$created, modified=$modified]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.id != null) {
+      json[r'id'] = this.id;
+    } else {
+      json[r'id'] = null;
+    }
     if (this.patientId != null) {
       json[r'patientId'] = this.patientId;
     } else {
@@ -155,6 +171,7 @@ class ConnectionListItemDto {
       }());
 
       return ConnectionListItemDto(
+        id: mapValueOfType<int>(json, r'id'),
         patientId: mapValueOfType<int>(json, r'patientId'),
         doctorId: mapValueOfType<int>(json, r'doctorId'),
         state: mapValueOfType<String>(json, r'state'),
