@@ -185,6 +185,12 @@ class ApiClient {
           return AnswerDto.fromJson(value);
         case 'AnswerSubmitDto':
           return AnswerSubmitDto.fromJson(value);
+        case 'ConnectIonStateUpdateCmd':
+          return ConnectIonStateUpdateCmd.fromJson(value);
+        case 'ConnectionDto':
+          return ConnectionDto.fromJson(value);
+        case 'ConnectionListItemDto':
+          return ConnectionListItemDto.fromJson(value);
         case 'ConsultationNoteDto':
           return ConsultationNoteDto.fromJson(value);
         case 'ConsultationNoteListDto':
@@ -249,6 +255,8 @@ class ApiClient {
           return PaginatedListOfReminderDto.fromJson(value);
         case 'PaginatedListOfSelfNoteListDto':
           return PaginatedListOfSelfNoteListDto.fromJson(value);
+        case 'PermissionDto':
+          return PermissionDto.fromJson(value);
         case 'ProviderDto':
           return ProviderDto.fromJson(value);
         case 'Question':
@@ -273,6 +281,8 @@ class ApiClient {
           return ShareLinkResponse.fromJson(value);
         case 'SubmitSelfNoteCmd':
           return SubmitSelfNoteCmd.fromJson(value);
+        case 'UpdateConnectionCmd':
+          return UpdateConnectionCmd.fromJson(value);
         case 'UpdateReminderCmd':
           return UpdateReminderCmd.fromJson(value);
         case 'UserInfoDto':

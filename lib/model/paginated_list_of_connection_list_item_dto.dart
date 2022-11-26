@@ -21,7 +21,7 @@ class PaginatedListOfConnectionListItemDto {
     this.hasNextPage,
   });
 
-  List<Object> items;
+  List<ConnectionListItemDto> items;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -135,7 +135,7 @@ class PaginatedListOfConnectionListItemDto {
       }());
 
       return PaginatedListOfConnectionListItemDto(
-        items: Object.listFromJson(json[r'items']) ?? const [],
+        items: ConnectionListItemDto.listFromJson(json[r'items']) ?? const [],
         pageNumber: mapValueOfType<int>(json, r'pageNumber'),
         totalPages: mapValueOfType<int>(json, r'totalPages'),
         totalCount: mapValueOfType<int>(json, r'totalCount'),

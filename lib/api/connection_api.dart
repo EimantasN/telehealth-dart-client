@@ -164,7 +164,7 @@ class ConnectionApi {
   /// Parameters:
   ///
   /// * [int] id:
-  Future<Object?> connectionExport({ int? id, }) async {
+  Future<ConnectionDto?> connectionExport({ int? id, }) async {
     final response = await connectionExportWithHttpInfo( id: id, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -173,7 +173,7 @@ class ConnectionApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ConnectionDto',) as ConnectionDto;
     
     }
     return null;
@@ -221,6 +221,100 @@ class ConnectionApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PaginatedListOfConnectionListItemDto',) as PaginatedListOfConnectionListItemDto;
+    
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'POST /api/Connection/State' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [ConnectIonStateUpdateCmd] connectIonStateUpdateCmd (required):
+  Future<Response> connectionStateWithHttpInfo(ConnectIonStateUpdateCmd connectIonStateUpdateCmd,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/Connection/State';
+
+    // ignore: prefer_final_locals
+    Object? postBody = connectIonStateUpdateCmd;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [ConnectIonStateUpdateCmd] connectIonStateUpdateCmd (required):
+  Future<bool?> connectionState(ConnectIonStateUpdateCmd connectIonStateUpdateCmd,) async {
+    final response = await connectionStateWithHttpInfo(connectIonStateUpdateCmd,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
+    
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'POST /api/Connection/Update' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [UpdateConnectionCmd] updateConnectionCmd (required):
+  Future<Response> connectionUpdateWithHttpInfo(UpdateConnectionCmd updateConnectionCmd,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/Connection/Update';
+
+    // ignore: prefer_final_locals
+    Object? postBody = updateConnectionCmd;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [UpdateConnectionCmd] updateConnectionCmd (required):
+  Future<bool?> connectionUpdate(UpdateConnectionCmd updateConnectionCmd,) async {
+    final response = await connectionUpdateWithHttpInfo(updateConnectionCmd,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
     
     }
     return null;

@@ -40,6 +40,9 @@ part 'api/user_api.dart';
 
 part 'model/answer_dto.dart';
 part 'model/answer_submit_dto.dart';
+part 'model/connect_ion_state_update_cmd.dart';
+part 'model/connection_dto.dart';
+part 'model/connection_list_item_dto.dart';
 part 'model/consultation_note_dto.dart';
 part 'model/consultation_note_list_dto.dart';
 part 'model/create_connection_cmd.dart';
@@ -72,6 +75,7 @@ part 'model/paginated_list_of_consultation_note_list_dto.dart';
 part 'model/paginated_list_of_medication_list_dto.dart';
 part 'model/paginated_list_of_reminder_dto.dart';
 part 'model/paginated_list_of_self_note_list_dto.dart';
+part 'model/permission_dto.dart';
 part 'model/provider_dto.dart';
 part 'model/question.dart';
 part 'model/questionnaire.dart';
@@ -84,6 +88,7 @@ part 'model/self_note_list_dto.dart';
 part 'model/share_link_cmd.dart';
 part 'model/share_link_response.dart';
 part 'model/submit_self_note_cmd.dart';
+part 'model/update_connection_cmd.dart';
 part 'model/update_reminder_cmd.dart';
 part 'model/user_info_dto.dart';
 
