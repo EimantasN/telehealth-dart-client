@@ -205,12 +205,16 @@ class ApiClient {
           return CreateMedicationCmd.fromJson(value);
         case 'CreateReminderCmd':
           return CreateReminderCmd.fromJson(value);
+        case 'DismissCmd':
+          return DismissCmd.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfConnectionListItemDto':
           return DynamicQueryOfPaginatedListOfConnectionListItemDto.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfConsultationNoteListDto':
           return DynamicQueryOfPaginatedListOfConsultationNoteListDto.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfMedicationListDto':
           return DynamicQueryOfPaginatedListOfMedicationListDto.fromJson(value);
+        case 'DynamicQueryOfPaginatedListOfNotificationDto':
+          return DynamicQueryOfPaginatedListOfNotificationDto.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfReminderDto':
           return DynamicQueryOfPaginatedListOfReminderDto.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfSelfNoteListDto':
@@ -233,6 +237,10 @@ class ApiClient {
           return GetConsultationNotesQuery.fromJson(value);
         case 'GetMedicationsQuery':
           return GetMedicationsQuery.fromJson(value);
+        case 'GetNotificationDataQuery':
+          return GetNotificationDataQuery.fromJson(value);
+        case 'GetNotificationQuery':
+          return GetNotificationQuery.fromJson(value);
         case 'GetRemindersQuery':
           return GetRemindersQuery.fromJson(value);
         case 'GetSelfNotesQuery':
@@ -243,6 +251,10 @@ class ApiClient {
           return MedicationDto.fromJson(value);
         case 'MedicationListDto':
           return MedicationListDto.fromJson(value);
+        case 'NotificationDataDto':
+          return NotificationDataDto.fromJson(value);
+        case 'NotificationDto':
+          return NotificationDto.fromJson(value);
         case 'OrderModel':
           return OrderModel.fromJson(value);
         case 'PaginatedListOfConnectionListItemDto':
@@ -251,6 +263,8 @@ class ApiClient {
           return PaginatedListOfConsultationNoteListDto.fromJson(value);
         case 'PaginatedListOfMedicationListDto':
           return PaginatedListOfMedicationListDto.fromJson(value);
+        case 'PaginatedListOfNotificationDto':
+          return PaginatedListOfNotificationDto.fromJson(value);
         case 'PaginatedListOfReminderDto':
           return PaginatedListOfReminderDto.fromJson(value);
         case 'PaginatedListOfSelfNoteListDto':
