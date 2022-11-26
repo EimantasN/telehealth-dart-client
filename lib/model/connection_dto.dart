@@ -33,6 +33,8 @@ class ConnectionDto {
     this.bloodPressure,
     this.heartRate,
     this.ecg,
+    this.created,
+    this.modified,
     this.permissions = const [],
   });
 
@@ -106,6 +108,22 @@ class ConnectionDto {
 
   bool? ecg;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? created;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? modified;
+
   List<PermissionDto> permissions;
 
   @override
@@ -130,6 +148,8 @@ class ConnectionDto {
      other.bloodPressure == bloodPressure &&
      other.heartRate == heartRate &&
      other.ecg == ecg &&
+     other.created == created &&
+     other.modified == modified &&
      other.permissions == permissions;
 
   @override
@@ -155,10 +175,12 @@ class ConnectionDto {
     (bloodPressure == null ? 0 : bloodPressure!.hashCode) +
     (heartRate == null ? 0 : heartRate!.hashCode) +
     (ecg == null ? 0 : ecg!.hashCode) +
+    (created == null ? 0 : created!.hashCode) +
+    (modified == null ? 0 : modified!.hashCode) +
     (permissions.hashCode);
 
   @override
-  String toString() => 'ConnectionDto[id=$id, endTime=$endTime, patientId=$patientId, doctorId=$doctorId, state=$state, overall=$overall, sleepDuration=$sleepDuration, sleepCycles=$sleepCycles, sleeScore=$sleeScore, steps=$steps, distance=$distance, vO2Max=$vO2Max, weight=$weight, muscleMass=$muscleMass, waterMass=$waterMass, fatMass=$fatMass, boneMass=$boneMass, bloodPressure=$bloodPressure, heartRate=$heartRate, ecg=$ecg, permissions=$permissions]';
+  String toString() => 'ConnectionDto[id=$id, endTime=$endTime, patientId=$patientId, doctorId=$doctorId, state=$state, overall=$overall, sleepDuration=$sleepDuration, sleepCycles=$sleepCycles, sleeScore=$sleeScore, steps=$steps, distance=$distance, vO2Max=$vO2Max, weight=$weight, muscleMass=$muscleMass, waterMass=$waterMass, fatMass=$fatMass, boneMass=$boneMass, bloodPressure=$bloodPressure, heartRate=$heartRate, ecg=$ecg, created=$created, modified=$modified, permissions=$permissions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -262,6 +284,16 @@ class ConnectionDto {
     } else {
       json[r'ecg'] = null;
     }
+    if (this.created != null) {
+      json[r'created'] = this.created!.toUtc().toIso8601String();
+    } else {
+      json[r'created'] = null;
+    }
+    if (this.modified != null) {
+      json[r'modified'] = this.modified!.toUtc().toIso8601String();
+    } else {
+      json[r'modified'] = null;
+    }
       json[r'permissions'] = this.permissions;
     return json;
   }
@@ -305,6 +337,8 @@ class ConnectionDto {
         bloodPressure: mapValueOfType<bool>(json, r'bloodPressure'),
         heartRate: mapValueOfType<bool>(json, r'heartRate'),
         ecg: mapValueOfType<bool>(json, r'ecg'),
+        created: mapDateTime(json, r'created', ''),
+        modified: mapDateTime(json, r'modified', ''),
         permissions: PermissionDto.listFromJson(json[r'permissions']) ?? const [],
       );
     }

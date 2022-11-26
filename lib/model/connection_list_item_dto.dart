@@ -13,19 +13,13 @@ part of openapi.api;
 class ConnectionListItemDto {
   /// Returns a new [ConnectionListItemDto] instance.
   ConnectionListItemDto({
-    this.endTime,
     this.patientId,
     this.doctorId,
     this.state,
+    this.endTime,
+    this.created,
+    this.modified,
   });
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? endTime;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -51,31 +45,54 @@ class ConnectionListItemDto {
   ///
   String? state;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? endTime;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? created;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? modified;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ConnectionListItemDto &&
-     other.endTime == endTime &&
      other.patientId == patientId &&
      other.doctorId == doctorId &&
-     other.state == state;
+     other.state == state &&
+     other.endTime == endTime &&
+     other.created == created &&
+     other.modified == modified;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (endTime == null ? 0 : endTime!.hashCode) +
     (patientId == null ? 0 : patientId!.hashCode) +
     (doctorId == null ? 0 : doctorId!.hashCode) +
-    (state == null ? 0 : state!.hashCode);
+    (state == null ? 0 : state!.hashCode) +
+    (endTime == null ? 0 : endTime!.hashCode) +
+    (created == null ? 0 : created!.hashCode) +
+    (modified == null ? 0 : modified!.hashCode);
 
   @override
-  String toString() => 'ConnectionListItemDto[endTime=$endTime, patientId=$patientId, doctorId=$doctorId, state=$state]';
+  String toString() => 'ConnectionListItemDto[patientId=$patientId, doctorId=$doctorId, state=$state, endTime=$endTime, created=$created, modified=$modified]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.endTime != null) {
-      json[r'endTime'] = this.endTime!.toUtc().toIso8601String();
-    } else {
-      json[r'endTime'] = null;
-    }
     if (this.patientId != null) {
       json[r'patientId'] = this.patientId;
     } else {
@@ -90,6 +107,21 @@ class ConnectionListItemDto {
       json[r'state'] = this.state;
     } else {
       json[r'state'] = null;
+    }
+    if (this.endTime != null) {
+      json[r'endTime'] = this.endTime!.toUtc().toIso8601String();
+    } else {
+      json[r'endTime'] = null;
+    }
+    if (this.created != null) {
+      json[r'created'] = this.created!.toUtc().toIso8601String();
+    } else {
+      json[r'created'] = null;
+    }
+    if (this.modified != null) {
+      json[r'modified'] = this.modified!.toUtc().toIso8601String();
+    } else {
+      json[r'modified'] = null;
     }
     return json;
   }
@@ -113,10 +145,12 @@ class ConnectionListItemDto {
       }());
 
       return ConnectionListItemDto(
-        endTime: mapDateTime(json, r'endTime', ''),
         patientId: mapValueOfType<int>(json, r'patientId'),
         doctorId: mapValueOfType<int>(json, r'doctorId'),
         state: mapValueOfType<String>(json, r'state'),
+        endTime: mapDateTime(json, r'endTime', ''),
+        created: mapDateTime(json, r'created', ''),
+        modified: mapDateTime(json, r'modified', ''),
       );
     }
     return null;
