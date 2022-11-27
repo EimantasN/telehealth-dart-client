@@ -66,19 +66,23 @@ class NotificationApi {
   /// Performs an HTTP 'GET /api/Notification/Get' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [GetNotificationDataQuery] getNotificationDataQuery (required):
-  Future<Response> notificationListGETWithHttpInfo(GetNotificationDataQuery getNotificationDataQuery,) async {
+  /// * [int] id:
+  Future<Response> notificationGetWithHttpInfo({ int? id, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/Notification/Get';
 
     // ignore: prefer_final_locals
-    Object? postBody = getNotificationDataQuery;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>['application/json'];
+    if (id != null) {
+      queryParams.addAll(_queryParams('', 'Id', id));
+    }
+
+    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -94,9 +98,9 @@ class NotificationApi {
 
   /// Parameters:
   ///
-  /// * [GetNotificationDataQuery] getNotificationDataQuery (required):
-  Future<NotificationDataDto?> notificationListGET(GetNotificationDataQuery getNotificationDataQuery,) async {
-    final response = await notificationListGETWithHttpInfo(getNotificationDataQuery,);
+  /// * [int] id:
+  Future<NotificationDataDto?> notificationGet({ int? id, }) async {
+    final response = await notificationGetWithHttpInfo( id: id, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -114,7 +118,7 @@ class NotificationApi {
   /// Parameters:
   ///
   /// * [GetNotificationQuery] getNotificationQuery (required):
-  Future<Response> notificationListPOSTWithHttpInfo(GetNotificationQuery getNotificationQuery,) async {
+  Future<Response> notificationListWithHttpInfo(GetNotificationQuery getNotificationQuery,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/Notification/List';
 
@@ -142,8 +146,8 @@ class NotificationApi {
   /// Parameters:
   ///
   /// * [GetNotificationQuery] getNotificationQuery (required):
-  Future<PaginatedListOfNotificationDto?> notificationListPOST(GetNotificationQuery getNotificationQuery,) async {
-    final response = await notificationListPOSTWithHttpInfo(getNotificationQuery,);
+  Future<PaginatedListOfNotificationDto?> notificationList(GetNotificationQuery getNotificationQuery,) async {
+    final response = await notificationListWithHttpInfo(getNotificationQuery,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -237,8 +237,6 @@ class ApiClient {
           return GetConsultationNotesQuery.fromJson(value);
         case 'GetMedicationsQuery':
           return GetMedicationsQuery.fromJson(value);
-        case 'GetNotificationDataQuery':
-          return GetNotificationDataQuery.fromJson(value);
         case 'GetNotificationQuery':
           return GetNotificationQuery.fromJson(value);
         case 'GetRemindersQuery':
