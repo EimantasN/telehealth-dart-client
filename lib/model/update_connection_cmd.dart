@@ -14,21 +14,6 @@ class UpdateConnectionCmd {
   /// Returns a new [UpdateConnectionCmd] instance.
   UpdateConnectionCmd({
     this.connectionId,
-    this.overall,
-    this.sleepDuration,
-    this.sleepCycles,
-    this.sleeScore,
-    this.steps,
-    this.distance,
-    this.vO2Max,
-    this.weight,
-    this.muscleMass,
-    this.waterMass,
-    this.fatMass,
-    this.boneMass,
-    this.bloodPressure,
-    this.heartRate,
-    this.ecg,
     this.permissions = const [],
   });
 
@@ -40,81 +25,21 @@ class UpdateConnectionCmd {
   ///
   int? connectionId;
 
-  bool? overall;
-
-  bool? sleepDuration;
-
-  bool? sleepCycles;
-
-  bool? sleeScore;
-
-  bool? steps;
-
-  bool? distance;
-
-  bool? vO2Max;
-
-  bool? weight;
-
-  bool? muscleMass;
-
-  bool? waterMass;
-
-  bool? fatMass;
-
-  bool? boneMass;
-
-  bool? bloodPressure;
-
-  bool? heartRate;
-
-  bool? ecg;
-
   List<PermissionDto> permissions;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UpdateConnectionCmd &&
      other.connectionId == connectionId &&
-     other.overall == overall &&
-     other.sleepDuration == sleepDuration &&
-     other.sleepCycles == sleepCycles &&
-     other.sleeScore == sleeScore &&
-     other.steps == steps &&
-     other.distance == distance &&
-     other.vO2Max == vO2Max &&
-     other.weight == weight &&
-     other.muscleMass == muscleMass &&
-     other.waterMass == waterMass &&
-     other.fatMass == fatMass &&
-     other.boneMass == boneMass &&
-     other.bloodPressure == bloodPressure &&
-     other.heartRate == heartRate &&
-     other.ecg == ecg &&
      other.permissions == permissions;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (connectionId == null ? 0 : connectionId!.hashCode) +
-    (overall == null ? 0 : overall!.hashCode) +
-    (sleepDuration == null ? 0 : sleepDuration!.hashCode) +
-    (sleepCycles == null ? 0 : sleepCycles!.hashCode) +
-    (sleeScore == null ? 0 : sleeScore!.hashCode) +
-    (steps == null ? 0 : steps!.hashCode) +
-    (distance == null ? 0 : distance!.hashCode) +
-    (vO2Max == null ? 0 : vO2Max!.hashCode) +
-    (weight == null ? 0 : weight!.hashCode) +
-    (muscleMass == null ? 0 : muscleMass!.hashCode) +
-    (waterMass == null ? 0 : waterMass!.hashCode) +
-    (fatMass == null ? 0 : fatMass!.hashCode) +
-    (boneMass == null ? 0 : boneMass!.hashCode) +
-    (bloodPressure == null ? 0 : bloodPressure!.hashCode) +
-    (heartRate == null ? 0 : heartRate!.hashCode) +
-    (ecg == null ? 0 : ecg!.hashCode) +
     (permissions.hashCode);
 
   @override
-  String toString() => 'UpdateConnectionCmd[connectionId=$connectionId, overall=$overall, sleepDuration=$sleepDuration, sleepCycles=$sleepCycles, sleeScore=$sleeScore, steps=$steps, distance=$distance, vO2Max=$vO2Max, weight=$weight, muscleMass=$muscleMass, waterMass=$waterMass, fatMass=$fatMass, boneMass=$boneMass, bloodPressure=$bloodPressure, heartRate=$heartRate, ecg=$ecg, permissions=$permissions]';
+  String toString() => 'UpdateConnectionCmd[connectionId=$connectionId, permissions=$permissions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -122,81 +47,6 @@ class UpdateConnectionCmd {
       json[r'connectionId'] = this.connectionId;
     } else {
       json[r'connectionId'] = null;
-    }
-    if (this.overall != null) {
-      json[r'overall'] = this.overall;
-    } else {
-      json[r'overall'] = null;
-    }
-    if (this.sleepDuration != null) {
-      json[r'sleepDuration'] = this.sleepDuration;
-    } else {
-      json[r'sleepDuration'] = null;
-    }
-    if (this.sleepCycles != null) {
-      json[r'sleepCycles'] = this.sleepCycles;
-    } else {
-      json[r'sleepCycles'] = null;
-    }
-    if (this.sleeScore != null) {
-      json[r'sleeScore'] = this.sleeScore;
-    } else {
-      json[r'sleeScore'] = null;
-    }
-    if (this.steps != null) {
-      json[r'steps'] = this.steps;
-    } else {
-      json[r'steps'] = null;
-    }
-    if (this.distance != null) {
-      json[r'distance'] = this.distance;
-    } else {
-      json[r'distance'] = null;
-    }
-    if (this.vO2Max != null) {
-      json[r'vO2Max'] = this.vO2Max;
-    } else {
-      json[r'vO2Max'] = null;
-    }
-    if (this.weight != null) {
-      json[r'weight'] = this.weight;
-    } else {
-      json[r'weight'] = null;
-    }
-    if (this.muscleMass != null) {
-      json[r'muscleMass'] = this.muscleMass;
-    } else {
-      json[r'muscleMass'] = null;
-    }
-    if (this.waterMass != null) {
-      json[r'waterMass'] = this.waterMass;
-    } else {
-      json[r'waterMass'] = null;
-    }
-    if (this.fatMass != null) {
-      json[r'fatMass'] = this.fatMass;
-    } else {
-      json[r'fatMass'] = null;
-    }
-    if (this.boneMass != null) {
-      json[r'boneMass'] = this.boneMass;
-    } else {
-      json[r'boneMass'] = null;
-    }
-    if (this.bloodPressure != null) {
-      json[r'bloodPressure'] = this.bloodPressure;
-    } else {
-      json[r'bloodPressure'] = null;
-    }
-    if (this.heartRate != null) {
-      json[r'heartRate'] = this.heartRate;
-    } else {
-      json[r'heartRate'] = null;
-    }
-    if (this.ecg != null) {
-      json[r'ecg'] = this.ecg;
-    } else {
-      json[r'ecg'] = null;
     }
       json[r'permissions'] = this.permissions;
     return json;
@@ -222,21 +72,6 @@ class UpdateConnectionCmd {
 
       return UpdateConnectionCmd(
         connectionId: mapValueOfType<int>(json, r'connectionId'),
-        overall: mapValueOfType<bool>(json, r'overall'),
-        sleepDuration: mapValueOfType<bool>(json, r'sleepDuration'),
-        sleepCycles: mapValueOfType<bool>(json, r'sleepCycles'),
-        sleeScore: mapValueOfType<bool>(json, r'sleeScore'),
-        steps: mapValueOfType<bool>(json, r'steps'),
-        distance: mapValueOfType<bool>(json, r'distance'),
-        vO2Max: mapValueOfType<bool>(json, r'vO2Max'),
-        weight: mapValueOfType<bool>(json, r'weight'),
-        muscleMass: mapValueOfType<bool>(json, r'muscleMass'),
-        waterMass: mapValueOfType<bool>(json, r'waterMass'),
-        fatMass: mapValueOfType<bool>(json, r'fatMass'),
-        boneMass: mapValueOfType<bool>(json, r'boneMass'),
-        bloodPressure: mapValueOfType<bool>(json, r'bloodPressure'),
-        heartRate: mapValueOfType<bool>(json, r'heartRate'),
-        ecg: mapValueOfType<bool>(json, r'ecg'),
         permissions: PermissionDto.listFromJson(json[r'permissions']) ?? const [],
       );
     }
