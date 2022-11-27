@@ -17,6 +17,7 @@ class NotificationDto {
     this.toUserId,
     this.fromUserId,
     this.type,
+    this.info,
     this.created,
   });
 
@@ -52,6 +53,8 @@ class NotificationDto {
   ///
   String? type;
 
+  String? info;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -66,6 +69,7 @@ class NotificationDto {
      other.toUserId == toUserId &&
      other.fromUserId == fromUserId &&
      other.type == type &&
+     other.info == info &&
      other.created == created;
 
   @override
@@ -75,10 +79,11 @@ class NotificationDto {
     (toUserId == null ? 0 : toUserId!.hashCode) +
     (fromUserId == null ? 0 : fromUserId!.hashCode) +
     (type == null ? 0 : type!.hashCode) +
+    (info == null ? 0 : info!.hashCode) +
     (created == null ? 0 : created!.hashCode);
 
   @override
-  String toString() => 'NotificationDto[id=$id, toUserId=$toUserId, fromUserId=$fromUserId, type=$type, created=$created]';
+  String toString() => 'NotificationDto[id=$id, toUserId=$toUserId, fromUserId=$fromUserId, type=$type, info=$info, created=$created]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -101,6 +106,11 @@ class NotificationDto {
       json[r'type'] = this.type;
     } else {
       json[r'type'] = null;
+    }
+    if (this.info != null) {
+      json[r'info'] = this.info;
+    } else {
+      json[r'info'] = null;
     }
     if (this.created != null) {
       json[r'created'] = this.created!.toUtc().toIso8601String();
@@ -133,6 +143,7 @@ class NotificationDto {
         toUserId: mapValueOfType<int>(json, r'toUserId'),
         fromUserId: mapValueOfType<int>(json, r'fromUserId'),
         type: mapValueOfType<String>(json, r'type'),
+        info: mapValueOfType<String>(json, r'info'),
         created: mapDateTime(json, r'created', ''),
       );
     }
