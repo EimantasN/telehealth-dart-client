@@ -22,9 +22,7 @@ class SelfNoteApi {
   /// * [int] questionnaireId:
   ///
   /// * [DateTime] start:
-  ///
-  /// * [DateTime] end:
-  Future<Response> selfNoteAnswersWithHttpInfo({ int? questionnaireId, DateTime? start, DateTime? end, }) async {
+  Future<Response> selfNoteAnswersWithHttpInfo({ int? questionnaireId, DateTime? start, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/SelfNote/Answers';
 
@@ -40,9 +38,6 @@ class SelfNoteApi {
     }
     if (start != null) {
       queryParams.addAll(_queryParams('', 'Start', start));
-    }
-    if (end != null) {
-      queryParams.addAll(_queryParams('', 'End', end));
     }
 
     const contentTypes = <String>[];
@@ -64,10 +59,8 @@ class SelfNoteApi {
   /// * [int] questionnaireId:
   ///
   /// * [DateTime] start:
-  ///
-  /// * [DateTime] end:
-  Future<List<AnswerDto>?> selfNoteAnswers({ int? questionnaireId, DateTime? start, DateTime? end, }) async {
-    final response = await selfNoteAnswersWithHttpInfo( questionnaireId: questionnaireId, start: start, end: end, );
+  Future<List<AnswerDto>?> selfNoteAnswers({ int? questionnaireId, DateTime? start, }) async {
+    final response = await selfNoteAnswersWithHttpInfo( questionnaireId: questionnaireId, start: start, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
