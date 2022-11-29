@@ -14,6 +14,7 @@ class SubmitSelfNoteCmd {
   /// Returns a new [SubmitSelfNoteCmd] instance.
   SubmitSelfNoteCmd({
     this.answers = const [],
+    this.id,
     this.title,
     this.place,
     this.reason,
@@ -21,6 +22,8 @@ class SubmitSelfNoteCmd {
   });
 
   List<AnswerSubmitDto> answers;
+
+  int? id;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -51,6 +54,7 @@ class SubmitSelfNoteCmd {
   @override
   bool operator ==(Object other) => identical(this, other) || other is SubmitSelfNoteCmd &&
      other.answers == answers &&
+     other.id == id &&
      other.title == title &&
      other.place == place &&
      other.reason == reason &&
@@ -60,17 +64,23 @@ class SubmitSelfNoteCmd {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (answers.hashCode) +
+    (id == null ? 0 : id!.hashCode) +
     (title == null ? 0 : title!.hashCode) +
     (place == null ? 0 : place!.hashCode) +
     (reason == null ? 0 : reason!.hashCode) +
     (questionnaireId == null ? 0 : questionnaireId!.hashCode);
 
   @override
-  String toString() => 'SubmitSelfNoteCmd[answers=$answers, title=$title, place=$place, reason=$reason, questionnaireId=$questionnaireId]';
+  String toString() => 'SubmitSelfNoteCmd[answers=$answers, id=$id, title=$title, place=$place, reason=$reason, questionnaireId=$questionnaireId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'answers'] = this.answers;
+    if (this.id != null) {
+      json[r'id'] = this.id;
+    } else {
+      json[r'id'] = null;
+    }
     if (this.title != null) {
       json[r'title'] = this.title;
     } else {
@@ -114,6 +124,7 @@ class SubmitSelfNoteCmd {
 
       return SubmitSelfNoteCmd(
         answers: AnswerSubmitDto.listFromJson(json[r'answers']) ?? const [],
+        id: mapValueOfType<int>(json, r'id'),
         title: mapValueOfType<String>(json, r'title'),
         place: mapValueOfType<String>(json, r'place'),
         reason: mapValueOfType<String>(json, r'reason'),
