@@ -205,12 +205,16 @@ class ApiClient {
           return CreateMedicationCmd.fromJson(value);
         case 'CreateReminderCmd':
           return CreateReminderCmd.fromJson(value);
+        case 'DeletedDto':
+          return DeletedDto.fromJson(value);
         case 'DismissCmd':
           return DismissCmd.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfConnectionListItemDto':
           return DynamicQueryOfPaginatedListOfConnectionListItemDto.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfConsultationNoteListDto':
           return DynamicQueryOfPaginatedListOfConsultationNoteListDto.fromJson(value);
+        case 'DynamicQueryOfPaginatedListOfDeletedDto':
+          return DynamicQueryOfPaginatedListOfDeletedDto.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfMedicationListDto':
           return DynamicQueryOfPaginatedListOfMedicationListDto.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfNotificationDto':
@@ -235,6 +239,8 @@ class ApiClient {
           return GetConnectionsQueryAllOf.fromJson(value);
         case 'GetConsultationNotesQuery':
           return GetConsultationNotesQuery.fromJson(value);
+        case 'GetDeletedQuery':
+          return GetDeletedQuery.fromJson(value);
         case 'GetMedicationsQuery':
           return GetMedicationsQuery.fromJson(value);
         case 'GetNotificationQuery':
@@ -259,6 +265,8 @@ class ApiClient {
           return PaginatedListOfConnectionListItemDto.fromJson(value);
         case 'PaginatedListOfConsultationNoteListDto':
           return PaginatedListOfConsultationNoteListDto.fromJson(value);
+        case 'PaginatedListOfDeletedDto':
+          return PaginatedListOfDeletedDto.fromJson(value);
         case 'PaginatedListOfMedicationListDto':
           return PaginatedListOfMedicationListDto.fromJson(value);
         case 'PaginatedListOfNotificationDto':
