@@ -185,6 +185,8 @@ class ApiClient {
           return AnswerDto.fromJson(value);
         case 'AnswerSubmitDto':
           return AnswerSubmitDto.fromJson(value);
+        case 'BatchCmd':
+          return BatchCmd.fromJson(value);
         case 'ConnectIonStateUpdateCmd':
           return ConnectIonStateUpdateCmd.fromJson(value);
         case 'ConnectionDto':
@@ -249,6 +251,8 @@ class ApiClient {
           return GetRemindersQuery.fromJson(value);
         case 'GetSelfNotesQuery':
           return GetSelfNotesQuery.fromJson(value);
+        case 'HardDeleteCmd':
+          return HardDeleteCmd.fromJson(value);
         case 'ItemsVm':
           return ItemsVm.fromJson(value);
         case 'MedicationDto':
@@ -289,6 +293,8 @@ class ApiClient {
           return ReminderDto.fromJson(value);
         case 'RequestedPermissionDto':
           return RequestedPermissionDto.fromJson(value);
+        case 'RestoreCmd':
+          return RestoreCmd.fromJson(value);
         case 'SearchProviderQuery':
           return SearchProviderQuery.fromJson(value);
         case 'Section':
