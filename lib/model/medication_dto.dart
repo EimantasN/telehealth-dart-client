@@ -13,6 +13,7 @@ part of openapi.api;
 class MedicationDto {
   /// Returns a new [MedicationDto] instance.
   MedicationDto({
+    this.id,
     this.title,
     this.start,
     this.end,
@@ -26,6 +27,14 @@ class MedicationDto {
     this.doctorId,
     this.frequencies = const [],
   });
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? id;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -59,6 +68,7 @@ class MedicationDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is MedicationDto &&
+     other.id == id &&
      other.title == title &&
      other.start == start &&
      other.end == end &&
@@ -75,6 +85,7 @@ class MedicationDto {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (id == null ? 0 : id!.hashCode) +
     (title == null ? 0 : title!.hashCode) +
     (start == null ? 0 : start!.hashCode) +
     (end == null ? 0 : end!.hashCode) +
@@ -89,10 +100,15 @@ class MedicationDto {
     (frequencies.hashCode);
 
   @override
-  String toString() => 'MedicationDto[title=$title, start=$start, end=$end, condition=$condition, provider=$provider, activeCompounds=$activeCompounds, manufacture=$manufacture, numberInBox=$numberInBox, recomendation=$recomendation, notice=$notice, doctorId=$doctorId, frequencies=$frequencies]';
+  String toString() => 'MedicationDto[id=$id, title=$title, start=$start, end=$end, condition=$condition, provider=$provider, activeCompounds=$activeCompounds, manufacture=$manufacture, numberInBox=$numberInBox, recomendation=$recomendation, notice=$notice, doctorId=$doctorId, frequencies=$frequencies]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.id != null) {
+      json[r'id'] = this.id;
+    } else {
+      json[r'id'] = null;
+    }
     if (this.title != null) {
       json[r'title'] = this.title;
     } else {
@@ -171,6 +187,7 @@ class MedicationDto {
       }());
 
       return MedicationDto(
+        id: mapValueOfType<int>(json, r'id'),
         title: mapValueOfType<String>(json, r'title'),
         start: mapDateTime(json, r'start', ''),
         end: mapDateTime(json, r'end', ''),
