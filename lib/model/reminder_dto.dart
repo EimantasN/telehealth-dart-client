@@ -15,9 +15,9 @@ class ReminderDto {
   ReminderDto({
     this.id,
     this.title,
-    this.type,
     this.status,
     this.message,
+    this.active,
     this.start,
     this.end,
     this.daily,
@@ -25,11 +25,12 @@ class ReminderDto {
     this.monthly,
     this.yearly,
     this.custom,
-    this.active,
     this.created,
-    this.createdBy,
     this.modified,
-    this.modifiedBy,
+    this.medicationId,
+    this.consultationNoteId,
+    this.connectionId,
+    this.selfNoteId,
   });
 
   ///
@@ -54,14 +55,6 @@ class ReminderDto {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? type;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? status;
 
   ///
@@ -78,7 +71,7 @@ class ReminderDto {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  DateTime? start;
+  bool? active;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -86,6 +79,8 @@ class ReminderDto {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  DateTime? start;
+
   DateTime? end;
 
   ///
@@ -128,7 +123,7 @@ class ReminderDto {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? active;
+  DateTime? created;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -136,21 +131,23 @@ class ReminderDto {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  DateTime? created;
-
-  String? createdBy;
-
   DateTime? modified;
 
-  String? modifiedBy;
+  int? medicationId;
+
+  int? consultationNoteId;
+
+  int? connectionId;
+
+  int? selfNoteId;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ReminderDto &&
      other.id == id &&
      other.title == title &&
-     other.type == type &&
      other.status == status &&
      other.message == message &&
+     other.active == active &&
      other.start == start &&
      other.end == end &&
      other.daily == daily &&
@@ -158,20 +155,21 @@ class ReminderDto {
      other.monthly == monthly &&
      other.yearly == yearly &&
      other.custom == custom &&
-     other.active == active &&
      other.created == created &&
-     other.createdBy == createdBy &&
      other.modified == modified &&
-     other.modifiedBy == modifiedBy;
+     other.medicationId == medicationId &&
+     other.consultationNoteId == consultationNoteId &&
+     other.connectionId == connectionId &&
+     other.selfNoteId == selfNoteId;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id == null ? 0 : id!.hashCode) +
     (title == null ? 0 : title!.hashCode) +
-    (type == null ? 0 : type!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
     (message == null ? 0 : message!.hashCode) +
+    (active == null ? 0 : active!.hashCode) +
     (start == null ? 0 : start!.hashCode) +
     (end == null ? 0 : end!.hashCode) +
     (daily == null ? 0 : daily!.hashCode) +
@@ -179,14 +177,15 @@ class ReminderDto {
     (monthly == null ? 0 : monthly!.hashCode) +
     (yearly == null ? 0 : yearly!.hashCode) +
     (custom == null ? 0 : custom!.hashCode) +
-    (active == null ? 0 : active!.hashCode) +
     (created == null ? 0 : created!.hashCode) +
-    (createdBy == null ? 0 : createdBy!.hashCode) +
     (modified == null ? 0 : modified!.hashCode) +
-    (modifiedBy == null ? 0 : modifiedBy!.hashCode);
+    (medicationId == null ? 0 : medicationId!.hashCode) +
+    (consultationNoteId == null ? 0 : consultationNoteId!.hashCode) +
+    (connectionId == null ? 0 : connectionId!.hashCode) +
+    (selfNoteId == null ? 0 : selfNoteId!.hashCode);
 
   @override
-  String toString() => 'ReminderDto[id=$id, title=$title, type=$type, status=$status, message=$message, start=$start, end=$end, daily=$daily, weekly=$weekly, monthly=$monthly, yearly=$yearly, custom=$custom, active=$active, created=$created, createdBy=$createdBy, modified=$modified, modifiedBy=$modifiedBy]';
+  String toString() => 'ReminderDto[id=$id, title=$title, status=$status, message=$message, active=$active, start=$start, end=$end, daily=$daily, weekly=$weekly, monthly=$monthly, yearly=$yearly, custom=$custom, created=$created, modified=$modified, medicationId=$medicationId, consultationNoteId=$consultationNoteId, connectionId=$connectionId, selfNoteId=$selfNoteId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -200,11 +199,6 @@ class ReminderDto {
     } else {
       json[r'title'] = null;
     }
-    if (this.type != null) {
-      json[r'type'] = this.type;
-    } else {
-      json[r'type'] = null;
-    }
     if (this.status != null) {
       json[r'status'] = this.status;
     } else {
@@ -214,6 +208,11 @@ class ReminderDto {
       json[r'message'] = this.message;
     } else {
       json[r'message'] = null;
+    }
+    if (this.active != null) {
+      json[r'active'] = this.active;
+    } else {
+      json[r'active'] = null;
     }
     if (this.start != null) {
       json[r'start'] = this.start!.toUtc().toIso8601String();
@@ -250,30 +249,35 @@ class ReminderDto {
     } else {
       json[r'custom'] = null;
     }
-    if (this.active != null) {
-      json[r'active'] = this.active;
-    } else {
-      json[r'active'] = null;
-    }
     if (this.created != null) {
       json[r'created'] = this.created!.toUtc().toIso8601String();
     } else {
       json[r'created'] = null;
-    }
-    if (this.createdBy != null) {
-      json[r'createdBy'] = this.createdBy;
-    } else {
-      json[r'createdBy'] = null;
     }
     if (this.modified != null) {
       json[r'modified'] = this.modified!.toUtc().toIso8601String();
     } else {
       json[r'modified'] = null;
     }
-    if (this.modifiedBy != null) {
-      json[r'modifiedBy'] = this.modifiedBy;
+    if (this.medicationId != null) {
+      json[r'medicationId'] = this.medicationId;
     } else {
-      json[r'modifiedBy'] = null;
+      json[r'medicationId'] = null;
+    }
+    if (this.consultationNoteId != null) {
+      json[r'consultationNoteId'] = this.consultationNoteId;
+    } else {
+      json[r'consultationNoteId'] = null;
+    }
+    if (this.connectionId != null) {
+      json[r'connectionId'] = this.connectionId;
+    } else {
+      json[r'connectionId'] = null;
+    }
+    if (this.selfNoteId != null) {
+      json[r'selfNoteId'] = this.selfNoteId;
+    } else {
+      json[r'selfNoteId'] = null;
     }
     return json;
   }
@@ -299,9 +303,9 @@ class ReminderDto {
       return ReminderDto(
         id: mapValueOfType<int>(json, r'id'),
         title: mapValueOfType<String>(json, r'title'),
-        type: mapValueOfType<String>(json, r'type'),
         status: mapValueOfType<String>(json, r'status'),
         message: mapValueOfType<String>(json, r'message'),
+        active: mapValueOfType<bool>(json, r'active'),
         start: mapDateTime(json, r'start', ''),
         end: mapDateTime(json, r'end', ''),
         daily: mapValueOfType<bool>(json, r'daily'),
@@ -309,11 +313,12 @@ class ReminderDto {
         monthly: mapValueOfType<bool>(json, r'monthly'),
         yearly: mapValueOfType<bool>(json, r'yearly'),
         custom: mapValueOfType<String>(json, r'custom'),
-        active: mapValueOfType<bool>(json, r'active'),
         created: mapDateTime(json, r'created', ''),
-        createdBy: mapValueOfType<String>(json, r'createdBy'),
         modified: mapDateTime(json, r'modified', ''),
-        modifiedBy: mapValueOfType<String>(json, r'modifiedBy'),
+        medicationId: mapValueOfType<int>(json, r'medicationId'),
+        consultationNoteId: mapValueOfType<int>(json, r'consultationNoteId'),
+        connectionId: mapValueOfType<int>(json, r'connectionId'),
+        selfNoteId: mapValueOfType<int>(json, r'selfNoteId'),
       );
     }
     return null;
