@@ -20,6 +20,7 @@ class MedicationListDto {
     this.conditions,
     this.provider,
     this.activeCompounds,
+    this.reminderCount,
     this.doctorId,
     this.created,
     this.createdBy,
@@ -83,6 +84,14 @@ class MedicationListDto {
   ///
   String? activeCompounds;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? reminderCount;
+
   int? doctorId;
 
   ///
@@ -108,6 +117,7 @@ class MedicationListDto {
      other.conditions == conditions &&
      other.provider == provider &&
      other.activeCompounds == activeCompounds &&
+     other.reminderCount == reminderCount &&
      other.doctorId == doctorId &&
      other.created == created &&
      other.createdBy == createdBy &&
@@ -124,6 +134,7 @@ class MedicationListDto {
     (conditions == null ? 0 : conditions!.hashCode) +
     (provider == null ? 0 : provider!.hashCode) +
     (activeCompounds == null ? 0 : activeCompounds!.hashCode) +
+    (reminderCount == null ? 0 : reminderCount!.hashCode) +
     (doctorId == null ? 0 : doctorId!.hashCode) +
     (created == null ? 0 : created!.hashCode) +
     (createdBy == null ? 0 : createdBy!.hashCode) +
@@ -131,7 +142,7 @@ class MedicationListDto {
     (modifiedBy == null ? 0 : modifiedBy!.hashCode);
 
   @override
-  String toString() => 'MedicationListDto[id=$id, title=$title, frequency=$frequency, timing=$timing, conditions=$conditions, provider=$provider, activeCompounds=$activeCompounds, doctorId=$doctorId, created=$created, createdBy=$createdBy, modified=$modified, modifiedBy=$modifiedBy]';
+  String toString() => 'MedicationListDto[id=$id, title=$title, frequency=$frequency, timing=$timing, conditions=$conditions, provider=$provider, activeCompounds=$activeCompounds, reminderCount=$reminderCount, doctorId=$doctorId, created=$created, createdBy=$createdBy, modified=$modified, modifiedBy=$modifiedBy]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -169,6 +180,11 @@ class MedicationListDto {
       json[r'activeCompounds'] = this.activeCompounds;
     } else {
       json[r'activeCompounds'] = null;
+    }
+    if (this.reminderCount != null) {
+      json[r'reminderCount'] = this.reminderCount;
+    } else {
+      json[r'reminderCount'] = null;
     }
     if (this.doctorId != null) {
       json[r'doctorId'] = this.doctorId;
@@ -224,6 +240,7 @@ class MedicationListDto {
         conditions: mapValueOfType<String>(json, r'conditions'),
         provider: mapValueOfType<String>(json, r'provider'),
         activeCompounds: mapValueOfType<String>(json, r'activeCompounds'),
+        reminderCount: mapValueOfType<int>(json, r'reminderCount'),
         doctorId: mapValueOfType<int>(json, r'doctorId'),
         created: mapDateTime(json, r'created', ''),
         createdBy: mapValueOfType<String>(json, r'createdBy'),

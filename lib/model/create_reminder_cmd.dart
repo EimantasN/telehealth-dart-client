@@ -14,7 +14,6 @@ class CreateReminderCmd {
   /// Returns a new [CreateReminderCmd] instance.
   CreateReminderCmd({
     this.title,
-    this.type,
     this.status,
     this.message,
     this.start,
@@ -37,14 +36,6 @@ class CreateReminderCmd {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? title;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? type;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -117,7 +108,6 @@ class CreateReminderCmd {
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateReminderCmd &&
      other.title == title &&
-     other.type == type &&
      other.status == status &&
      other.message == message &&
      other.start == start &&
@@ -136,7 +126,6 @@ class CreateReminderCmd {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (title == null ? 0 : title!.hashCode) +
-    (type == null ? 0 : type!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
     (message == null ? 0 : message!.hashCode) +
     (start == null ? 0 : start!.hashCode) +
@@ -152,7 +141,7 @@ class CreateReminderCmd {
     (selfNoteId == null ? 0 : selfNoteId!.hashCode);
 
   @override
-  String toString() => 'CreateReminderCmd[title=$title, type=$type, status=$status, message=$message, start=$start, end=$end, daily=$daily, weekly=$weekly, monthly=$monthly, yearly=$yearly, custom=$custom, medicationId=$medicationId, consultationNoteId=$consultationNoteId, connectionId=$connectionId, selfNoteId=$selfNoteId]';
+  String toString() => 'CreateReminderCmd[title=$title, status=$status, message=$message, start=$start, end=$end, daily=$daily, weekly=$weekly, monthly=$monthly, yearly=$yearly, custom=$custom, medicationId=$medicationId, consultationNoteId=$consultationNoteId, connectionId=$connectionId, selfNoteId=$selfNoteId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -160,11 +149,6 @@ class CreateReminderCmd {
       json[r'title'] = this.title;
     } else {
       json[r'title'] = null;
-    }
-    if (this.type != null) {
-      json[r'type'] = this.type;
-    } else {
-      json[r'type'] = null;
     }
     if (this.status != null) {
       json[r'status'] = this.status;
@@ -254,7 +238,6 @@ class CreateReminderCmd {
 
       return CreateReminderCmd(
         title: mapValueOfType<String>(json, r'title'),
-        type: mapValueOfType<String>(json, r'type'),
         status: mapValueOfType<String>(json, r'status'),
         message: mapValueOfType<String>(json, r'message'),
         start: mapDateTime(json, r'start', ''),
