@@ -247,6 +247,8 @@ class ApiClient {
           return GetMedicationsQuery.fromJson(value);
         case 'GetNotificationQuery':
           return GetNotificationQuery.fromJson(value);
+        case 'GetReminderReviewQuery':
+          return GetReminderReviewQuery.fromJson(value);
         case 'GetRemindersQuery':
           return GetRemindersQuery.fromJson(value);
         case 'GetSelfNotesQuery':
@@ -291,6 +293,8 @@ class ApiClient {
           return QuestionnaireDto.fromJson(value);
         case 'ReminderDto':
           return ReminderDto.fromJson(value);
+        case 'ReminderReviewDto':
+          return ReminderReviewDto.fromJson(value);
         case 'RequestedPermissionDto':
           return RequestedPermissionDto.fromJson(value);
         case 'RestoreCmd':
