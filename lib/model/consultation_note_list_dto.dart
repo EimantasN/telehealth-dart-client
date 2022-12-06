@@ -13,6 +13,7 @@ part of openapi.api;
 class ConsultationNoteListDto {
   /// Returns a new [ConsultationNoteListDto] instance.
   ConsultationNoteListDto({
+    this.id,
     this.title,
     this.dateOfNote,
     this.aim,
@@ -27,7 +28,16 @@ class ConsultationNoteListDto {
     this.diagnose,
     this.created,
     this.modified,
+    this.reminderCount,
   });
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? id;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -81,8 +91,17 @@ class ConsultationNoteListDto {
   ///
   DateTime? modified;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? reminderCount;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ConsultationNoteListDto &&
+     other.id == id &&
      other.title == title &&
      other.dateOfNote == dateOfNote &&
      other.aim == aim &&
@@ -96,11 +115,13 @@ class ConsultationNoteListDto {
      other.recommendations == recommendations &&
      other.diagnose == diagnose &&
      other.created == created &&
-     other.modified == modified;
+     other.modified == modified &&
+     other.reminderCount == reminderCount;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (id == null ? 0 : id!.hashCode) +
     (title == null ? 0 : title!.hashCode) +
     (dateOfNote == null ? 0 : dateOfNote!.hashCode) +
     (aim == null ? 0 : aim!.hashCode) +
@@ -114,13 +135,19 @@ class ConsultationNoteListDto {
     (recommendations == null ? 0 : recommendations!.hashCode) +
     (diagnose == null ? 0 : diagnose!.hashCode) +
     (created == null ? 0 : created!.hashCode) +
-    (modified == null ? 0 : modified!.hashCode);
+    (modified == null ? 0 : modified!.hashCode) +
+    (reminderCount == null ? 0 : reminderCount!.hashCode);
 
   @override
-  String toString() => 'ConsultationNoteListDto[title=$title, dateOfNote=$dateOfNote, aim=$aim, complains=$complains, investigation=$investigation, treatment=$treatment, anamnesis=$anamnesis, labInvestigationPlan=$labInvestigationPlan, treatmentPlan=$treatmentPlan, prescriptions=$prescriptions, recommendations=$recommendations, diagnose=$diagnose, created=$created, modified=$modified]';
+  String toString() => 'ConsultationNoteListDto[id=$id, title=$title, dateOfNote=$dateOfNote, aim=$aim, complains=$complains, investigation=$investigation, treatment=$treatment, anamnesis=$anamnesis, labInvestigationPlan=$labInvestigationPlan, treatmentPlan=$treatmentPlan, prescriptions=$prescriptions, recommendations=$recommendations, diagnose=$diagnose, created=$created, modified=$modified, reminderCount=$reminderCount]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.id != null) {
+      json[r'id'] = this.id;
+    } else {
+      json[r'id'] = null;
+    }
     if (this.title != null) {
       json[r'title'] = this.title;
     } else {
@@ -191,6 +218,11 @@ class ConsultationNoteListDto {
     } else {
       json[r'modified'] = null;
     }
+    if (this.reminderCount != null) {
+      json[r'reminderCount'] = this.reminderCount;
+    } else {
+      json[r'reminderCount'] = null;
+    }
     return json;
   }
 
@@ -213,6 +245,7 @@ class ConsultationNoteListDto {
       }());
 
       return ConsultationNoteListDto(
+        id: mapValueOfType<int>(json, r'id'),
         title: mapValueOfType<String>(json, r'title'),
         dateOfNote: mapDateTime(json, r'dateOfNote', ''),
         aim: mapValueOfType<String>(json, r'aim'),
@@ -227,6 +260,7 @@ class ConsultationNoteListDto {
         diagnose: mapValueOfType<String>(json, r'diagnose'),
         created: mapDateTime(json, r'created', ''),
         modified: mapDateTime(json, r'modified', ''),
+        reminderCount: mapValueOfType<int>(json, r'reminderCount'),
       );
     }
     return null;

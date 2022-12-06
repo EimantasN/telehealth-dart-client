@@ -17,6 +17,7 @@ class SelfNoteDto {
     this.title,
     this.place,
     this.reason,
+    this.reminderCount,
     this.created,
     this.modified,
     this.answers = const [],
@@ -60,6 +61,14 @@ class SelfNoteDto {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  int? reminderCount;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? created;
 
   ///
@@ -78,6 +87,7 @@ class SelfNoteDto {
      other.title == title &&
      other.place == place &&
      other.reason == reason &&
+     other.reminderCount == reminderCount &&
      other.created == created &&
      other.modified == modified &&
      other.answers == answers;
@@ -89,12 +99,13 @@ class SelfNoteDto {
     (title == null ? 0 : title!.hashCode) +
     (place == null ? 0 : place!.hashCode) +
     (reason == null ? 0 : reason!.hashCode) +
+    (reminderCount == null ? 0 : reminderCount!.hashCode) +
     (created == null ? 0 : created!.hashCode) +
     (modified == null ? 0 : modified!.hashCode) +
     (answers.hashCode);
 
   @override
-  String toString() => 'SelfNoteDto[id=$id, title=$title, place=$place, reason=$reason, created=$created, modified=$modified, answers=$answers]';
+  String toString() => 'SelfNoteDto[id=$id, title=$title, place=$place, reason=$reason, reminderCount=$reminderCount, created=$created, modified=$modified, answers=$answers]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -117,6 +128,11 @@ class SelfNoteDto {
       json[r'reason'] = this.reason;
     } else {
       json[r'reason'] = null;
+    }
+    if (this.reminderCount != null) {
+      json[r'reminderCount'] = this.reminderCount;
+    } else {
+      json[r'reminderCount'] = null;
     }
     if (this.created != null) {
       json[r'created'] = this.created!.toUtc().toIso8601String();
@@ -155,6 +171,7 @@ class SelfNoteDto {
         title: mapValueOfType<String>(json, r'title'),
         place: mapValueOfType<String>(json, r'place'),
         reason: mapValueOfType<String>(json, r'reason'),
+        reminderCount: mapValueOfType<int>(json, r'reminderCount'),
         created: mapDateTime(json, r'created', ''),
         modified: mapDateTime(json, r'modified', ''),
         answers: AnswerDto.listFromJson(json[r'answers']) ?? const [],

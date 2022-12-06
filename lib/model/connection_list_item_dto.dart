@@ -21,6 +21,7 @@ class ConnectionListItemDto {
     this.connected,
     this.created,
     this.modified,
+    this.reminderCount,
   });
 
   ///
@@ -81,6 +82,14 @@ class ConnectionListItemDto {
   ///
   DateTime? modified;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? reminderCount;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ConnectionListItemDto &&
      other.id == id &&
@@ -90,7 +99,8 @@ class ConnectionListItemDto {
      other.endTime == endTime &&
      other.connected == connected &&
      other.created == created &&
-     other.modified == modified;
+     other.modified == modified &&
+     other.reminderCount == reminderCount;
 
   @override
   int get hashCode =>
@@ -102,10 +112,11 @@ class ConnectionListItemDto {
     (endTime == null ? 0 : endTime!.hashCode) +
     (connected == null ? 0 : connected!.hashCode) +
     (created == null ? 0 : created!.hashCode) +
-    (modified == null ? 0 : modified!.hashCode);
+    (modified == null ? 0 : modified!.hashCode) +
+    (reminderCount == null ? 0 : reminderCount!.hashCode);
 
   @override
-  String toString() => 'ConnectionListItemDto[id=$id, patientId=$patientId, doctorId=$doctorId, state=$state, endTime=$endTime, connected=$connected, created=$created, modified=$modified]';
+  String toString() => 'ConnectionListItemDto[id=$id, patientId=$patientId, doctorId=$doctorId, state=$state, endTime=$endTime, connected=$connected, created=$created, modified=$modified, reminderCount=$reminderCount]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -149,6 +160,11 @@ class ConnectionListItemDto {
     } else {
       json[r'modified'] = null;
     }
+    if (this.reminderCount != null) {
+      json[r'reminderCount'] = this.reminderCount;
+    } else {
+      json[r'reminderCount'] = null;
+    }
     return json;
   }
 
@@ -179,6 +195,7 @@ class ConnectionListItemDto {
         connected: mapDateTime(json, r'connected', ''),
         created: mapDateTime(json, r'created', ''),
         modified: mapDateTime(json, r'modified', ''),
+        reminderCount: mapValueOfType<int>(json, r'reminderCount'),
       );
     }
     return null;

@@ -21,6 +21,7 @@ class ConnectionDto {
     this.state,
     this.created,
     this.modified,
+    this.reminderCount,
     this.permissions = const [],
     this.requestedPermissions = const [],
   });
@@ -83,6 +84,14 @@ class ConnectionDto {
   ///
   DateTime? modified;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? reminderCount;
+
   List<PermissionDto> permissions;
 
   List<RequestedPermissionDto> requestedPermissions;
@@ -97,6 +106,7 @@ class ConnectionDto {
      other.state == state &&
      other.created == created &&
      other.modified == modified &&
+     other.reminderCount == reminderCount &&
      other.permissions == permissions &&
      other.requestedPermissions == requestedPermissions;
 
@@ -111,11 +121,12 @@ class ConnectionDto {
     (state == null ? 0 : state!.hashCode) +
     (created == null ? 0 : created!.hashCode) +
     (modified == null ? 0 : modified!.hashCode) +
+    (reminderCount == null ? 0 : reminderCount!.hashCode) +
     (permissions.hashCode) +
     (requestedPermissions.hashCode);
 
   @override
-  String toString() => 'ConnectionDto[id=$id, endTime=$endTime, connected=$connected, patientId=$patientId, doctorId=$doctorId, state=$state, created=$created, modified=$modified, permissions=$permissions, requestedPermissions=$requestedPermissions]';
+  String toString() => 'ConnectionDto[id=$id, endTime=$endTime, connected=$connected, patientId=$patientId, doctorId=$doctorId, state=$state, created=$created, modified=$modified, reminderCount=$reminderCount, permissions=$permissions, requestedPermissions=$requestedPermissions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -159,6 +170,11 @@ class ConnectionDto {
     } else {
       json[r'modified'] = null;
     }
+    if (this.reminderCount != null) {
+      json[r'reminderCount'] = this.reminderCount;
+    } else {
+      json[r'reminderCount'] = null;
+    }
       json[r'permissions'] = this.permissions;
       json[r'requestedPermissions'] = this.requestedPermissions;
     return json;
@@ -191,6 +207,7 @@ class ConnectionDto {
         state: mapValueOfType<String>(json, r'state'),
         created: mapDateTime(json, r'created', ''),
         modified: mapDateTime(json, r'modified', ''),
+        reminderCount: mapValueOfType<int>(json, r'reminderCount'),
         permissions: PermissionDto.listFromJson(json[r'permissions']) ?? const [],
         requestedPermissions: RequestedPermissionDto.listFromJson(json[r'requestedPermissions']) ?? const [],
       );
