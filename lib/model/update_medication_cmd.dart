@@ -22,7 +22,7 @@ class UpdateMedicationCmd {
     this.activeCompounds,
     this.manufacture,
     this.numberInBox,
-    this.recomendation,
+    this.recommendation,
     this.notice,
     this.frequencies = const [],
   });
@@ -63,7 +63,7 @@ class UpdateMedicationCmd {
 
   int? numberInBox;
 
-  String? recomendation;
+  String? recommendation;
 
   String? notice;
 
@@ -80,7 +80,7 @@ class UpdateMedicationCmd {
      other.activeCompounds == activeCompounds &&
      other.manufacture == manufacture &&
      other.numberInBox == numberInBox &&
-     other.recomendation == recomendation &&
+     other.recommendation == recommendation &&
      other.notice == notice &&
      other.frequencies == frequencies;
 
@@ -96,12 +96,12 @@ class UpdateMedicationCmd {
     (activeCompounds == null ? 0 : activeCompounds!.hashCode) +
     (manufacture == null ? 0 : manufacture!.hashCode) +
     (numberInBox == null ? 0 : numberInBox!.hashCode) +
-    (recomendation == null ? 0 : recomendation!.hashCode) +
+    (recommendation == null ? 0 : recommendation!.hashCode) +
     (notice == null ? 0 : notice!.hashCode) +
     (frequencies.hashCode);
 
   @override
-  String toString() => 'UpdateMedicationCmd[id=$id, title=$title, start=$start, end=$end, condition=$condition, provider=$provider, activeCompounds=$activeCompounds, manufacture=$manufacture, numberInBox=$numberInBox, recomendation=$recomendation, notice=$notice, frequencies=$frequencies]';
+  String toString() => 'UpdateMedicationCmd[id=$id, title=$title, start=$start, end=$end, condition=$condition, provider=$provider, activeCompounds=$activeCompounds, manufacture=$manufacture, numberInBox=$numberInBox, recommendation=$recommendation, notice=$notice, frequencies=$frequencies]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -150,10 +150,10 @@ class UpdateMedicationCmd {
     } else {
       json[r'numberInBox'] = null;
     }
-    if (this.recomendation != null) {
-      json[r'recomendation'] = this.recomendation;
+    if (this.recommendation != null) {
+      json[r'recommendation'] = this.recommendation;
     } else {
-      json[r'recomendation'] = null;
+      json[r'recommendation'] = null;
     }
     if (this.notice != null) {
       json[r'notice'] = this.notice;
@@ -192,7 +192,7 @@ class UpdateMedicationCmd {
         activeCompounds: mapValueOfType<String>(json, r'activeCompounds'),
         manufacture: mapValueOfType<String>(json, r'manufacture'),
         numberInBox: mapValueOfType<int>(json, r'numberInBox'),
-        recomendation: mapValueOfType<String>(json, r'recomendation'),
+        recommendation: mapValueOfType<String>(json, r'recommendation'),
         notice: mapValueOfType<String>(json, r'notice'),
         frequencies: FrequencyDto.listFromJson(json[r'frequencies']) ?? const [],
       );
