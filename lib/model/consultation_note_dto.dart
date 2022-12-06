@@ -14,6 +14,8 @@ class ConsultationNoteDto {
   /// Returns a new [ConsultationNoteDto] instance.
   ConsultationNoteDto({
     this.id,
+    this.patientId,
+    this.doctorId,
     this.title,
     this.dateOfNote,
     this.aim,
@@ -39,6 +41,22 @@ class ConsultationNoteDto {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? id;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? patientId;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? doctorId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -117,6 +135,8 @@ class ConsultationNoteDto {
   @override
   bool operator ==(Object other) => identical(this, other) || other is ConsultationNoteDto &&
      other.id == id &&
+     other.patientId == patientId &&
+     other.doctorId == doctorId &&
      other.title == title &&
      other.dateOfNote == dateOfNote &&
      other.aim == aim &&
@@ -138,6 +158,8 @@ class ConsultationNoteDto {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id == null ? 0 : id!.hashCode) +
+    (patientId == null ? 0 : patientId!.hashCode) +
+    (doctorId == null ? 0 : doctorId!.hashCode) +
     (title == null ? 0 : title!.hashCode) +
     (dateOfNote == null ? 0 : dateOfNote!.hashCode) +
     (aim == null ? 0 : aim!.hashCode) +
@@ -156,7 +178,7 @@ class ConsultationNoteDto {
     (reminderCount == null ? 0 : reminderCount!.hashCode);
 
   @override
-  String toString() => 'ConsultationNoteDto[id=$id, title=$title, dateOfNote=$dateOfNote, aim=$aim, complains=$complains, investigation=$investigation, treatment=$treatment, firstTimeDiagnosed=$firstTimeDiagnosed, returning=$returning, acuteDisease=$acuteDisease, chronicDisease=$chronicDisease, labInvestigationPlan=$labInvestigationPlan, treatmentPlan=$treatmentPlan, prescriptions=$prescriptions, recommendations=$recommendations, diagnose=$diagnose, reminderCount=$reminderCount]';
+  String toString() => 'ConsultationNoteDto[id=$id, patientId=$patientId, doctorId=$doctorId, title=$title, dateOfNote=$dateOfNote, aim=$aim, complains=$complains, investigation=$investigation, treatment=$treatment, firstTimeDiagnosed=$firstTimeDiagnosed, returning=$returning, acuteDisease=$acuteDisease, chronicDisease=$chronicDisease, labInvestigationPlan=$labInvestigationPlan, treatmentPlan=$treatmentPlan, prescriptions=$prescriptions, recommendations=$recommendations, diagnose=$diagnose, reminderCount=$reminderCount]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -164,6 +186,16 @@ class ConsultationNoteDto {
       json[r'id'] = this.id;
     } else {
       json[r'id'] = null;
+    }
+    if (this.patientId != null) {
+      json[r'patientId'] = this.patientId;
+    } else {
+      json[r'patientId'] = null;
+    }
+    if (this.doctorId != null) {
+      json[r'doctorId'] = this.doctorId;
+    } else {
+      json[r'doctorId'] = null;
     }
     if (this.title != null) {
       json[r'title'] = this.title;
@@ -268,6 +300,8 @@ class ConsultationNoteDto {
 
       return ConsultationNoteDto(
         id: mapValueOfType<int>(json, r'id'),
+        patientId: mapValueOfType<int>(json, r'patientId'),
+        doctorId: mapValueOfType<int>(json, r'doctorId'),
         title: mapValueOfType<String>(json, r'title'),
         dateOfNote: mapDateTime(json, r'dateOfNote', ''),
         aim: mapValueOfType<String>(json, r'aim'),
