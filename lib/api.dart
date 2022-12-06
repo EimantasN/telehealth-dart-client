@@ -70,6 +70,7 @@ part 'model/frequency_dto.dart';
 part 'model/get_connections_query.dart';
 part 'model/get_connections_query_all_of.dart';
 part 'model/get_consultation_notes_query.dart';
+part 'model/get_consultation_notes_query_all_of.dart';
 part 'model/get_deleted_query.dart';
 part 'model/get_medications_query.dart';
 part 'model/get_notification_query.dart';

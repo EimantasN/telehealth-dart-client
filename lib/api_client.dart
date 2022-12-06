@@ -241,6 +241,8 @@ class ApiClient {
           return GetConnectionsQueryAllOf.fromJson(value);
         case 'GetConsultationNotesQuery':
           return GetConsultationNotesQuery.fromJson(value);
+        case 'GetConsultationNotesQueryAllOf':
+          return GetConsultationNotesQueryAllOf.fromJson(value);
         case 'GetDeletedQuery':
           return GetDeletedQuery.fromJson(value);
         case 'GetMedicationsQuery':
