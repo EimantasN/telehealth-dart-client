@@ -106,6 +106,7 @@ part 'model/self_note_list_dto.dart';
 part 'model/share_link_cmd.dart';
 part 'model/share_link_response.dart';
 part 'model/submit_self_note_cmd.dart';
+part 'model/toggle_reminder_cmd.dart';
 part 'model/update_connection_cmd.dart';
 part 'model/update_reminder_cmd.dart';
 part 'model/user_info_dto.dart';

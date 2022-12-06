@@ -271,4 +271,51 @@ class RemindersApi {
     }
     return null;
   }
+
+  /// Performs an HTTP 'PATCH /api/Reminders/Toggle' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [ToggleReminderCmd] toggleReminderCmd (required):
+  Future<Response> remindersUpdate2WithHttpInfo(ToggleReminderCmd toggleReminderCmd,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/Reminders/Toggle';
+
+    // ignore: prefer_final_locals
+    Object? postBody = toggleReminderCmd;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'PATCH',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [ToggleReminderCmd] toggleReminderCmd (required):
+  Future<ReminderDto?> remindersUpdate2(ToggleReminderCmd toggleReminderCmd,) async {
+    final response = await remindersUpdate2WithHttpInfo(toggleReminderCmd,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ReminderDto',) as ReminderDto;
+    
+    }
+    return null;
+  }
 }

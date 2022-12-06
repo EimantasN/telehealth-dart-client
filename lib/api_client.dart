@@ -313,6 +313,8 @@ class ApiClient {
           return ShareLinkResponse.fromJson(value);
         case 'SubmitSelfNoteCmd':
           return SubmitSelfNoteCmd.fromJson(value);
+        case 'ToggleReminderCmd':
+          return ToggleReminderCmd.fromJson(value);
         case 'UpdateConnectionCmd':
           return UpdateConnectionCmd.fromJson(value);
         case 'UpdateReminderCmd':
