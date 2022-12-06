@@ -317,6 +317,8 @@ class ApiClient {
           return ToggleReminderCmd.fromJson(value);
         case 'UpdateConnectionCmd':
           return UpdateConnectionCmd.fromJson(value);
+        case 'UpdateConsultationNodeCmd':
+          return UpdateConsultationNodeCmd.fromJson(value);
         case 'UpdateReminderCmd':
           return UpdateReminderCmd.fromJson(value);
         case 'UserInfoDto':

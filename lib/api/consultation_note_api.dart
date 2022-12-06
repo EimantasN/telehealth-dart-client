@@ -225,4 +225,51 @@ class ConsultationNoteApi {
     }
     return null;
   }
+
+  /// Performs an HTTP 'POST /api/ConsultationNote/Update' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [UpdateConsultationNodeCmd] updateConsultationNodeCmd (required):
+  Future<Response> consultationNoteUpdateWithHttpInfo(UpdateConsultationNodeCmd updateConsultationNodeCmd,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/ConsultationNote/Update';
+
+    // ignore: prefer_final_locals
+    Object? postBody = updateConsultationNodeCmd;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [UpdateConsultationNodeCmd] updateConsultationNodeCmd (required):
+  Future<bool?> consultationNoteUpdate(UpdateConsultationNodeCmd updateConsultationNodeCmd,) async {
+    final response = await consultationNoteUpdateWithHttpInfo(updateConsultationNodeCmd,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
+    
+    }
+    return null;
+  }
 }
