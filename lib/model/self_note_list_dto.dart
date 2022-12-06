@@ -16,6 +16,7 @@ class SelfNoteListDto {
     this.id,
     this.title,
     this.place,
+    this.reminderCount,
     this.created,
     this.modified,
   });
@@ -50,6 +51,14 @@ class SelfNoteListDto {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  int? reminderCount;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? created;
 
   ///
@@ -65,6 +74,7 @@ class SelfNoteListDto {
      other.id == id &&
      other.title == title &&
      other.place == place &&
+     other.reminderCount == reminderCount &&
      other.created == created &&
      other.modified == modified;
 
@@ -74,11 +84,12 @@ class SelfNoteListDto {
     (id == null ? 0 : id!.hashCode) +
     (title == null ? 0 : title!.hashCode) +
     (place == null ? 0 : place!.hashCode) +
+    (reminderCount == null ? 0 : reminderCount!.hashCode) +
     (created == null ? 0 : created!.hashCode) +
     (modified == null ? 0 : modified!.hashCode);
 
   @override
-  String toString() => 'SelfNoteListDto[id=$id, title=$title, place=$place, created=$created, modified=$modified]';
+  String toString() => 'SelfNoteListDto[id=$id, title=$title, place=$place, reminderCount=$reminderCount, created=$created, modified=$modified]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -96,6 +107,11 @@ class SelfNoteListDto {
       json[r'place'] = this.place;
     } else {
       json[r'place'] = null;
+    }
+    if (this.reminderCount != null) {
+      json[r'reminderCount'] = this.reminderCount;
+    } else {
+      json[r'reminderCount'] = null;
     }
     if (this.created != null) {
       json[r'created'] = this.created!.toUtc().toIso8601String();
@@ -132,6 +148,7 @@ class SelfNoteListDto {
         id: mapValueOfType<int>(json, r'id'),
         title: mapValueOfType<String>(json, r'title'),
         place: mapValueOfType<String>(json, r'place'),
+        reminderCount: mapValueOfType<int>(json, r'reminderCount'),
         created: mapDateTime(json, r'created', ''),
         modified: mapDateTime(json, r'modified', ''),
       );
