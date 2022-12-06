@@ -20,7 +20,10 @@ class ConsultationNoteListDto {
     this.complains,
     this.investigation,
     this.treatment,
-    this.anamnesis,
+    this.firstTimeDiagnosed,
+    this.returning,
+    this.acuteDisease,
+    this.chronicDisease,
     this.labInvestigationPlan,
     this.treatmentPlan,
     this.prescriptions,
@@ -63,7 +66,37 @@ class ConsultationNoteListDto {
 
   String? treatment;
 
-  String? anamnesis;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? firstTimeDiagnosed;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? returning;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? acuteDisease;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? chronicDisease;
 
   String? labInvestigationPlan;
 
@@ -108,7 +141,10 @@ class ConsultationNoteListDto {
      other.complains == complains &&
      other.investigation == investigation &&
      other.treatment == treatment &&
-     other.anamnesis == anamnesis &&
+     other.firstTimeDiagnosed == firstTimeDiagnosed &&
+     other.returning == returning &&
+     other.acuteDisease == acuteDisease &&
+     other.chronicDisease == chronicDisease &&
      other.labInvestigationPlan == labInvestigationPlan &&
      other.treatmentPlan == treatmentPlan &&
      other.prescriptions == prescriptions &&
@@ -128,7 +164,10 @@ class ConsultationNoteListDto {
     (complains == null ? 0 : complains!.hashCode) +
     (investigation == null ? 0 : investigation!.hashCode) +
     (treatment == null ? 0 : treatment!.hashCode) +
-    (anamnesis == null ? 0 : anamnesis!.hashCode) +
+    (firstTimeDiagnosed == null ? 0 : firstTimeDiagnosed!.hashCode) +
+    (returning == null ? 0 : returning!.hashCode) +
+    (acuteDisease == null ? 0 : acuteDisease!.hashCode) +
+    (chronicDisease == null ? 0 : chronicDisease!.hashCode) +
     (labInvestigationPlan == null ? 0 : labInvestigationPlan!.hashCode) +
     (treatmentPlan == null ? 0 : treatmentPlan!.hashCode) +
     (prescriptions == null ? 0 : prescriptions!.hashCode) +
@@ -139,7 +178,7 @@ class ConsultationNoteListDto {
     (reminderCount == null ? 0 : reminderCount!.hashCode);
 
   @override
-  String toString() => 'ConsultationNoteListDto[id=$id, title=$title, dateOfNote=$dateOfNote, aim=$aim, complains=$complains, investigation=$investigation, treatment=$treatment, anamnesis=$anamnesis, labInvestigationPlan=$labInvestigationPlan, treatmentPlan=$treatmentPlan, prescriptions=$prescriptions, recommendations=$recommendations, diagnose=$diagnose, created=$created, modified=$modified, reminderCount=$reminderCount]';
+  String toString() => 'ConsultationNoteListDto[id=$id, title=$title, dateOfNote=$dateOfNote, aim=$aim, complains=$complains, investigation=$investigation, treatment=$treatment, firstTimeDiagnosed=$firstTimeDiagnosed, returning=$returning, acuteDisease=$acuteDisease, chronicDisease=$chronicDisease, labInvestigationPlan=$labInvestigationPlan, treatmentPlan=$treatmentPlan, prescriptions=$prescriptions, recommendations=$recommendations, diagnose=$diagnose, created=$created, modified=$modified, reminderCount=$reminderCount]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -178,10 +217,25 @@ class ConsultationNoteListDto {
     } else {
       json[r'treatment'] = null;
     }
-    if (this.anamnesis != null) {
-      json[r'anamnesis'] = this.anamnesis;
+    if (this.firstTimeDiagnosed != null) {
+      json[r'firstTimeDiagnosed'] = this.firstTimeDiagnosed;
     } else {
-      json[r'anamnesis'] = null;
+      json[r'firstTimeDiagnosed'] = null;
+    }
+    if (this.returning != null) {
+      json[r'returning'] = this.returning;
+    } else {
+      json[r'returning'] = null;
+    }
+    if (this.acuteDisease != null) {
+      json[r'acuteDisease'] = this.acuteDisease;
+    } else {
+      json[r'acuteDisease'] = null;
+    }
+    if (this.chronicDisease != null) {
+      json[r'chronicDisease'] = this.chronicDisease;
+    } else {
+      json[r'chronicDisease'] = null;
     }
     if (this.labInvestigationPlan != null) {
       json[r'labInvestigationPlan'] = this.labInvestigationPlan;
@@ -252,7 +306,10 @@ class ConsultationNoteListDto {
         complains: mapValueOfType<String>(json, r'complains'),
         investigation: mapValueOfType<String>(json, r'investigation'),
         treatment: mapValueOfType<String>(json, r'treatment'),
-        anamnesis: mapValueOfType<String>(json, r'anamnesis'),
+        firstTimeDiagnosed: mapValueOfType<bool>(json, r'firstTimeDiagnosed'),
+        returning: mapValueOfType<bool>(json, r'returning'),
+        acuteDisease: mapValueOfType<bool>(json, r'acuteDisease'),
+        chronicDisease: mapValueOfType<bool>(json, r'chronicDisease'),
         labInvestigationPlan: mapValueOfType<String>(json, r'labInvestigationPlan'),
         treatmentPlan: mapValueOfType<String>(json, r'treatmentPlan'),
         prescriptions: mapValueOfType<String>(json, r'prescriptions'),
