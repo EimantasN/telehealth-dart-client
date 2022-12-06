@@ -10,9 +10,10 @@
 
 part of openapi.api;
 
-class CreateMedicationCmd {
-  /// Returns a new [CreateMedicationCmd] instance.
-  CreateMedicationCmd({
+class UpdateMedicationCmd {
+  /// Returns a new [UpdateMedicationCmd] instance.
+  UpdateMedicationCmd({
+    this.id,
     this.title,
     this.start,
     this.end,
@@ -25,6 +26,14 @@ class CreateMedicationCmd {
     this.notice,
     this.frequencies = const [],
   });
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? id;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -61,7 +70,8 @@ class CreateMedicationCmd {
   List<FrequencyDto> frequencies;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is CreateMedicationCmd &&
+  bool operator ==(Object other) => identical(this, other) || other is UpdateMedicationCmd &&
+     other.id == id &&
      other.title == title &&
      other.start == start &&
      other.end == end &&
@@ -77,6 +87,7 @@ class CreateMedicationCmd {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (id == null ? 0 : id!.hashCode) +
     (title == null ? 0 : title!.hashCode) +
     (start == null ? 0 : start!.hashCode) +
     (end == null ? 0 : end!.hashCode) +
@@ -90,10 +101,15 @@ class CreateMedicationCmd {
     (frequencies.hashCode);
 
   @override
-  String toString() => 'CreateMedicationCmd[title=$title, start=$start, end=$end, condition=$condition, provider=$provider, activeCompounds=$activeCompounds, manufacture=$manufacture, numberInBox=$numberInBox, recomendation=$recomendation, notice=$notice, frequencies=$frequencies]';
+  String toString() => 'UpdateMedicationCmd[id=$id, title=$title, start=$start, end=$end, condition=$condition, provider=$provider, activeCompounds=$activeCompounds, manufacture=$manufacture, numberInBox=$numberInBox, recomendation=$recomendation, notice=$notice, frequencies=$frequencies]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.id != null) {
+      json[r'id'] = this.id;
+    } else {
+      json[r'id'] = null;
+    }
     if (this.title != null) {
       json[r'title'] = this.title;
     } else {
@@ -148,10 +164,10 @@ class CreateMedicationCmd {
     return json;
   }
 
-  /// Returns a new [CreateMedicationCmd] instance and imports its values from
+  /// Returns a new [UpdateMedicationCmd] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static CreateMedicationCmd? fromJson(dynamic value) {
+  static UpdateMedicationCmd? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -160,13 +176,14 @@ class CreateMedicationCmd {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CreateMedicationCmd[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CreateMedicationCmd[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "UpdateMedicationCmd[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "UpdateMedicationCmd[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return CreateMedicationCmd(
+      return UpdateMedicationCmd(
+        id: mapValueOfType<int>(json, r'id'),
         title: mapValueOfType<String>(json, r'title'),
         start: mapDateTime(json, r'start', ''),
         end: mapDateTime(json, r'end', ''),
@@ -183,11 +200,11 @@ class CreateMedicationCmd {
     return null;
   }
 
-  static List<CreateMedicationCmd>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <CreateMedicationCmd>[];
+  static List<UpdateMedicationCmd>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <UpdateMedicationCmd>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = CreateMedicationCmd.fromJson(row);
+        final value = UpdateMedicationCmd.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -196,12 +213,12 @@ class CreateMedicationCmd {
     return result.toList(growable: growable);
   }
 
-  static Map<String, CreateMedicationCmd> mapFromJson(dynamic json) {
-    final map = <String, CreateMedicationCmd>{};
+  static Map<String, UpdateMedicationCmd> mapFromJson(dynamic json) {
+    final map = <String, UpdateMedicationCmd>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = CreateMedicationCmd.fromJson(entry.value);
+        final value = UpdateMedicationCmd.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -210,13 +227,13 @@ class CreateMedicationCmd {
     return map;
   }
 
-  // maps a json object with a list of CreateMedicationCmd-objects as value to a dart map
-  static Map<String, List<CreateMedicationCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<CreateMedicationCmd>>{};
+  // maps a json object with a list of UpdateMedicationCmd-objects as value to a dart map
+  static Map<String, List<UpdateMedicationCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<UpdateMedicationCmd>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = CreateMedicationCmd.listFromJson(entry.value, growable: growable,);
+        final value = UpdateMedicationCmd.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }

@@ -110,6 +110,7 @@ part 'model/submit_self_note_cmd.dart';
 part 'model/toggle_reminder_cmd.dart';
 part 'model/update_connection_cmd.dart';
 part 'model/update_consultation_node_cmd.dart';
+part 'model/update_medication_cmd.dart';
 part 'model/update_reminder_cmd.dart';
 part 'model/user_info_dto.dart';
 

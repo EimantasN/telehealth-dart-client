@@ -321,6 +321,8 @@ class ApiClient {
           return UpdateConnectionCmd.fromJson(value);
         case 'UpdateConsultationNodeCmd':
           return UpdateConsultationNodeCmd.fromJson(value);
+        case 'UpdateMedicationCmd':
+          return UpdateMedicationCmd.fromJson(value);
         case 'UpdateReminderCmd':
           return UpdateReminderCmd.fromJson(value);
         case 'UserInfoDto':
