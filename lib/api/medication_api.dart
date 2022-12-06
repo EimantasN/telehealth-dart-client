@@ -128,11 +128,58 @@ class MedicationApi {
     return null;
   }
 
+  /// Performs an HTTP 'POST /api/Medication/Export' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [Object] body (required):
+  Future<Response> medicationExportWithHttpInfo(Object body,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/Medication/Export';
+
+    // ignore: prefer_final_locals
+    Object? postBody = body;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [Object] body (required):
+  Future<bool?> medicationExport(Object body,) async {
+    final response = await medicationExportWithHttpInfo(body,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
+    
+    }
+    return null;
+  }
+
   /// Performs an HTTP 'GET /api/Medication/Get' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [int] id:
-  Future<Response> medicationExportGETWithHttpInfo({ int? id, }) async {
+  Future<Response> medicationGetWithHttpInfo({ int? id, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/Medication/Get';
 
@@ -164,8 +211,8 @@ class MedicationApi {
   /// Parameters:
   ///
   /// * [int] id:
-  Future<MedicationDto?> medicationExportGET({ int? id, }) async {
-    final response = await medicationExportGETWithHttpInfo( id: id, );
+  Future<MedicationDto?> medicationGet({ int? id, }) async {
+    final response = await medicationGetWithHttpInfo( id: id, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -174,53 +221,6 @@ class MedicationApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MedicationDto',) as MedicationDto;
-    
-    }
-    return null;
-  }
-
-  /// Performs an HTTP 'POST /api/Medication/Export' operation and returns the [Response].
-  /// Parameters:
-  ///
-  /// * [Object] body (required):
-  Future<Response> medicationExportPOSTWithHttpInfo(Object body,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/api/Medication/Export';
-
-    // ignore: prefer_final_locals
-    Object? postBody = body;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Parameters:
-  ///
-  /// * [Object] body (required):
-  Future<bool?> medicationExportPOST(Object body,) async {
-    final response = await medicationExportPOSTWithHttpInfo(body,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
     
     }
     return null;
