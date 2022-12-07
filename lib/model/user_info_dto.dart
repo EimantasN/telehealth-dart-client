@@ -13,8 +13,40 @@ part of openapi.api;
 class UserInfoDto {
   /// Returns a new [UserInfoDto] instance.
   UserInfoDto({
-    this.id,
+    this.email,
+    this.firstName,
+    this.lastName,
+    this.phoneNumber,
+    this.gender,
+    this.street,
+    this.postcode,
+    this.city,
+    this.country,
+    this.doctor,
+    this.height,
+    this.specialization,
+    this.imageBase64,
+    this.dateOfBirth,
+    this.lastLoginTime,
   });
+
+  String? email;
+
+  String? firstName;
+
+  String? lastName;
+
+  String? phoneNumber;
+
+  String? gender;
+
+  String? street;
+
+  String? postcode;
+
+  String? city;
+
+  String? country;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -22,26 +54,140 @@ class UserInfoDto {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? id;
+  bool? doctor;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? height;
+
+  String? specialization;
+
+  String? imageBase64;
+
+  DateTime? dateOfBirth;
+
+  DateTime? lastLoginTime;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserInfoDto &&
-     other.id == id;
+     other.email == email &&
+     other.firstName == firstName &&
+     other.lastName == lastName &&
+     other.phoneNumber == phoneNumber &&
+     other.gender == gender &&
+     other.street == street &&
+     other.postcode == postcode &&
+     other.city == city &&
+     other.country == country &&
+     other.doctor == doctor &&
+     other.height == height &&
+     other.specialization == specialization &&
+     other.imageBase64 == imageBase64 &&
+     other.dateOfBirth == dateOfBirth &&
+     other.lastLoginTime == lastLoginTime;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode);
+    (email == null ? 0 : email!.hashCode) +
+    (firstName == null ? 0 : firstName!.hashCode) +
+    (lastName == null ? 0 : lastName!.hashCode) +
+    (phoneNumber == null ? 0 : phoneNumber!.hashCode) +
+    (gender == null ? 0 : gender!.hashCode) +
+    (street == null ? 0 : street!.hashCode) +
+    (postcode == null ? 0 : postcode!.hashCode) +
+    (city == null ? 0 : city!.hashCode) +
+    (country == null ? 0 : country!.hashCode) +
+    (doctor == null ? 0 : doctor!.hashCode) +
+    (height == null ? 0 : height!.hashCode) +
+    (specialization == null ? 0 : specialization!.hashCode) +
+    (imageBase64 == null ? 0 : imageBase64!.hashCode) +
+    (dateOfBirth == null ? 0 : dateOfBirth!.hashCode) +
+    (lastLoginTime == null ? 0 : lastLoginTime!.hashCode);
 
   @override
-  String toString() => 'UserInfoDto[id=$id]';
+  String toString() => 'UserInfoDto[email=$email, firstName=$firstName, lastName=$lastName, phoneNumber=$phoneNumber, gender=$gender, street=$street, postcode=$postcode, city=$city, country=$country, doctor=$doctor, height=$height, specialization=$specialization, imageBase64=$imageBase64, dateOfBirth=$dateOfBirth, lastLoginTime=$lastLoginTime]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
-      json[r'id'] = this.id;
+    if (this.email != null) {
+      json[r'email'] = this.email;
     } else {
-      json[r'id'] = null;
+      json[r'email'] = null;
+    }
+    if (this.firstName != null) {
+      json[r'firstName'] = this.firstName;
+    } else {
+      json[r'firstName'] = null;
+    }
+    if (this.lastName != null) {
+      json[r'lastName'] = this.lastName;
+    } else {
+      json[r'lastName'] = null;
+    }
+    if (this.phoneNumber != null) {
+      json[r'phoneNumber'] = this.phoneNumber;
+    } else {
+      json[r'phoneNumber'] = null;
+    }
+    if (this.gender != null) {
+      json[r'gender'] = this.gender;
+    } else {
+      json[r'gender'] = null;
+    }
+    if (this.street != null) {
+      json[r'street'] = this.street;
+    } else {
+      json[r'street'] = null;
+    }
+    if (this.postcode != null) {
+      json[r'postcode'] = this.postcode;
+    } else {
+      json[r'postcode'] = null;
+    }
+    if (this.city != null) {
+      json[r'city'] = this.city;
+    } else {
+      json[r'city'] = null;
+    }
+    if (this.country != null) {
+      json[r'country'] = this.country;
+    } else {
+      json[r'country'] = null;
+    }
+    if (this.doctor != null) {
+      json[r'doctor'] = this.doctor;
+    } else {
+      json[r'doctor'] = null;
+    }
+    if (this.height != null) {
+      json[r'height'] = this.height;
+    } else {
+      json[r'height'] = null;
+    }
+    if (this.specialization != null) {
+      json[r'specialization'] = this.specialization;
+    } else {
+      json[r'specialization'] = null;
+    }
+    if (this.imageBase64 != null) {
+      json[r'imageBase64'] = this.imageBase64;
+    } else {
+      json[r'imageBase64'] = null;
+    }
+    if (this.dateOfBirth != null) {
+      json[r'dateOfBirth'] = this.dateOfBirth!.toUtc().toIso8601String();
+    } else {
+      json[r'dateOfBirth'] = null;
+    }
+    if (this.lastLoginTime != null) {
+      json[r'lastLoginTime'] = this.lastLoginTime!.toUtc().toIso8601String();
+    } else {
+      json[r'lastLoginTime'] = null;
     }
     return json;
   }
@@ -65,7 +211,21 @@ class UserInfoDto {
       }());
 
       return UserInfoDto(
-        id: mapValueOfType<int>(json, r'id'),
+        email: mapValueOfType<String>(json, r'email'),
+        firstName: mapValueOfType<String>(json, r'firstName'),
+        lastName: mapValueOfType<String>(json, r'lastName'),
+        phoneNumber: mapValueOfType<String>(json, r'phoneNumber'),
+        gender: mapValueOfType<String>(json, r'gender'),
+        street: mapValueOfType<String>(json, r'street'),
+        postcode: mapValueOfType<String>(json, r'postcode'),
+        city: mapValueOfType<String>(json, r'city'),
+        country: mapValueOfType<String>(json, r'country'),
+        doctor: mapValueOfType<bool>(json, r'doctor'),
+        height: mapValueOfType<int>(json, r'height'),
+        specialization: mapValueOfType<String>(json, r'specialization'),
+        imageBase64: mapValueOfType<String>(json, r'imageBase64'),
+        dateOfBirth: mapDateTime(json, r'dateOfBirth', ''),
+        lastLoginTime: mapDateTime(json, r'lastLoginTime', ''),
       );
     }
     return null;
