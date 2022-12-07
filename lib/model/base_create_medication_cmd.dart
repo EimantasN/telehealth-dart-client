@@ -10,10 +10,9 @@
 
 part of openapi.api;
 
-class MedicationDto {
-  /// Returns a new [MedicationDto] instance.
-  MedicationDto({
-    this.id,
+class BaseCreateMedicationCmd {
+  /// Returns a new [BaseCreateMedicationCmd] instance.
+  BaseCreateMedicationCmd({
     this.title,
     this.start,
     this.end,
@@ -33,7 +32,7 @@ class MedicationDto {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? id;
+  String? title;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -41,8 +40,6 @@ class MedicationDto {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? title;
-
   DateTime? start;
 
   DateTime? end;
@@ -64,8 +61,7 @@ class MedicationDto {
   List<FrequencyDto> frequencies;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is MedicationDto &&
-     other.id == id &&
+  bool operator ==(Object other) => identical(this, other) || other is BaseCreateMedicationCmd &&
      other.title == title &&
      other.start == start &&
      other.end == end &&
@@ -81,7 +77,6 @@ class MedicationDto {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
     (title == null ? 0 : title!.hashCode) +
     (start == null ? 0 : start!.hashCode) +
     (end == null ? 0 : end!.hashCode) +
@@ -95,15 +90,10 @@ class MedicationDto {
     (frequencies.hashCode);
 
   @override
-  String toString() => 'MedicationDto[id=$id, title=$title, start=$start, end=$end, condition=$condition, provider=$provider, activeCompounds=$activeCompounds, manufacture=$manufacture, numberInBox=$numberInBox, recommendation=$recommendation, notice=$notice, frequencies=$frequencies]';
+  String toString() => 'BaseCreateMedicationCmd[title=$title, start=$start, end=$end, condition=$condition, provider=$provider, activeCompounds=$activeCompounds, manufacture=$manufacture, numberInBox=$numberInBox, recommendation=$recommendation, notice=$notice, frequencies=$frequencies]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
-      json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
     if (this.title != null) {
       json[r'title'] = this.title;
     } else {
@@ -158,10 +148,10 @@ class MedicationDto {
     return json;
   }
 
-  /// Returns a new [MedicationDto] instance and imports its values from
+  /// Returns a new [BaseCreateMedicationCmd] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static MedicationDto? fromJson(dynamic value) {
+  static BaseCreateMedicationCmd? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -170,14 +160,13 @@ class MedicationDto {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "MedicationDto[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "MedicationDto[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "BaseCreateMedicationCmd[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "BaseCreateMedicationCmd[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return MedicationDto(
-        id: mapValueOfType<int>(json, r'id'),
+      return BaseCreateMedicationCmd(
         title: mapValueOfType<String>(json, r'title'),
         start: mapDateTime(json, r'start', ''),
         end: mapDateTime(json, r'end', ''),
@@ -194,11 +183,11 @@ class MedicationDto {
     return null;
   }
 
-  static List<MedicationDto>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <MedicationDto>[];
+  static List<BaseCreateMedicationCmd>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <BaseCreateMedicationCmd>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = MedicationDto.fromJson(row);
+        final value = BaseCreateMedicationCmd.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -207,12 +196,12 @@ class MedicationDto {
     return result.toList(growable: growable);
   }
 
-  static Map<String, MedicationDto> mapFromJson(dynamic json) {
-    final map = <String, MedicationDto>{};
+  static Map<String, BaseCreateMedicationCmd> mapFromJson(dynamic json) {
+    final map = <String, BaseCreateMedicationCmd>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = MedicationDto.fromJson(entry.value);
+        final value = BaseCreateMedicationCmd.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -221,13 +210,13 @@ class MedicationDto {
     return map;
   }
 
-  // maps a json object with a list of MedicationDto-objects as value to a dart map
-  static Map<String, List<MedicationDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<MedicationDto>>{};
+  // maps a json object with a list of BaseCreateMedicationCmd-objects as value to a dart map
+  static Map<String, List<BaseCreateMedicationCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<BaseCreateMedicationCmd>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = MedicationDto.listFromJson(entry.value, growable: growable,);
+        final value = BaseCreateMedicationCmd.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }

@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class MedicationDto {
-  /// Returns a new [MedicationDto] instance.
-  MedicationDto({
+class PrescriptionDto {
+  /// Returns a new [PrescriptionDto] instance.
+  PrescriptionDto({
     this.id,
     this.title,
     this.start,
@@ -64,7 +64,7 @@ class MedicationDto {
   List<FrequencyDto> frequencies;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is MedicationDto &&
+  bool operator ==(Object other) => identical(this, other) || other is PrescriptionDto &&
      other.id == id &&
      other.title == title &&
      other.start == start &&
@@ -95,7 +95,7 @@ class MedicationDto {
     (frequencies.hashCode);
 
   @override
-  String toString() => 'MedicationDto[id=$id, title=$title, start=$start, end=$end, condition=$condition, provider=$provider, activeCompounds=$activeCompounds, manufacture=$manufacture, numberInBox=$numberInBox, recommendation=$recommendation, notice=$notice, frequencies=$frequencies]';
+  String toString() => 'PrescriptionDto[id=$id, title=$title, start=$start, end=$end, condition=$condition, provider=$provider, activeCompounds=$activeCompounds, manufacture=$manufacture, numberInBox=$numberInBox, recommendation=$recommendation, notice=$notice, frequencies=$frequencies]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -158,10 +158,10 @@ class MedicationDto {
     return json;
   }
 
-  /// Returns a new [MedicationDto] instance and imports its values from
+  /// Returns a new [PrescriptionDto] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static MedicationDto? fromJson(dynamic value) {
+  static PrescriptionDto? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -170,13 +170,13 @@ class MedicationDto {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "MedicationDto[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "MedicationDto[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "PrescriptionDto[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "PrescriptionDto[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return MedicationDto(
+      return PrescriptionDto(
         id: mapValueOfType<int>(json, r'id'),
         title: mapValueOfType<String>(json, r'title'),
         start: mapDateTime(json, r'start', ''),
@@ -194,11 +194,11 @@ class MedicationDto {
     return null;
   }
 
-  static List<MedicationDto>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <MedicationDto>[];
+  static List<PrescriptionDto>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PrescriptionDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = MedicationDto.fromJson(row);
+        final value = PrescriptionDto.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -207,12 +207,12 @@ class MedicationDto {
     return result.toList(growable: growable);
   }
 
-  static Map<String, MedicationDto> mapFromJson(dynamic json) {
-    final map = <String, MedicationDto>{};
+  static Map<String, PrescriptionDto> mapFromJson(dynamic json) {
+    final map = <String, PrescriptionDto>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = MedicationDto.fromJson(entry.value);
+        final value = PrescriptionDto.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -221,13 +221,13 @@ class MedicationDto {
     return map;
   }
 
-  // maps a json object with a list of MedicationDto-objects as value to a dart map
-  static Map<String, List<MedicationDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<MedicationDto>>{};
+  // maps a json object with a list of PrescriptionDto-objects as value to a dart map
+  static Map<String, List<PrescriptionDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<PrescriptionDto>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = MedicationDto.listFromJson(entry.value, growable: growable,);
+        final value = PrescriptionDto.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }

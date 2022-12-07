@@ -185,6 +185,8 @@ class ApiClient {
           return AnswerDto.fromJson(value);
         case 'AnswerSubmitDto':
           return AnswerSubmitDto.fromJson(value);
+        case 'BaseCreateMedicationCmd':
+          return BaseCreateMedicationCmd.fromJson(value);
         case 'BatchCmd':
           return BatchCmd.fromJson(value);
         case 'ConnectIonStateUpdateCmd':
@@ -207,6 +209,10 @@ class ApiClient {
           return CreateFolderCmd.fromJson(value);
         case 'CreateMedicationCmd':
           return CreateMedicationCmd.fromJson(value);
+        case 'CreatePrescriptionCmd':
+          return CreatePrescriptionCmd.fromJson(value);
+        case 'CreatePrescriptionCmdAllOf':
+          return CreatePrescriptionCmdAllOf.fromJson(value);
         case 'CreateReminderCmd':
           return CreateReminderCmd.fromJson(value);
         case 'DeletedDto':
@@ -227,6 +233,8 @@ class ApiClient {
           return DynamicQueryOfPaginatedListOfMedicationListDto.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfNotificationDto':
           return DynamicQueryOfPaginatedListOfNotificationDto.fromJson(value);
+        case 'DynamicQueryOfPaginatedListOfPrescriptionOwnerDto':
+          return DynamicQueryOfPaginatedListOfPrescriptionOwnerDto.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfReminderDto':
           return DynamicQueryOfPaginatedListOfReminderDto.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfSelfNoteListDto':
@@ -247,8 +255,6 @@ class ApiClient {
           return GetConnectionsQueryAllOf.fromJson(value);
         case 'GetConsultationNotesQuery':
           return GetConsultationNotesQuery.fromJson(value);
-        case 'GetConsultationNotesQueryAllOf':
-          return GetConsultationNotesQueryAllOf.fromJson(value);
         case 'GetDeletedQuery':
           return GetDeletedQuery.fromJson(value);
         case 'GetInfoQuery':
@@ -257,6 +263,8 @@ class ApiClient {
           return GetMedicationsQuery.fromJson(value);
         case 'GetNotificationQuery':
           return GetNotificationQuery.fromJson(value);
+        case 'GetPrescriptionsQuery':
+          return GetPrescriptionsQuery.fromJson(value);
         case 'GetReminderReviewQuery':
           return GetReminderReviewQuery.fromJson(value);
         case 'GetRemindersQuery':
@@ -287,6 +295,8 @@ class ApiClient {
           return PaginatedListOfMedicationListDto.fromJson(value);
         case 'PaginatedListOfNotificationDto':
           return PaginatedListOfNotificationDto.fromJson(value);
+        case 'PaginatedListOfPrescriptionOwnerDto':
+          return PaginatedListOfPrescriptionOwnerDto.fromJson(value);
         case 'PaginatedListOfReminderDto':
           return PaginatedListOfReminderDto.fromJson(value);
         case 'PaginatedListOfSelfNoteListDto':
@@ -299,6 +309,10 @@ class ApiClient {
           return PatientSearchQuery.fromJson(value);
         case 'PermissionDto':
           return PermissionDto.fromJson(value);
+        case 'PrescriptionDto':
+          return PrescriptionDto.fromJson(value);
+        case 'PrescriptionOwnerDto':
+          return PrescriptionOwnerDto.fromJson(value);
         case 'ProviderDto':
           return ProviderDto.fromJson(value);
         case 'Question':
@@ -339,6 +353,8 @@ class ApiClient {
           return UpdateInfoCmd.fromJson(value);
         case 'UpdateMedicationCmd':
           return UpdateMedicationCmd.fromJson(value);
+        case 'UpdatePrescriptionCmd':
+          return UpdatePrescriptionCmd.fromJson(value);
         case 'UpdateReminderCmd':
           return UpdateReminderCmd.fromJson(value);
         case 'UserInfoDto':

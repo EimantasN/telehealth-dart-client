@@ -18,7 +18,6 @@ class GetConsultationNotesQuery {
     this.order,
     this.pageNumber,
     this.pageSize,
-    this.isPatient,
   });
 
   List<FilterModel> filters;
@@ -49,22 +48,13 @@ class GetConsultationNotesQuery {
   ///
   int? pageSize;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? isPatient;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is GetConsultationNotesQuery &&
      other.filters == filters &&
      other.orderBy == orderBy &&
      other.order == order &&
      other.pageNumber == pageNumber &&
-     other.pageSize == pageSize &&
-     other.isPatient == isPatient;
+     other.pageSize == pageSize;
 
   @override
   int get hashCode =>
@@ -73,11 +63,10 @@ class GetConsultationNotesQuery {
     (orderBy.hashCode) +
     (order == null ? 0 : order!.hashCode) +
     (pageNumber == null ? 0 : pageNumber!.hashCode) +
-    (pageSize == null ? 0 : pageSize!.hashCode) +
-    (isPatient == null ? 0 : isPatient!.hashCode);
+    (pageSize == null ? 0 : pageSize!.hashCode);
 
   @override
-  String toString() => 'GetConsultationNotesQuery[filters=$filters, orderBy=$orderBy, order=$order, pageNumber=$pageNumber, pageSize=$pageSize, isPatient=$isPatient]';
+  String toString() => 'GetConsultationNotesQuery[filters=$filters, orderBy=$orderBy, order=$order, pageNumber=$pageNumber, pageSize=$pageSize]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -97,11 +86,6 @@ class GetConsultationNotesQuery {
       json[r'pageSize'] = this.pageSize;
     } else {
       json[r'pageSize'] = null;
-    }
-    if (this.isPatient != null) {
-      json[r'isPatient'] = this.isPatient;
-    } else {
-      json[r'isPatient'] = null;
     }
     return json;
   }
@@ -130,7 +114,6 @@ class GetConsultationNotesQuery {
         order: mapValueOfType<String>(json, r'order'),
         pageNumber: mapValueOfType<int>(json, r'pageNumber'),
         pageSize: mapValueOfType<int>(json, r'pageSize'),
-        isPatient: mapValueOfType<bool>(json, r'isPatient'),
       );
     }
     return null;
