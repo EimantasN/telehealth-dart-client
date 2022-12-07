@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class DynamicQueryOfPaginatedListOfConsultationNoteListDto {
-  /// Returns a new [DynamicQueryOfPaginatedListOfConsultationNoteListDto] instance.
-  DynamicQueryOfPaginatedListOfConsultationNoteListDto({
+class DynamicQueryOfPaginatedListOfConsultationNoteOwnerListDto {
+  /// Returns a new [DynamicQueryOfPaginatedListOfConsultationNoteOwnerListDto] instance.
+  DynamicQueryOfPaginatedListOfConsultationNoteOwnerListDto({
     this.filters = const [],
     this.orderBy = const [],
     this.order,
@@ -31,7 +31,7 @@ class DynamicQueryOfPaginatedListOfConsultationNoteListDto {
   String? order;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is DynamicQueryOfPaginatedListOfConsultationNoteListDto &&
+  bool operator ==(Object other) => identical(this, other) || other is DynamicQueryOfPaginatedListOfConsultationNoteOwnerListDto &&
      other.filters == filters &&
      other.orderBy == orderBy &&
      other.order == order;
@@ -44,7 +44,7 @@ class DynamicQueryOfPaginatedListOfConsultationNoteListDto {
     (order == null ? 0 : order!.hashCode);
 
   @override
-  String toString() => 'DynamicQueryOfPaginatedListOfConsultationNoteListDto[filters=$filters, orderBy=$orderBy, order=$order]';
+  String toString() => 'DynamicQueryOfPaginatedListOfConsultationNoteOwnerListDto[filters=$filters, orderBy=$orderBy, order=$order]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -58,10 +58,10 @@ class DynamicQueryOfPaginatedListOfConsultationNoteListDto {
     return json;
   }
 
-  /// Returns a new [DynamicQueryOfPaginatedListOfConsultationNoteListDto] instance and imports its values from
+  /// Returns a new [DynamicQueryOfPaginatedListOfConsultationNoteOwnerListDto] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static DynamicQueryOfPaginatedListOfConsultationNoteListDto? fromJson(dynamic value) {
+  static DynamicQueryOfPaginatedListOfConsultationNoteOwnerListDto? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -70,13 +70,13 @@ class DynamicQueryOfPaginatedListOfConsultationNoteListDto {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "DynamicQueryOfPaginatedListOfConsultationNoteListDto[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "DynamicQueryOfPaginatedListOfConsultationNoteListDto[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "DynamicQueryOfPaginatedListOfConsultationNoteOwnerListDto[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "DynamicQueryOfPaginatedListOfConsultationNoteOwnerListDto[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return DynamicQueryOfPaginatedListOfConsultationNoteListDto(
+      return DynamicQueryOfPaginatedListOfConsultationNoteOwnerListDto(
         filters: FilterModel.listFromJson(json[r'filters']) ?? const [],
         orderBy: OrderModel.listFromJson(json[r'orderBy']) ?? const [],
         order: mapValueOfType<String>(json, r'order'),
@@ -85,11 +85,11 @@ class DynamicQueryOfPaginatedListOfConsultationNoteListDto {
     return null;
   }
 
-  static List<DynamicQueryOfPaginatedListOfConsultationNoteListDto>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <DynamicQueryOfPaginatedListOfConsultationNoteListDto>[];
+  static List<DynamicQueryOfPaginatedListOfConsultationNoteOwnerListDto>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <DynamicQueryOfPaginatedListOfConsultationNoteOwnerListDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = DynamicQueryOfPaginatedListOfConsultationNoteListDto.fromJson(row);
+        final value = DynamicQueryOfPaginatedListOfConsultationNoteOwnerListDto.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -98,12 +98,12 @@ class DynamicQueryOfPaginatedListOfConsultationNoteListDto {
     return result.toList(growable: growable);
   }
 
-  static Map<String, DynamicQueryOfPaginatedListOfConsultationNoteListDto> mapFromJson(dynamic json) {
-    final map = <String, DynamicQueryOfPaginatedListOfConsultationNoteListDto>{};
+  static Map<String, DynamicQueryOfPaginatedListOfConsultationNoteOwnerListDto> mapFromJson(dynamic json) {
+    final map = <String, DynamicQueryOfPaginatedListOfConsultationNoteOwnerListDto>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = DynamicQueryOfPaginatedListOfConsultationNoteListDto.fromJson(entry.value);
+        final value = DynamicQueryOfPaginatedListOfConsultationNoteOwnerListDto.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -112,13 +112,13 @@ class DynamicQueryOfPaginatedListOfConsultationNoteListDto {
     return map;
   }
 
-  // maps a json object with a list of DynamicQueryOfPaginatedListOfConsultationNoteListDto-objects as value to a dart map
-  static Map<String, List<DynamicQueryOfPaginatedListOfConsultationNoteListDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<DynamicQueryOfPaginatedListOfConsultationNoteListDto>>{};
+  // maps a json object with a list of DynamicQueryOfPaginatedListOfConsultationNoteOwnerListDto-objects as value to a dart map
+  static Map<String, List<DynamicQueryOfPaginatedListOfConsultationNoteOwnerListDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<DynamicQueryOfPaginatedListOfConsultationNoteOwnerListDto>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = DynamicQueryOfPaginatedListOfConsultationNoteListDto.listFromJson(entry.value, growable: growable,);
+        final value = DynamicQueryOfPaginatedListOfConsultationNoteOwnerListDto.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }

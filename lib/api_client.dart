@@ -195,8 +195,10 @@ class ApiClient {
           return ConnectionListItemDto.fromJson(value);
         case 'ConsultationNoteDto':
           return ConsultationNoteDto.fromJson(value);
-        case 'ConsultationNoteListDto':
-          return ConsultationNoteListDto.fromJson(value);
+        case 'ConsultationNoteOwnerDto':
+          return ConsultationNoteOwnerDto.fromJson(value);
+        case 'ConsultationNoteOwnerListDto':
+          return ConsultationNoteOwnerListDto.fromJson(value);
         case 'CreateConnectionCmd':
           return CreateConnectionCmd.fromJson(value);
         case 'CreateConsultationNodeCmd':
@@ -217,8 +219,8 @@ class ApiClient {
           return DoctorSearchQuery.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfConnectionListItemDto':
           return DynamicQueryOfPaginatedListOfConnectionListItemDto.fromJson(value);
-        case 'DynamicQueryOfPaginatedListOfConsultationNoteListDto':
-          return DynamicQueryOfPaginatedListOfConsultationNoteListDto.fromJson(value);
+        case 'DynamicQueryOfPaginatedListOfConsultationNoteOwnerListDto':
+          return DynamicQueryOfPaginatedListOfConsultationNoteOwnerListDto.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfDeletedDto':
           return DynamicQueryOfPaginatedListOfDeletedDto.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfMedicationListDto':
@@ -277,8 +279,8 @@ class ApiClient {
           return OrderModel.fromJson(value);
         case 'PaginatedListOfConnectionListItemDto':
           return PaginatedListOfConnectionListItemDto.fromJson(value);
-        case 'PaginatedListOfConsultationNoteListDto':
-          return PaginatedListOfConsultationNoteListDto.fromJson(value);
+        case 'PaginatedListOfConsultationNoteOwnerListDto':
+          return PaginatedListOfConsultationNoteOwnerListDto.fromJson(value);
         case 'PaginatedListOfDeletedDto':
           return PaginatedListOfDeletedDto.fromJson(value);
         case 'PaginatedListOfMedicationListDto':

@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class PaginatedListOfConsultationNoteListDto {
-  /// Returns a new [PaginatedListOfConsultationNoteListDto] instance.
-  PaginatedListOfConsultationNoteListDto({
+class PaginatedListOfConsultationNoteOwnerListDto {
+  /// Returns a new [PaginatedListOfConsultationNoteOwnerListDto] instance.
+  PaginatedListOfConsultationNoteOwnerListDto({
     this.items = const [],
     this.pageNumber,
     this.totalPages,
@@ -21,7 +21,7 @@ class PaginatedListOfConsultationNoteListDto {
     this.hasNextPage,
   });
 
-  List<ConsultationNoteListDto> items;
+  List<ConsultationNoteOwnerListDto> items;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -64,7 +64,7 @@ class PaginatedListOfConsultationNoteListDto {
   bool? hasNextPage;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PaginatedListOfConsultationNoteListDto &&
+  bool operator ==(Object other) => identical(this, other) || other is PaginatedListOfConsultationNoteOwnerListDto &&
      other.items == items &&
      other.pageNumber == pageNumber &&
      other.totalPages == totalPages &&
@@ -83,7 +83,7 @@ class PaginatedListOfConsultationNoteListDto {
     (hasNextPage == null ? 0 : hasNextPage!.hashCode);
 
   @override
-  String toString() => 'PaginatedListOfConsultationNoteListDto[items=$items, pageNumber=$pageNumber, totalPages=$totalPages, totalCount=$totalCount, hasPreviousPage=$hasPreviousPage, hasNextPage=$hasNextPage]';
+  String toString() => 'PaginatedListOfConsultationNoteOwnerListDto[items=$items, pageNumber=$pageNumber, totalPages=$totalPages, totalCount=$totalCount, hasPreviousPage=$hasPreviousPage, hasNextPage=$hasNextPage]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -116,10 +116,10 @@ class PaginatedListOfConsultationNoteListDto {
     return json;
   }
 
-  /// Returns a new [PaginatedListOfConsultationNoteListDto] instance and imports its values from
+  /// Returns a new [PaginatedListOfConsultationNoteOwnerListDto] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PaginatedListOfConsultationNoteListDto? fromJson(dynamic value) {
+  static PaginatedListOfConsultationNoteOwnerListDto? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -128,14 +128,14 @@ class PaginatedListOfConsultationNoteListDto {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PaginatedListOfConsultationNoteListDto[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PaginatedListOfConsultationNoteListDto[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "PaginatedListOfConsultationNoteOwnerListDto[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "PaginatedListOfConsultationNoteOwnerListDto[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return PaginatedListOfConsultationNoteListDto(
-        items: ConsultationNoteListDto.listFromJson(json[r'items']) ?? const [],
+      return PaginatedListOfConsultationNoteOwnerListDto(
+        items: ConsultationNoteOwnerListDto.listFromJson(json[r'items']) ?? const [],
         pageNumber: mapValueOfType<int>(json, r'pageNumber'),
         totalPages: mapValueOfType<int>(json, r'totalPages'),
         totalCount: mapValueOfType<int>(json, r'totalCount'),
@@ -146,11 +146,11 @@ class PaginatedListOfConsultationNoteListDto {
     return null;
   }
 
-  static List<PaginatedListOfConsultationNoteListDto>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <PaginatedListOfConsultationNoteListDto>[];
+  static List<PaginatedListOfConsultationNoteOwnerListDto>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PaginatedListOfConsultationNoteOwnerListDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PaginatedListOfConsultationNoteListDto.fromJson(row);
+        final value = PaginatedListOfConsultationNoteOwnerListDto.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -159,12 +159,12 @@ class PaginatedListOfConsultationNoteListDto {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PaginatedListOfConsultationNoteListDto> mapFromJson(dynamic json) {
-    final map = <String, PaginatedListOfConsultationNoteListDto>{};
+  static Map<String, PaginatedListOfConsultationNoteOwnerListDto> mapFromJson(dynamic json) {
+    final map = <String, PaginatedListOfConsultationNoteOwnerListDto>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PaginatedListOfConsultationNoteListDto.fromJson(entry.value);
+        final value = PaginatedListOfConsultationNoteOwnerListDto.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -173,13 +173,13 @@ class PaginatedListOfConsultationNoteListDto {
     return map;
   }
 
-  // maps a json object with a list of PaginatedListOfConsultationNoteListDto-objects as value to a dart map
-  static Map<String, List<PaginatedListOfConsultationNoteListDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<PaginatedListOfConsultationNoteListDto>>{};
+  // maps a json object with a list of PaginatedListOfConsultationNoteOwnerListDto-objects as value to a dart map
+  static Map<String, List<PaginatedListOfConsultationNoteOwnerListDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<PaginatedListOfConsultationNoteOwnerListDto>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PaginatedListOfConsultationNoteListDto.listFromJson(entry.value, growable: growable,);
+        final value = PaginatedListOfConsultationNoteOwnerListDto.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }

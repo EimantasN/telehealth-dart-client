@@ -48,7 +48,7 @@ class ConsultationNoteApi {
   /// Parameters:
   ///
   /// * [CreateConsultationNodeCmd] createConsultationNodeCmd (required):
-  Future<ConsultationNoteDto?> consultationNoteCreate(CreateConsultationNodeCmd createConsultationNodeCmd,) async {
+  Future<ConsultationNoteOwnerDto?> consultationNoteCreate(CreateConsultationNodeCmd createConsultationNodeCmd,) async {
     final response = await consultationNoteCreateWithHttpInfo(createConsultationNodeCmd,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -57,7 +57,7 @@ class ConsultationNoteApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ConsultationNoteDto',) as ConsultationNoteDto;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ConsultationNoteOwnerDto',) as ConsultationNoteOwnerDto;
     
     }
     return null;
@@ -164,7 +164,7 @@ class ConsultationNoteApi {
   /// Parameters:
   ///
   /// * [int] id:
-  Future<ConsultationNoteDto?> consultationNoteGet({ int? id, }) async {
+  Future<ConsultationNoteOwnerDto?> consultationNoteGet({ int? id, }) async {
     final response = await consultationNoteGetWithHttpInfo( id: id, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -173,7 +173,7 @@ class ConsultationNoteApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ConsultationNoteDto',) as ConsultationNoteDto;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ConsultationNoteOwnerDto',) as ConsultationNoteOwnerDto;
     
     }
     return null;
@@ -211,7 +211,7 @@ class ConsultationNoteApi {
   /// Parameters:
   ///
   /// * [GetConsultationNotesQuery] getConsultationNotesQuery (required):
-  Future<PaginatedListOfConsultationNoteListDto?> consultationNoteList(GetConsultationNotesQuery getConsultationNotesQuery,) async {
+  Future<PaginatedListOfConsultationNoteOwnerListDto?> consultationNoteList(GetConsultationNotesQuery getConsultationNotesQuery,) async {
     final response = await consultationNoteListWithHttpInfo(getConsultationNotesQuery,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -220,7 +220,7 @@ class ConsultationNoteApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PaginatedListOfConsultationNoteListDto',) as PaginatedListOfConsultationNoteListDto;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PaginatedListOfConsultationNoteOwnerListDto',) as PaginatedListOfConsultationNoteOwnerListDto;
     
     }
     return null;
