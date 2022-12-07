@@ -14,6 +14,7 @@ class UserInfoDto {
   /// Returns a new [UserInfoDto] instance.
   UserInfoDto({
     this.email,
+    this.userName,
     this.firstName,
     this.lastName,
     this.phoneNumber,
@@ -31,6 +32,8 @@ class UserInfoDto {
   });
 
   String? email;
+
+  String? userName;
 
   String? firstName;
 
@@ -75,6 +78,7 @@ class UserInfoDto {
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserInfoDto &&
      other.email == email &&
+     other.userName == userName &&
      other.firstName == firstName &&
      other.lastName == lastName &&
      other.phoneNumber == phoneNumber &&
@@ -94,6 +98,7 @@ class UserInfoDto {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (email == null ? 0 : email!.hashCode) +
+    (userName == null ? 0 : userName!.hashCode) +
     (firstName == null ? 0 : firstName!.hashCode) +
     (lastName == null ? 0 : lastName!.hashCode) +
     (phoneNumber == null ? 0 : phoneNumber!.hashCode) +
@@ -110,7 +115,7 @@ class UserInfoDto {
     (lastLoginTime == null ? 0 : lastLoginTime!.hashCode);
 
   @override
-  String toString() => 'UserInfoDto[email=$email, firstName=$firstName, lastName=$lastName, phoneNumber=$phoneNumber, gender=$gender, street=$street, postcode=$postcode, city=$city, country=$country, doctor=$doctor, height=$height, specialization=$specialization, imageBase64=$imageBase64, dateOfBirth=$dateOfBirth, lastLoginTime=$lastLoginTime]';
+  String toString() => 'UserInfoDto[email=$email, userName=$userName, firstName=$firstName, lastName=$lastName, phoneNumber=$phoneNumber, gender=$gender, street=$street, postcode=$postcode, city=$city, country=$country, doctor=$doctor, height=$height, specialization=$specialization, imageBase64=$imageBase64, dateOfBirth=$dateOfBirth, lastLoginTime=$lastLoginTime]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -118,6 +123,11 @@ class UserInfoDto {
       json[r'email'] = this.email;
     } else {
       json[r'email'] = null;
+    }
+    if (this.userName != null) {
+      json[r'userName'] = this.userName;
+    } else {
+      json[r'userName'] = null;
     }
     if (this.firstName != null) {
       json[r'firstName'] = this.firstName;
@@ -212,6 +222,7 @@ class UserInfoDto {
 
       return UserInfoDto(
         email: mapValueOfType<String>(json, r'email'),
+        userName: mapValueOfType<String>(json, r'userName'),
         firstName: mapValueOfType<String>(json, r'firstName'),
         lastName: mapValueOfType<String>(json, r'lastName'),
         phoneNumber: mapValueOfType<String>(json, r'phoneNumber'),
