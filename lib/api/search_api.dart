@@ -16,6 +16,106 @@ class SearchApi {
 
   final ApiClient apiClient;
 
+  /// Performs an HTTP 'POST /api/Search/Doctor' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [DoctorSearchQuery] doctorSearchQuery (required):
+  Future<Response> searchDoctorWithHttpInfo(DoctorSearchQuery doctorSearchQuery,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/Search/Doctor';
+
+    // ignore: prefer_final_locals
+    Object? postBody = doctorSearchQuery;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [DoctorSearchQuery] doctorSearchQuery (required):
+  Future<List<DoctorSearchDto>?> searchDoctor(DoctorSearchQuery doctorSearchQuery,) async {
+    final response = await searchDoctorWithHttpInfo(doctorSearchQuery,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<DoctorSearchDto>') as List)
+        .cast<DoctorSearchDto>()
+        .toList();
+
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'POST /api/Search/Patient' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [PatientSearchQuery] patientSearchQuery (required):
+  Future<Response> searchPatientWithHttpInfo(PatientSearchQuery patientSearchQuery,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/Search/Patient';
+
+    // ignore: prefer_final_locals
+    Object? postBody = patientSearchQuery;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [PatientSearchQuery] patientSearchQuery (required):
+  Future<List<PatientSearchDto>?> searchPatient(PatientSearchQuery patientSearchQuery,) async {
+    final response = await searchPatientWithHttpInfo(patientSearchQuery,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<PatientSearchDto>') as List)
+        .cast<PatientSearchDto>()
+        .toList();
+
+    }
+    return null;
+  }
+
   /// Performs an HTTP 'POST /api/Search/Provider' operation and returns the [Response].
   /// Parameters:
   ///
@@ -60,6 +160,56 @@ class SearchApi {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<ProviderDto>') as List)
         .cast<ProviderDto>()
+        .toList();
+
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'POST /api/Search/GetInfo' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [GetInfoQuery] getInfoQuery (required):
+  Future<Response> searchUserInfosWithHttpInfo(GetInfoQuery getInfoQuery,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/Search/GetInfo';
+
+    // ignore: prefer_final_locals
+    Object? postBody = getInfoQuery;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [GetInfoQuery] getInfoQuery (required):
+  Future<List<UserListItemDto>?> searchUserInfos(GetInfoQuery getInfoQuery,) async {
+    final response = await searchUserInfosWithHttpInfo(getInfoQuery,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<UserListItemDto>') as List)
+        .cast<UserListItemDto>()
         .toList();
 
     }

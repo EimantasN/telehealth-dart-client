@@ -211,6 +211,10 @@ class ApiClient {
           return DeletedDto.fromJson(value);
         case 'DismissCmd':
           return DismissCmd.fromJson(value);
+        case 'DoctorSearchDto':
+          return DoctorSearchDto.fromJson(value);
+        case 'DoctorSearchQuery':
+          return DoctorSearchQuery.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfConnectionListItemDto':
           return DynamicQueryOfPaginatedListOfConnectionListItemDto.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfConsultationNoteListDto':
@@ -245,6 +249,8 @@ class ApiClient {
           return GetConsultationNotesQueryAllOf.fromJson(value);
         case 'GetDeletedQuery':
           return GetDeletedQuery.fromJson(value);
+        case 'GetInfoQuery':
+          return GetInfoQuery.fromJson(value);
         case 'GetMedicationsQuery':
           return GetMedicationsQuery.fromJson(value);
         case 'GetNotificationQuery':
@@ -283,6 +289,12 @@ class ApiClient {
           return PaginatedListOfReminderDto.fromJson(value);
         case 'PaginatedListOfSelfNoteListDto':
           return PaginatedListOfSelfNoteListDto.fromJson(value);
+        case 'PatientSearchDto':
+          return PatientSearchDto.fromJson(value);
+        case 'PatientSearchDtoAllOf':
+          return PatientSearchDtoAllOf.fromJson(value);
+        case 'PatientSearchQuery':
+          return PatientSearchQuery.fromJson(value);
         case 'PermissionDto':
           return PermissionDto.fromJson(value);
         case 'ProviderDto':
@@ -327,6 +339,8 @@ class ApiClient {
           return UpdateReminderCmd.fromJson(value);
         case 'UserInfoDto':
           return UserInfoDto.fromJson(value);
+        case 'UserListItemDto':
+          return UserListItemDto.fromJson(value);
         default:
           dynamic match;
           if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {
