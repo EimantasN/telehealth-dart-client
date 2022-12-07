@@ -17,7 +17,7 @@ class UserApi {
   final ApiClient apiClient;
 
   /// Performs an HTTP 'GET /api/User/UserInfo' operation and returns the [Response].
-  Future<Response> userIndexWithHttpInfo() async {
+  Future<Response> userGetWithHttpInfo() async {
     // ignore: prefer_const_declarations
     final path = r'/api/User/UserInfo';
 
@@ -42,8 +42,8 @@ class UserApi {
     );
   }
 
-  Future<UserInfoDto?> userIndex() async {
-    final response = await userIndexWithHttpInfo();
+  Future<UserInfoDto?> userGet() async {
+    final response = await userGetWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -52,6 +52,53 @@ class UserApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UserInfoDto',) as UserInfoDto;
+    
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'POST /api/User/Update' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [UpdateInfoCmd] updateInfoCmd (required):
+  Future<Response> userUpdateInfoWithHttpInfo(UpdateInfoCmd updateInfoCmd,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/User/Update';
+
+    // ignore: prefer_final_locals
+    Object? postBody = updateInfoCmd;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [UpdateInfoCmd] updateInfoCmd (required):
+  Future<bool?> userUpdateInfo(UpdateInfoCmd updateInfoCmd,) async {
+    final response = await userUpdateInfoWithHttpInfo(updateInfoCmd,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
     
     }
     return null;
