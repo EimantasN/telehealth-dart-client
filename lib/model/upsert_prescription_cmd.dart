@@ -10,9 +10,10 @@
 
 part of openapi.api;
 
-class CreatePrescriptionCmd {
-  /// Returns a new [CreatePrescriptionCmd] instance.
-  CreatePrescriptionCmd({
+class UpsertPrescriptionCmd {
+  /// Returns a new [UpsertPrescriptionCmd] instance.
+  UpsertPrescriptionCmd({
+    this.id,
     this.patientId,
     this.title,
     this.start,
@@ -26,6 +27,8 @@ class CreatePrescriptionCmd {
     this.notice,
     this.frequencies = const [],
   });
+
+  int? id;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -70,7 +73,8 @@ class CreatePrescriptionCmd {
   List<FrequencyDto> frequencies;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is CreatePrescriptionCmd &&
+  bool operator ==(Object other) => identical(this, other) || other is UpsertPrescriptionCmd &&
+     other.id == id &&
      other.patientId == patientId &&
      other.title == title &&
      other.start == start &&
@@ -87,6 +91,7 @@ class CreatePrescriptionCmd {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (id == null ? 0 : id!.hashCode) +
     (patientId == null ? 0 : patientId!.hashCode) +
     (title == null ? 0 : title!.hashCode) +
     (start == null ? 0 : start!.hashCode) +
@@ -101,10 +106,15 @@ class CreatePrescriptionCmd {
     (frequencies.hashCode);
 
   @override
-  String toString() => 'CreatePrescriptionCmd[patientId=$patientId, title=$title, start=$start, end=$end, condition=$condition, provider=$provider, activeCompounds=$activeCompounds, manufacture=$manufacture, numberInBox=$numberInBox, recommendation=$recommendation, notice=$notice, frequencies=$frequencies]';
+  String toString() => 'UpsertPrescriptionCmd[id=$id, patientId=$patientId, title=$title, start=$start, end=$end, condition=$condition, provider=$provider, activeCompounds=$activeCompounds, manufacture=$manufacture, numberInBox=$numberInBox, recommendation=$recommendation, notice=$notice, frequencies=$frequencies]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.id != null) {
+      json[r'id'] = this.id;
+    } else {
+      json[r'id'] = null;
+    }
     if (this.patientId != null) {
       json[r'patientId'] = this.patientId;
     } else {
@@ -164,10 +174,10 @@ class CreatePrescriptionCmd {
     return json;
   }
 
-  /// Returns a new [CreatePrescriptionCmd] instance and imports its values from
+  /// Returns a new [UpsertPrescriptionCmd] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static CreatePrescriptionCmd? fromJson(dynamic value) {
+  static UpsertPrescriptionCmd? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -176,13 +186,14 @@ class CreatePrescriptionCmd {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CreatePrescriptionCmd[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CreatePrescriptionCmd[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "UpsertPrescriptionCmd[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "UpsertPrescriptionCmd[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return CreatePrescriptionCmd(
+      return UpsertPrescriptionCmd(
+        id: mapValueOfType<int>(json, r'id'),
         patientId: mapValueOfType<int>(json, r'patientId'),
         title: mapValueOfType<String>(json, r'title'),
         start: mapDateTime(json, r'start', ''),
@@ -200,11 +211,11 @@ class CreatePrescriptionCmd {
     return null;
   }
 
-  static List<CreatePrescriptionCmd>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <CreatePrescriptionCmd>[];
+  static List<UpsertPrescriptionCmd>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <UpsertPrescriptionCmd>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = CreatePrescriptionCmd.fromJson(row);
+        final value = UpsertPrescriptionCmd.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -213,12 +224,12 @@ class CreatePrescriptionCmd {
     return result.toList(growable: growable);
   }
 
-  static Map<String, CreatePrescriptionCmd> mapFromJson(dynamic json) {
-    final map = <String, CreatePrescriptionCmd>{};
+  static Map<String, UpsertPrescriptionCmd> mapFromJson(dynamic json) {
+    final map = <String, UpsertPrescriptionCmd>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = CreatePrescriptionCmd.fromJson(entry.value);
+        final value = UpsertPrescriptionCmd.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -227,13 +238,13 @@ class CreatePrescriptionCmd {
     return map;
   }
 
-  // maps a json object with a list of CreatePrescriptionCmd-objects as value to a dart map
-  static Map<String, List<CreatePrescriptionCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<CreatePrescriptionCmd>>{};
+  // maps a json object with a list of UpsertPrescriptionCmd-objects as value to a dart map
+  static Map<String, List<UpsertPrescriptionCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<UpsertPrescriptionCmd>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = CreatePrescriptionCmd.listFromJson(entry.value, growable: growable,);
+        final value = UpsertPrescriptionCmd.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }

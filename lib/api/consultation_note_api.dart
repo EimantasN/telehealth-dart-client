@@ -16,16 +16,16 @@ class ConsultationNoteApi {
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'POST /api/ConsultationNote/Create' operation and returns the [Response].
+  /// Performs an HTTP 'POST /api/ConsultationNote/Upsert' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [CreateConsultationNodeCmd] createConsultationNodeCmd (required):
-  Future<Response> consultationNoteCreateWithHttpInfo(CreateConsultationNodeCmd createConsultationNodeCmd,) async {
+  /// * [UpsertConsultationNodeCmd] upsertConsultationNodeCmd (required):
+  Future<Response> consultationNoteCreateWithHttpInfo(UpsertConsultationNodeCmd upsertConsultationNodeCmd,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/ConsultationNote/Create';
+    final path = r'/api/ConsultationNote/Upsert';
 
     // ignore: prefer_final_locals
-    Object? postBody = createConsultationNodeCmd;
+    Object? postBody = upsertConsultationNodeCmd;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -47,9 +47,9 @@ class ConsultationNoteApi {
 
   /// Parameters:
   ///
-  /// * [CreateConsultationNodeCmd] createConsultationNodeCmd (required):
-  Future<ConsultationNoteOwnerDto?> consultationNoteCreate(CreateConsultationNodeCmd createConsultationNodeCmd,) async {
-    final response = await consultationNoteCreateWithHttpInfo(createConsultationNodeCmd,);
+  /// * [UpsertConsultationNodeCmd] upsertConsultationNodeCmd (required):
+  Future<ConsultationNoteOwnerDto?> consultationNoteCreate(UpsertConsultationNodeCmd upsertConsultationNodeCmd,) async {
+    final response = await consultationNoteCreateWithHttpInfo(upsertConsultationNodeCmd,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -221,53 +221,6 @@ class ConsultationNoteApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PaginatedListOfConsultationNoteOwnerListDto',) as PaginatedListOfConsultationNoteOwnerListDto;
-    
-    }
-    return null;
-  }
-
-  /// Performs an HTTP 'POST /api/ConsultationNote/Update' operation and returns the [Response].
-  /// Parameters:
-  ///
-  /// * [UpdateConsultationNodeCmd] updateConsultationNodeCmd (required):
-  Future<Response> consultationNoteUpdateWithHttpInfo(UpdateConsultationNodeCmd updateConsultationNodeCmd,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/api/ConsultationNote/Update';
-
-    // ignore: prefer_final_locals
-    Object? postBody = updateConsultationNodeCmd;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Parameters:
-  ///
-  /// * [UpdateConsultationNodeCmd] updateConsultationNodeCmd (required):
-  Future<bool?> consultationNoteUpdate(UpdateConsultationNodeCmd updateConsultationNodeCmd,) async {
-    final response = await consultationNoteUpdateWithHttpInfo(updateConsultationNodeCmd,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
     
     }
     return null;

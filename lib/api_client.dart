@@ -201,12 +201,8 @@ class ApiClient {
           return ConsultationNoteOwnerListDto.fromJson(value);
         case 'CreateConnectionCmd':
           return CreateConnectionCmd.fromJson(value);
-        case 'CreateConsultationNodeCmd':
-          return CreateConsultationNodeCmd.fromJson(value);
         case 'CreateFolderCmd':
           return CreateFolderCmd.fromJson(value);
-        case 'CreatePrescriptionCmd':
-          return CreatePrescriptionCmd.fromJson(value);
         case 'CreateReminderCmd':
           return CreateReminderCmd.fromJson(value);
         case 'DeletedDto':
@@ -341,16 +337,16 @@ class ApiClient {
           return ToggleReminderCmd.fromJson(value);
         case 'UpdateConnectionCmd':
           return UpdateConnectionCmd.fromJson(value);
-        case 'UpdateConsultationNodeCmd':
-          return UpdateConsultationNodeCmd.fromJson(value);
         case 'UpdateInfoCmd':
           return UpdateInfoCmd.fromJson(value);
-        case 'UpdatePrescriptionCmd':
-          return UpdatePrescriptionCmd.fromJson(value);
         case 'UpdateReminderCmd':
           return UpdateReminderCmd.fromJson(value);
+        case 'UpsertConsultationNodeCmd':
+          return UpsertConsultationNodeCmd.fromJson(value);
         case 'UpsertMedicationCmd':
           return UpsertMedicationCmd.fromJson(value);
+        case 'UpsertPrescriptionCmd':
+          return UpsertPrescriptionCmd.fromJson(value);
         case 'UserInfoDto':
           return UserInfoDto.fromJson(value);
         case 'UserListItemDto':

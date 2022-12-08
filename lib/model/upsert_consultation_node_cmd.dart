@@ -10,11 +10,13 @@
 
 part of openapi.api;
 
-class UpdateConsultationNodeCmd {
-  /// Returns a new [UpdateConsultationNodeCmd] instance.
-  UpdateConsultationNodeCmd({
+class UpsertConsultationNodeCmd {
+  /// Returns a new [UpsertConsultationNodeCmd] instance.
+  UpsertConsultationNodeCmd({
     this.id,
     this.title,
+    this.patientId,
+    this.dateOfNote,
     this.aim,
     this.complains,
     this.investigation,
@@ -30,12 +32,6 @@ class UpdateConsultationNodeCmd {
     this.diagnose,
   });
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? id;
 
   ///
@@ -45,6 +41,22 @@ class UpdateConsultationNodeCmd {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? title;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? patientId;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? dateOfNote;
 
   String? aim;
 
@@ -97,9 +109,11 @@ class UpdateConsultationNodeCmd {
   String? diagnose;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is UpdateConsultationNodeCmd &&
+  bool operator ==(Object other) => identical(this, other) || other is UpsertConsultationNodeCmd &&
      other.id == id &&
      other.title == title &&
+     other.patientId == patientId &&
+     other.dateOfNote == dateOfNote &&
      other.aim == aim &&
      other.complains == complains &&
      other.investigation == investigation &&
@@ -119,6 +133,8 @@ class UpdateConsultationNodeCmd {
     // ignore: unnecessary_parenthesis
     (id == null ? 0 : id!.hashCode) +
     (title == null ? 0 : title!.hashCode) +
+    (patientId == null ? 0 : patientId!.hashCode) +
+    (dateOfNote == null ? 0 : dateOfNote!.hashCode) +
     (aim == null ? 0 : aim!.hashCode) +
     (complains == null ? 0 : complains!.hashCode) +
     (investigation == null ? 0 : investigation!.hashCode) +
@@ -134,7 +150,7 @@ class UpdateConsultationNodeCmd {
     (diagnose == null ? 0 : diagnose!.hashCode);
 
   @override
-  String toString() => 'UpdateConsultationNodeCmd[id=$id, title=$title, aim=$aim, complains=$complains, investigation=$investigation, treatment=$treatment, firstTimeDiagnosed=$firstTimeDiagnosed, returning=$returning, acuteDisease=$acuteDisease, chronicDisease=$chronicDisease, labInvestigationPlan=$labInvestigationPlan, treatmentPlan=$treatmentPlan, prescriptions=$prescriptions, recommendations=$recommendations, diagnose=$diagnose]';
+  String toString() => 'UpsertConsultationNodeCmd[id=$id, title=$title, patientId=$patientId, dateOfNote=$dateOfNote, aim=$aim, complains=$complains, investigation=$investigation, treatment=$treatment, firstTimeDiagnosed=$firstTimeDiagnosed, returning=$returning, acuteDisease=$acuteDisease, chronicDisease=$chronicDisease, labInvestigationPlan=$labInvestigationPlan, treatmentPlan=$treatmentPlan, prescriptions=$prescriptions, recommendations=$recommendations, diagnose=$diagnose]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -147,6 +163,16 @@ class UpdateConsultationNodeCmd {
       json[r'title'] = this.title;
     } else {
       json[r'title'] = null;
+    }
+    if (this.patientId != null) {
+      json[r'patientId'] = this.patientId;
+    } else {
+      json[r'patientId'] = null;
+    }
+    if (this.dateOfNote != null) {
+      json[r'dateOfNote'] = this.dateOfNote!.toUtc().toIso8601String();
+    } else {
+      json[r'dateOfNote'] = null;
     }
     if (this.aim != null) {
       json[r'aim'] = this.aim;
@@ -216,10 +242,10 @@ class UpdateConsultationNodeCmd {
     return json;
   }
 
-  /// Returns a new [UpdateConsultationNodeCmd] instance and imports its values from
+  /// Returns a new [UpsertConsultationNodeCmd] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static UpdateConsultationNodeCmd? fromJson(dynamic value) {
+  static UpsertConsultationNodeCmd? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -228,15 +254,17 @@ class UpdateConsultationNodeCmd {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "UpdateConsultationNodeCmd[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "UpdateConsultationNodeCmd[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "UpsertConsultationNodeCmd[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "UpsertConsultationNodeCmd[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return UpdateConsultationNodeCmd(
+      return UpsertConsultationNodeCmd(
         id: mapValueOfType<int>(json, r'id'),
         title: mapValueOfType<String>(json, r'title'),
+        patientId: mapValueOfType<int>(json, r'patientId'),
+        dateOfNote: mapDateTime(json, r'dateOfNote', ''),
         aim: mapValueOfType<String>(json, r'aim'),
         complains: mapValueOfType<String>(json, r'complains'),
         investigation: mapValueOfType<String>(json, r'investigation'),
@@ -255,11 +283,11 @@ class UpdateConsultationNodeCmd {
     return null;
   }
 
-  static List<UpdateConsultationNodeCmd>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <UpdateConsultationNodeCmd>[];
+  static List<UpsertConsultationNodeCmd>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <UpsertConsultationNodeCmd>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = UpdateConsultationNodeCmd.fromJson(row);
+        final value = UpsertConsultationNodeCmd.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -268,12 +296,12 @@ class UpdateConsultationNodeCmd {
     return result.toList(growable: growable);
   }
 
-  static Map<String, UpdateConsultationNodeCmd> mapFromJson(dynamic json) {
-    final map = <String, UpdateConsultationNodeCmd>{};
+  static Map<String, UpsertConsultationNodeCmd> mapFromJson(dynamic json) {
+    final map = <String, UpsertConsultationNodeCmd>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = UpdateConsultationNodeCmd.fromJson(entry.value);
+        final value = UpsertConsultationNodeCmd.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -282,13 +310,13 @@ class UpdateConsultationNodeCmd {
     return map;
   }
 
-  // maps a json object with a list of UpdateConsultationNodeCmd-objects as value to a dart map
-  static Map<String, List<UpdateConsultationNodeCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<UpdateConsultationNodeCmd>>{};
+  // maps a json object with a list of UpsertConsultationNodeCmd-objects as value to a dart map
+  static Map<String, List<UpsertConsultationNodeCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<UpsertConsultationNodeCmd>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = UpdateConsultationNodeCmd.listFromJson(entry.value, growable: growable,);
+        final value = UpsertConsultationNodeCmd.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }

@@ -16,53 +16,6 @@ class PrescriptionApi {
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'POST /api/Prescription/Create' operation and returns the [Response].
-  /// Parameters:
-  ///
-  /// * [CreatePrescriptionCmd] createPrescriptionCmd (required):
-  Future<Response> prescriptionCreateWithHttpInfo(CreatePrescriptionCmd createPrescriptionCmd,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/api/Prescription/Create';
-
-    // ignore: prefer_final_locals
-    Object? postBody = createPrescriptionCmd;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Parameters:
-  ///
-  /// * [CreatePrescriptionCmd] createPrescriptionCmd (required):
-  Future<PrescriptionOwnerDto?> prescriptionCreate(CreatePrescriptionCmd createPrescriptionCmd,) async {
-    final response = await prescriptionCreateWithHttpInfo(createPrescriptionCmd,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PrescriptionOwnerDto',) as PrescriptionOwnerDto;
-    
-    }
-    return null;
-  }
-
   /// Performs an HTTP 'DELETE /api/Prescription/Delete' operation and returns the [Response].
   /// Parameters:
   ///
@@ -226,16 +179,16 @@ class PrescriptionApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /api/Prescription/Update' operation and returns the [Response].
+  /// Performs an HTTP 'POST /api/Prescription/Upsert' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [UpdatePrescriptionCmd] updatePrescriptionCmd (required):
-  Future<Response> prescriptionUpdateWithHttpInfo(UpdatePrescriptionCmd updatePrescriptionCmd,) async {
+  /// * [UpsertPrescriptionCmd] upsertPrescriptionCmd (required):
+  Future<Response> prescriptionUpsertWithHttpInfo(UpsertPrescriptionCmd upsertPrescriptionCmd,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/Prescription/Update';
+    final path = r'/api/Prescription/Upsert';
 
     // ignore: prefer_final_locals
-    Object? postBody = updatePrescriptionCmd;
+    Object? postBody = upsertPrescriptionCmd;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -257,9 +210,9 @@ class PrescriptionApi {
 
   /// Parameters:
   ///
-  /// * [UpdatePrescriptionCmd] updatePrescriptionCmd (required):
-  Future<PrescriptionOwnerDto?> prescriptionUpdate(UpdatePrescriptionCmd updatePrescriptionCmd,) async {
-    final response = await prescriptionUpdateWithHttpInfo(updatePrescriptionCmd,);
+  /// * [UpsertPrescriptionCmd] upsertPrescriptionCmd (required):
+  Future<PrescriptionOwnerDto?> prescriptionUpsert(UpsertPrescriptionCmd upsertPrescriptionCmd,) async {
+    final response = await prescriptionUpsertWithHttpInfo(upsertPrescriptionCmd,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
