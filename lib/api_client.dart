@@ -185,8 +185,6 @@ class ApiClient {
           return AnswerDto.fromJson(value);
         case 'AnswerSubmitDto':
           return AnswerSubmitDto.fromJson(value);
-        case 'BaseCreateMedicationCmd':
-          return BaseCreateMedicationCmd.fromJson(value);
         case 'BatchCmd':
           return BatchCmd.fromJson(value);
         case 'ConnectIonStateUpdateCmd':
@@ -211,8 +209,6 @@ class ApiClient {
           return CreateMedicationCmd.fromJson(value);
         case 'CreatePrescriptionCmd':
           return CreatePrescriptionCmd.fromJson(value);
-        case 'CreatePrescriptionCmdAllOf':
-          return CreatePrescriptionCmdAllOf.fromJson(value);
         case 'CreateReminderCmd':
           return CreateReminderCmd.fromJson(value);
         case 'DeletedDto':

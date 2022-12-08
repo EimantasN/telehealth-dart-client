@@ -43,7 +43,6 @@ part 'api/user_api.dart';
 
 part 'model/answer_dto.dart';
 part 'model/answer_submit_dto.dart';
-part 'model/base_create_medication_cmd.dart';
 part 'model/batch_cmd.dart';
 part 'model/connect_ion_state_update_cmd.dart';
 part 'model/connection_dto.dart';
@@ -56,7 +55,6 @@ part 'model/create_consultation_node_cmd.dart';
 part 'model/create_folder_cmd.dart';
 part 'model/create_medication_cmd.dart';
 part 'model/create_prescription_cmd.dart';
-part 'model/create_prescription_cmd_all_of.dart';
 part 'model/create_reminder_cmd.dart';
 part 'model/deleted_dto.dart';
 part 'model/dismiss_cmd.dart';

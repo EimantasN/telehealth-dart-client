@@ -14,6 +14,8 @@ class PrescriptionDto {
   /// Returns a new [PrescriptionDto] instance.
   PrescriptionDto({
     this.id,
+    this.patientId,
+    this.doctorId,
     this.title,
     this.start,
     this.end,
@@ -34,6 +36,22 @@ class PrescriptionDto {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? id;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? patientId;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? doctorId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -66,6 +84,8 @@ class PrescriptionDto {
   @override
   bool operator ==(Object other) => identical(this, other) || other is PrescriptionDto &&
      other.id == id &&
+     other.patientId == patientId &&
+     other.doctorId == doctorId &&
      other.title == title &&
      other.start == start &&
      other.end == end &&
@@ -82,6 +102,8 @@ class PrescriptionDto {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id == null ? 0 : id!.hashCode) +
+    (patientId == null ? 0 : patientId!.hashCode) +
+    (doctorId == null ? 0 : doctorId!.hashCode) +
     (title == null ? 0 : title!.hashCode) +
     (start == null ? 0 : start!.hashCode) +
     (end == null ? 0 : end!.hashCode) +
@@ -95,7 +117,7 @@ class PrescriptionDto {
     (frequencies.hashCode);
 
   @override
-  String toString() => 'PrescriptionDto[id=$id, title=$title, start=$start, end=$end, condition=$condition, provider=$provider, activeCompounds=$activeCompounds, manufacture=$manufacture, numberInBox=$numberInBox, recommendation=$recommendation, notice=$notice, frequencies=$frequencies]';
+  String toString() => 'PrescriptionDto[id=$id, patientId=$patientId, doctorId=$doctorId, title=$title, start=$start, end=$end, condition=$condition, provider=$provider, activeCompounds=$activeCompounds, manufacture=$manufacture, numberInBox=$numberInBox, recommendation=$recommendation, notice=$notice, frequencies=$frequencies]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -103,6 +125,16 @@ class PrescriptionDto {
       json[r'id'] = this.id;
     } else {
       json[r'id'] = null;
+    }
+    if (this.patientId != null) {
+      json[r'patientId'] = this.patientId;
+    } else {
+      json[r'patientId'] = null;
+    }
+    if (this.doctorId != null) {
+      json[r'doctorId'] = this.doctorId;
+    } else {
+      json[r'doctorId'] = null;
     }
     if (this.title != null) {
       json[r'title'] = this.title;
@@ -178,6 +210,8 @@ class PrescriptionDto {
 
       return PrescriptionDto(
         id: mapValueOfType<int>(json, r'id'),
+        patientId: mapValueOfType<int>(json, r'patientId'),
+        doctorId: mapValueOfType<int>(json, r'doctorId'),
         title: mapValueOfType<String>(json, r'title'),
         start: mapDateTime(json, r'start', ''),
         end: mapDateTime(json, r'end', ''),

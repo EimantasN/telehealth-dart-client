@@ -13,6 +13,7 @@ part of openapi.api;
 class CreatePrescriptionCmd {
   /// Returns a new [CreatePrescriptionCmd] instance.
   CreatePrescriptionCmd({
+    this.patientId,
     this.title,
     this.start,
     this.end,
@@ -24,8 +25,15 @@ class CreatePrescriptionCmd {
     this.recommendation,
     this.notice,
     this.frequencies = const [],
-    this.patientId,
   });
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? patientId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -61,16 +69,9 @@ class CreatePrescriptionCmd {
 
   List<FrequencyDto> frequencies;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? patientId;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreatePrescriptionCmd &&
+     other.patientId == patientId &&
      other.title == title &&
      other.start == start &&
      other.end == end &&
@@ -81,12 +82,12 @@ class CreatePrescriptionCmd {
      other.numberInBox == numberInBox &&
      other.recommendation == recommendation &&
      other.notice == notice &&
-     other.frequencies == frequencies &&
-     other.patientId == patientId;
+     other.frequencies == frequencies;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (patientId == null ? 0 : patientId!.hashCode) +
     (title == null ? 0 : title!.hashCode) +
     (start == null ? 0 : start!.hashCode) +
     (end == null ? 0 : end!.hashCode) +
@@ -97,14 +98,18 @@ class CreatePrescriptionCmd {
     (numberInBox == null ? 0 : numberInBox!.hashCode) +
     (recommendation == null ? 0 : recommendation!.hashCode) +
     (notice == null ? 0 : notice!.hashCode) +
-    (frequencies.hashCode) +
-    (patientId == null ? 0 : patientId!.hashCode);
+    (frequencies.hashCode);
 
   @override
-  String toString() => 'CreatePrescriptionCmd[title=$title, start=$start, end=$end, condition=$condition, provider=$provider, activeCompounds=$activeCompounds, manufacture=$manufacture, numberInBox=$numberInBox, recommendation=$recommendation, notice=$notice, frequencies=$frequencies, patientId=$patientId]';
+  String toString() => 'CreatePrescriptionCmd[patientId=$patientId, title=$title, start=$start, end=$end, condition=$condition, provider=$provider, activeCompounds=$activeCompounds, manufacture=$manufacture, numberInBox=$numberInBox, recommendation=$recommendation, notice=$notice, frequencies=$frequencies]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.patientId != null) {
+      json[r'patientId'] = this.patientId;
+    } else {
+      json[r'patientId'] = null;
+    }
     if (this.title != null) {
       json[r'title'] = this.title;
     } else {
@@ -156,11 +161,6 @@ class CreatePrescriptionCmd {
       json[r'notice'] = null;
     }
       json[r'frequencies'] = this.frequencies;
-    if (this.patientId != null) {
-      json[r'patientId'] = this.patientId;
-    } else {
-      json[r'patientId'] = null;
-    }
     return json;
   }
 
@@ -183,6 +183,7 @@ class CreatePrescriptionCmd {
       }());
 
       return CreatePrescriptionCmd(
+        patientId: mapValueOfType<int>(json, r'patientId'),
         title: mapValueOfType<String>(json, r'title'),
         start: mapDateTime(json, r'start', ''),
         end: mapDateTime(json, r'end', ''),
@@ -194,7 +195,6 @@ class CreatePrescriptionCmd {
         recommendation: mapValueOfType<String>(json, r'recommendation'),
         notice: mapValueOfType<String>(json, r'notice'),
         frequencies: FrequencyDto.listFromJson(json[r'frequencies']) ?? const [],
-        patientId: mapValueOfType<int>(json, r'patientId'),
       );
     }
     return null;
