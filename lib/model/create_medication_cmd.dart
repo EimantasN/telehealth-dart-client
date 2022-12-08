@@ -14,6 +14,7 @@ class CreateMedicationCmd {
   /// Returns a new [CreateMedicationCmd] instance.
   CreateMedicationCmd({
     this.title,
+    this.doctorId,
     this.start,
     this.end,
     this.condition,
@@ -33,6 +34,14 @@ class CreateMedicationCmd {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? title;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? doctorId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -63,6 +72,7 @@ class CreateMedicationCmd {
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateMedicationCmd &&
      other.title == title &&
+     other.doctorId == doctorId &&
      other.start == start &&
      other.end == end &&
      other.condition == condition &&
@@ -78,6 +88,7 @@ class CreateMedicationCmd {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (title == null ? 0 : title!.hashCode) +
+    (doctorId == null ? 0 : doctorId!.hashCode) +
     (start == null ? 0 : start!.hashCode) +
     (end == null ? 0 : end!.hashCode) +
     (condition == null ? 0 : condition!.hashCode) +
@@ -90,7 +101,7 @@ class CreateMedicationCmd {
     (frequencies.hashCode);
 
   @override
-  String toString() => 'CreateMedicationCmd[title=$title, start=$start, end=$end, condition=$condition, provider=$provider, activeCompounds=$activeCompounds, manufacture=$manufacture, numberInBox=$numberInBox, recommendation=$recommendation, notice=$notice, frequencies=$frequencies]';
+  String toString() => 'CreateMedicationCmd[title=$title, doctorId=$doctorId, start=$start, end=$end, condition=$condition, provider=$provider, activeCompounds=$activeCompounds, manufacture=$manufacture, numberInBox=$numberInBox, recommendation=$recommendation, notice=$notice, frequencies=$frequencies]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -98,6 +109,11 @@ class CreateMedicationCmd {
       json[r'title'] = this.title;
     } else {
       json[r'title'] = null;
+    }
+    if (this.doctorId != null) {
+      json[r'doctorId'] = this.doctorId;
+    } else {
+      json[r'doctorId'] = null;
     }
     if (this.start != null) {
       json[r'start'] = this.start!.toUtc().toIso8601String();
@@ -168,6 +184,7 @@ class CreateMedicationCmd {
 
       return CreateMedicationCmd(
         title: mapValueOfType<String>(json, r'title'),
+        doctorId: mapValueOfType<int>(json, r'doctorId'),
         start: mapDateTime(json, r'start', ''),
         end: mapDateTime(json, r'end', ''),
         condition: mapValueOfType<String>(json, r'condition'),

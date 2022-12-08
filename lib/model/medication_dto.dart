@@ -24,6 +24,7 @@ class MedicationDto {
     this.numberInBox,
     this.recommendation,
     this.notice,
+    this.doctorId,
     this.frequencies = const [],
   });
 
@@ -61,6 +62,14 @@ class MedicationDto {
 
   String? notice;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? doctorId;
+
   List<FrequencyDto> frequencies;
 
   @override
@@ -76,6 +85,7 @@ class MedicationDto {
      other.numberInBox == numberInBox &&
      other.recommendation == recommendation &&
      other.notice == notice &&
+     other.doctorId == doctorId &&
      other.frequencies == frequencies;
 
   @override
@@ -92,10 +102,11 @@ class MedicationDto {
     (numberInBox == null ? 0 : numberInBox!.hashCode) +
     (recommendation == null ? 0 : recommendation!.hashCode) +
     (notice == null ? 0 : notice!.hashCode) +
+    (doctorId == null ? 0 : doctorId!.hashCode) +
     (frequencies.hashCode);
 
   @override
-  String toString() => 'MedicationDto[id=$id, title=$title, start=$start, end=$end, condition=$condition, provider=$provider, activeCompounds=$activeCompounds, manufacture=$manufacture, numberInBox=$numberInBox, recommendation=$recommendation, notice=$notice, frequencies=$frequencies]';
+  String toString() => 'MedicationDto[id=$id, title=$title, start=$start, end=$end, condition=$condition, provider=$provider, activeCompounds=$activeCompounds, manufacture=$manufacture, numberInBox=$numberInBox, recommendation=$recommendation, notice=$notice, doctorId=$doctorId, frequencies=$frequencies]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -154,6 +165,11 @@ class MedicationDto {
     } else {
       json[r'notice'] = null;
     }
+    if (this.doctorId != null) {
+      json[r'doctorId'] = this.doctorId;
+    } else {
+      json[r'doctorId'] = null;
+    }
       json[r'frequencies'] = this.frequencies;
     return json;
   }
@@ -188,6 +204,7 @@ class MedicationDto {
         numberInBox: mapValueOfType<int>(json, r'numberInBox'),
         recommendation: mapValueOfType<String>(json, r'recommendation'),
         notice: mapValueOfType<String>(json, r'notice'),
+        doctorId: mapValueOfType<int>(json, r'doctorId'),
         frequencies: FrequencyDto.listFromJson(json[r'frequencies']) ?? const [],
       );
     }
