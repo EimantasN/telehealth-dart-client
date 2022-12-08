@@ -24,9 +24,10 @@ class CreateReminderCmd {
     this.yearly,
     this.custom,
     this.medicationId,
-    this.consultationNoteId,
+    this.consultationId,
     this.connectionId,
     this.selfNoteId,
+    this.prescriptionId,
   });
 
   ///
@@ -99,11 +100,13 @@ class CreateReminderCmd {
 
   int? medicationId;
 
-  int? consultationNoteId;
+  int? consultationId;
 
   int? connectionId;
 
   int? selfNoteId;
+
+  int? prescriptionId;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateReminderCmd &&
@@ -118,9 +121,10 @@ class CreateReminderCmd {
      other.yearly == yearly &&
      other.custom == custom &&
      other.medicationId == medicationId &&
-     other.consultationNoteId == consultationNoteId &&
+     other.consultationId == consultationId &&
      other.connectionId == connectionId &&
-     other.selfNoteId == selfNoteId;
+     other.selfNoteId == selfNoteId &&
+     other.prescriptionId == prescriptionId;
 
   @override
   int get hashCode =>
@@ -136,12 +140,13 @@ class CreateReminderCmd {
     (yearly == null ? 0 : yearly!.hashCode) +
     (custom == null ? 0 : custom!.hashCode) +
     (medicationId == null ? 0 : medicationId!.hashCode) +
-    (consultationNoteId == null ? 0 : consultationNoteId!.hashCode) +
+    (consultationId == null ? 0 : consultationId!.hashCode) +
     (connectionId == null ? 0 : connectionId!.hashCode) +
-    (selfNoteId == null ? 0 : selfNoteId!.hashCode);
+    (selfNoteId == null ? 0 : selfNoteId!.hashCode) +
+    (prescriptionId == null ? 0 : prescriptionId!.hashCode);
 
   @override
-  String toString() => 'CreateReminderCmd[title=$title, status=$status, message=$message, start=$start, end=$end, daily=$daily, weekly=$weekly, monthly=$monthly, yearly=$yearly, custom=$custom, medicationId=$medicationId, consultationNoteId=$consultationNoteId, connectionId=$connectionId, selfNoteId=$selfNoteId]';
+  String toString() => 'CreateReminderCmd[title=$title, status=$status, message=$message, start=$start, end=$end, daily=$daily, weekly=$weekly, monthly=$monthly, yearly=$yearly, custom=$custom, medicationId=$medicationId, consultationId=$consultationId, connectionId=$connectionId, selfNoteId=$selfNoteId, prescriptionId=$prescriptionId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -200,10 +205,10 @@ class CreateReminderCmd {
     } else {
       json[r'medicationId'] = null;
     }
-    if (this.consultationNoteId != null) {
-      json[r'consultationNoteId'] = this.consultationNoteId;
+    if (this.consultationId != null) {
+      json[r'consultationId'] = this.consultationId;
     } else {
-      json[r'consultationNoteId'] = null;
+      json[r'consultationId'] = null;
     }
     if (this.connectionId != null) {
       json[r'connectionId'] = this.connectionId;
@@ -214,6 +219,11 @@ class CreateReminderCmd {
       json[r'selfNoteId'] = this.selfNoteId;
     } else {
       json[r'selfNoteId'] = null;
+    }
+    if (this.prescriptionId != null) {
+      json[r'prescriptionId'] = this.prescriptionId;
+    } else {
+      json[r'prescriptionId'] = null;
     }
     return json;
   }
@@ -248,9 +258,10 @@ class CreateReminderCmd {
         yearly: mapValueOfType<bool>(json, r'yearly'),
         custom: mapValueOfType<String>(json, r'custom'),
         medicationId: mapValueOfType<int>(json, r'medicationId'),
-        consultationNoteId: mapValueOfType<int>(json, r'consultationNoteId'),
+        consultationId: mapValueOfType<int>(json, r'consultationId'),
         connectionId: mapValueOfType<int>(json, r'connectionId'),
         selfNoteId: mapValueOfType<int>(json, r'selfNoteId'),
+        prescriptionId: mapValueOfType<int>(json, r'prescriptionId'),
       );
     }
     return null;

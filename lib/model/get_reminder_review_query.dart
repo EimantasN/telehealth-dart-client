@@ -14,36 +14,41 @@ class GetReminderReviewQuery {
   /// Returns a new [GetReminderReviewQuery] instance.
   GetReminderReviewQuery({
     this.medicationId,
-    this.consultationNoteId,
+    this.consultationId,
     this.connectionId,
     this.selfNoteId,
+    this.prescriptionId,
   });
 
   int? medicationId;
 
-  int? consultationNoteId;
+  int? consultationId;
 
   int? connectionId;
 
   int? selfNoteId;
 
+  int? prescriptionId;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is GetReminderReviewQuery &&
      other.medicationId == medicationId &&
-     other.consultationNoteId == consultationNoteId &&
+     other.consultationId == consultationId &&
      other.connectionId == connectionId &&
-     other.selfNoteId == selfNoteId;
+     other.selfNoteId == selfNoteId &&
+     other.prescriptionId == prescriptionId;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (medicationId == null ? 0 : medicationId!.hashCode) +
-    (consultationNoteId == null ? 0 : consultationNoteId!.hashCode) +
+    (consultationId == null ? 0 : consultationId!.hashCode) +
     (connectionId == null ? 0 : connectionId!.hashCode) +
-    (selfNoteId == null ? 0 : selfNoteId!.hashCode);
+    (selfNoteId == null ? 0 : selfNoteId!.hashCode) +
+    (prescriptionId == null ? 0 : prescriptionId!.hashCode);
 
   @override
-  String toString() => 'GetReminderReviewQuery[medicationId=$medicationId, consultationNoteId=$consultationNoteId, connectionId=$connectionId, selfNoteId=$selfNoteId]';
+  String toString() => 'GetReminderReviewQuery[medicationId=$medicationId, consultationId=$consultationId, connectionId=$connectionId, selfNoteId=$selfNoteId, prescriptionId=$prescriptionId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -52,10 +57,10 @@ class GetReminderReviewQuery {
     } else {
       json[r'medicationId'] = null;
     }
-    if (this.consultationNoteId != null) {
-      json[r'consultationNoteId'] = this.consultationNoteId;
+    if (this.consultationId != null) {
+      json[r'consultationId'] = this.consultationId;
     } else {
-      json[r'consultationNoteId'] = null;
+      json[r'consultationId'] = null;
     }
     if (this.connectionId != null) {
       json[r'connectionId'] = this.connectionId;
@@ -66,6 +71,11 @@ class GetReminderReviewQuery {
       json[r'selfNoteId'] = this.selfNoteId;
     } else {
       json[r'selfNoteId'] = null;
+    }
+    if (this.prescriptionId != null) {
+      json[r'prescriptionId'] = this.prescriptionId;
+    } else {
+      json[r'prescriptionId'] = null;
     }
     return json;
   }
@@ -90,9 +100,10 @@ class GetReminderReviewQuery {
 
       return GetReminderReviewQuery(
         medicationId: mapValueOfType<int>(json, r'medicationId'),
-        consultationNoteId: mapValueOfType<int>(json, r'consultationNoteId'),
+        consultationId: mapValueOfType<int>(json, r'consultationId'),
         connectionId: mapValueOfType<int>(json, r'connectionId'),
         selfNoteId: mapValueOfType<int>(json, r'selfNoteId'),
+        prescriptionId: mapValueOfType<int>(json, r'prescriptionId'),
       );
     }
     return null;

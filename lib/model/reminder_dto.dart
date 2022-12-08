@@ -31,6 +31,7 @@ class ReminderDto {
     this.consultationNoteId,
     this.connectionId,
     this.selfNoteId,
+    this.prescriptionId,
   });
 
   ///
@@ -141,6 +142,8 @@ class ReminderDto {
 
   int? selfNoteId;
 
+  int? prescriptionId;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ReminderDto &&
      other.id == id &&
@@ -160,7 +163,8 @@ class ReminderDto {
      other.medicationId == medicationId &&
      other.consultationNoteId == consultationNoteId &&
      other.connectionId == connectionId &&
-     other.selfNoteId == selfNoteId;
+     other.selfNoteId == selfNoteId &&
+     other.prescriptionId == prescriptionId;
 
   @override
   int get hashCode =>
@@ -182,10 +186,11 @@ class ReminderDto {
     (medicationId == null ? 0 : medicationId!.hashCode) +
     (consultationNoteId == null ? 0 : consultationNoteId!.hashCode) +
     (connectionId == null ? 0 : connectionId!.hashCode) +
-    (selfNoteId == null ? 0 : selfNoteId!.hashCode);
+    (selfNoteId == null ? 0 : selfNoteId!.hashCode) +
+    (prescriptionId == null ? 0 : prescriptionId!.hashCode);
 
   @override
-  String toString() => 'ReminderDto[id=$id, title=$title, status=$status, message=$message, active=$active, start=$start, end=$end, daily=$daily, weekly=$weekly, monthly=$monthly, yearly=$yearly, custom=$custom, created=$created, modified=$modified, medicationId=$medicationId, consultationNoteId=$consultationNoteId, connectionId=$connectionId, selfNoteId=$selfNoteId]';
+  String toString() => 'ReminderDto[id=$id, title=$title, status=$status, message=$message, active=$active, start=$start, end=$end, daily=$daily, weekly=$weekly, monthly=$monthly, yearly=$yearly, custom=$custom, created=$created, modified=$modified, medicationId=$medicationId, consultationNoteId=$consultationNoteId, connectionId=$connectionId, selfNoteId=$selfNoteId, prescriptionId=$prescriptionId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -279,6 +284,11 @@ class ReminderDto {
     } else {
       json[r'selfNoteId'] = null;
     }
+    if (this.prescriptionId != null) {
+      json[r'prescriptionId'] = this.prescriptionId;
+    } else {
+      json[r'prescriptionId'] = null;
+    }
     return json;
   }
 
@@ -319,6 +329,7 @@ class ReminderDto {
         consultationNoteId: mapValueOfType<int>(json, r'consultationNoteId'),
         connectionId: mapValueOfType<int>(json, r'connectionId'),
         selfNoteId: mapValueOfType<int>(json, r'selfNoteId'),
+        prescriptionId: mapValueOfType<int>(json, r'prescriptionId'),
       );
     }
     return null;
