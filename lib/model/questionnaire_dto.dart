@@ -13,9 +13,18 @@ part of openapi.api;
 class QuestionnaireDto {
   /// Returns a new [QuestionnaireDto] instance.
   QuestionnaireDto({
+    this.id,
     this.title,
     this.file,
   });
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? id;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -35,20 +44,27 @@ class QuestionnaireDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is QuestionnaireDto &&
+     other.id == id &&
      other.title == title &&
      other.file == file;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (id == null ? 0 : id!.hashCode) +
     (title == null ? 0 : title!.hashCode) +
     (file == null ? 0 : file!.hashCode);
 
   @override
-  String toString() => 'QuestionnaireDto[title=$title, file=$file]';
+  String toString() => 'QuestionnaireDto[id=$id, title=$title, file=$file]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.id != null) {
+      json[r'id'] = this.id;
+    } else {
+      json[r'id'] = null;
+    }
     if (this.title != null) {
       json[r'title'] = this.title;
     } else {
@@ -81,6 +97,7 @@ class QuestionnaireDto {
       }());
 
       return QuestionnaireDto(
+        id: mapValueOfType<int>(json, r'id'),
         title: mapValueOfType<String>(json, r'title'),
         file: mapValueOfType<String>(json, r'file'),
       );

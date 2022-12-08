@@ -19,8 +19,8 @@ class QuestionnaireApi {
   /// Performs an HTTP 'GET /api/Questionnaire/Get' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [String] file:
-  Future<Response> questionnaireGetWithHttpInfo({ String? file, }) async {
+  /// * [int] id:
+  Future<Response> questionnaireGetWithHttpInfo({ int? id, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/Questionnaire/Get';
 
@@ -31,8 +31,8 @@ class QuestionnaireApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (file != null) {
-      queryParams.addAll(_queryParams('', 'file', file));
+    if (id != null) {
+      queryParams.addAll(_queryParams('', 'id', id));
     }
 
     const contentTypes = <String>[];
@@ -51,9 +51,9 @@ class QuestionnaireApi {
 
   /// Parameters:
   ///
-  /// * [String] file:
-  Future<Questionnaire?> questionnaireGet({ String? file, }) async {
-    final response = await questionnaireGetWithHttpInfo( file: file, );
+  /// * [int] id:
+  Future<Questionnaire?> questionnaireGet({ int? id, }) async {
+    final response = await questionnaireGetWithHttpInfo( id: id, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
