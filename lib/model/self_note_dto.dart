@@ -17,6 +17,7 @@ class SelfNoteDto {
     this.title,
     this.place,
     this.reason,
+    this.questionnaireId,
     this.reminderCount,
     this.created,
     this.modified,
@@ -61,6 +62,14 @@ class SelfNoteDto {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  int? questionnaireId;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? reminderCount;
 
   ///
@@ -87,6 +96,7 @@ class SelfNoteDto {
      other.title == title &&
      other.place == place &&
      other.reason == reason &&
+     other.questionnaireId == questionnaireId &&
      other.reminderCount == reminderCount &&
      other.created == created &&
      other.modified == modified &&
@@ -99,13 +109,14 @@ class SelfNoteDto {
     (title == null ? 0 : title!.hashCode) +
     (place == null ? 0 : place!.hashCode) +
     (reason == null ? 0 : reason!.hashCode) +
+    (questionnaireId == null ? 0 : questionnaireId!.hashCode) +
     (reminderCount == null ? 0 : reminderCount!.hashCode) +
     (created == null ? 0 : created!.hashCode) +
     (modified == null ? 0 : modified!.hashCode) +
     (answers.hashCode);
 
   @override
-  String toString() => 'SelfNoteDto[id=$id, title=$title, place=$place, reason=$reason, reminderCount=$reminderCount, created=$created, modified=$modified, answers=$answers]';
+  String toString() => 'SelfNoteDto[id=$id, title=$title, place=$place, reason=$reason, questionnaireId=$questionnaireId, reminderCount=$reminderCount, created=$created, modified=$modified, answers=$answers]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -128,6 +139,11 @@ class SelfNoteDto {
       json[r'reason'] = this.reason;
     } else {
       json[r'reason'] = null;
+    }
+    if (this.questionnaireId != null) {
+      json[r'questionnaireId'] = this.questionnaireId;
+    } else {
+      json[r'questionnaireId'] = null;
     }
     if (this.reminderCount != null) {
       json[r'reminderCount'] = this.reminderCount;
@@ -171,6 +187,7 @@ class SelfNoteDto {
         title: mapValueOfType<String>(json, r'title'),
         place: mapValueOfType<String>(json, r'place'),
         reason: mapValueOfType<String>(json, r'reason'),
+        questionnaireId: mapValueOfType<int>(json, r'questionnaireId'),
         reminderCount: mapValueOfType<int>(json, r'reminderCount'),
         created: mapDateTime(json, r'created', ''),
         modified: mapDateTime(json, r'modified', ''),
