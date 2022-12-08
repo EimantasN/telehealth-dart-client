@@ -16,53 +16,6 @@ class MedicationApi {
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'POST /api/Medication/Create' operation and returns the [Response].
-  /// Parameters:
-  ///
-  /// * [CreateMedicationCmd] createMedicationCmd (required):
-  Future<Response> medicationCreateWithHttpInfo(CreateMedicationCmd createMedicationCmd,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/api/Medication/Create';
-
-    // ignore: prefer_final_locals
-    Object? postBody = createMedicationCmd;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Parameters:
-  ///
-  /// * [CreateMedicationCmd] createMedicationCmd (required):
-  Future<MedicationDto?> medicationCreate(CreateMedicationCmd createMedicationCmd,) async {
-    final response = await medicationCreateWithHttpInfo(createMedicationCmd,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MedicationDto',) as MedicationDto;
-    
-    }
-    return null;
-  }
-
   /// Performs an HTTP 'DELETE /api/Medication/Delete' operation and returns the [Response].
   /// Parameters:
   ///
@@ -226,16 +179,16 @@ class MedicationApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /api/Medication/Update' operation and returns the [Response].
+  /// Performs an HTTP 'POST /api/Medication/Upsert' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [UpdateMedicationCmd] updateMedicationCmd (required):
-  Future<Response> medicationUpdateWithHttpInfo(UpdateMedicationCmd updateMedicationCmd,) async {
+  /// * [UpsertMedicationCmd] upsertMedicationCmd (required):
+  Future<Response> medicationUpsertWithHttpInfo(UpsertMedicationCmd upsertMedicationCmd,) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/Medication/Update';
+    final path = r'/api/Medication/Upsert';
 
     // ignore: prefer_final_locals
-    Object? postBody = updateMedicationCmd;
+    Object? postBody = upsertMedicationCmd;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -257,9 +210,9 @@ class MedicationApi {
 
   /// Parameters:
   ///
-  /// * [UpdateMedicationCmd] updateMedicationCmd (required):
-  Future<bool?> medicationUpdate(UpdateMedicationCmd updateMedicationCmd,) async {
-    final response = await medicationUpdateWithHttpInfo(updateMedicationCmd,);
+  /// * [UpsertMedicationCmd] upsertMedicationCmd (required):
+  Future<MedicationDto?> medicationUpsert(UpsertMedicationCmd upsertMedicationCmd,) async {
+    final response = await medicationUpsertWithHttpInfo(upsertMedicationCmd,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -267,7 +220,7 @@ class MedicationApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MedicationDto',) as MedicationDto;
     
     }
     return null;

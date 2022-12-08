@@ -53,7 +53,6 @@ part 'model/consultation_note_owner_list_dto.dart';
 part 'model/create_connection_cmd.dart';
 part 'model/create_consultation_node_cmd.dart';
 part 'model/create_folder_cmd.dart';
-part 'model/create_medication_cmd.dart';
 part 'model/create_prescription_cmd.dart';
 part 'model/create_reminder_cmd.dart';
 part 'model/deleted_dto.dart';
@@ -124,9 +123,9 @@ part 'model/toggle_reminder_cmd.dart';
 part 'model/update_connection_cmd.dart';
 part 'model/update_consultation_node_cmd.dart';
 part 'model/update_info_cmd.dart';
-part 'model/update_medication_cmd.dart';
 part 'model/update_prescription_cmd.dart';
 part 'model/update_reminder_cmd.dart';
+part 'model/upsert_medication_cmd.dart';
 part 'model/user_info_dto.dart';
 part 'model/user_list_item_dto.dart';
 

@@ -205,8 +205,6 @@ class ApiClient {
           return CreateConsultationNodeCmd.fromJson(value);
         case 'CreateFolderCmd':
           return CreateFolderCmd.fromJson(value);
-        case 'CreateMedicationCmd':
-          return CreateMedicationCmd.fromJson(value);
         case 'CreatePrescriptionCmd':
           return CreatePrescriptionCmd.fromJson(value);
         case 'CreateReminderCmd':
@@ -347,12 +345,12 @@ class ApiClient {
           return UpdateConsultationNodeCmd.fromJson(value);
         case 'UpdateInfoCmd':
           return UpdateInfoCmd.fromJson(value);
-        case 'UpdateMedicationCmd':
-          return UpdateMedicationCmd.fromJson(value);
         case 'UpdatePrescriptionCmd':
           return UpdatePrescriptionCmd.fromJson(value);
         case 'UpdateReminderCmd':
           return UpdateReminderCmd.fromJson(value);
+        case 'UpsertMedicationCmd':
+          return UpsertMedicationCmd.fromJson(value);
         case 'UserInfoDto':
           return UserInfoDto.fromJson(value);
         case 'UserListItemDto':
