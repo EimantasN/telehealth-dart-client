@@ -14,11 +14,20 @@ class ConnectionPrescriptionDto {
   /// Returns a new [ConnectionPrescriptionDto] instance.
   ConnectionPrescriptionDto({
     this.title,
+    this.modified,
     this.reminderCount,
     this.prescriptionId,
   });
 
   String? title;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? modified;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -39,6 +48,7 @@ class ConnectionPrescriptionDto {
   @override
   bool operator ==(Object other) => identical(this, other) || other is ConnectionPrescriptionDto &&
      other.title == title &&
+     other.modified == modified &&
      other.reminderCount == reminderCount &&
      other.prescriptionId == prescriptionId;
 
@@ -46,11 +56,12 @@ class ConnectionPrescriptionDto {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (title == null ? 0 : title!.hashCode) +
+    (modified == null ? 0 : modified!.hashCode) +
     (reminderCount == null ? 0 : reminderCount!.hashCode) +
     (prescriptionId == null ? 0 : prescriptionId!.hashCode);
 
   @override
-  String toString() => 'ConnectionPrescriptionDto[title=$title, reminderCount=$reminderCount, prescriptionId=$prescriptionId]';
+  String toString() => 'ConnectionPrescriptionDto[title=$title, modified=$modified, reminderCount=$reminderCount, prescriptionId=$prescriptionId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -58,6 +69,11 @@ class ConnectionPrescriptionDto {
       json[r'title'] = this.title;
     } else {
       json[r'title'] = null;
+    }
+    if (this.modified != null) {
+      json[r'modified'] = this.modified!.toUtc().toIso8601String();
+    } else {
+      json[r'modified'] = null;
     }
     if (this.reminderCount != null) {
       json[r'reminderCount'] = this.reminderCount;
@@ -92,6 +108,7 @@ class ConnectionPrescriptionDto {
 
       return ConnectionPrescriptionDto(
         title: mapValueOfType<String>(json, r'title'),
+        modified: mapDateTime(json, r'modified', ''),
         reminderCount: mapValueOfType<int>(json, r'reminderCount'),
         prescriptionId: mapValueOfType<int>(json, r'prescriptionId'),
       );
