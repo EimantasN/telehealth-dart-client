@@ -189,10 +189,16 @@ class ApiClient {
           return BatchCmd.fromJson(value);
         case 'ConnectIonStateUpdateCmd':
           return ConnectIonStateUpdateCmd.fromJson(value);
+        case 'ConnectionConsultationDto':
+          return ConnectionConsultationDto.fromJson(value);
         case 'ConnectionDto':
           return ConnectionDto.fromJson(value);
+        case 'ConnectionInfoViewDto':
+          return ConnectionInfoViewDto.fromJson(value);
         case 'ConnectionListItemDto':
           return ConnectionListItemDto.fromJson(value);
+        case 'ConnectionPrescriptionDto':
+          return ConnectionPrescriptionDto.fromJson(value);
         case 'ConsultationNoteDto':
           return ConsultationNoteDto.fromJson(value);
         case 'ConsultationNoteOwnerDto':
