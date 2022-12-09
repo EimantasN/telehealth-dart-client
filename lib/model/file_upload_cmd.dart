@@ -16,8 +16,8 @@ class FileUploadCmd {
     this.name,
     this.extension_,
     this.mineType,
-    this.doctor,
-    this.healthCareProvider,
+    this.doctorId,
+    this.provider,
     this.labaratory,
     this.base64,
     this.folderId,
@@ -41,9 +41,9 @@ class FileUploadCmd {
 
   String? mineType;
 
-  String? doctor;
+  int? doctorId;
 
-  String? healthCareProvider;
+  String? provider;
 
   String? labaratory;
 
@@ -62,8 +62,8 @@ class FileUploadCmd {
      other.name == name &&
      other.extension_ == extension_ &&
      other.mineType == mineType &&
-     other.doctor == doctor &&
-     other.healthCareProvider == healthCareProvider &&
+     other.doctorId == doctorId &&
+     other.provider == provider &&
      other.labaratory == labaratory &&
      other.base64 == base64 &&
      other.folderId == folderId;
@@ -74,14 +74,14 @@ class FileUploadCmd {
     (name == null ? 0 : name!.hashCode) +
     (extension_ == null ? 0 : extension_!.hashCode) +
     (mineType == null ? 0 : mineType!.hashCode) +
-    (doctor == null ? 0 : doctor!.hashCode) +
-    (healthCareProvider == null ? 0 : healthCareProvider!.hashCode) +
+    (doctorId == null ? 0 : doctorId!.hashCode) +
+    (provider == null ? 0 : provider!.hashCode) +
     (labaratory == null ? 0 : labaratory!.hashCode) +
     (base64 == null ? 0 : base64!.hashCode) +
     (folderId == null ? 0 : folderId!.hashCode);
 
   @override
-  String toString() => 'FileUploadCmd[name=$name, extension_=$extension_, mineType=$mineType, doctor=$doctor, healthCareProvider=$healthCareProvider, labaratory=$labaratory, base64=$base64, folderId=$folderId]';
+  String toString() => 'FileUploadCmd[name=$name, extension_=$extension_, mineType=$mineType, doctorId=$doctorId, provider=$provider, labaratory=$labaratory, base64=$base64, folderId=$folderId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -100,15 +100,15 @@ class FileUploadCmd {
     } else {
       json[r'mineType'] = null;
     }
-    if (this.doctor != null) {
-      json[r'doctor'] = this.doctor;
+    if (this.doctorId != null) {
+      json[r'doctorId'] = this.doctorId;
     } else {
-      json[r'doctor'] = null;
+      json[r'doctorId'] = null;
     }
-    if (this.healthCareProvider != null) {
-      json[r'healthCareProvider'] = this.healthCareProvider;
+    if (this.provider != null) {
+      json[r'provider'] = this.provider;
     } else {
-      json[r'healthCareProvider'] = null;
+      json[r'provider'] = null;
     }
     if (this.labaratory != null) {
       json[r'labaratory'] = this.labaratory;
@@ -150,8 +150,8 @@ class FileUploadCmd {
         name: mapValueOfType<String>(json, r'name'),
         extension_: mapValueOfType<String>(json, r'extension'),
         mineType: mapValueOfType<String>(json, r'mineType'),
-        doctor: mapValueOfType<String>(json, r'doctor'),
-        healthCareProvider: mapValueOfType<String>(json, r'healthCareProvider'),
+        doctorId: mapValueOfType<int>(json, r'doctorId'),
+        provider: mapValueOfType<String>(json, r'provider'),
         labaratory: mapValueOfType<String>(json, r'labaratory'),
         base64: mapValueOfType<String>(json, r'base64'),
         folderId: mapValueOfType<int>(json, r'folderId'),

@@ -17,11 +17,12 @@ class FileDto {
     this.name,
     this.extension_,
     this.mineType,
-    this.doctor,
     this.size,
-    this.healthCareProvider,
+    this.provider,
     this.labaratory,
     this.created,
+    this.modified,
+    this.doctorId,
     this.folderId,
   });
 
@@ -39,15 +40,29 @@ class FileDto {
 
   String? mineType;
 
-  String? doctor;
-
   int? size;
 
-  String? healthCareProvider;
+  String? provider;
 
   String? labaratory;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? created;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? modified;
+
+  int? doctorId;
 
   int? folderId;
 
@@ -57,11 +72,12 @@ class FileDto {
      other.name == name &&
      other.extension_ == extension_ &&
      other.mineType == mineType &&
-     other.doctor == doctor &&
      other.size == size &&
-     other.healthCareProvider == healthCareProvider &&
+     other.provider == provider &&
      other.labaratory == labaratory &&
      other.created == created &&
+     other.modified == modified &&
+     other.doctorId == doctorId &&
      other.folderId == folderId;
 
   @override
@@ -71,15 +87,16 @@ class FileDto {
     (name == null ? 0 : name!.hashCode) +
     (extension_ == null ? 0 : extension_!.hashCode) +
     (mineType == null ? 0 : mineType!.hashCode) +
-    (doctor == null ? 0 : doctor!.hashCode) +
     (size == null ? 0 : size!.hashCode) +
-    (healthCareProvider == null ? 0 : healthCareProvider!.hashCode) +
+    (provider == null ? 0 : provider!.hashCode) +
     (labaratory == null ? 0 : labaratory!.hashCode) +
     (created == null ? 0 : created!.hashCode) +
+    (modified == null ? 0 : modified!.hashCode) +
+    (doctorId == null ? 0 : doctorId!.hashCode) +
     (folderId == null ? 0 : folderId!.hashCode);
 
   @override
-  String toString() => 'FileDto[id=$id, name=$name, extension_=$extension_, mineType=$mineType, doctor=$doctor, size=$size, healthCareProvider=$healthCareProvider, labaratory=$labaratory, created=$created, folderId=$folderId]';
+  String toString() => 'FileDto[id=$id, name=$name, extension_=$extension_, mineType=$mineType, size=$size, provider=$provider, labaratory=$labaratory, created=$created, modified=$modified, doctorId=$doctorId, folderId=$folderId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -103,20 +120,15 @@ class FileDto {
     } else {
       json[r'mineType'] = null;
     }
-    if (this.doctor != null) {
-      json[r'doctor'] = this.doctor;
-    } else {
-      json[r'doctor'] = null;
-    }
     if (this.size != null) {
       json[r'size'] = this.size;
     } else {
       json[r'size'] = null;
     }
-    if (this.healthCareProvider != null) {
-      json[r'healthCareProvider'] = this.healthCareProvider;
+    if (this.provider != null) {
+      json[r'provider'] = this.provider;
     } else {
-      json[r'healthCareProvider'] = null;
+      json[r'provider'] = null;
     }
     if (this.labaratory != null) {
       json[r'labaratory'] = this.labaratory;
@@ -127,6 +139,16 @@ class FileDto {
       json[r'created'] = this.created!.toUtc().toIso8601String();
     } else {
       json[r'created'] = null;
+    }
+    if (this.modified != null) {
+      json[r'modified'] = this.modified!.toUtc().toIso8601String();
+    } else {
+      json[r'modified'] = null;
+    }
+    if (this.doctorId != null) {
+      json[r'doctorId'] = this.doctorId;
+    } else {
+      json[r'doctorId'] = null;
     }
     if (this.folderId != null) {
       json[r'folderId'] = this.folderId;
@@ -159,11 +181,12 @@ class FileDto {
         name: mapValueOfType<String>(json, r'name'),
         extension_: mapValueOfType<String>(json, r'extension'),
         mineType: mapValueOfType<String>(json, r'mineType'),
-        doctor: mapValueOfType<String>(json, r'doctor'),
         size: mapValueOfType<int>(json, r'size'),
-        healthCareProvider: mapValueOfType<String>(json, r'healthCareProvider'),
+        provider: mapValueOfType<String>(json, r'provider'),
         labaratory: mapValueOfType<String>(json, r'labaratory'),
         created: mapDateTime(json, r'created', ''),
+        modified: mapDateTime(json, r'modified', ''),
+        doctorId: mapValueOfType<int>(json, r'doctorId'),
         folderId: mapValueOfType<int>(json, r'folderId'),
       );
     }
