@@ -20,7 +20,9 @@ class QuestionnaireApi {
   /// Parameters:
   ///
   /// * [int] id:
-  Future<Response> questionnaireGetWithHttpInfo({ int? id, }) async {
+  ///
+  /// * [int] language:
+  Future<Response> questionnaireGetWithHttpInfo({ int? id, int? language, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/Questionnaire/Get';
 
@@ -32,7 +34,10 @@ class QuestionnaireApi {
     final formParams = <String, String>{};
 
     if (id != null) {
-      queryParams.addAll(_queryParams('', 'id', id));
+      queryParams.addAll(_queryParams('', 'Id', id));
+    }
+    if (language != null) {
+      queryParams.addAll(_queryParams('', 'Language', language));
     }
 
     const contentTypes = <String>[];
@@ -52,8 +57,10 @@ class QuestionnaireApi {
   /// Parameters:
   ///
   /// * [int] id:
-  Future<Questionnaire?> questionnaireGet({ int? id, }) async {
-    final response = await questionnaireGetWithHttpInfo( id: id, );
+  ///
+  /// * [int] language:
+  Future<Questionnaire?> questionnaireGet({ int? id, int? language, }) async {
+    final response = await questionnaireGetWithHttpInfo( id: id, language: language, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -68,7 +75,10 @@ class QuestionnaireApi {
   }
 
   /// Performs an HTTP 'GET /api/Questionnaire/List' operation and returns the [Response].
-  Future<Response> questionnaireGetListWithHttpInfo() async {
+  /// Parameters:
+  ///
+  /// * [int] language:
+  Future<Response> questionnaireGetListWithHttpInfo({ int? language, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/Questionnaire/List';
 
@@ -78,6 +88,10 @@ class QuestionnaireApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
+
+    if (language != null) {
+      queryParams.addAll(_queryParams('', 'Language', language));
+    }
 
     const contentTypes = <String>[];
 
@@ -93,8 +107,11 @@ class QuestionnaireApi {
     );
   }
 
-  Future<List<QuestionnaireDto>?> questionnaireGetList() async {
-    final response = await questionnaireGetListWithHttpInfo();
+  /// Parameters:
+  ///
+  /// * [int] language:
+  Future<List<QuestionnaireDto>?> questionnaireGetList({ int? language, }) async {
+    final response = await questionnaireGetListWithHttpInfo( language: language, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
