@@ -260,10 +260,7 @@ class LibraryApi {
   }
 
   /// Performs an HTTP 'GET /api/Library/Recent' operation and returns the [Response].
-  /// Parameters:
-  ///
-  /// * [LibraryRecentQueryParameter] query:
-  Future<Response> libraryRecentWithHttpInfo({ LibraryRecentQueryParameter? query, }) async {
+  Future<Response> libraryRecentWithHttpInfo() async {
     // ignore: prefer_const_declarations
     final path = r'/api/Library/Recent';
 
@@ -273,10 +270,6 @@ class LibraryApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-    if (query != null) {
-      queryParams.addAll(_queryParams('', 'query', query));
-    }
 
     const contentTypes = <String>[];
 
@@ -292,11 +285,8 @@ class LibraryApi {
     );
   }
 
-  /// Parameters:
-  ///
-  /// * [LibraryRecentQueryParameter] query:
-  Future<List<FileDto>?> libraryRecent({ LibraryRecentQueryParameter? query, }) async {
-    final response = await libraryRecentWithHttpInfo( query: query, );
+  Future<List<FileDto>?> libraryRecent() async {
+    final response = await libraryRecentWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

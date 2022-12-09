@@ -271,8 +271,6 @@ class ApiClient {
           return HardDeleteCmd.fromJson(value);
         case 'ItemsVm':
           return ItemsVm.fromJson(value);
-        case 'LibraryRecentQueryParameter':
-          return LibraryRecentQueryParameter.fromJson(value);
         case 'MedicationDto':
           return MedicationDto.fromJson(value);
         case 'MedicationListDto':
