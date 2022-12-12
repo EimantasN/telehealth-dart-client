@@ -29,6 +29,7 @@ part 'auth/http_bearer_auth.dart';
 
 part 'api/connection_api.dart';
 part 'api/consultation_note_api.dart';
+part 'api/impersonate_api.dart';
 part 'api/library_api.dart';
 part 'api/medication_api.dart';
 part 'api/notification_api.dart';
@@ -58,6 +59,7 @@ part 'model/create_folder_cmd.dart';
 part 'model/create_reminder_cmd.dart';
 part 'model/deleted_dto.dart';
 part 'model/dismiss_cmd.dart';
+part 'model/doctor_impersonate_cmd.dart';
 part 'model/doctor_search_dto.dart';
 part 'model/doctor_search_query.dart';
 part 'model/dynamic_query_of_paginated_list_of_connection_list_item_dto.dart';

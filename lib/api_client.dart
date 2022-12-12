@@ -215,6 +215,8 @@ class ApiClient {
           return DeletedDto.fromJson(value);
         case 'DismissCmd':
           return DismissCmd.fromJson(value);
+        case 'DoctorImpersonateCmd':
+          return DoctorImpersonateCmd.fromJson(value);
         case 'DoctorSearchDto':
           return DoctorSearchDto.fromJson(value);
         case 'DoctorSearchQuery':
