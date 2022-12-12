@@ -88,6 +88,7 @@ part 'model/get_reminders_query.dart';
 part 'model/get_self_notes_query.dart';
 part 'model/hard_delete_cmd.dart';
 part 'model/impersonate_status_dto.dart';
+part 'model/impersonated_user_dto.dart';
 part 'model/items_vm.dart';
 part 'model/medication_dto.dart';
 part 'model/medication_list_dto.dart';
@@ -131,6 +132,7 @@ part 'model/upsert_consultation_node_cmd.dart';
 part 'model/upsert_medication_cmd.dart';
 part 'model/upsert_prescription_cmd.dart';
 part 'model/user_info_dto.dart';
+part 'model/user_info_dto_impersonated.dart';
 part 'model/user_list_item_dto.dart';
 
 

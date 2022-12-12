@@ -29,7 +29,7 @@ class UserInfoDto {
     this.imageBase64,
     this.dateOfBirth,
     this.lastLoginTime,
-    this.impersonatedUserId,
+    this.impersonated,
   });
 
   String? email;
@@ -76,7 +76,7 @@ class UserInfoDto {
 
   DateTime? lastLoginTime;
 
-  int? impersonatedUserId;
+  UserInfoDtoImpersonated? impersonated;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserInfoDto &&
@@ -96,7 +96,7 @@ class UserInfoDto {
      other.imageBase64 == imageBase64 &&
      other.dateOfBirth == dateOfBirth &&
      other.lastLoginTime == lastLoginTime &&
-     other.impersonatedUserId == impersonatedUserId;
+     other.impersonated == impersonated;
 
   @override
   int get hashCode =>
@@ -117,10 +117,10 @@ class UserInfoDto {
     (imageBase64 == null ? 0 : imageBase64!.hashCode) +
     (dateOfBirth == null ? 0 : dateOfBirth!.hashCode) +
     (lastLoginTime == null ? 0 : lastLoginTime!.hashCode) +
-    (impersonatedUserId == null ? 0 : impersonatedUserId!.hashCode);
+    (impersonated == null ? 0 : impersonated!.hashCode);
 
   @override
-  String toString() => 'UserInfoDto[email=$email, userName=$userName, firstName=$firstName, lastName=$lastName, phoneNumber=$phoneNumber, gender=$gender, street=$street, postcode=$postcode, city=$city, country=$country, doctor=$doctor, height=$height, specialization=$specialization, imageBase64=$imageBase64, dateOfBirth=$dateOfBirth, lastLoginTime=$lastLoginTime, impersonatedUserId=$impersonatedUserId]';
+  String toString() => 'UserInfoDto[email=$email, userName=$userName, firstName=$firstName, lastName=$lastName, phoneNumber=$phoneNumber, gender=$gender, street=$street, postcode=$postcode, city=$city, country=$country, doctor=$doctor, height=$height, specialization=$specialization, imageBase64=$imageBase64, dateOfBirth=$dateOfBirth, lastLoginTime=$lastLoginTime, impersonated=$impersonated]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -204,10 +204,10 @@ class UserInfoDto {
     } else {
       json[r'lastLoginTime'] = null;
     }
-    if (this.impersonatedUserId != null) {
-      json[r'impersonatedUserId'] = this.impersonatedUserId;
+    if (this.impersonated != null) {
+      json[r'impersonated'] = this.impersonated;
     } else {
-      json[r'impersonatedUserId'] = null;
+      json[r'impersonated'] = null;
     }
     return json;
   }
@@ -247,7 +247,7 @@ class UserInfoDto {
         imageBase64: mapValueOfType<String>(json, r'imageBase64'),
         dateOfBirth: mapDateTime(json, r'dateOfBirth', ''),
         lastLoginTime: mapDateTime(json, r'lastLoginTime', ''),
-        impersonatedUserId: mapValueOfType<int>(json, r'impersonatedUserId'),
+        impersonated: UserInfoDtoImpersonated.fromJson(json[r'impersonated']),
       );
     }
     return null;

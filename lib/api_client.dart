@@ -273,6 +273,8 @@ class ApiClient {
           return HardDeleteCmd.fromJson(value);
         case 'ImpersonateStatusDto':
           return ImpersonateStatusDto.fromJson(value);
+        case 'ImpersonatedUserDto':
+          return ImpersonatedUserDto.fromJson(value);
         case 'ItemsVm':
           return ItemsVm.fromJson(value);
         case 'MedicationDto':
@@ -359,6 +361,8 @@ class ApiClient {
           return UpsertPrescriptionCmd.fromJson(value);
         case 'UserInfoDto':
           return UserInfoDto.fromJson(value);
+        case 'UserInfoDtoImpersonated':
+          return UserInfoDtoImpersonated.fromJson(value);
         case 'UserListItemDto':
           return UserListItemDto.fromJson(value);
         default:
