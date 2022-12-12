@@ -271,6 +271,8 @@ class ApiClient {
           return GetSelfNotesQuery.fromJson(value);
         case 'HardDeleteCmd':
           return HardDeleteCmd.fromJson(value);
+        case 'ImpersonateStatusDto':
+          return ImpersonateStatusDto.fromJson(value);
         case 'ItemsVm':
           return ItemsVm.fromJson(value);
         case 'MedicationDto':

@@ -87,6 +87,7 @@ part 'model/get_reminder_review_query.dart';
 part 'model/get_reminders_query.dart';
 part 'model/get_self_notes_query.dart';
 part 'model/hard_delete_cmd.dart';
+part 'model/impersonate_status_dto.dart';
 part 'model/items_vm.dart';
 part 'model/medication_dto.dart';
 part 'model/medication_list_dto.dart';
