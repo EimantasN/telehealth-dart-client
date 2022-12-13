@@ -63,7 +63,7 @@ class ConnectionApi {
     return null;
   }
 
-  /// Performs an HTTP 'DELETE /api/Connection/Archive' operation and returns the [Response].
+  /// Performs an HTTP 'DELETE /api/Connection/Deactivate' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [bool] isAll:
@@ -71,9 +71,9 @@ class ConnectionApi {
   /// * [List<int>] included:
   ///
   /// * [List<int>] excluded:
-  Future<Response> connectionDeleteWithHttpInfo({ bool? isAll, List<int>? included, List<int>? excluded, }) async {
+  Future<Response> connectionDeactivateWithHttpInfo({ bool? isAll, List<int>? included, List<int>? excluded, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/Connection/Archive';
+    final path = r'/api/Connection/Deactivate';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -113,8 +113,8 @@ class ConnectionApi {
   /// * [List<int>] included:
   ///
   /// * [List<int>] excluded:
-  Future<bool?> connectionDelete({ bool? isAll, List<int>? included, List<int>? excluded, }) async {
-    final response = await connectionDeleteWithHttpInfo( isAll: isAll, included: included, excluded: excluded, );
+  Future<bool?> connectionDeactivate({ bool? isAll, List<int>? included, List<int>? excluded, }) async {
+    final response = await connectionDeactivateWithHttpInfo( isAll: isAll, included: included, excluded: excluded, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
