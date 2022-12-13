@@ -280,13 +280,13 @@ class ConnectionApi {
   /// Performs an HTTP 'POST /api/Connection/State' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [ConnectIonStateUpdateCmd] connectIonStateUpdateCmd (required):
-  Future<Response> connectionStateWithHttpInfo(ConnectIonStateUpdateCmd connectIonStateUpdateCmd,) async {
+  /// * [ConnectionStateUpdateCmd] connectionStateUpdateCmd (required):
+  Future<Response> connectionStateWithHttpInfo(ConnectionStateUpdateCmd connectionStateUpdateCmd,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/Connection/State';
 
     // ignore: prefer_final_locals
-    Object? postBody = connectIonStateUpdateCmd;
+    Object? postBody = connectionStateUpdateCmd;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -308,9 +308,9 @@ class ConnectionApi {
 
   /// Parameters:
   ///
-  /// * [ConnectIonStateUpdateCmd] connectIonStateUpdateCmd (required):
-  Future<bool?> connectionState(ConnectIonStateUpdateCmd connectIonStateUpdateCmd,) async {
-    final response = await connectionStateWithHttpInfo(connectIonStateUpdateCmd,);
+  /// * [ConnectionStateUpdateCmd] connectionStateUpdateCmd (required):
+  Future<bool?> connectionState(ConnectionStateUpdateCmd connectionStateUpdateCmd,) async {
+    final response = await connectionStateWithHttpInfo(connectionStateUpdateCmd,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

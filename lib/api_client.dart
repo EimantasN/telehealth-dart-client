@@ -187,8 +187,6 @@ class ApiClient {
           return AnswerSubmitDto.fromJson(value);
         case 'BatchCmd':
           return BatchCmd.fromJson(value);
-        case 'ConnectIonStateUpdateCmd':
-          return ConnectIonStateUpdateCmd.fromJson(value);
         case 'ConnectionConsultationDto':
           return ConnectionConsultationDto.fromJson(value);
         case 'ConnectionDto':
@@ -199,6 +197,8 @@ class ApiClient {
           return ConnectionListItemDto.fromJson(value);
         case 'ConnectionPrescriptionDto':
           return ConnectionPrescriptionDto.fromJson(value);
+        case 'ConnectionStateUpdateCmd':
+          return ConnectionStateUpdateCmd.fromJson(value);
         case 'ConsultationNoteDto':
           return ConsultationNoteDto.fromJson(value);
         case 'ConsultationNoteOwnerDto':

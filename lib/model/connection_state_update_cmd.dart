@@ -10,12 +10,13 @@
 
 part of openapi.api;
 
-class ConnectIonStateUpdateCmd {
-  /// Returns a new [ConnectIonStateUpdateCmd] instance.
-  ConnectIonStateUpdateCmd({
+class ConnectionStateUpdateCmd {
+  /// Returns a new [ConnectionStateUpdateCmd] instance.
+  ConnectionStateUpdateCmd({
     this.connectionId,
     this.approved,
     this.declined,
+    this.endTime,
   });
 
   ///
@@ -30,21 +31,25 @@ class ConnectIonStateUpdateCmd {
 
   bool? declined;
 
+  DateTime? endTime;
+
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ConnectIonStateUpdateCmd &&
+  bool operator ==(Object other) => identical(this, other) || other is ConnectionStateUpdateCmd &&
      other.connectionId == connectionId &&
      other.approved == approved &&
-     other.declined == declined;
+     other.declined == declined &&
+     other.endTime == endTime;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (connectionId == null ? 0 : connectionId!.hashCode) +
     (approved == null ? 0 : approved!.hashCode) +
-    (declined == null ? 0 : declined!.hashCode);
+    (declined == null ? 0 : declined!.hashCode) +
+    (endTime == null ? 0 : endTime!.hashCode);
 
   @override
-  String toString() => 'ConnectIonStateUpdateCmd[connectionId=$connectionId, approved=$approved, declined=$declined]';
+  String toString() => 'ConnectionStateUpdateCmd[connectionId=$connectionId, approved=$approved, declined=$declined, endTime=$endTime]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -63,13 +68,18 @@ class ConnectIonStateUpdateCmd {
     } else {
       json[r'declined'] = null;
     }
+    if (this.endTime != null) {
+      json[r'endTime'] = this.endTime!.toUtc().toIso8601String();
+    } else {
+      json[r'endTime'] = null;
+    }
     return json;
   }
 
-  /// Returns a new [ConnectIonStateUpdateCmd] instance and imports its values from
+  /// Returns a new [ConnectionStateUpdateCmd] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ConnectIonStateUpdateCmd? fromJson(dynamic value) {
+  static ConnectionStateUpdateCmd? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -78,26 +88,27 @@ class ConnectIonStateUpdateCmd {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ConnectIonStateUpdateCmd[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ConnectIonStateUpdateCmd[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ConnectionStateUpdateCmd[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ConnectionStateUpdateCmd[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ConnectIonStateUpdateCmd(
+      return ConnectionStateUpdateCmd(
         connectionId: mapValueOfType<int>(json, r'connectionId'),
         approved: mapValueOfType<bool>(json, r'approved'),
         declined: mapValueOfType<bool>(json, r'declined'),
+        endTime: mapDateTime(json, r'endTime', ''),
       );
     }
     return null;
   }
 
-  static List<ConnectIonStateUpdateCmd>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ConnectIonStateUpdateCmd>[];
+  static List<ConnectionStateUpdateCmd>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ConnectionStateUpdateCmd>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ConnectIonStateUpdateCmd.fromJson(row);
+        final value = ConnectionStateUpdateCmd.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -106,12 +117,12 @@ class ConnectIonStateUpdateCmd {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ConnectIonStateUpdateCmd> mapFromJson(dynamic json) {
-    final map = <String, ConnectIonStateUpdateCmd>{};
+  static Map<String, ConnectionStateUpdateCmd> mapFromJson(dynamic json) {
+    final map = <String, ConnectionStateUpdateCmd>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ConnectIonStateUpdateCmd.fromJson(entry.value);
+        final value = ConnectionStateUpdateCmd.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -120,13 +131,13 @@ class ConnectIonStateUpdateCmd {
     return map;
   }
 
-  // maps a json object with a list of ConnectIonStateUpdateCmd-objects as value to a dart map
-  static Map<String, List<ConnectIonStateUpdateCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ConnectIonStateUpdateCmd>>{};
+  // maps a json object with a list of ConnectionStateUpdateCmd-objects as value to a dart map
+  static Map<String, List<ConnectionStateUpdateCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ConnectionStateUpdateCmd>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ConnectIonStateUpdateCmd.listFromJson(entry.value, growable: growable,);
+        final value = ConnectionStateUpdateCmd.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }
