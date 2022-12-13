@@ -51,6 +51,7 @@ part 'model/connection_info_view_dto.dart';
 part 'model/connection_list_item_dto.dart';
 part 'model/connection_prescription_dto.dart';
 part 'model/connection_state_update_cmd.dart';
+part 'model/connection_time_update_cmd.dart';
 part 'model/consultation_note_dto.dart';
 part 'model/consultation_note_owner_dto.dart';
 part 'model/consultation_note_owner_list_dto.dart';

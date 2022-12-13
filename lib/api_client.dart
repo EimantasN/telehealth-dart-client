@@ -199,6 +199,8 @@ class ApiClient {
           return ConnectionPrescriptionDto.fromJson(value);
         case 'ConnectionStateUpdateCmd':
           return ConnectionStateUpdateCmd.fromJson(value);
+        case 'ConnectionTimeUpdateCmd':
+          return ConnectionTimeUpdateCmd.fromJson(value);
         case 'ConsultationNoteDto':
           return ConsultationNoteDto.fromJson(value);
         case 'ConsultationNoteOwnerDto':
