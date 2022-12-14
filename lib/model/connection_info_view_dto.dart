@@ -13,7 +13,9 @@ part of openapi.api;
 class ConnectionInfoViewDto {
   /// Returns a new [ConnectionInfoViewDto] instance.
   ConnectionInfoViewDto({
+    this.created,
     this.endTime,
+    this.userId,
     this.permissions = const [],
     this.consultations = const [],
     this.prescriptions = const [],
@@ -25,7 +27,23 @@ class ConnectionInfoViewDto {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  DateTime? created;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   DateTime? endTime;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? userId;
 
   List<String> permissions;
 
@@ -35,7 +53,9 @@ class ConnectionInfoViewDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ConnectionInfoViewDto &&
+     other.created == created &&
      other.endTime == endTime &&
+     other.userId == userId &&
      other.permissions == permissions &&
      other.consultations == consultations &&
      other.prescriptions == prescriptions;
@@ -43,20 +63,32 @@ class ConnectionInfoViewDto {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (created == null ? 0 : created!.hashCode) +
     (endTime == null ? 0 : endTime!.hashCode) +
+    (userId == null ? 0 : userId!.hashCode) +
     (permissions.hashCode) +
     (consultations.hashCode) +
     (prescriptions.hashCode);
 
   @override
-  String toString() => 'ConnectionInfoViewDto[endTime=$endTime, permissions=$permissions, consultations=$consultations, prescriptions=$prescriptions]';
+  String toString() => 'ConnectionInfoViewDto[created=$created, endTime=$endTime, userId=$userId, permissions=$permissions, consultations=$consultations, prescriptions=$prescriptions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.created != null) {
+      json[r'created'] = this.created!.toUtc().toIso8601String();
+    } else {
+      json[r'created'] = null;
+    }
     if (this.endTime != null) {
       json[r'endTime'] = this.endTime!.toUtc().toIso8601String();
     } else {
       json[r'endTime'] = null;
+    }
+    if (this.userId != null) {
+      json[r'userId'] = this.userId;
+    } else {
+      json[r'userId'] = null;
     }
       json[r'permissions'] = this.permissions;
       json[r'consultations'] = this.consultations;
@@ -83,7 +115,9 @@ class ConnectionInfoViewDto {
       }());
 
       return ConnectionInfoViewDto(
+        created: mapDateTime(json, r'created', ''),
         endTime: mapDateTime(json, r'endTime', ''),
+        userId: mapValueOfType<int>(json, r'userId'),
         permissions: json[r'permissions'] is List
             ? (json[r'permissions'] as List).cast<String>()
             : const [],
