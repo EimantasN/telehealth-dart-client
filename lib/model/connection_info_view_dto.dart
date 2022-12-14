@@ -16,6 +16,7 @@ class ConnectionInfoViewDto {
     this.created,
     this.endTime,
     this.userId,
+    this.state,
     this.permissions = const [],
     this.consultations = const [],
     this.prescriptions = const [],
@@ -45,6 +46,14 @@ class ConnectionInfoViewDto {
   ///
   int? userId;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? state;
+
   List<String> permissions;
 
   List<ConnectionConsultationDto> consultations;
@@ -56,6 +65,7 @@ class ConnectionInfoViewDto {
      other.created == created &&
      other.endTime == endTime &&
      other.userId == userId &&
+     other.state == state &&
      other.permissions == permissions &&
      other.consultations == consultations &&
      other.prescriptions == prescriptions;
@@ -66,12 +76,13 @@ class ConnectionInfoViewDto {
     (created == null ? 0 : created!.hashCode) +
     (endTime == null ? 0 : endTime!.hashCode) +
     (userId == null ? 0 : userId!.hashCode) +
+    (state == null ? 0 : state!.hashCode) +
     (permissions.hashCode) +
     (consultations.hashCode) +
     (prescriptions.hashCode);
 
   @override
-  String toString() => 'ConnectionInfoViewDto[created=$created, endTime=$endTime, userId=$userId, permissions=$permissions, consultations=$consultations, prescriptions=$prescriptions]';
+  String toString() => 'ConnectionInfoViewDto[created=$created, endTime=$endTime, userId=$userId, state=$state, permissions=$permissions, consultations=$consultations, prescriptions=$prescriptions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -89,6 +100,11 @@ class ConnectionInfoViewDto {
       json[r'userId'] = this.userId;
     } else {
       json[r'userId'] = null;
+    }
+    if (this.state != null) {
+      json[r'state'] = this.state;
+    } else {
+      json[r'state'] = null;
     }
       json[r'permissions'] = this.permissions;
       json[r'consultations'] = this.consultations;
@@ -118,6 +134,7 @@ class ConnectionInfoViewDto {
         created: mapDateTime(json, r'created', ''),
         endTime: mapDateTime(json, r'endTime', ''),
         userId: mapValueOfType<int>(json, r'userId'),
+        state: mapValueOfType<String>(json, r'state'),
         permissions: json[r'permissions'] is List
             ? (json[r'permissions'] as List).cast<String>()
             : const [],
