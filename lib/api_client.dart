@@ -239,6 +239,10 @@ class ApiClient {
           return DynamicQueryOfPaginatedListOfReminderDto.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfSelfNoteListDto':
           return DynamicQueryOfPaginatedListOfSelfNoteListDto.fromJson(value);
+        case 'EventBaseModel':
+          return EventBaseModel.fromJson(value);
+        case 'EventProperty':
+          return EventProperty.fromJson(value);
         case 'FileDto':
           return FileDto.fromJson(value);
         case 'FileUploadCmd':
@@ -287,6 +291,10 @@ class ApiClient {
           return NotificationDataDto.fromJson(value);
         case 'NotificationDto':
           return NotificationDto.fromJson(value);
+        case 'NotificationModels':
+          return NotificationModels.fromJson(value);
+        case 'NotificationModelsBase':
+          return NotificationModelsBase.fromJson(value);
         case 'OrderModel':
           return OrderModel.fromJson(value);
         case 'PaginatedListOfConnectionListItemDto':
