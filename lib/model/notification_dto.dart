@@ -19,6 +19,7 @@ class NotificationDto {
     this.type,
     this.info,
     this.created,
+    this.data,
   });
 
   ///
@@ -63,6 +64,14 @@ class NotificationDto {
   ///
   DateTime? created;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? data;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is NotificationDto &&
      other.id == id &&
@@ -70,7 +79,8 @@ class NotificationDto {
      other.fromUserId == fromUserId &&
      other.type == type &&
      other.info == info &&
-     other.created == created;
+     other.created == created &&
+     other.data == data;
 
   @override
   int get hashCode =>
@@ -80,10 +90,11 @@ class NotificationDto {
     (fromUserId == null ? 0 : fromUserId!.hashCode) +
     (type == null ? 0 : type!.hashCode) +
     (info == null ? 0 : info!.hashCode) +
-    (created == null ? 0 : created!.hashCode);
+    (created == null ? 0 : created!.hashCode) +
+    (data == null ? 0 : data!.hashCode);
 
   @override
-  String toString() => 'NotificationDto[id=$id, toUserId=$toUserId, fromUserId=$fromUserId, type=$type, info=$info, created=$created]';
+  String toString() => 'NotificationDto[id=$id, toUserId=$toUserId, fromUserId=$fromUserId, type=$type, info=$info, created=$created, data=$data]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -117,6 +128,11 @@ class NotificationDto {
     } else {
       json[r'created'] = null;
     }
+    if (this.data != null) {
+      json[r'data'] = this.data;
+    } else {
+      json[r'data'] = null;
+    }
     return json;
   }
 
@@ -145,6 +161,7 @@ class NotificationDto {
         type: mapValueOfType<String>(json, r'type'),
         info: mapValueOfType<String>(json, r'info'),
         created: mapDateTime(json, r'created', ''),
+        data: mapValueOfType<String>(json, r'data'),
       );
     }
     return null;
