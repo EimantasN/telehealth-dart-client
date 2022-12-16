@@ -132,7 +132,11 @@ class ConnectionApi {
   /// Parameters:
   ///
   /// * [int] id:
-  Future<Response> connectionGetWithHttpInfo({ int? id, }) async {
+  ///
+  /// * [int] patientId:
+  ///
+  /// * [int] doctorId:
+  Future<Response> connectionGetWithHttpInfo({ int? id, int? patientId, int? doctorId, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/Connection/Get';
 
@@ -145,6 +149,12 @@ class ConnectionApi {
 
     if (id != null) {
       queryParams.addAll(_queryParams('', 'Id', id));
+    }
+    if (patientId != null) {
+      queryParams.addAll(_queryParams('', 'PatientId', patientId));
+    }
+    if (doctorId != null) {
+      queryParams.addAll(_queryParams('', 'DoctorId', doctorId));
     }
 
     const contentTypes = <String>[];
@@ -164,8 +174,12 @@ class ConnectionApi {
   /// Parameters:
   ///
   /// * [int] id:
-  Future<ConnectionDto?> connectionGet({ int? id, }) async {
-    final response = await connectionGetWithHttpInfo( id: id, );
+  ///
+  /// * [int] patientId:
+  ///
+  /// * [int] doctorId:
+  Future<ConnectionDto?> connectionGet({ int? id, int? patientId, int? doctorId, }) async {
+    final response = await connectionGetWithHttpInfo( id: id, patientId: patientId, doctorId: doctorId, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
