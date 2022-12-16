@@ -17,6 +17,7 @@ class UserInfoDtoImpersonated {
     this.firstName,
     this.lastName,
     this.imageBase64,
+    this.selfNotesAllowed,
   });
 
   ///
@@ -33,12 +34,21 @@ class UserInfoDtoImpersonated {
 
   String? imageBase64;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? selfNotesAllowed;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserInfoDtoImpersonated &&
      other.id == id &&
      other.firstName == firstName &&
      other.lastName == lastName &&
-     other.imageBase64 == imageBase64;
+     other.imageBase64 == imageBase64 &&
+     other.selfNotesAllowed == selfNotesAllowed;
 
   @override
   int get hashCode =>
@@ -46,10 +56,11 @@ class UserInfoDtoImpersonated {
     (id == null ? 0 : id!.hashCode) +
     (firstName == null ? 0 : firstName!.hashCode) +
     (lastName == null ? 0 : lastName!.hashCode) +
-    (imageBase64 == null ? 0 : imageBase64!.hashCode);
+    (imageBase64 == null ? 0 : imageBase64!.hashCode) +
+    (selfNotesAllowed == null ? 0 : selfNotesAllowed!.hashCode);
 
   @override
-  String toString() => 'UserInfoDtoImpersonated[id=$id, firstName=$firstName, lastName=$lastName, imageBase64=$imageBase64]';
+  String toString() => 'UserInfoDtoImpersonated[id=$id, firstName=$firstName, lastName=$lastName, imageBase64=$imageBase64, selfNotesAllowed=$selfNotesAllowed]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -72,6 +83,11 @@ class UserInfoDtoImpersonated {
       json[r'imageBase64'] = this.imageBase64;
     } else {
       json[r'imageBase64'] = null;
+    }
+    if (this.selfNotesAllowed != null) {
+      json[r'selfNotesAllowed'] = this.selfNotesAllowed;
+    } else {
+      json[r'selfNotesAllowed'] = null;
     }
     return json;
   }
@@ -99,6 +115,7 @@ class UserInfoDtoImpersonated {
         firstName: mapValueOfType<String>(json, r'firstName'),
         lastName: mapValueOfType<String>(json, r'lastName'),
         imageBase64: mapValueOfType<String>(json, r'imageBase64'),
+        selfNotesAllowed: mapValueOfType<bool>(json, r'selfNotesAllowed'),
       );
     }
     return null;
