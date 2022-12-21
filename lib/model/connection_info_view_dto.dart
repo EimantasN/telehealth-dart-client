@@ -15,6 +15,7 @@ class ConnectionInfoViewDto {
   ConnectionInfoViewDto({
     this.created,
     this.endTime,
+    this.lastConsultation,
     this.userId,
     this.state,
     this.permissions = const [],
@@ -37,6 +38,8 @@ class ConnectionInfoViewDto {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? endTime;
+
+  DateTime? lastConsultation;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -64,6 +67,7 @@ class ConnectionInfoViewDto {
   bool operator ==(Object other) => identical(this, other) || other is ConnectionInfoViewDto &&
      other.created == created &&
      other.endTime == endTime &&
+     other.lastConsultation == lastConsultation &&
      other.userId == userId &&
      other.state == state &&
      other.permissions == permissions &&
@@ -75,6 +79,7 @@ class ConnectionInfoViewDto {
     // ignore: unnecessary_parenthesis
     (created == null ? 0 : created!.hashCode) +
     (endTime == null ? 0 : endTime!.hashCode) +
+    (lastConsultation == null ? 0 : lastConsultation!.hashCode) +
     (userId == null ? 0 : userId!.hashCode) +
     (state == null ? 0 : state!.hashCode) +
     (permissions.hashCode) +
@@ -82,7 +87,7 @@ class ConnectionInfoViewDto {
     (prescriptions.hashCode);
 
   @override
-  String toString() => 'ConnectionInfoViewDto[created=$created, endTime=$endTime, userId=$userId, state=$state, permissions=$permissions, consultations=$consultations, prescriptions=$prescriptions]';
+  String toString() => 'ConnectionInfoViewDto[created=$created, endTime=$endTime, lastConsultation=$lastConsultation, userId=$userId, state=$state, permissions=$permissions, consultations=$consultations, prescriptions=$prescriptions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -95,6 +100,11 @@ class ConnectionInfoViewDto {
       json[r'endTime'] = this.endTime!.toUtc().toIso8601String();
     } else {
       json[r'endTime'] = null;
+    }
+    if (this.lastConsultation != null) {
+      json[r'lastConsultation'] = this.lastConsultation!.toUtc().toIso8601String();
+    } else {
+      json[r'lastConsultation'] = null;
     }
     if (this.userId != null) {
       json[r'userId'] = this.userId;
@@ -133,6 +143,7 @@ class ConnectionInfoViewDto {
       return ConnectionInfoViewDto(
         created: mapDateTime(json, r'created', ''),
         endTime: mapDateTime(json, r'endTime', ''),
+        lastConsultation: mapDateTime(json, r'lastConsultation', ''),
         userId: mapValueOfType<int>(json, r'userId'),
         state: mapValueOfType<String>(json, r'state'),
         permissions: json[r'permissions'] is List

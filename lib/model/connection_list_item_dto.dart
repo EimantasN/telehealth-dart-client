@@ -19,6 +19,7 @@ class ConnectionListItemDto {
     this.state,
     this.endTime,
     this.connected,
+    this.lastConsultation,
     this.created,
     this.modified,
     this.reminderCount,
@@ -66,6 +67,8 @@ class ConnectionListItemDto {
 
   DateTime? connected;
 
+  DateTime? lastConsultation;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -98,6 +101,7 @@ class ConnectionListItemDto {
      other.state == state &&
      other.endTime == endTime &&
      other.connected == connected &&
+     other.lastConsultation == lastConsultation &&
      other.created == created &&
      other.modified == modified &&
      other.reminderCount == reminderCount;
@@ -111,12 +115,13 @@ class ConnectionListItemDto {
     (state == null ? 0 : state!.hashCode) +
     (endTime == null ? 0 : endTime!.hashCode) +
     (connected == null ? 0 : connected!.hashCode) +
+    (lastConsultation == null ? 0 : lastConsultation!.hashCode) +
     (created == null ? 0 : created!.hashCode) +
     (modified == null ? 0 : modified!.hashCode) +
     (reminderCount == null ? 0 : reminderCount!.hashCode);
 
   @override
-  String toString() => 'ConnectionListItemDto[id=$id, patientId=$patientId, doctorId=$doctorId, state=$state, endTime=$endTime, connected=$connected, created=$created, modified=$modified, reminderCount=$reminderCount]';
+  String toString() => 'ConnectionListItemDto[id=$id, patientId=$patientId, doctorId=$doctorId, state=$state, endTime=$endTime, connected=$connected, lastConsultation=$lastConsultation, created=$created, modified=$modified, reminderCount=$reminderCount]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -149,6 +154,11 @@ class ConnectionListItemDto {
       json[r'connected'] = this.connected!.toUtc().toIso8601String();
     } else {
       json[r'connected'] = null;
+    }
+    if (this.lastConsultation != null) {
+      json[r'lastConsultation'] = this.lastConsultation!.toUtc().toIso8601String();
+    } else {
+      json[r'lastConsultation'] = null;
     }
     if (this.created != null) {
       json[r'created'] = this.created!.toUtc().toIso8601String();
@@ -193,6 +203,7 @@ class ConnectionListItemDto {
         state: mapValueOfType<String>(json, r'state'),
         endTime: mapDateTime(json, r'endTime', ''),
         connected: mapDateTime(json, r'connected', ''),
+        lastConsultation: mapDateTime(json, r'lastConsultation', ''),
         created: mapDateTime(json, r'created', ''),
         modified: mapDateTime(json, r'modified', ''),
         reminderCount: mapValueOfType<int>(json, r'reminderCount'),

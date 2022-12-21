@@ -16,6 +16,7 @@ class ConnectionDto {
     this.id,
     this.endTime,
     this.connected,
+    this.lastConsultation,
     this.patientId,
     this.doctorId,
     this.state,
@@ -43,6 +44,8 @@ class ConnectionDto {
   DateTime? endTime;
 
   DateTime? connected;
+
+  DateTime? lastConsultation;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -101,6 +104,7 @@ class ConnectionDto {
      other.id == id &&
      other.endTime == endTime &&
      other.connected == connected &&
+     other.lastConsultation == lastConsultation &&
      other.patientId == patientId &&
      other.doctorId == doctorId &&
      other.state == state &&
@@ -116,6 +120,7 @@ class ConnectionDto {
     (id == null ? 0 : id!.hashCode) +
     (endTime == null ? 0 : endTime!.hashCode) +
     (connected == null ? 0 : connected!.hashCode) +
+    (lastConsultation == null ? 0 : lastConsultation!.hashCode) +
     (patientId == null ? 0 : patientId!.hashCode) +
     (doctorId == null ? 0 : doctorId!.hashCode) +
     (state == null ? 0 : state!.hashCode) +
@@ -126,7 +131,7 @@ class ConnectionDto {
     (requestedPermissions.hashCode);
 
   @override
-  String toString() => 'ConnectionDto[id=$id, endTime=$endTime, connected=$connected, patientId=$patientId, doctorId=$doctorId, state=$state, created=$created, modified=$modified, reminderCount=$reminderCount, permissions=$permissions, requestedPermissions=$requestedPermissions]';
+  String toString() => 'ConnectionDto[id=$id, endTime=$endTime, connected=$connected, lastConsultation=$lastConsultation, patientId=$patientId, doctorId=$doctorId, state=$state, created=$created, modified=$modified, reminderCount=$reminderCount, permissions=$permissions, requestedPermissions=$requestedPermissions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -144,6 +149,11 @@ class ConnectionDto {
       json[r'connected'] = this.connected!.toUtc().toIso8601String();
     } else {
       json[r'connected'] = null;
+    }
+    if (this.lastConsultation != null) {
+      json[r'lastConsultation'] = this.lastConsultation!.toUtc().toIso8601String();
+    } else {
+      json[r'lastConsultation'] = null;
     }
     if (this.patientId != null) {
       json[r'patientId'] = this.patientId;
@@ -202,6 +212,7 @@ class ConnectionDto {
         id: mapValueOfType<int>(json, r'id'),
         endTime: mapDateTime(json, r'endTime', ''),
         connected: mapDateTime(json, r'connected', ''),
+        lastConsultation: mapDateTime(json, r'lastConsultation', ''),
         patientId: mapValueOfType<int>(json, r'patientId'),
         doctorId: mapValueOfType<int>(json, r'doctorId'),
         state: mapValueOfType<String>(json, r'state'),
