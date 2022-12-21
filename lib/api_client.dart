@@ -207,6 +207,8 @@ class ApiClient {
           return ConsultationNoteOwnerDto.fromJson(value);
         case 'ConsultationNoteOwnerListDto':
           return ConsultationNoteOwnerListDto.fromJson(value);
+        case 'ConsultationUserDto':
+          return ConsultationUserDto.fromJson(value);
         case 'CreateConnectionCmd':
           return CreateConnectionCmd.fromJson(value);
         case 'CreateFolderCmd':

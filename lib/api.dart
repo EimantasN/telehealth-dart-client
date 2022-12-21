@@ -55,6 +55,7 @@ part 'model/connection_time_update_cmd.dart';
 part 'model/consultation_note_dto.dart';
 part 'model/consultation_note_owner_dto.dart';
 part 'model/consultation_note_owner_list_dto.dart';
+part 'model/consultation_user_dto.dart';
 part 'model/create_connection_cmd.dart';
 part 'model/create_folder_cmd.dart';
 part 'model/create_reminder_cmd.dart';
