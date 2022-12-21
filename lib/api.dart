@@ -115,6 +115,7 @@ part 'model/patient_search_query.dart';
 part 'model/permission_dto.dart';
 part 'model/prescription_dto.dart';
 part 'model/prescription_owner_dto.dart';
+part 'model/prescription_user.dart';
 part 'model/provider_dto.dart';
 part 'model/question.dart';
 part 'model/questionnaire.dart';

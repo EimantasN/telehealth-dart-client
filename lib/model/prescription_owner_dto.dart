@@ -17,6 +17,7 @@ class PrescriptionOwnerDto {
     this.created,
     this.modified,
     this.reminderCount,
+    this.user,
     this.item,
   });
 
@@ -58,6 +59,14 @@ class PrescriptionOwnerDto {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  PrescriptionUser? user;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   PrescriptionDto? item;
 
   @override
@@ -66,6 +75,7 @@ class PrescriptionOwnerDto {
      other.created == created &&
      other.modified == modified &&
      other.reminderCount == reminderCount &&
+     other.user == user &&
      other.item == item;
 
   @override
@@ -75,10 +85,11 @@ class PrescriptionOwnerDto {
     (created == null ? 0 : created!.hashCode) +
     (modified == null ? 0 : modified!.hashCode) +
     (reminderCount == null ? 0 : reminderCount!.hashCode) +
+    (user == null ? 0 : user!.hashCode) +
     (item == null ? 0 : item!.hashCode);
 
   @override
-  String toString() => 'PrescriptionOwnerDto[id=$id, created=$created, modified=$modified, reminderCount=$reminderCount, item=$item]';
+  String toString() => 'PrescriptionOwnerDto[id=$id, created=$created, modified=$modified, reminderCount=$reminderCount, user=$user, item=$item]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -101,6 +112,11 @@ class PrescriptionOwnerDto {
       json[r'reminderCount'] = this.reminderCount;
     } else {
       json[r'reminderCount'] = null;
+    }
+    if (this.user != null) {
+      json[r'user'] = this.user;
+    } else {
+      json[r'user'] = null;
     }
     if (this.item != null) {
       json[r'item'] = this.item;
@@ -133,6 +149,7 @@ class PrescriptionOwnerDto {
         created: mapDateTime(json, r'created', ''),
         modified: mapDateTime(json, r'modified', ''),
         reminderCount: mapValueOfType<int>(json, r'reminderCount'),
+        user: PrescriptionUser.fromJson(json[r'user']),
         item: PrescriptionDto.fromJson(json[r'item']),
       );
     }

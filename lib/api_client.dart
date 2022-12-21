@@ -327,6 +327,8 @@ class ApiClient {
           return PrescriptionDto.fromJson(value);
         case 'PrescriptionOwnerDto':
           return PrescriptionOwnerDto.fromJson(value);
+        case 'PrescriptionUser':
+          return PrescriptionUser.fromJson(value);
         case 'ProviderDto':
           return ProviderDto.fromJson(value);
         case 'Question':
