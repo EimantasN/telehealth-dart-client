@@ -91,7 +91,7 @@ class UpdateReminderCmd {
   ///
   bool? yearly;
 
-  String? custom;
+  CreateReminderCmdCustom? custom;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UpdateReminderCmd &&
@@ -206,7 +206,7 @@ class UpdateReminderCmd {
         weekly: mapValueOfType<bool>(json, r'weekly'),
         monthly: mapValueOfType<bool>(json, r'monthly'),
         yearly: mapValueOfType<bool>(json, r'yearly'),
-        custom: mapValueOfType<String>(json, r'custom'),
+        custom: CreateReminderCmdCustom.fromJson(json[r'custom']),
       );
     }
     return null;

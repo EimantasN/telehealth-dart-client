@@ -215,6 +215,10 @@ class ApiClient {
           return CreateFolderCmd.fromJson(value);
         case 'CreateReminderCmd':
           return CreateReminderCmd.fromJson(value);
+        case 'CreateReminderCmdCustom':
+          return CreateReminderCmdCustom.fromJson(value);
+        case 'CustomTimeDto':
+          return CustomTimeDto.fromJson(value);
         case 'DeletedDto':
           return DeletedDto.fromJson(value);
         case 'DismissCmd':

@@ -59,6 +59,8 @@ part 'model/consultation_user_dto.dart';
 part 'model/create_connection_cmd.dart';
 part 'model/create_folder_cmd.dart';
 part 'model/create_reminder_cmd.dart';
+part 'model/create_reminder_cmd_custom.dart';
+part 'model/custom_time_dto.dart';
 part 'model/deleted_dto.dart';
 part 'model/dismiss_cmd.dart';
 part 'model/doctor_impersonate_cmd.dart';

@@ -96,7 +96,7 @@ class CreateReminderCmd {
   ///
   bool? yearly;
 
-  String? custom;
+  CreateReminderCmdCustom? custom;
 
   int? medicationId;
 
@@ -256,7 +256,7 @@ class CreateReminderCmd {
         weekly: mapValueOfType<bool>(json, r'weekly'),
         monthly: mapValueOfType<bool>(json, r'monthly'),
         yearly: mapValueOfType<bool>(json, r'yearly'),
-        custom: mapValueOfType<String>(json, r'custom'),
+        custom: CreateReminderCmdCustom.fromJson(json[r'custom']),
         medicationId: mapValueOfType<int>(json, r'medicationId'),
         consultationId: mapValueOfType<int>(json, r'consultationId'),
         connectionId: mapValueOfType<int>(json, r'connectionId'),
