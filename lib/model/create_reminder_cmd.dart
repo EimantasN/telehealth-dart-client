@@ -71,7 +71,7 @@ class CreateReminderCmd {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? time;
+  DateTime? time;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -187,7 +187,7 @@ class CreateReminderCmd {
       json[r'end'] = null;
     }
     if (this.time != null) {
-      json[r'time'] = this.time;
+      json[r'time'] = this.time!.toUtc().toIso8601String();
     } else {
       json[r'time'] = null;
     }
@@ -268,7 +268,7 @@ class CreateReminderCmd {
         message: mapValueOfType<String>(json, r'message'),
         start: mapDateTime(json, r'start', ''),
         end: mapDateTime(json, r'end', ''),
-        time: mapValueOfType<String>(json, r'time'),
+        time: mapDateTime(json, r'time', ''),
         daily: mapValueOfType<bool>(json, r'daily'),
         weekly: mapValueOfType<bool>(json, r'weekly'),
         monthly: mapValueOfType<bool>(json, r'monthly'),
