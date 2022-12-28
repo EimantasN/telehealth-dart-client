@@ -14,7 +14,13 @@ class CustomTimeDto {
   /// Returns a new [CustomTimeDto] instance.
   CustomTimeDto({
     this.count,
-    this.on_ = const [],
+    this.time,
+    this.daily,
+    this.weekly,
+    this.monthly,
+    this.yearly,
+    this.weekDays = const [],
+    this.times = const [],
   });
 
   ///
@@ -25,21 +31,75 @@ class CustomTimeDto {
   ///
   int? count;
 
-  List<String> on_;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? time;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? daily;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? weekly;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? monthly;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? yearly;
+
+  List<int> weekDays;
+
+  List<String> times;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CustomTimeDto &&
      other.count == count &&
-     other.on_ == on_;
+     other.time == time &&
+     other.daily == daily &&
+     other.weekly == weekly &&
+     other.monthly == monthly &&
+     other.yearly == yearly &&
+     other.weekDays == weekDays &&
+     other.times == times;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (count == null ? 0 : count!.hashCode) +
-    (on_.hashCode);
+    (time == null ? 0 : time!.hashCode) +
+    (daily == null ? 0 : daily!.hashCode) +
+    (weekly == null ? 0 : weekly!.hashCode) +
+    (monthly == null ? 0 : monthly!.hashCode) +
+    (yearly == null ? 0 : yearly!.hashCode) +
+    (weekDays.hashCode) +
+    (times.hashCode);
 
   @override
-  String toString() => 'CustomTimeDto[count=$count, on_=$on_]';
+  String toString() => 'CustomTimeDto[count=$count, time=$time, daily=$daily, weekly=$weekly, monthly=$monthly, yearly=$yearly, weekDays=$weekDays, times=$times]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -48,7 +108,33 @@ class CustomTimeDto {
     } else {
       json[r'count'] = null;
     }
-      json[r'on'] = this.on_;
+    if (this.time != null) {
+      json[r'time'] = this.time;
+    } else {
+      json[r'time'] = null;
+    }
+    if (this.daily != null) {
+      json[r'daily'] = this.daily;
+    } else {
+      json[r'daily'] = null;
+    }
+    if (this.weekly != null) {
+      json[r'weekly'] = this.weekly;
+    } else {
+      json[r'weekly'] = null;
+    }
+    if (this.monthly != null) {
+      json[r'monthly'] = this.monthly;
+    } else {
+      json[r'monthly'] = null;
+    }
+    if (this.yearly != null) {
+      json[r'yearly'] = this.yearly;
+    } else {
+      json[r'yearly'] = null;
+    }
+      json[r'weekDays'] = this.weekDays;
+      json[r'times'] = this.times;
     return json;
   }
 
@@ -72,8 +158,16 @@ class CustomTimeDto {
 
       return CustomTimeDto(
         count: mapValueOfType<int>(json, r'count'),
-        on_: json[r'on'] is List
-            ? (json[r'on'] as List).cast<String>()
+        time: mapValueOfType<String>(json, r'time'),
+        daily: mapValueOfType<bool>(json, r'daily'),
+        weekly: mapValueOfType<bool>(json, r'weekly'),
+        monthly: mapValueOfType<bool>(json, r'monthly'),
+        yearly: mapValueOfType<bool>(json, r'yearly'),
+        weekDays: json[r'weekDays'] is List
+            ? (json[r'weekDays'] as List).cast<int>()
+            : const [],
+        times: json[r'times'] is List
+            ? (json[r'times'] as List).cast<String>()
             : const [],
       );
     }

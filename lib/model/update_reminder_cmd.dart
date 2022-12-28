@@ -18,6 +18,7 @@ class UpdateReminderCmd {
     this.message,
     this.start,
     this.end,
+    this.time,
     this.daily,
     this.weekly,
     this.monthly,
@@ -65,6 +66,14 @@ class UpdateReminderCmd {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  String? time;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   bool? daily;
 
   ///
@@ -100,6 +109,7 @@ class UpdateReminderCmd {
      other.message == message &&
      other.start == start &&
      other.end == end &&
+     other.time == time &&
      other.daily == daily &&
      other.weekly == weekly &&
      other.monthly == monthly &&
@@ -114,6 +124,7 @@ class UpdateReminderCmd {
     (message == null ? 0 : message!.hashCode) +
     (start == null ? 0 : start!.hashCode) +
     (end == null ? 0 : end!.hashCode) +
+    (time == null ? 0 : time!.hashCode) +
     (daily == null ? 0 : daily!.hashCode) +
     (weekly == null ? 0 : weekly!.hashCode) +
     (monthly == null ? 0 : monthly!.hashCode) +
@@ -121,7 +132,7 @@ class UpdateReminderCmd {
     (custom == null ? 0 : custom!.hashCode);
 
   @override
-  String toString() => 'UpdateReminderCmd[reminderId=$reminderId, title=$title, message=$message, start=$start, end=$end, daily=$daily, weekly=$weekly, monthly=$monthly, yearly=$yearly, custom=$custom]';
+  String toString() => 'UpdateReminderCmd[reminderId=$reminderId, title=$title, message=$message, start=$start, end=$end, time=$time, daily=$daily, weekly=$weekly, monthly=$monthly, yearly=$yearly, custom=$custom]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -149,6 +160,11 @@ class UpdateReminderCmd {
       json[r'end'] = this.end!.toUtc().toIso8601String();
     } else {
       json[r'end'] = null;
+    }
+    if (this.time != null) {
+      json[r'time'] = this.time;
+    } else {
+      json[r'time'] = null;
     }
     if (this.daily != null) {
       json[r'daily'] = this.daily;
@@ -202,6 +218,7 @@ class UpdateReminderCmd {
         message: mapValueOfType<String>(json, r'message'),
         start: mapDateTime(json, r'start', ''),
         end: mapDateTime(json, r'end', ''),
+        time: mapValueOfType<String>(json, r'time'),
         daily: mapValueOfType<bool>(json, r'daily'),
         weekly: mapValueOfType<bool>(json, r'weekly'),
         monthly: mapValueOfType<bool>(json, r'monthly'),
