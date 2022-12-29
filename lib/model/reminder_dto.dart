@@ -20,6 +20,7 @@ class ReminderDto {
     this.active,
     this.start,
     this.end,
+    this.time,
     this.daily,
     this.weekly,
     this.monthly,
@@ -83,6 +84,8 @@ class ReminderDto {
   DateTime? start;
 
   DateTime? end;
+
+  DateTime? time;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -153,6 +156,7 @@ class ReminderDto {
      other.active == active &&
      other.start == start &&
      other.end == end &&
+     other.time == time &&
      other.daily == daily &&
      other.weekly == weekly &&
      other.monthly == monthly &&
@@ -176,6 +180,7 @@ class ReminderDto {
     (active == null ? 0 : active!.hashCode) +
     (start == null ? 0 : start!.hashCode) +
     (end == null ? 0 : end!.hashCode) +
+    (time == null ? 0 : time!.hashCode) +
     (daily == null ? 0 : daily!.hashCode) +
     (weekly == null ? 0 : weekly!.hashCode) +
     (monthly == null ? 0 : monthly!.hashCode) +
@@ -190,7 +195,7 @@ class ReminderDto {
     (prescriptionId == null ? 0 : prescriptionId!.hashCode);
 
   @override
-  String toString() => 'ReminderDto[id=$id, title=$title, status=$status, message=$message, active=$active, start=$start, end=$end, daily=$daily, weekly=$weekly, monthly=$monthly, yearly=$yearly, custom=$custom, created=$created, modified=$modified, medicationId=$medicationId, consultationNoteId=$consultationNoteId, connectionId=$connectionId, selfNoteId=$selfNoteId, prescriptionId=$prescriptionId]';
+  String toString() => 'ReminderDto[id=$id, title=$title, status=$status, message=$message, active=$active, start=$start, end=$end, time=$time, daily=$daily, weekly=$weekly, monthly=$monthly, yearly=$yearly, custom=$custom, created=$created, modified=$modified, medicationId=$medicationId, consultationNoteId=$consultationNoteId, connectionId=$connectionId, selfNoteId=$selfNoteId, prescriptionId=$prescriptionId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -228,6 +233,11 @@ class ReminderDto {
       json[r'end'] = this.end!.toUtc().toIso8601String();
     } else {
       json[r'end'] = null;
+    }
+    if (this.time != null) {
+      json[r'time'] = this.time!.toUtc().toIso8601String();
+    } else {
+      json[r'time'] = null;
     }
     if (this.daily != null) {
       json[r'daily'] = this.daily;
@@ -318,6 +328,7 @@ class ReminderDto {
         active: mapValueOfType<bool>(json, r'active'),
         start: mapDateTime(json, r'start', ''),
         end: mapDateTime(json, r'end', ''),
+        time: mapDateTime(json, r'time', ''),
         daily: mapValueOfType<bool>(json, r'daily'),
         weekly: mapValueOfType<bool>(json, r'weekly'),
         monthly: mapValueOfType<bool>(json, r'monthly'),
