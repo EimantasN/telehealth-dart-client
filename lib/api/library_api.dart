@@ -110,6 +110,50 @@ class LibraryApi {
     return null;
   }
 
+  /// Performs an HTTP 'GET /api/Library/DefaultFolders' operation and returns the [Response].
+  Future<Response> libraryDefaultFoldersWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/Library/DefaultFolders';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  Future<List<FolderDto>?> libraryDefaultFolders() async {
+    final response = await libraryDefaultFoldersWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<FolderDto>') as List)
+        .cast<FolderDto>()
+        .toList();
+
+    }
+    return null;
+  }
+
   /// Performs an HTTP 'GET /api/Library/Download' operation and returns the [Response].
   /// Parameters:
   ///
