@@ -27,6 +27,7 @@ class UserInfoDto {
     this.height,
     this.specialization,
     this.provider,
+    this.licenseNr,
     this.imageBase64,
     this.dateOfBirth,
     this.lastLoginTime,
@@ -73,6 +74,8 @@ class UserInfoDto {
 
   String? provider;
 
+  String? licenseNr;
+
   String? imageBase64;
 
   DateTime? dateOfBirth;
@@ -97,6 +100,7 @@ class UserInfoDto {
      other.height == height &&
      other.specialization == specialization &&
      other.provider == provider &&
+     other.licenseNr == licenseNr &&
      other.imageBase64 == imageBase64 &&
      other.dateOfBirth == dateOfBirth &&
      other.lastLoginTime == lastLoginTime &&
@@ -119,13 +123,14 @@ class UserInfoDto {
     (height == null ? 0 : height!.hashCode) +
     (specialization == null ? 0 : specialization!.hashCode) +
     (provider == null ? 0 : provider!.hashCode) +
+    (licenseNr == null ? 0 : licenseNr!.hashCode) +
     (imageBase64 == null ? 0 : imageBase64!.hashCode) +
     (dateOfBirth == null ? 0 : dateOfBirth!.hashCode) +
     (lastLoginTime == null ? 0 : lastLoginTime!.hashCode) +
     (impersonated == null ? 0 : impersonated!.hashCode);
 
   @override
-  String toString() => 'UserInfoDto[email=$email, userName=$userName, firstName=$firstName, lastName=$lastName, phoneNumber=$phoneNumber, gender=$gender, street=$street, postcode=$postcode, city=$city, country=$country, doctor=$doctor, height=$height, specialization=$specialization, provider=$provider, imageBase64=$imageBase64, dateOfBirth=$dateOfBirth, lastLoginTime=$lastLoginTime, impersonated=$impersonated]';
+  String toString() => 'UserInfoDto[email=$email, userName=$userName, firstName=$firstName, lastName=$lastName, phoneNumber=$phoneNumber, gender=$gender, street=$street, postcode=$postcode, city=$city, country=$country, doctor=$doctor, height=$height, specialization=$specialization, provider=$provider, licenseNr=$licenseNr, imageBase64=$imageBase64, dateOfBirth=$dateOfBirth, lastLoginTime=$lastLoginTime, impersonated=$impersonated]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -199,6 +204,11 @@ class UserInfoDto {
     } else {
       json[r'provider'] = null;
     }
+    if (this.licenseNr != null) {
+      json[r'licenseNr'] = this.licenseNr;
+    } else {
+      json[r'licenseNr'] = null;
+    }
     if (this.imageBase64 != null) {
       json[r'imageBase64'] = this.imageBase64;
     } else {
@@ -255,6 +265,7 @@ class UserInfoDto {
         height: mapValueOfType<int>(json, r'height'),
         specialization: mapValueOfType<String>(json, r'specialization'),
         provider: mapValueOfType<String>(json, r'provider'),
+        licenseNr: mapValueOfType<String>(json, r'licenseNr'),
         imageBase64: mapValueOfType<String>(json, r'imageBase64'),
         dateOfBirth: mapDateTime(json, r'dateOfBirth', ''),
         lastLoginTime: mapDateTime(json, r'lastLoginTime', ''),

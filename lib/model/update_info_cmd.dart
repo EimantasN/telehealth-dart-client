@@ -18,6 +18,7 @@ class UpdateInfoCmd {
     this.phoneNumber,
     this.specialization,
     this.provider,
+    this.licenseNr,
     this.height,
     this.gender,
     this.street,
@@ -49,6 +50,8 @@ class UpdateInfoCmd {
 
   String? provider;
 
+  String? licenseNr;
+
   int? height;
 
   String? gender;
@@ -70,6 +73,7 @@ class UpdateInfoCmd {
      other.phoneNumber == phoneNumber &&
      other.specialization == specialization &&
      other.provider == provider &&
+     other.licenseNr == licenseNr &&
      other.height == height &&
      other.gender == gender &&
      other.street == street &&
@@ -86,6 +90,7 @@ class UpdateInfoCmd {
     (phoneNumber == null ? 0 : phoneNumber!.hashCode) +
     (specialization == null ? 0 : specialization!.hashCode) +
     (provider == null ? 0 : provider!.hashCode) +
+    (licenseNr == null ? 0 : licenseNr!.hashCode) +
     (height == null ? 0 : height!.hashCode) +
     (gender == null ? 0 : gender!.hashCode) +
     (street == null ? 0 : street!.hashCode) +
@@ -95,7 +100,7 @@ class UpdateInfoCmd {
     (dateOfBirth == null ? 0 : dateOfBirth!.hashCode);
 
   @override
-  String toString() => 'UpdateInfoCmd[firstName=$firstName, lastName=$lastName, phoneNumber=$phoneNumber, specialization=$specialization, provider=$provider, height=$height, gender=$gender, street=$street, postcode=$postcode, city=$city, country=$country, dateOfBirth=$dateOfBirth]';
+  String toString() => 'UpdateInfoCmd[firstName=$firstName, lastName=$lastName, phoneNumber=$phoneNumber, specialization=$specialization, provider=$provider, licenseNr=$licenseNr, height=$height, gender=$gender, street=$street, postcode=$postcode, city=$city, country=$country, dateOfBirth=$dateOfBirth]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -123,6 +128,11 @@ class UpdateInfoCmd {
       json[r'provider'] = this.provider;
     } else {
       json[r'provider'] = null;
+    }
+    if (this.licenseNr != null) {
+      json[r'licenseNr'] = this.licenseNr;
+    } else {
+      json[r'licenseNr'] = null;
     }
     if (this.height != null) {
       json[r'height'] = this.height;
@@ -186,6 +196,7 @@ class UpdateInfoCmd {
         phoneNumber: mapValueOfType<String>(json, r'phoneNumber'),
         specialization: mapValueOfType<String>(json, r'specialization'),
         provider: mapValueOfType<String>(json, r'provider'),
+        licenseNr: mapValueOfType<String>(json, r'licenseNr'),
         height: mapValueOfType<int>(json, r'height'),
         gender: mapValueOfType<String>(json, r'gender'),
         street: mapValueOfType<String>(json, r'street'),
