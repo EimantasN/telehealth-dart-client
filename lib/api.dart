@@ -65,6 +65,7 @@ part 'model/deleted_dto.dart';
 part 'model/dismiss_cmd.dart';
 part 'model/doctor_impersonate_cmd.dart';
 part 'model/doctor_search_dto.dart';
+part 'model/doctor_search_dto_all_of.dart';
 part 'model/doctor_search_query.dart';
 part 'model/dynamic_query_of_paginated_list_of_connection_list_item_dto.dart';
 part 'model/dynamic_query_of_paginated_list_of_consultation_note_owner_list_dto.dart';

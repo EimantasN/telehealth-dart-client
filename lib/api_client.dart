@@ -227,6 +227,8 @@ class ApiClient {
           return DoctorImpersonateCmd.fromJson(value);
         case 'DoctorSearchDto':
           return DoctorSearchDto.fromJson(value);
+        case 'DoctorSearchDtoAllOf':
+          return DoctorSearchDtoAllOf.fromJson(value);
         case 'DoctorSearchQuery':
           return DoctorSearchQuery.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfConnectionListItemDto':

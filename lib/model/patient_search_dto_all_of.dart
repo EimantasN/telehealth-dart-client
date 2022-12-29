@@ -15,6 +15,7 @@ class PatientSearchDtoAllOf {
   PatientSearchDtoAllOf({
     this.city,
     this.country,
+    this.dateOfBirth,
   });
 
   ///
@@ -33,19 +34,23 @@ class PatientSearchDtoAllOf {
   ///
   String? country;
 
+  DateTime? dateOfBirth;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is PatientSearchDtoAllOf &&
      other.city == city &&
-     other.country == country;
+     other.country == country &&
+     other.dateOfBirth == dateOfBirth;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (city == null ? 0 : city!.hashCode) +
-    (country == null ? 0 : country!.hashCode);
+    (country == null ? 0 : country!.hashCode) +
+    (dateOfBirth == null ? 0 : dateOfBirth!.hashCode);
 
   @override
-  String toString() => 'PatientSearchDtoAllOf[city=$city, country=$country]';
+  String toString() => 'PatientSearchDtoAllOf[city=$city, country=$country, dateOfBirth=$dateOfBirth]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -58,6 +63,11 @@ class PatientSearchDtoAllOf {
       json[r'country'] = this.country;
     } else {
       json[r'country'] = null;
+    }
+    if (this.dateOfBirth != null) {
+      json[r'dateOfBirth'] = this.dateOfBirth!.toUtc().toIso8601String();
+    } else {
+      json[r'dateOfBirth'] = null;
     }
     return json;
   }
@@ -83,6 +93,7 @@ class PatientSearchDtoAllOf {
       return PatientSearchDtoAllOf(
         city: mapValueOfType<String>(json, r'city'),
         country: mapValueOfType<String>(json, r'country'),
+        dateOfBirth: mapDateTime(json, r'dateOfBirth', ''),
       );
     }
     return null;

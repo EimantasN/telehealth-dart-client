@@ -20,6 +20,7 @@ class PatientSearchDto {
     this.imageBase64,
     this.city,
     this.country,
+    this.dateOfBirth,
   });
 
   ///
@@ -66,6 +67,8 @@ class PatientSearchDto {
   ///
   String? country;
 
+  DateTime? dateOfBirth;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is PatientSearchDto &&
      other.id == id &&
@@ -74,7 +77,8 @@ class PatientSearchDto {
      other.specialization == specialization &&
      other.imageBase64 == imageBase64 &&
      other.city == city &&
-     other.country == country;
+     other.country == country &&
+     other.dateOfBirth == dateOfBirth;
 
   @override
   int get hashCode =>
@@ -85,10 +89,11 @@ class PatientSearchDto {
     (specialization == null ? 0 : specialization!.hashCode) +
     (imageBase64 == null ? 0 : imageBase64!.hashCode) +
     (city == null ? 0 : city!.hashCode) +
-    (country == null ? 0 : country!.hashCode);
+    (country == null ? 0 : country!.hashCode) +
+    (dateOfBirth == null ? 0 : dateOfBirth!.hashCode);
 
   @override
-  String toString() => 'PatientSearchDto[id=$id, firstName=$firstName, lastName=$lastName, specialization=$specialization, imageBase64=$imageBase64, city=$city, country=$country]';
+  String toString() => 'PatientSearchDto[id=$id, firstName=$firstName, lastName=$lastName, specialization=$specialization, imageBase64=$imageBase64, city=$city, country=$country, dateOfBirth=$dateOfBirth]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -127,6 +132,11 @@ class PatientSearchDto {
     } else {
       json[r'country'] = null;
     }
+    if (this.dateOfBirth != null) {
+      json[r'dateOfBirth'] = this.dateOfBirth!.toUtc().toIso8601String();
+    } else {
+      json[r'dateOfBirth'] = null;
+    }
     return json;
   }
 
@@ -156,6 +166,7 @@ class PatientSearchDto {
         imageBase64: mapValueOfType<String>(json, r'imageBase64'),
         city: mapValueOfType<String>(json, r'city'),
         country: mapValueOfType<String>(json, r'country'),
+        dateOfBirth: mapDateTime(json, r'dateOfBirth', ''),
       );
     }
     return null;

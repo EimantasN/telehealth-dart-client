@@ -20,6 +20,8 @@ class DoctorSearchDto {
     this.imageBase64,
     this.city,
     this.country,
+    this.dateOfBirth,
+    this.licenseNr,
   });
 
   ///
@@ -66,6 +68,10 @@ class DoctorSearchDto {
   ///
   String? country;
 
+  DateTime? dateOfBirth;
+
+  String? licenseNr;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is DoctorSearchDto &&
      other.id == id &&
@@ -74,7 +80,9 @@ class DoctorSearchDto {
      other.specialization == specialization &&
      other.imageBase64 == imageBase64 &&
      other.city == city &&
-     other.country == country;
+     other.country == country &&
+     other.dateOfBirth == dateOfBirth &&
+     other.licenseNr == licenseNr;
 
   @override
   int get hashCode =>
@@ -85,10 +93,12 @@ class DoctorSearchDto {
     (specialization == null ? 0 : specialization!.hashCode) +
     (imageBase64 == null ? 0 : imageBase64!.hashCode) +
     (city == null ? 0 : city!.hashCode) +
-    (country == null ? 0 : country!.hashCode);
+    (country == null ? 0 : country!.hashCode) +
+    (dateOfBirth == null ? 0 : dateOfBirth!.hashCode) +
+    (licenseNr == null ? 0 : licenseNr!.hashCode);
 
   @override
-  String toString() => 'DoctorSearchDto[id=$id, firstName=$firstName, lastName=$lastName, specialization=$specialization, imageBase64=$imageBase64, city=$city, country=$country]';
+  String toString() => 'DoctorSearchDto[id=$id, firstName=$firstName, lastName=$lastName, specialization=$specialization, imageBase64=$imageBase64, city=$city, country=$country, dateOfBirth=$dateOfBirth, licenseNr=$licenseNr]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -127,6 +137,16 @@ class DoctorSearchDto {
     } else {
       json[r'country'] = null;
     }
+    if (this.dateOfBirth != null) {
+      json[r'dateOfBirth'] = this.dateOfBirth!.toUtc().toIso8601String();
+    } else {
+      json[r'dateOfBirth'] = null;
+    }
+    if (this.licenseNr != null) {
+      json[r'licenseNr'] = this.licenseNr;
+    } else {
+      json[r'licenseNr'] = null;
+    }
     return json;
   }
 
@@ -156,6 +176,8 @@ class DoctorSearchDto {
         imageBase64: mapValueOfType<String>(json, r'imageBase64'),
         city: mapValueOfType<String>(json, r'city'),
         country: mapValueOfType<String>(json, r'country'),
+        dateOfBirth: mapDateTime(json, r'dateOfBirth', ''),
+        licenseNr: mapValueOfType<String>(json, r'licenseNr'),
       );
     }
     return null;
