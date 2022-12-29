@@ -289,6 +289,8 @@ class ApiClient {
           return ImpersonatedUserDto.fromJson(value);
         case 'ItemsVm':
           return ItemsVm.fromJson(value);
+        case 'LicenseDto':
+          return LicenseDto.fromJson(value);
         case 'MedicationDto':
           return MedicationDto.fromJson(value);
         case 'MedicationListDto':
@@ -349,6 +351,8 @@ class ApiClient {
           return RequestedPermissionDto.fromJson(value);
         case 'RestoreCmd':
           return RestoreCmd.fromJson(value);
+        case 'SearchLicenseQuery':
+          return SearchLicenseQuery.fromJson(value);
         case 'SearchProviderQuery':
           return SearchProviderQuery.fromJson(value);
         case 'Section':
