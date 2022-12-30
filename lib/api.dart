@@ -97,6 +97,7 @@ part 'model/hard_delete_cmd.dart';
 part 'model/impersonate_status_dto.dart';
 part 'model/impersonated_user_dto.dart';
 part 'model/items_vm.dart';
+part 'model/library_delete_cmd.dart';
 part 'model/license_dto.dart';
 part 'model/medication_dto.dart';
 part 'model/medication_list_dto.dart';

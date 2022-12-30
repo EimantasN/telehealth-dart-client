@@ -291,6 +291,8 @@ class ApiClient {
           return ImpersonatedUserDto.fromJson(value);
         case 'ItemsVm':
           return ItemsVm.fromJson(value);
+        case 'LibraryDeleteCmd':
+          return LibraryDeleteCmd.fromJson(value);
         case 'LicenseDto':
           return LicenseDto.fromJson(value);
         case 'MedicationDto':
