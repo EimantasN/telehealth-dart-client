@@ -16,6 +16,7 @@ class UserInfoDtoImpersonated {
     this.id,
     this.firstName,
     this.lastName,
+    this.dateOfBirth,
     this.imageBase64,
     this.selfNotesAllowed,
   });
@@ -32,6 +33,8 @@ class UserInfoDtoImpersonated {
 
   String? lastName;
 
+  DateTime? dateOfBirth;
+
   String? imageBase64;
 
   ///
@@ -47,6 +50,7 @@ class UserInfoDtoImpersonated {
      other.id == id &&
      other.firstName == firstName &&
      other.lastName == lastName &&
+     other.dateOfBirth == dateOfBirth &&
      other.imageBase64 == imageBase64 &&
      other.selfNotesAllowed == selfNotesAllowed;
 
@@ -56,11 +60,12 @@ class UserInfoDtoImpersonated {
     (id == null ? 0 : id!.hashCode) +
     (firstName == null ? 0 : firstName!.hashCode) +
     (lastName == null ? 0 : lastName!.hashCode) +
+    (dateOfBirth == null ? 0 : dateOfBirth!.hashCode) +
     (imageBase64 == null ? 0 : imageBase64!.hashCode) +
     (selfNotesAllowed == null ? 0 : selfNotesAllowed!.hashCode);
 
   @override
-  String toString() => 'UserInfoDtoImpersonated[id=$id, firstName=$firstName, lastName=$lastName, imageBase64=$imageBase64, selfNotesAllowed=$selfNotesAllowed]';
+  String toString() => 'UserInfoDtoImpersonated[id=$id, firstName=$firstName, lastName=$lastName, dateOfBirth=$dateOfBirth, imageBase64=$imageBase64, selfNotesAllowed=$selfNotesAllowed]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -78,6 +83,11 @@ class UserInfoDtoImpersonated {
       json[r'lastName'] = this.lastName;
     } else {
       json[r'lastName'] = null;
+    }
+    if (this.dateOfBirth != null) {
+      json[r'dateOfBirth'] = this.dateOfBirth!.toUtc().toIso8601String();
+    } else {
+      json[r'dateOfBirth'] = null;
     }
     if (this.imageBase64 != null) {
       json[r'imageBase64'] = this.imageBase64;
@@ -114,6 +124,7 @@ class UserInfoDtoImpersonated {
         id: mapValueOfType<int>(json, r'id'),
         firstName: mapValueOfType<String>(json, r'firstName'),
         lastName: mapValueOfType<String>(json, r'lastName'),
+        dateOfBirth: mapDateTime(json, r'dateOfBirth', ''),
         imageBase64: mapValueOfType<String>(json, r'imageBase64'),
         selfNotesAllowed: mapValueOfType<bool>(json, r'selfNotesAllowed'),
       );
