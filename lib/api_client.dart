@@ -355,6 +355,8 @@ class ApiClient {
           return RequestedPermissionDto.fromJson(value);
         case 'RestoreCmd':
           return RestoreCmd.fromJson(value);
+        case 'RestoreCmdAllOf':
+          return RestoreCmdAllOf.fromJson(value);
         case 'SearchLicenseQuery':
           return SearchLicenseQuery.fromJson(value);
         case 'SearchProviderQuery':

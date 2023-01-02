@@ -10,20 +10,11 @@
 
 part of openapi.api;
 
-class RestoreCmd {
-  /// Returns a new [RestoreCmd] instance.
-  RestoreCmd({
-    this.isAll,
-    this.included = const [],
-    this.excluded = const [],
+class RestoreCmdAllOf {
+  /// Returns a new [RestoreCmdAllOf] instance.
+  RestoreCmdAllOf({
     this.id,
   });
-
-  bool? isAll;
-
-  List<int> included;
-
-  List<int> excluded;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -34,32 +25,19 @@ class RestoreCmd {
   int? id;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is RestoreCmd &&
-     other.isAll == isAll &&
-     other.included == included &&
-     other.excluded == excluded &&
+  bool operator ==(Object other) => identical(this, other) || other is RestoreCmdAllOf &&
      other.id == id;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (isAll == null ? 0 : isAll!.hashCode) +
-    (included.hashCode) +
-    (excluded.hashCode) +
     (id == null ? 0 : id!.hashCode);
 
   @override
-  String toString() => 'RestoreCmd[isAll=$isAll, included=$included, excluded=$excluded, id=$id]';
+  String toString() => 'RestoreCmdAllOf[id=$id]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.isAll != null) {
-      json[r'isAll'] = this.isAll;
-    } else {
-      json[r'isAll'] = null;
-    }
-      json[r'included'] = this.included;
-      json[r'excluded'] = this.excluded;
     if (this.id != null) {
       json[r'id'] = this.id;
     } else {
@@ -68,10 +46,10 @@ class RestoreCmd {
     return json;
   }
 
-  /// Returns a new [RestoreCmd] instance and imports its values from
+  /// Returns a new [RestoreCmdAllOf] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static RestoreCmd? fromJson(dynamic value) {
+  static RestoreCmdAllOf? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -80,31 +58,24 @@ class RestoreCmd {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "RestoreCmd[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "RestoreCmd[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "RestoreCmdAllOf[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "RestoreCmdAllOf[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return RestoreCmd(
-        isAll: mapValueOfType<bool>(json, r'isAll'),
-        included: json[r'included'] is List
-            ? (json[r'included'] as List).cast<int>()
-            : const [],
-        excluded: json[r'excluded'] is List
-            ? (json[r'excluded'] as List).cast<int>()
-            : const [],
+      return RestoreCmdAllOf(
         id: mapValueOfType<int>(json, r'id'),
       );
     }
     return null;
   }
 
-  static List<RestoreCmd>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <RestoreCmd>[];
+  static List<RestoreCmdAllOf>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <RestoreCmdAllOf>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = RestoreCmd.fromJson(row);
+        final value = RestoreCmdAllOf.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -113,12 +84,12 @@ class RestoreCmd {
     return result.toList(growable: growable);
   }
 
-  static Map<String, RestoreCmd> mapFromJson(dynamic json) {
-    final map = <String, RestoreCmd>{};
+  static Map<String, RestoreCmdAllOf> mapFromJson(dynamic json) {
+    final map = <String, RestoreCmdAllOf>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = RestoreCmd.fromJson(entry.value);
+        final value = RestoreCmdAllOf.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -127,13 +98,13 @@ class RestoreCmd {
     return map;
   }
 
-  // maps a json object with a list of RestoreCmd-objects as value to a dart map
-  static Map<String, List<RestoreCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<RestoreCmd>>{};
+  // maps a json object with a list of RestoreCmdAllOf-objects as value to a dart map
+  static Map<String, List<RestoreCmdAllOf>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<RestoreCmdAllOf>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = RestoreCmd.listFromJson(entry.value, growable: growable,);
+        final value = RestoreCmdAllOf.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }

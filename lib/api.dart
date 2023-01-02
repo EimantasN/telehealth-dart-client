@@ -129,6 +129,7 @@ part 'model/reminder_dto.dart';
 part 'model/reminder_review_dto.dart';
 part 'model/requested_permission_dto.dart';
 part 'model/restore_cmd.dart';
+part 'model/restore_cmd_all_of.dart';
 part 'model/search_license_query.dart';
 part 'model/search_provider_query.dart';
 part 'model/section.dart';
