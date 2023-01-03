@@ -19,6 +19,7 @@ class ImpersonatedUserDto {
     this.dateOfBirth,
     this.imageBase64,
     this.selfNotesAllowed,
+    this.connectionId,
   });
 
   ///
@@ -45,6 +46,8 @@ class ImpersonatedUserDto {
   ///
   bool? selfNotesAllowed;
 
+  int? connectionId;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ImpersonatedUserDto &&
      other.id == id &&
@@ -52,7 +55,8 @@ class ImpersonatedUserDto {
      other.lastName == lastName &&
      other.dateOfBirth == dateOfBirth &&
      other.imageBase64 == imageBase64 &&
-     other.selfNotesAllowed == selfNotesAllowed;
+     other.selfNotesAllowed == selfNotesAllowed &&
+     other.connectionId == connectionId;
 
   @override
   int get hashCode =>
@@ -62,10 +66,11 @@ class ImpersonatedUserDto {
     (lastName == null ? 0 : lastName!.hashCode) +
     (dateOfBirth == null ? 0 : dateOfBirth!.hashCode) +
     (imageBase64 == null ? 0 : imageBase64!.hashCode) +
-    (selfNotesAllowed == null ? 0 : selfNotesAllowed!.hashCode);
+    (selfNotesAllowed == null ? 0 : selfNotesAllowed!.hashCode) +
+    (connectionId == null ? 0 : connectionId!.hashCode);
 
   @override
-  String toString() => 'ImpersonatedUserDto[id=$id, firstName=$firstName, lastName=$lastName, dateOfBirth=$dateOfBirth, imageBase64=$imageBase64, selfNotesAllowed=$selfNotesAllowed]';
+  String toString() => 'ImpersonatedUserDto[id=$id, firstName=$firstName, lastName=$lastName, dateOfBirth=$dateOfBirth, imageBase64=$imageBase64, selfNotesAllowed=$selfNotesAllowed, connectionId=$connectionId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -99,6 +104,11 @@ class ImpersonatedUserDto {
     } else {
       json[r'selfNotesAllowed'] = null;
     }
+    if (this.connectionId != null) {
+      json[r'connectionId'] = this.connectionId;
+    } else {
+      json[r'connectionId'] = null;
+    }
     return json;
   }
 
@@ -127,6 +137,7 @@ class ImpersonatedUserDto {
         dateOfBirth: mapDateTime(json, r'dateOfBirth', ''),
         imageBase64: mapValueOfType<String>(json, r'imageBase64'),
         selfNotesAllowed: mapValueOfType<bool>(json, r'selfNotesAllowed'),
+        connectionId: mapValueOfType<int>(json, r'connectionId'),
       );
     }
     return null;
