@@ -13,6 +13,7 @@ part of openapi.api;
 class UserInfoDto {
   /// Returns a new [UserInfoDto] instance.
   UserInfoDto({
+    this.id,
     this.email,
     this.userName,
     this.firstName,
@@ -33,6 +34,14 @@ class UserInfoDto {
     this.lastLoginTime,
     this.impersonated,
   });
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? id;
 
   String? email;
 
@@ -86,6 +95,7 @@ class UserInfoDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserInfoDto &&
+     other.id == id &&
      other.email == email &&
      other.userName == userName &&
      other.firstName == firstName &&
@@ -109,6 +119,7 @@ class UserInfoDto {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (id == null ? 0 : id!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
     (userName == null ? 0 : userName!.hashCode) +
     (firstName == null ? 0 : firstName!.hashCode) +
@@ -130,10 +141,15 @@ class UserInfoDto {
     (impersonated == null ? 0 : impersonated!.hashCode);
 
   @override
-  String toString() => 'UserInfoDto[email=$email, userName=$userName, firstName=$firstName, lastName=$lastName, phoneNumber=$phoneNumber, gender=$gender, street=$street, postcode=$postcode, city=$city, country=$country, doctor=$doctor, height=$height, specialization=$specialization, provider=$provider, licenseNr=$licenseNr, imageBase64=$imageBase64, dateOfBirth=$dateOfBirth, lastLoginTime=$lastLoginTime, impersonated=$impersonated]';
+  String toString() => 'UserInfoDto[id=$id, email=$email, userName=$userName, firstName=$firstName, lastName=$lastName, phoneNumber=$phoneNumber, gender=$gender, street=$street, postcode=$postcode, city=$city, country=$country, doctor=$doctor, height=$height, specialization=$specialization, provider=$provider, licenseNr=$licenseNr, imageBase64=$imageBase64, dateOfBirth=$dateOfBirth, lastLoginTime=$lastLoginTime, impersonated=$impersonated]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.id != null) {
+      json[r'id'] = this.id;
+    } else {
+      json[r'id'] = null;
+    }
     if (this.email != null) {
       json[r'email'] = this.email;
     } else {
@@ -251,6 +267,7 @@ class UserInfoDto {
       }());
 
       return UserInfoDto(
+        id: mapValueOfType<int>(json, r'id'),
         email: mapValueOfType<String>(json, r'email'),
         userName: mapValueOfType<String>(json, r'userName'),
         firstName: mapValueOfType<String>(json, r'firstName'),
