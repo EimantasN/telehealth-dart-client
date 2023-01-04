@@ -201,7 +201,7 @@ class LibraryApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /api/Library/Download' operation and returns the [Response].
+  /// Performs an HTTP 'POST /api/Library/Download' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [DownloadFileOrZip] downloadFileOrZip (required):
@@ -221,7 +221,7 @@ class LibraryApi {
 
     return apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
