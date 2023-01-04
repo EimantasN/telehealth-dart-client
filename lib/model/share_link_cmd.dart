@@ -13,25 +13,31 @@ part of openapi.api;
 class ShareLinkCmd {
   /// Returns a new [ShareLinkCmd] instance.
   ShareLinkCmd({
+    this.folderIds = const [],
     this.fileIds = const [],
   });
+
+  List<int> folderIds;
 
   List<int> fileIds;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ShareLinkCmd &&
+     other.folderIds == folderIds &&
      other.fileIds == fileIds;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (folderIds.hashCode) +
     (fileIds.hashCode);
 
   @override
-  String toString() => 'ShareLinkCmd[fileIds=$fileIds]';
+  String toString() => 'ShareLinkCmd[folderIds=$folderIds, fileIds=$fileIds]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+      json[r'folderIds'] = this.folderIds;
       json[r'fileIds'] = this.fileIds;
     return json;
   }
@@ -55,6 +61,9 @@ class ShareLinkCmd {
       }());
 
       return ShareLinkCmd(
+        folderIds: json[r'folderIds'] is List
+            ? (json[r'folderIds'] as List).cast<int>()
+            : const [],
         fileIds: json[r'fileIds'] is List
             ? (json[r'fileIds'] as List).cast<int>()
             : const [],
