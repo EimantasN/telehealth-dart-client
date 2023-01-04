@@ -257,6 +257,8 @@ class ApiClient {
           return FileDto.fromJson(value);
         case 'FileUploadCmd':
           return FileUploadCmd.fromJson(value);
+        case 'FileViewedDto':
+          return FileViewedDto.fromJson(value);
         case 'FilterModel':
           return FilterModel.fromJson(value);
         case 'FolderDto':

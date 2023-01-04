@@ -372,7 +372,7 @@ class LibraryApi {
     );
   }
 
-  Future<List<FileDto>?> libraryRecent() async {
+  Future<List<FileViewedDto>?> libraryRecent() async {
     final response = await libraryRecentWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -382,8 +382,8 @@ class LibraryApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<FileDto>') as List)
-        .cast<FileDto>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<FileViewedDto>') as List)
+        .cast<FileViewedDto>()
         .toList();
 
     }

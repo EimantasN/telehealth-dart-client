@@ -80,6 +80,7 @@ part 'model/event_base_model.dart';
 part 'model/event_property.dart';
 part 'model/file_dto.dart';
 part 'model/file_upload_cmd.dart';
+part 'model/file_viewed_dto.dart';
 part 'model/filter_model.dart';
 part 'model/folder_dto.dart';
 part 'model/frequency_dto.dart';
