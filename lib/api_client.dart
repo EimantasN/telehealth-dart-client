@@ -231,6 +231,8 @@ class ApiClient {
           return DoctorSearchDtoAllOf.fromJson(value);
         case 'DoctorSearchQuery':
           return DoctorSearchQuery.fromJson(value);
+        case 'DownloadFileOrZip':
+          return DownloadFileOrZip.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfConnectionListItemDto':
           return DynamicQueryOfPaginatedListOfConnectionListItemDto.fromJson(value);
         case 'DynamicQueryOfPaginatedListOfConsultationNoteOwnerListDto':

@@ -204,23 +204,19 @@ class LibraryApi {
   /// Performs an HTTP 'GET /api/Library/Download' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [int] id:
-  Future<Response> libraryDownloadWithHttpInfo({ int? id, }) async {
+  /// * [DownloadFileOrZip] downloadFileOrZip (required):
+  Future<Response> libraryDownloadWithHttpInfo(DownloadFileOrZip downloadFileOrZip,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/Library/Download';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = downloadFileOrZip;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (id != null) {
-      queryParams.addAll(_queryParams('', 'id', id));
-    }
-
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
@@ -236,9 +232,9 @@ class LibraryApi {
 
   /// Parameters:
   ///
-  /// * [int] id:
-  Future<MultipartFile?> libraryDownload({ int? id, }) async {
-    final response = await libraryDownloadWithHttpInfo( id: id, );
+  /// * [DownloadFileOrZip] downloadFileOrZip (required):
+  Future<MultipartFile?> libraryDownload(DownloadFileOrZip downloadFileOrZip,) async {
+    final response = await libraryDownloadWithHttpInfo(downloadFileOrZip,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
