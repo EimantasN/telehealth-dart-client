@@ -13,40 +13,34 @@ part of openapi.api;
 class UserPermissionDto {
   /// Returns a new [UserPermissionDto] instance.
   UserPermissionDto({
-    this.all,
+    this.userId,
     this.permissions = const [],
   });
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? all;
+  String? userId;
 
   List<String> permissions;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserPermissionDto &&
-     other.all == all &&
+     other.userId == userId &&
      other.permissions == permissions;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (all == null ? 0 : all!.hashCode) +
+    (userId == null ? 0 : userId!.hashCode) +
     (permissions.hashCode);
 
   @override
-  String toString() => 'UserPermissionDto[all=$all, permissions=$permissions]';
+  String toString() => 'UserPermissionDto[userId=$userId, permissions=$permissions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.all != null) {
-      json[r'all'] = this.all;
+    if (this.userId != null) {
+      json[r'userId'] = this.userId;
     } else {
-      json[r'all'] = null;
+      json[r'userId'] = null;
     }
       json[r'permissions'] = this.permissions;
     return json;
@@ -71,7 +65,7 @@ class UserPermissionDto {
       }());
 
       return UserPermissionDto(
-        all: mapValueOfType<bool>(json, r'all'),
+        userId: mapValueOfType<String>(json, r'userId'),
         permissions: json[r'permissions'] is List
             ? (json[r'permissions'] as List).cast<String>()
             : const [],
