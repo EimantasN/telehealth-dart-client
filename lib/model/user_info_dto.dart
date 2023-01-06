@@ -30,6 +30,7 @@ class UserInfoDto {
     this.provider,
     this.licenseNr,
     this.imageBase64,
+    this.language,
     this.dateOfBirth,
     this.lastLoginTime,
     this.impersonated,
@@ -87,6 +88,8 @@ class UserInfoDto {
 
   String? imageBase64;
 
+  String? language;
+
   DateTime? dateOfBirth;
 
   DateTime? lastLoginTime;
@@ -112,6 +115,7 @@ class UserInfoDto {
      other.provider == provider &&
      other.licenseNr == licenseNr &&
      other.imageBase64 == imageBase64 &&
+     other.language == language &&
      other.dateOfBirth == dateOfBirth &&
      other.lastLoginTime == lastLoginTime &&
      other.impersonated == impersonated;
@@ -136,12 +140,13 @@ class UserInfoDto {
     (provider == null ? 0 : provider!.hashCode) +
     (licenseNr == null ? 0 : licenseNr!.hashCode) +
     (imageBase64 == null ? 0 : imageBase64!.hashCode) +
+    (language == null ? 0 : language!.hashCode) +
     (dateOfBirth == null ? 0 : dateOfBirth!.hashCode) +
     (lastLoginTime == null ? 0 : lastLoginTime!.hashCode) +
     (impersonated == null ? 0 : impersonated!.hashCode);
 
   @override
-  String toString() => 'UserInfoDto[id=$id, email=$email, userName=$userName, firstName=$firstName, lastName=$lastName, phoneNumber=$phoneNumber, gender=$gender, street=$street, postcode=$postcode, city=$city, country=$country, doctor=$doctor, height=$height, specialization=$specialization, provider=$provider, licenseNr=$licenseNr, imageBase64=$imageBase64, dateOfBirth=$dateOfBirth, lastLoginTime=$lastLoginTime, impersonated=$impersonated]';
+  String toString() => 'UserInfoDto[id=$id, email=$email, userName=$userName, firstName=$firstName, lastName=$lastName, phoneNumber=$phoneNumber, gender=$gender, street=$street, postcode=$postcode, city=$city, country=$country, doctor=$doctor, height=$height, specialization=$specialization, provider=$provider, licenseNr=$licenseNr, imageBase64=$imageBase64, language=$language, dateOfBirth=$dateOfBirth, lastLoginTime=$lastLoginTime, impersonated=$impersonated]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -230,6 +235,11 @@ class UserInfoDto {
     } else {
       json[r'imageBase64'] = null;
     }
+    if (this.language != null) {
+      json[r'language'] = this.language;
+    } else {
+      json[r'language'] = null;
+    }
     if (this.dateOfBirth != null) {
       json[r'dateOfBirth'] = this.dateOfBirth!.toUtc().toIso8601String();
     } else {
@@ -284,6 +294,7 @@ class UserInfoDto {
         provider: mapValueOfType<String>(json, r'provider'),
         licenseNr: mapValueOfType<String>(json, r'licenseNr'),
         imageBase64: mapValueOfType<String>(json, r'imageBase64'),
+        language: mapValueOfType<String>(json, r'language'),
         dateOfBirth: mapDateTime(json, r'dateOfBirth', ''),
         lastLoginTime: mapDateTime(json, r'lastLoginTime', ''),
         impersonated: UserInfoDtoImpersonated.fromJson(json[r'impersonated']),
