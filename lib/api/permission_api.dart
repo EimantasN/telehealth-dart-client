@@ -19,10 +19,8 @@ class PermissionApi {
   /// Performs an HTTP 'GET /api/Permission/Permissions' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [int] fromUser:
-  ///
-  /// * [int] toUserId:
-  Future<Response> permissionPermissionsWithHttpInfo({ int? fromUser, int? toUserId, }) async {
+  /// * [String] fromUser:
+  Future<Response> permissionPermissionsWithHttpInfo({ String? fromUser, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/Permission/Permissions';
 
@@ -35,9 +33,6 @@ class PermissionApi {
 
     if (fromUser != null) {
       queryParams.addAll(_queryParams('', 'FromUser', fromUser));
-    }
-    if (toUserId != null) {
-      queryParams.addAll(_queryParams('', 'ToUserId', toUserId));
     }
 
     const contentTypes = <String>[];
@@ -56,11 +51,9 @@ class PermissionApi {
 
   /// Parameters:
   ///
-  /// * [int] fromUser:
-  ///
-  /// * [int] toUserId:
-  Future<UserPermissionDto?> permissionPermissions({ int? fromUser, int? toUserId, }) async {
-    final response = await permissionPermissionsWithHttpInfo( fromUser: fromUser, toUserId: toUserId, );
+  /// * [String] fromUser:
+  Future<UserPermissionDto?> permissionPermissions({ String? fromUser, }) async {
+    final response = await permissionPermissionsWithHttpInfo( fromUser: fromUser, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
