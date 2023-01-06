@@ -383,6 +383,8 @@ class ApiClient {
           return UpdateConnectionCmd.fromJson(value);
         case 'UpdateInfoCmd':
           return UpdateInfoCmd.fromJson(value);
+        case 'UpdateLanguageCmd':
+          return UpdateLanguageCmd.fromJson(value);
         case 'UpdateReminderCmd':
           return UpdateReminderCmd.fromJson(value);
         case 'UpsertConsultationNodeCmd':

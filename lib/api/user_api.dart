@@ -57,6 +57,53 @@ class UserApi {
     return null;
   }
 
+  /// Performs an HTTP 'POST /api/User/Language' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [UpdateLanguageCmd] updateLanguageCmd (required):
+  Future<Response> userLanguageWithHttpInfo(UpdateLanguageCmd updateLanguageCmd,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/User/Language';
+
+    // ignore: prefer_final_locals
+    Object? postBody = updateLanguageCmd;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [UpdateLanguageCmd] updateLanguageCmd (required):
+  Future<bool?> userLanguage(UpdateLanguageCmd updateLanguageCmd,) async {
+    final response = await userLanguageWithHttpInfo(updateLanguageCmd,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
+    
+    }
+    return null;
+  }
+
   /// Performs an HTTP 'POST /api/User/Update' operation and returns the [Response].
   /// Parameters:
   ///
