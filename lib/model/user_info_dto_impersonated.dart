@@ -19,6 +19,7 @@ class UserInfoDtoImpersonated {
     this.dateOfBirth,
     this.imageBase64,
     this.selfNotesAllowed,
+    this.height,
     this.connectionId,
   });
 
@@ -46,6 +47,8 @@ class UserInfoDtoImpersonated {
   ///
   bool? selfNotesAllowed;
 
+  int? height;
+
   int? connectionId;
 
   @override
@@ -56,6 +59,7 @@ class UserInfoDtoImpersonated {
      other.dateOfBirth == dateOfBirth &&
      other.imageBase64 == imageBase64 &&
      other.selfNotesAllowed == selfNotesAllowed &&
+     other.height == height &&
      other.connectionId == connectionId;
 
   @override
@@ -67,10 +71,11 @@ class UserInfoDtoImpersonated {
     (dateOfBirth == null ? 0 : dateOfBirth!.hashCode) +
     (imageBase64 == null ? 0 : imageBase64!.hashCode) +
     (selfNotesAllowed == null ? 0 : selfNotesAllowed!.hashCode) +
+    (height == null ? 0 : height!.hashCode) +
     (connectionId == null ? 0 : connectionId!.hashCode);
 
   @override
-  String toString() => 'UserInfoDtoImpersonated[id=$id, firstName=$firstName, lastName=$lastName, dateOfBirth=$dateOfBirth, imageBase64=$imageBase64, selfNotesAllowed=$selfNotesAllowed, connectionId=$connectionId]';
+  String toString() => 'UserInfoDtoImpersonated[id=$id, firstName=$firstName, lastName=$lastName, dateOfBirth=$dateOfBirth, imageBase64=$imageBase64, selfNotesAllowed=$selfNotesAllowed, height=$height, connectionId=$connectionId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -103,6 +108,11 @@ class UserInfoDtoImpersonated {
       json[r'selfNotesAllowed'] = this.selfNotesAllowed;
     } else {
       json[r'selfNotesAllowed'] = null;
+    }
+    if (this.height != null) {
+      json[r'height'] = this.height;
+    } else {
+      json[r'height'] = null;
     }
     if (this.connectionId != null) {
       json[r'connectionId'] = this.connectionId;
@@ -137,6 +147,7 @@ class UserInfoDtoImpersonated {
         dateOfBirth: mapDateTime(json, r'dateOfBirth', ''),
         imageBase64: mapValueOfType<String>(json, r'imageBase64'),
         selfNotesAllowed: mapValueOfType<bool>(json, r'selfNotesAllowed'),
+        height: mapValueOfType<int>(json, r'height'),
         connectionId: mapValueOfType<int>(json, r'connectionId'),
       );
     }
