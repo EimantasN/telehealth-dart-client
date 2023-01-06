@@ -21,6 +21,7 @@ class ImpersonatedUserDto {
     this.selfNotesAllowed,
     this.height,
     this.connectionId,
+    this.permissions = const [],
   });
 
   ///
@@ -51,6 +52,8 @@ class ImpersonatedUserDto {
 
   int? connectionId;
 
+  List<String> permissions;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ImpersonatedUserDto &&
      other.id == id &&
@@ -60,7 +63,8 @@ class ImpersonatedUserDto {
      other.imageBase64 == imageBase64 &&
      other.selfNotesAllowed == selfNotesAllowed &&
      other.height == height &&
-     other.connectionId == connectionId;
+     other.connectionId == connectionId &&
+     other.permissions == permissions;
 
   @override
   int get hashCode =>
@@ -72,10 +76,11 @@ class ImpersonatedUserDto {
     (imageBase64 == null ? 0 : imageBase64!.hashCode) +
     (selfNotesAllowed == null ? 0 : selfNotesAllowed!.hashCode) +
     (height == null ? 0 : height!.hashCode) +
-    (connectionId == null ? 0 : connectionId!.hashCode);
+    (connectionId == null ? 0 : connectionId!.hashCode) +
+    (permissions.hashCode);
 
   @override
-  String toString() => 'ImpersonatedUserDto[id=$id, firstName=$firstName, lastName=$lastName, dateOfBirth=$dateOfBirth, imageBase64=$imageBase64, selfNotesAllowed=$selfNotesAllowed, height=$height, connectionId=$connectionId]';
+  String toString() => 'ImpersonatedUserDto[id=$id, firstName=$firstName, lastName=$lastName, dateOfBirth=$dateOfBirth, imageBase64=$imageBase64, selfNotesAllowed=$selfNotesAllowed, height=$height, connectionId=$connectionId, permissions=$permissions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -119,6 +124,7 @@ class ImpersonatedUserDto {
     } else {
       json[r'connectionId'] = null;
     }
+      json[r'permissions'] = this.permissions;
     return json;
   }
 
@@ -149,6 +155,9 @@ class ImpersonatedUserDto {
         selfNotesAllowed: mapValueOfType<bool>(json, r'selfNotesAllowed'),
         height: mapValueOfType<int>(json, r'height'),
         connectionId: mapValueOfType<int>(json, r'connectionId'),
+        permissions: json[r'permissions'] is List
+            ? (json[r'permissions'] as List).cast<String>()
+            : const [],
       );
     }
     return null;
