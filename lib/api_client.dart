@@ -397,6 +397,8 @@ class ApiClient {
           return UserInfoDtoImpersonated.fromJson(value);
         case 'UserListItemDto':
           return UserListItemDto.fromJson(value);
+        case 'UserPermissionDto':
+          return UserPermissionDto.fromJson(value);
         default:
           dynamic match;
           if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {

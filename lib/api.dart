@@ -33,6 +33,7 @@ part 'api/impersonate_api.dart';
 part 'api/library_api.dart';
 part 'api/medication_api.dart';
 part 'api/notification_api.dart';
+part 'api/permission_api.dart';
 part 'api/prescription_api.dart';
 part 'api/questionnaire_api.dart';
 part 'api/recycle_api.dart';
@@ -150,6 +151,7 @@ part 'model/upsert_prescription_cmd.dart';
 part 'model/user_info_dto.dart';
 part 'model/user_info_dto_impersonated.dart';
 part 'model/user_list_item_dto.dart';
+part 'model/user_permission_dto.dart';
 
 
 const _delimiters = {'csv': ',', 'ssv': ' ', 'tsv': '\t', 'pipes': '|'};
