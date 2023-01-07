@@ -79,6 +79,7 @@ part 'model/dynamic_query_of_paginated_list_of_reminder_dto.dart';
 part 'model/dynamic_query_of_paginated_list_of_self_note_list_dto.dart';
 part 'model/event_base_model.dart';
 part 'model/event_property.dart';
+part 'model/file_download_dto.dart';
 part 'model/file_dto.dart';
 part 'model/file_upload_cmd.dart';
 part 'model/file_viewed_dto.dart';

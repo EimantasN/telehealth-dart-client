@@ -253,6 +253,8 @@ class ApiClient {
           return EventBaseModel.fromJson(value);
         case 'EventProperty':
           return EventProperty.fromJson(value);
+        case 'FileDownloadDto':
+          return FileDownloadDto.fromJson(value);
         case 'FileDto':
           return FileDto.fromJson(value);
         case 'FileUploadCmd':

@@ -128,6 +128,57 @@ class ConsultationNoteApi {
     return null;
   }
 
+  /// Performs an HTTP 'GET /api/ConsultationNote/Export' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] id:
+  Future<Response> consultationNoteExportWithHttpInfo({ int? id, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/ConsultationNote/Export';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (id != null) {
+      queryParams.addAll(_queryParams('', 'Id', id));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] id:
+  Future<FileDownloadDto?> consultationNoteExport({ int? id, }) async {
+    final response = await consultationNoteExportWithHttpInfo( id: id, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'FileDownloadDto',) as FileDownloadDto;
+    
+    }
+    return null;
+  }
+
   /// Performs an HTTP 'GET /api/ConsultationNote/Get' operation and returns the [Response].
   /// Parameters:
   ///
