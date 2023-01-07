@@ -57,6 +57,53 @@ class UserApi {
     return null;
   }
 
+  /// Performs an HTTP 'POST /api/User/Image' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [UpdateImageCmd] updateImageCmd (required):
+  Future<Response> userImageWithHttpInfo(UpdateImageCmd updateImageCmd,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/User/Image';
+
+    // ignore: prefer_final_locals
+    Object? postBody = updateImageCmd;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [UpdateImageCmd] updateImageCmd (required):
+  Future<bool?> userImage(UpdateImageCmd updateImageCmd,) async {
+    final response = await userImageWithHttpInfo(updateImageCmd,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
+    
+    }
+    return null;
+  }
+
   /// Performs an HTTP 'POST /api/User/Language' operation and returns the [Response].
   /// Parameters:
   ///

@@ -144,6 +144,7 @@ part 'model/share_link_response.dart';
 part 'model/submit_self_note_cmd.dart';
 part 'model/toggle_reminder_cmd.dart';
 part 'model/update_connection_cmd.dart';
+part 'model/update_image_cmd.dart';
 part 'model/update_info_cmd.dart';
 part 'model/update_language_cmd.dart';
 part 'model/update_reminder_cmd.dart';
