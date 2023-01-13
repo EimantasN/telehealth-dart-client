@@ -10,13 +10,11 @@
 
 part of openapi.api;
 
-class Question {
-  /// Returns a new [Question] instance.
-  Question({
-    this.id,
-    this.title,
-    this.view,
-    this.options = const [],
+class QuestionOption {
+  /// Returns a new [QuestionOption] instance.
+  QuestionOption({
+    this.option,
+    this.value,
   });
 
   ///
@@ -25,7 +23,7 @@ class Question {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? id;
+  String? option;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -33,61 +31,41 @@ class Question {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? title;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? view;
-
-  List<QuestionOption> options;
+  double? value;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is Question &&
-     other.id == id &&
-     other.title == title &&
-     other.view == view &&
-     other.options == options;
+  bool operator ==(Object other) => identical(this, other) || other is QuestionOption &&
+     other.option == option &&
+     other.value == value;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
-    (title == null ? 0 : title!.hashCode) +
-    (view == null ? 0 : view!.hashCode) +
-    (options.hashCode);
+    (option == null ? 0 : option!.hashCode) +
+    (value == null ? 0 : value!.hashCode);
 
   @override
-  String toString() => 'Question[id=$id, title=$title, view=$view, options=$options]';
+  String toString() => 'QuestionOption[option=$option, value=$value]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
-      json[r'id'] = this.id;
+    if (this.option != null) {
+      json[r'option'] = this.option;
     } else {
-      json[r'id'] = null;
+      json[r'option'] = null;
     }
-    if (this.title != null) {
-      json[r'title'] = this.title;
+    if (this.value != null) {
+      json[r'value'] = this.value;
     } else {
-      json[r'title'] = null;
+      json[r'value'] = null;
     }
-    if (this.view != null) {
-      json[r'view'] = this.view;
-    } else {
-      json[r'view'] = null;
-    }
-      json[r'options'] = this.options;
     return json;
   }
 
-  /// Returns a new [Question] instance and imports its values from
+  /// Returns a new [QuestionOption] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static Question? fromJson(dynamic value) {
+  static QuestionOption? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -96,27 +74,25 @@ class Question {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Question[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Question[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "QuestionOption[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "QuestionOption[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return Question(
-        id: mapValueOfType<int>(json, r'id'),
-        title: mapValueOfType<String>(json, r'title'),
-        view: mapValueOfType<String>(json, r'view'),
-        options: QuestionOption.listFromJson(json[r'options']) ?? const [],
+      return QuestionOption(
+        option: mapValueOfType<String>(json, r'option'),
+        value: mapValueOfType<double>(json, r'value'),
       );
     }
     return null;
   }
 
-  static List<Question>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <Question>[];
+  static List<QuestionOption>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <QuestionOption>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = Question.fromJson(row);
+        final value = QuestionOption.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -125,12 +101,12 @@ class Question {
     return result.toList(growable: growable);
   }
 
-  static Map<String, Question> mapFromJson(dynamic json) {
-    final map = <String, Question>{};
+  static Map<String, QuestionOption> mapFromJson(dynamic json) {
+    final map = <String, QuestionOption>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = Question.fromJson(entry.value);
+        final value = QuestionOption.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -139,13 +115,13 @@ class Question {
     return map;
   }
 
-  // maps a json object with a list of Question-objects as value to a dart map
-  static Map<String, List<Question>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<Question>>{};
+  // maps a json object with a list of QuestionOption-objects as value to a dart map
+  static Map<String, List<QuestionOption>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<QuestionOption>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = Question.listFromJson(entry.value, growable: growable,);
+        final value = QuestionOption.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }

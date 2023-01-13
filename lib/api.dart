@@ -128,6 +128,7 @@ part 'model/prescription_owner_dto.dart';
 part 'model/prescription_user.dart';
 part 'model/provider_dto.dart';
 part 'model/question.dart';
+part 'model/question_option.dart';
 part 'model/questionnaire.dart';
 part 'model/questionnaire_dto.dart';
 part 'model/reminder_dto.dart';

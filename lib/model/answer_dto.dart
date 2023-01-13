@@ -15,6 +15,7 @@ class AnswerDto {
   AnswerDto({
     this.questionId,
     this.answerIndex,
+    this.value,
   });
 
   ///
@@ -33,19 +34,29 @@ class AnswerDto {
   ///
   int? answerIndex;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? value;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is AnswerDto &&
      other.questionId == questionId &&
-     other.answerIndex == answerIndex;
+     other.answerIndex == answerIndex &&
+     other.value == value;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (questionId == null ? 0 : questionId!.hashCode) +
-    (answerIndex == null ? 0 : answerIndex!.hashCode);
+    (answerIndex == null ? 0 : answerIndex!.hashCode) +
+    (value == null ? 0 : value!.hashCode);
 
   @override
-  String toString() => 'AnswerDto[questionId=$questionId, answerIndex=$answerIndex]';
+  String toString() => 'AnswerDto[questionId=$questionId, answerIndex=$answerIndex, value=$value]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -58,6 +69,11 @@ class AnswerDto {
       json[r'answerIndex'] = this.answerIndex;
     } else {
       json[r'answerIndex'] = null;
+    }
+    if (this.value != null) {
+      json[r'value'] = this.value;
+    } else {
+      json[r'value'] = null;
     }
     return json;
   }
@@ -83,6 +99,7 @@ class AnswerDto {
       return AnswerDto(
         questionId: mapValueOfType<int>(json, r'questionId'),
         answerIndex: mapValueOfType<int>(json, r'answerIndex'),
+        value: mapValueOfType<double>(json, r'value'),
       );
     }
     return null;

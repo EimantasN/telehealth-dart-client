@@ -351,6 +351,8 @@ class ApiClient {
           return ProviderDto.fromJson(value);
         case 'Question':
           return Question.fromJson(value);
+        case 'QuestionOption':
+          return QuestionOption.fromJson(value);
         case 'Questionnaire':
           return Questionnaire.fromJson(value);
         case 'QuestionnaireDto':
