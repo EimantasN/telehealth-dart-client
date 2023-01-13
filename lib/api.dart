@@ -57,6 +57,7 @@ part 'model/consultation_note_dto.dart';
 part 'model/consultation_note_owner_dto.dart';
 part 'model/consultation_note_owner_list_dto.dart';
 part 'model/consultation_user_dto.dart';
+part 'model/copy_to_medications_cmd.dart';
 part 'model/create_connection_cmd.dart';
 part 'model/create_folder_cmd.dart';
 part 'model/create_reminder_cmd.dart';

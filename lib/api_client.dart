@@ -209,6 +209,8 @@ class ApiClient {
           return ConsultationNoteOwnerListDto.fromJson(value);
         case 'ConsultationUserDto':
           return ConsultationUserDto.fromJson(value);
+        case 'CopyToMedicationsCmd':
+          return CopyToMedicationsCmd.fromJson(value);
         case 'CreateConnectionCmd':
           return CreateConnectionCmd.fromJson(value);
         case 'CreateFolderCmd':
