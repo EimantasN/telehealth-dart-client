@@ -209,6 +209,8 @@ class ApiClient {
           return ConsultationNoteOwnerListDto.fromJson(value);
         case 'ConsultationUserDto':
           return ConsultationUserDto.fromJson(value);
+        case 'ContactCmd':
+          return ContactCmd.fromJson(value);
         case 'CopyToMedicationsCmd':
           return CopyToMedicationsCmd.fromJson(value);
         case 'CreateConnectionCmd':
@@ -383,6 +385,8 @@ class ApiClient {
           return ShareLinkResponse.fromJson(value);
         case 'SubmitSelfNoteCmd':
           return SubmitSelfNoteCmd.fromJson(value);
+        case 'SubscriptionCmd':
+          return SubscriptionCmd.fromJson(value);
         case 'ToggleReminderCmd':
           return ToggleReminderCmd.fromJson(value);
         case 'UpdateConnectionCmd':
