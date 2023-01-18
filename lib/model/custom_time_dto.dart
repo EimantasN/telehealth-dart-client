@@ -19,7 +19,7 @@ class CustomTimeDto {
     this.weekly,
     this.monthly,
     this.yearly,
-    this.weekDays = const [],
+    this.selections = const [],
     this.times = const [],
   });
 
@@ -41,9 +41,9 @@ class CustomTimeDto {
 
   bool? yearly;
 
-  List<int> weekDays;
+  List<int> selections;
 
-  List<String> times;
+  List<DateTime> times;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CustomTimeDto &&
@@ -53,7 +53,7 @@ class CustomTimeDto {
      other.weekly == weekly &&
      other.monthly == monthly &&
      other.yearly == yearly &&
-     other.weekDays == weekDays &&
+     other.selections == selections &&
      other.times == times;
 
   @override
@@ -65,11 +65,11 @@ class CustomTimeDto {
     (weekly == null ? 0 : weekly!.hashCode) +
     (monthly == null ? 0 : monthly!.hashCode) +
     (yearly == null ? 0 : yearly!.hashCode) +
-    (weekDays.hashCode) +
+    (selections.hashCode) +
     (times.hashCode);
 
   @override
-  String toString() => 'CustomTimeDto[count=$count, time=$time, daily=$daily, weekly=$weekly, monthly=$monthly, yearly=$yearly, weekDays=$weekDays, times=$times]';
+  String toString() => 'CustomTimeDto[count=$count, time=$time, daily=$daily, weekly=$weekly, monthly=$monthly, yearly=$yearly, selections=$selections, times=$times]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -103,7 +103,7 @@ class CustomTimeDto {
     } else {
       json[r'yearly'] = null;
     }
-      json[r'weekDays'] = this.weekDays;
+      json[r'selections'] = this.selections;
       json[r'times'] = this.times;
     return json;
   }
@@ -133,12 +133,10 @@ class CustomTimeDto {
         weekly: mapValueOfType<bool>(json, r'weekly'),
         monthly: mapValueOfType<bool>(json, r'monthly'),
         yearly: mapValueOfType<bool>(json, r'yearly'),
-        weekDays: json[r'weekDays'] is List
-            ? (json[r'weekDays'] as List).cast<int>()
+        selections: json[r'selections'] is List
+            ? (json[r'selections'] as List).cast<int>()
             : const [],
-        times: json[r'times'] is List
-            ? (json[r'times'] as List).cast<String>()
-            : const [],
+        times: DateTime.listFromJson(json[r'times']) ?? const [],
       );
     }
     return null;
