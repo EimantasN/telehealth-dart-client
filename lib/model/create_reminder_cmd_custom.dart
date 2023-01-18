@@ -31,7 +31,7 @@ class CreateReminderCmdCustom {
   ///
   int? count;
 
-  DateTime? time;
+  CustomTimeDtoTime? time;
 
   bool? daily;
 
@@ -43,7 +43,7 @@ class CreateReminderCmdCustom {
 
   List<int> selections;
 
-  List<DateTime> times;
+  List<SelectedTimeDto> times;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateReminderCmdCustom &&
@@ -79,7 +79,7 @@ class CreateReminderCmdCustom {
       json[r'count'] = null;
     }
     if (this.time != null) {
-      json[r'time'] = this.time!.toUtc().toIso8601String();
+      json[r'time'] = this.time;
     } else {
       json[r'time'] = null;
     }
@@ -128,7 +128,7 @@ class CreateReminderCmdCustom {
 
       return CreateReminderCmdCustom(
         count: mapValueOfType<int>(json, r'count'),
-        time: mapDateTime(json, r'time', ''),
+        time: CustomTimeDtoTime.fromJson(json[r'time']),
         daily: mapValueOfType<bool>(json, r'daily'),
         weekly: mapValueOfType<bool>(json, r'weekly'),
         monthly: mapValueOfType<bool>(json, r'monthly'),
@@ -136,7 +136,7 @@ class CreateReminderCmdCustom {
         selections: json[r'selections'] is List
             ? (json[r'selections'] as List).cast<int>()
             : const [],
-        times: DateTime.listFromJson(json[r'times']) ?? const [],
+        times: SelectedTimeDto.listFromJson(json[r'times']) ?? const [],
       );
     }
     return null;

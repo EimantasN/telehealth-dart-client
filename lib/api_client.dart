@@ -223,6 +223,8 @@ class ApiClient {
           return CreateReminderCmdCustom.fromJson(value);
         case 'CustomTimeDto':
           return CustomTimeDto.fromJson(value);
+        case 'CustomTimeDtoTime':
+          return CustomTimeDtoTime.fromJson(value);
         case 'DeletedDto':
           return DeletedDto.fromJson(value);
         case 'DismissCmd':
@@ -375,6 +377,8 @@ class ApiClient {
           return SearchProviderQuery.fromJson(value);
         case 'Section':
           return Section.fromJson(value);
+        case 'SelectedTimeDto':
+          return SelectedTimeDto.fromJson(value);
         case 'SelfNoteDto':
           return SelfNoteDto.fromJson(value);
         case 'SelfNoteListDto':
