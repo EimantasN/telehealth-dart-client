@@ -21,6 +21,7 @@ class ReminderDto {
     this.start,
     this.end,
     this.time,
+    this.nextReminderTime,
     this.daily,
     this.weekly,
     this.monthly,
@@ -93,6 +94,8 @@ class ReminderDto {
   ///
   DateTime? time;
 
+  DateTime? nextReminderTime;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -163,6 +166,7 @@ class ReminderDto {
      other.start == start &&
      other.end == end &&
      other.time == time &&
+     other.nextReminderTime == nextReminderTime &&
      other.daily == daily &&
      other.weekly == weekly &&
      other.monthly == monthly &&
@@ -187,6 +191,7 @@ class ReminderDto {
     (start == null ? 0 : start!.hashCode) +
     (end == null ? 0 : end!.hashCode) +
     (time == null ? 0 : time!.hashCode) +
+    (nextReminderTime == null ? 0 : nextReminderTime!.hashCode) +
     (daily == null ? 0 : daily!.hashCode) +
     (weekly == null ? 0 : weekly!.hashCode) +
     (monthly == null ? 0 : monthly!.hashCode) +
@@ -201,7 +206,7 @@ class ReminderDto {
     (prescriptionId == null ? 0 : prescriptionId!.hashCode);
 
   @override
-  String toString() => 'ReminderDto[id=$id, title=$title, status=$status, message=$message, active=$active, start=$start, end=$end, time=$time, daily=$daily, weekly=$weekly, monthly=$monthly, yearly=$yearly, custom=$custom, created=$created, modified=$modified, medicationId=$medicationId, consultationNoteId=$consultationNoteId, connectionId=$connectionId, selfNoteId=$selfNoteId, prescriptionId=$prescriptionId]';
+  String toString() => 'ReminderDto[id=$id, title=$title, status=$status, message=$message, active=$active, start=$start, end=$end, time=$time, nextReminderTime=$nextReminderTime, daily=$daily, weekly=$weekly, monthly=$monthly, yearly=$yearly, custom=$custom, created=$created, modified=$modified, medicationId=$medicationId, consultationNoteId=$consultationNoteId, connectionId=$connectionId, selfNoteId=$selfNoteId, prescriptionId=$prescriptionId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -244,6 +249,11 @@ class ReminderDto {
       json[r'time'] = this.time!.toUtc().toIso8601String();
     } else {
       json[r'time'] = null;
+    }
+    if (this.nextReminderTime != null) {
+      json[r'nextReminderTime'] = this.nextReminderTime!.toUtc().toIso8601String();
+    } else {
+      json[r'nextReminderTime'] = null;
     }
     if (this.daily != null) {
       json[r'daily'] = this.daily;
@@ -335,6 +345,7 @@ class ReminderDto {
         start: mapDateTime(json, r'start', ''),
         end: mapDateTime(json, r'end', ''),
         time: mapDateTime(json, r'time', ''),
+        nextReminderTime: mapDateTime(json, r'nextReminderTime', ''),
         daily: mapValueOfType<bool>(json, r'daily'),
         weekly: mapValueOfType<bool>(json, r'weekly'),
         monthly: mapValueOfType<bool>(json, r'monthly'),
