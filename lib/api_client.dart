@@ -295,6 +295,8 @@ class ApiClient {
           return GetRemindersQuery.fromJson(value);
         case 'GetSelfNotesQuery':
           return GetSelfNotesQuery.fromJson(value);
+        case 'GetTutorialCmd':
+          return GetTutorialCmd.fromJson(value);
         case 'HardDeleteCmd':
           return HardDeleteCmd.fromJson(value);
         case 'ImpersonateStatusDto':
@@ -393,6 +395,8 @@ class ApiClient {
           return SubscriptionCmd.fromJson(value);
         case 'ToggleReminderCmd':
           return ToggleReminderCmd.fromJson(value);
+        case 'TutorialFileDto':
+          return TutorialFileDto.fromJson(value);
         case 'UpdateConnectionCmd':
           return UpdateConnectionCmd.fromJson(value);
         case 'UpdateImageCmd':
