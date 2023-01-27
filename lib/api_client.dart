@@ -393,6 +393,10 @@ class ApiClient {
           return SubmitSelfNoteCmd.fromJson(value);
         case 'SubscriptionCmd':
           return SubscriptionCmd.fromJson(value);
+        case 'Tlk10DiagnoseDto':
+          return Tlk10DiagnoseDto.fromJson(value);
+        case 'Tlk10SearchQuery':
+          return Tlk10SearchQuery.fromJson(value);
         case 'ToggleReminderCmd':
           return ToggleReminderCmd.fromJson(value);
         case 'TutorialFileDto':

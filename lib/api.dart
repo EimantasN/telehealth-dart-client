@@ -151,6 +151,8 @@ part 'model/share_link_cmd.dart';
 part 'model/share_link_response.dart';
 part 'model/submit_self_note_cmd.dart';
 part 'model/subscription_cmd.dart';
+part 'model/tlk10_diagnose_dto.dart';
+part 'model/tlk10_search_query.dart';
 part 'model/toggle_reminder_cmd.dart';
 part 'model/tutorial_file_dto.dart';
 part 'model/update_connection_cmd.dart';
