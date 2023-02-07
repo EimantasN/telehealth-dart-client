@@ -10,10 +10,10 @@
 
 part of openapi.api;
 
-class CopyToMedicationsCmd {
-  /// Returns a new [CopyToMedicationsCmd] instance.
-  CopyToMedicationsCmd({
-    this.id,
+class SearchMedicationQuery {
+  /// Returns a new [SearchMedicationQuery] instance.
+  SearchMedicationQuery({
+    this.query,
   });
 
   ///
@@ -22,34 +22,34 @@ class CopyToMedicationsCmd {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? id;
+  String? query;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is CopyToMedicationsCmd &&
-     other.id == id;
+  bool operator ==(Object other) => identical(this, other) || other is SearchMedicationQuery &&
+     other.query == query;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode);
+    (query == null ? 0 : query!.hashCode);
 
   @override
-  String toString() => 'CopyToMedicationsCmd[id=$id]';
+  String toString() => 'SearchMedicationQuery[query=$query]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
-      json[r'id'] = this.id;
+    if (this.query != null) {
+      json[r'query'] = this.query;
     } else {
-      json[r'id'] = null;
+      json[r'query'] = null;
     }
     return json;
   }
 
-  /// Returns a new [CopyToMedicationsCmd] instance and imports its values from
+  /// Returns a new [SearchMedicationQuery] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static CopyToMedicationsCmd? fromJson(dynamic value) {
+  static SearchMedicationQuery? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -58,24 +58,24 @@ class CopyToMedicationsCmd {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CopyToMedicationsCmd[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CopyToMedicationsCmd[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "SearchMedicationQuery[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "SearchMedicationQuery[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return CopyToMedicationsCmd(
-        id: mapValueOfType<int>(json, r'id'),
+      return SearchMedicationQuery(
+        query: mapValueOfType<String>(json, r'query'),
       );
     }
     return null;
   }
 
-  static List<CopyToMedicationsCmd>? listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <CopyToMedicationsCmd>[];
+  static List<SearchMedicationQuery>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <SearchMedicationQuery>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = CopyToMedicationsCmd.fromJson(row);
+        final value = SearchMedicationQuery.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -84,12 +84,12 @@ class CopyToMedicationsCmd {
     return result.toList(growable: growable);
   }
 
-  static Map<String, CopyToMedicationsCmd> mapFromJson(dynamic json) {
-    final map = <String, CopyToMedicationsCmd>{};
+  static Map<String, SearchMedicationQuery> mapFromJson(dynamic json) {
+    final map = <String, SearchMedicationQuery>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = CopyToMedicationsCmd.fromJson(entry.value);
+        final value = SearchMedicationQuery.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -98,13 +98,13 @@ class CopyToMedicationsCmd {
     return map;
   }
 
-  // maps a json object with a list of CopyToMedicationsCmd-objects as value to a dart map
-  static Map<String, List<CopyToMedicationsCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<CopyToMedicationsCmd>>{};
+  // maps a json object with a list of SearchMedicationQuery-objects as value to a dart map
+  static Map<String, List<SearchMedicationQuery>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<SearchMedicationQuery>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = CopyToMedicationsCmd.listFromJson(entry.value, growable: growable,);
+        final value = SearchMedicationQuery.listFromJson(entry.value, growable: growable,);
         if (value != null) {
           map[entry.key] = value;
         }

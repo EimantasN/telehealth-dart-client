@@ -16,53 +16,6 @@ class PrescriptionApi {
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'POST /api/Prescription/CopyToMedication' operation and returns the [Response].
-  /// Parameters:
-  ///
-  /// * [CopyToMedicationsCmd] copyToMedicationsCmd (required):
-  Future<Response> prescriptionCopyToMedicationWithHttpInfo(CopyToMedicationsCmd copyToMedicationsCmd,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/api/Prescription/CopyToMedication';
-
-    // ignore: prefer_final_locals
-    Object? postBody = copyToMedicationsCmd;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Parameters:
-  ///
-  /// * [CopyToMedicationsCmd] copyToMedicationsCmd (required):
-  Future<bool?> prescriptionCopyToMedication(CopyToMedicationsCmd copyToMedicationsCmd,) async {
-    final response = await prescriptionCopyToMedicationWithHttpInfo(copyToMedicationsCmd,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'bool',) as bool;
-    
-    }
-    return null;
-  }
-
   /// Performs an HTTP 'DELETE /api/Prescription/Delete' operation and returns the [Response].
   /// Parameters:
   ///
@@ -273,6 +226,60 @@ class PrescriptionApi {
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PaginatedListOfPrescriptionOwnerDto',) as PaginatedListOfPrescriptionOwnerDto;
     
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'GET /api/Prescription/PatientDiagnoses' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] patientId:
+  Future<Response> prescriptionPatientDiagnosesWithHttpInfo({ int? patientId, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/Prescription/PatientDiagnoses';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (patientId != null) {
+      queryParams.addAll(_queryParams('', 'PatientId', patientId));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] patientId:
+  Future<List<PatientDiagnoseDto>?> prescriptionPatientDiagnoses({ int? patientId, }) async {
+    final response = await prescriptionPatientDiagnosesWithHttpInfo( patientId: patientId, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<PatientDiagnoseDto>') as List)
+        .cast<PatientDiagnoseDto>()
+        .toList();
+
     }
     return null;
   }

@@ -14,21 +14,32 @@ class PatientSearchQuery {
   /// Returns a new [PatientSearchQuery] instance.
   PatientSearchQuery({
     this.query,
+    this.filterActive,
   });
 
   String? query;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? filterActive;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is PatientSearchQuery &&
-     other.query == query;
+     other.query == query &&
+     other.filterActive == filterActive;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (query == null ? 0 : query!.hashCode);
+    (query == null ? 0 : query!.hashCode) +
+    (filterActive == null ? 0 : filterActive!.hashCode);
 
   @override
-  String toString() => 'PatientSearchQuery[query=$query]';
+  String toString() => 'PatientSearchQuery[query=$query, filterActive=$filterActive]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -36,6 +47,11 @@ class PatientSearchQuery {
       json[r'query'] = this.query;
     } else {
       json[r'query'] = null;
+    }
+    if (this.filterActive != null) {
+      json[r'filterActive'] = this.filterActive;
+    } else {
+      json[r'filterActive'] = null;
     }
     return json;
   }
@@ -60,6 +76,7 @@ class PatientSearchQuery {
 
       return PatientSearchQuery(
         query: mapValueOfType<String>(json, r'query'),
+        filterActive: mapValueOfType<bool>(json, r'filterActive'),
       );
     }
     return null;

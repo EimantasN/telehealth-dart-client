@@ -211,8 +211,6 @@ class ApiClient {
           return ConsultationUserDto.fromJson(value);
         case 'ContactCmd':
           return ContactCmd.fromJson(value);
-        case 'CopyToMedicationsCmd':
-          return CopyToMedicationsCmd.fromJson(value);
         case 'CreateConnectionCmd':
           return CreateConnectionCmd.fromJson(value);
         case 'CreateFolderCmd':
@@ -311,6 +309,8 @@ class ApiClient {
           return LicenseDto.fromJson(value);
         case 'MedicationDto':
           return MedicationDto.fromJson(value);
+        case 'MedicationInfoDto':
+          return MedicationInfoDto.fromJson(value);
         case 'MedicationListDto':
           return MedicationListDto.fromJson(value);
         case 'NotificationDataDto':
@@ -339,6 +339,8 @@ class ApiClient {
           return PaginatedListOfReminderDto.fromJson(value);
         case 'PaginatedListOfSelfNoteListDto':
           return PaginatedListOfSelfNoteListDto.fromJson(value);
+        case 'PatientDiagnoseDto':
+          return PatientDiagnoseDto.fromJson(value);
         case 'PatientSearchDto':
           return PatientSearchDto.fromJson(value);
         case 'PatientSearchDtoAllOf':
@@ -375,6 +377,8 @@ class ApiClient {
           return RestoreCmdAllOf.fromJson(value);
         case 'SearchLicenseQuery':
           return SearchLicenseQuery.fromJson(value);
+        case 'SearchMedicationQuery':
+          return SearchMedicationQuery.fromJson(value);
         case 'SearchProviderQuery':
           return SearchProviderQuery.fromJson(value);
         case 'Section':
@@ -393,6 +397,8 @@ class ApiClient {
           return SubmitSelfNoteCmd.fromJson(value);
         case 'SubscriptionCmd':
           return SubscriptionCmd.fromJson(value);
+        case 'TimingTypes':
+          return TimingTypesTypeTransformer().decode(value);
         case 'Tlk10DiagnoseDto':
           return Tlk10DiagnoseDto.fromJson(value);
         case 'Tlk10SearchQuery':
@@ -417,6 +423,8 @@ class ApiClient {
           return UpsertMedicationCmd.fromJson(value);
         case 'UpsertPrescriptionCmd':
           return UpsertPrescriptionCmd.fromJson(value);
+        case 'UpsertPrescriptionCmdTimingType':
+          return UpsertPrescriptionCmdTimingType.fromJson(value);
         case 'UserInfoDto':
           return UserInfoDto.fromJson(value);
         case 'UserInfoDtoImpersonated':
