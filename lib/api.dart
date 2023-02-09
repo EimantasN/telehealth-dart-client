@@ -166,12 +166,10 @@ part 'model/update_reminder_cmd.dart';
 part 'model/upsert_consultation_node_cmd.dart';
 part 'model/upsert_medication_cmd.dart';
 part 'model/upsert_prescription_cmd.dart';
-part 'model/upsert_prescription_cmd_timing_type.dart';
 part 'model/user_info_dto.dart';
 part 'model/user_info_dto_impersonated.dart';
 part 'model/user_list_item_dto.dart';
 part 'model/user_permission_dto.dart';
-
 
 const _delimiters = {'csv': ',', 'ssv': ' ', 'tsv': '\t', 'pipes': '|'};
 const _dateEpochMarker = 'epoch';
