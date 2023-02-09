@@ -397,8 +397,6 @@ class ApiClient {
           return SubmitSelfNoteCmd.fromJson(value);
         case 'SubscriptionCmd':
           return SubscriptionCmd.fromJson(value);
-        case 'TimingTypes':
-          return TimingTypesTypeTransformer().decode(value);
         case 'Tlk10DiagnoseDto':
           return Tlk10DiagnoseDto.fromJson(value);
         case 'Tlk10SearchQuery':
@@ -423,8 +421,6 @@ class ApiClient {
           return UpsertMedicationCmd.fromJson(value);
         case 'UpsertPrescriptionCmd':
           return UpsertPrescriptionCmd.fromJson(value);
-        case 'UpsertPrescriptionCmdTimingType':
-          return UpsertPrescriptionCmdTimingType.fromJson(value);
         case 'UserInfoDto':
           return UserInfoDto.fromJson(value);
         case 'UserInfoDtoImpersonated':

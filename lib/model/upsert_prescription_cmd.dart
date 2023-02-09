@@ -96,7 +96,7 @@ class UpsertPrescriptionCmd {
 
   int? everyHour;
 
-  UpsertPrescriptionCmdTimingType? timingType;
+  int? timingType;
 
   String? recommendation;
 
@@ -285,7 +285,7 @@ class UpsertPrescriptionCmd {
         frequencyType: mapValueOfType<int>(json, r'frequencyType'),
         frequency: mapValueOfType<int>(json, r'frequency'),
         everyHour: mapValueOfType<int>(json, r'everyHour'),
-        timingType: UpsertPrescriptionCmdTimingType.fromJson(json[r'timingType']),
+        timingType: mapValueOfType<int>(json, r'timingType'),
         recommendation: mapValueOfType<String>(json, r'recommendation'),
         infoToPharmacist: mapValueOfType<String>(json, r'infoToPharmacist'),
       );

@@ -153,7 +153,6 @@ part 'model/share_link_cmd.dart';
 part 'model/share_link_response.dart';
 part 'model/submit_self_note_cmd.dart';
 part 'model/subscription_cmd.dart';
-part 'model/timing_types.dart';
 part 'model/tlk10_diagnose_dto.dart';
 part 'model/tlk10_search_query.dart';
 part 'model/toggle_reminder_cmd.dart';
@@ -170,6 +169,7 @@ part 'model/user_info_dto.dart';
 part 'model/user_info_dto_impersonated.dart';
 part 'model/user_list_item_dto.dart';
 part 'model/user_permission_dto.dart';
+
 
 const _delimiters = {'csv': ',', 'ssv': ' ', 'tsv': '\t', 'pipes': '|'};
 const _dateEpochMarker = 'epoch';
