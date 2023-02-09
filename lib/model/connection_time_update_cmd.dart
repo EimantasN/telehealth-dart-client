@@ -15,7 +15,6 @@ class ConnectionTimeUpdateCmd {
   ConnectionTimeUpdateCmd({
     this.connectionId,
     this.patient,
-    this.doctor,
     this.endTime,
   });
 
@@ -29,15 +28,12 @@ class ConnectionTimeUpdateCmd {
 
   bool? patient;
 
-  bool? doctor;
-
   DateTime? endTime;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ConnectionTimeUpdateCmd &&
      other.connectionId == connectionId &&
      other.patient == patient &&
-     other.doctor == doctor &&
      other.endTime == endTime;
 
   @override
@@ -45,11 +41,10 @@ class ConnectionTimeUpdateCmd {
     // ignore: unnecessary_parenthesis
     (connectionId == null ? 0 : connectionId!.hashCode) +
     (patient == null ? 0 : patient!.hashCode) +
-    (doctor == null ? 0 : doctor!.hashCode) +
     (endTime == null ? 0 : endTime!.hashCode);
 
   @override
-  String toString() => 'ConnectionTimeUpdateCmd[connectionId=$connectionId, patient=$patient, doctor=$doctor, endTime=$endTime]';
+  String toString() => 'ConnectionTimeUpdateCmd[connectionId=$connectionId, patient=$patient, endTime=$endTime]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -62,11 +57,6 @@ class ConnectionTimeUpdateCmd {
       json[r'patient'] = this.patient;
     } else {
       json[r'patient'] = null;
-    }
-    if (this.doctor != null) {
-      json[r'doctor'] = this.doctor;
-    } else {
-      json[r'doctor'] = null;
     }
     if (this.endTime != null) {
       json[r'endTime'] = this.endTime!.toUtc().toIso8601String();
@@ -97,7 +87,6 @@ class ConnectionTimeUpdateCmd {
       return ConnectionTimeUpdateCmd(
         connectionId: mapValueOfType<int>(json, r'connectionId'),
         patient: mapValueOfType<bool>(json, r'patient'),
-        doctor: mapValueOfType<bool>(json, r'doctor'),
         endTime: mapDateTime(json, r'endTime', ''),
       );
     }
