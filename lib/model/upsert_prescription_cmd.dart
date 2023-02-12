@@ -15,6 +15,7 @@ class UpsertPrescriptionCmd {
   UpsertPrescriptionCmd({
     this.id,
     this.patientId,
+    this.consultationNoteId,
     this.medicationTitle,
     this.withComposation,
     this.medicationFormat,
@@ -43,6 +44,14 @@ class UpsertPrescriptionCmd {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? patientId;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? consultationNoteId;
 
   String? medicationTitle;
 
@@ -106,6 +115,7 @@ class UpsertPrescriptionCmd {
   bool operator ==(Object other) => identical(this, other) || other is UpsertPrescriptionCmd &&
      other.id == id &&
      other.patientId == patientId &&
+     other.consultationNoteId == consultationNoteId &&
      other.medicationTitle == medicationTitle &&
      other.withComposation == withComposation &&
      other.medicationFormat == medicationFormat &&
@@ -129,6 +139,7 @@ class UpsertPrescriptionCmd {
     // ignore: unnecessary_parenthesis
     (id == null ? 0 : id!.hashCode) +
     (patientId == null ? 0 : patientId!.hashCode) +
+    (consultationNoteId == null ? 0 : consultationNoteId!.hashCode) +
     (medicationTitle == null ? 0 : medicationTitle!.hashCode) +
     (withComposation == null ? 0 : withComposation!.hashCode) +
     (medicationFormat == null ? 0 : medicationFormat!.hashCode) +
@@ -148,7 +159,7 @@ class UpsertPrescriptionCmd {
     (infoToPharmacist == null ? 0 : infoToPharmacist!.hashCode);
 
   @override
-  String toString() => 'UpsertPrescriptionCmd[id=$id, patientId=$patientId, medicationTitle=$medicationTitle, withComposation=$withComposation, medicationFormat=$medicationFormat, medicationAmount=$medicationAmount, treatmendDuration=$treatmendDuration, package=$package, packageType=$packageType, packageValue=$packageValue, usageType=$usageType, dosageType=$dosageType, dosage=$dosage, frequencyType=$frequencyType, frequency=$frequency, everyHour=$everyHour, timingType=$timingType, recommendation=$recommendation, infoToPharmacist=$infoToPharmacist]';
+  String toString() => 'UpsertPrescriptionCmd[id=$id, patientId=$patientId, consultationNoteId=$consultationNoteId, medicationTitle=$medicationTitle, withComposation=$withComposation, medicationFormat=$medicationFormat, medicationAmount=$medicationAmount, treatmendDuration=$treatmendDuration, package=$package, packageType=$packageType, packageValue=$packageValue, usageType=$usageType, dosageType=$dosageType, dosage=$dosage, frequencyType=$frequencyType, frequency=$frequency, everyHour=$everyHour, timingType=$timingType, recommendation=$recommendation, infoToPharmacist=$infoToPharmacist]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -161,6 +172,11 @@ class UpsertPrescriptionCmd {
       json[r'patientId'] = this.patientId;
     } else {
       json[r'patientId'] = null;
+    }
+    if (this.consultationNoteId != null) {
+      json[r'consultationNoteId'] = this.consultationNoteId;
+    } else {
+      json[r'consultationNoteId'] = null;
     }
     if (this.medicationTitle != null) {
       json[r'medicationTitle'] = this.medicationTitle;
@@ -271,6 +287,7 @@ class UpsertPrescriptionCmd {
       return UpsertPrescriptionCmd(
         id: mapValueOfType<int>(json, r'id'),
         patientId: mapValueOfType<int>(json, r'patientId'),
+        consultationNoteId: mapValueOfType<int>(json, r'consultationNoteId'),
         medicationTitle: mapValueOfType<String>(json, r'medicationTitle'),
         withComposation: mapValueOfType<bool>(json, r'withComposation'),
         medicationFormat: mapValueOfType<int>(json, r'medicationFormat'),
