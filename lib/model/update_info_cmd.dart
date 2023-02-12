@@ -26,6 +26,7 @@ class UpdateInfoCmd {
     this.city,
     this.country,
     this.dateOfBirth,
+    this.init,
   });
 
   ///
@@ -66,6 +67,14 @@ class UpdateInfoCmd {
 
   DateTime? dateOfBirth;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? init;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UpdateInfoCmd &&
      other.firstName == firstName &&
@@ -80,7 +89,8 @@ class UpdateInfoCmd {
      other.postcode == postcode &&
      other.city == city &&
      other.country == country &&
-     other.dateOfBirth == dateOfBirth;
+     other.dateOfBirth == dateOfBirth &&
+     other.init == init;
 
   @override
   int get hashCode =>
@@ -97,10 +107,11 @@ class UpdateInfoCmd {
     (postcode == null ? 0 : postcode!.hashCode) +
     (city == null ? 0 : city!.hashCode) +
     (country == null ? 0 : country!.hashCode) +
-    (dateOfBirth == null ? 0 : dateOfBirth!.hashCode);
+    (dateOfBirth == null ? 0 : dateOfBirth!.hashCode) +
+    (init == null ? 0 : init!.hashCode);
 
   @override
-  String toString() => 'UpdateInfoCmd[firstName=$firstName, lastName=$lastName, phoneNumber=$phoneNumber, specialization=$specialization, provider=$provider, licenseNr=$licenseNr, height=$height, gender=$gender, street=$street, postcode=$postcode, city=$city, country=$country, dateOfBirth=$dateOfBirth]';
+  String toString() => 'UpdateInfoCmd[firstName=$firstName, lastName=$lastName, phoneNumber=$phoneNumber, specialization=$specialization, provider=$provider, licenseNr=$licenseNr, height=$height, gender=$gender, street=$street, postcode=$postcode, city=$city, country=$country, dateOfBirth=$dateOfBirth, init=$init]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -169,6 +180,11 @@ class UpdateInfoCmd {
     } else {
       json[r'dateOfBirth'] = null;
     }
+    if (this.init != null) {
+      json[r'init'] = this.init;
+    } else {
+      json[r'init'] = null;
+    }
     return json;
   }
 
@@ -204,6 +220,7 @@ class UpdateInfoCmd {
         city: mapValueOfType<String>(json, r'city'),
         country: mapValueOfType<String>(json, r'country'),
         dateOfBirth: mapDateTime(json, r'dateOfBirth', ''),
+        init: mapValueOfType<bool>(json, r'init'),
       );
     }
     return null;
