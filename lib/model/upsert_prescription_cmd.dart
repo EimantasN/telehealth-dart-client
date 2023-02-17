@@ -18,17 +18,17 @@ class UpsertPrescriptionCmd {
     this.consultationNoteId,
     this.medicationTitle,
     this.withComposation,
-    this.medicationFormat,
     this.medicationAmount,
-    this.treatmendDuration,
+    this.medicationFormat,
+    this.treatmentDuration,
+    this.treatmentPeriod,
     this.package,
     this.packageType,
-    this.packageValue,
     this.usageType,
-    this.dosageType,
     this.dosage,
-    this.frequencyType,
+    this.dosageType,
     this.frequency,
+    this.frequencyType,
     this.everyHour,
     this.timingType,
     this.recommendation,
@@ -55,41 +55,29 @@ class UpsertPrescriptionCmd {
 
   String? medicationTitle;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   bool? withComposation;
-
-  int? medicationFormat;
 
   int? medicationAmount;
 
-  int? treatmendDuration;
+  String? medicationFormat;
 
-  String? package;
+  int? treatmentDuration;
+
+  int? treatmentPeriod;
+
+  int? package;
 
   String? packageType;
 
-  int? packageValue;
-
   int? usageType;
-
-  int? dosageType;
 
   int? dosage;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? frequencyType;
+  String? dosageType;
 
   int? frequency;
+
+  int? frequencyType;
 
   int? everyHour;
 
@@ -106,17 +94,17 @@ class UpsertPrescriptionCmd {
      other.consultationNoteId == consultationNoteId &&
      other.medicationTitle == medicationTitle &&
      other.withComposation == withComposation &&
-     other.medicationFormat == medicationFormat &&
      other.medicationAmount == medicationAmount &&
-     other.treatmendDuration == treatmendDuration &&
+     other.medicationFormat == medicationFormat &&
+     other.treatmentDuration == treatmentDuration &&
+     other.treatmentPeriod == treatmentPeriod &&
      other.package == package &&
      other.packageType == packageType &&
-     other.packageValue == packageValue &&
      other.usageType == usageType &&
-     other.dosageType == dosageType &&
      other.dosage == dosage &&
-     other.frequencyType == frequencyType &&
+     other.dosageType == dosageType &&
      other.frequency == frequency &&
+     other.frequencyType == frequencyType &&
      other.everyHour == everyHour &&
      other.timingType == timingType &&
      other.recommendation == recommendation &&
@@ -130,24 +118,24 @@ class UpsertPrescriptionCmd {
     (consultationNoteId == null ? 0 : consultationNoteId!.hashCode) +
     (medicationTitle == null ? 0 : medicationTitle!.hashCode) +
     (withComposation == null ? 0 : withComposation!.hashCode) +
-    (medicationFormat == null ? 0 : medicationFormat!.hashCode) +
     (medicationAmount == null ? 0 : medicationAmount!.hashCode) +
-    (treatmendDuration == null ? 0 : treatmendDuration!.hashCode) +
+    (medicationFormat == null ? 0 : medicationFormat!.hashCode) +
+    (treatmentDuration == null ? 0 : treatmentDuration!.hashCode) +
+    (treatmentPeriod == null ? 0 : treatmentPeriod!.hashCode) +
     (package == null ? 0 : package!.hashCode) +
     (packageType == null ? 0 : packageType!.hashCode) +
-    (packageValue == null ? 0 : packageValue!.hashCode) +
     (usageType == null ? 0 : usageType!.hashCode) +
-    (dosageType == null ? 0 : dosageType!.hashCode) +
     (dosage == null ? 0 : dosage!.hashCode) +
-    (frequencyType == null ? 0 : frequencyType!.hashCode) +
+    (dosageType == null ? 0 : dosageType!.hashCode) +
     (frequency == null ? 0 : frequency!.hashCode) +
+    (frequencyType == null ? 0 : frequencyType!.hashCode) +
     (everyHour == null ? 0 : everyHour!.hashCode) +
     (timingType == null ? 0 : timingType!.hashCode) +
     (recommendation == null ? 0 : recommendation!.hashCode) +
     (infoToPharmacist == null ? 0 : infoToPharmacist!.hashCode);
 
   @override
-  String toString() => 'UpsertPrescriptionCmd[id=$id, patientId=$patientId, consultationNoteId=$consultationNoteId, medicationTitle=$medicationTitle, withComposation=$withComposation, medicationFormat=$medicationFormat, medicationAmount=$medicationAmount, treatmendDuration=$treatmendDuration, package=$package, packageType=$packageType, packageValue=$packageValue, usageType=$usageType, dosageType=$dosageType, dosage=$dosage, frequencyType=$frequencyType, frequency=$frequency, everyHour=$everyHour, timingType=$timingType, recommendation=$recommendation, infoToPharmacist=$infoToPharmacist]';
+  String toString() => 'UpsertPrescriptionCmd[id=$id, patientId=$patientId, consultationNoteId=$consultationNoteId, medicationTitle=$medicationTitle, withComposation=$withComposation, medicationAmount=$medicationAmount, medicationFormat=$medicationFormat, treatmentDuration=$treatmentDuration, treatmentPeriod=$treatmentPeriod, package=$package, packageType=$packageType, usageType=$usageType, dosage=$dosage, dosageType=$dosageType, frequency=$frequency, frequencyType=$frequencyType, everyHour=$everyHour, timingType=$timingType, recommendation=$recommendation, infoToPharmacist=$infoToPharmacist]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -176,20 +164,25 @@ class UpsertPrescriptionCmd {
     } else {
       json[r'withComposation'] = null;
     }
-    if (this.medicationFormat != null) {
-      json[r'medicationFormat'] = this.medicationFormat;
-    } else {
-      json[r'medicationFormat'] = null;
-    }
     if (this.medicationAmount != null) {
       json[r'medicationAmount'] = this.medicationAmount;
     } else {
       json[r'medicationAmount'] = null;
     }
-    if (this.treatmendDuration != null) {
-      json[r'treatmendDuration'] = this.treatmendDuration;
+    if (this.medicationFormat != null) {
+      json[r'medicationFormat'] = this.medicationFormat;
     } else {
-      json[r'treatmendDuration'] = null;
+      json[r'medicationFormat'] = null;
+    }
+    if (this.treatmentDuration != null) {
+      json[r'treatmentDuration'] = this.treatmentDuration;
+    } else {
+      json[r'treatmentDuration'] = null;
+    }
+    if (this.treatmentPeriod != null) {
+      json[r'treatmentPeriod'] = this.treatmentPeriod;
+    } else {
+      json[r'treatmentPeriod'] = null;
     }
     if (this.package != null) {
       json[r'package'] = this.package;
@@ -201,35 +194,30 @@ class UpsertPrescriptionCmd {
     } else {
       json[r'packageType'] = null;
     }
-    if (this.packageValue != null) {
-      json[r'packageValue'] = this.packageValue;
-    } else {
-      json[r'packageValue'] = null;
-    }
     if (this.usageType != null) {
       json[r'usageType'] = this.usageType;
     } else {
       json[r'usageType'] = null;
-    }
-    if (this.dosageType != null) {
-      json[r'dosageType'] = this.dosageType;
-    } else {
-      json[r'dosageType'] = null;
     }
     if (this.dosage != null) {
       json[r'dosage'] = this.dosage;
     } else {
       json[r'dosage'] = null;
     }
-    if (this.frequencyType != null) {
-      json[r'frequencyType'] = this.frequencyType;
+    if (this.dosageType != null) {
+      json[r'dosageType'] = this.dosageType;
     } else {
-      json[r'frequencyType'] = null;
+      json[r'dosageType'] = null;
     }
     if (this.frequency != null) {
       json[r'frequency'] = this.frequency;
     } else {
       json[r'frequency'] = null;
+    }
+    if (this.frequencyType != null) {
+      json[r'frequencyType'] = this.frequencyType;
+    } else {
+      json[r'frequencyType'] = null;
     }
     if (this.everyHour != null) {
       json[r'everyHour'] = this.everyHour;
@@ -278,17 +266,17 @@ class UpsertPrescriptionCmd {
         consultationNoteId: mapValueOfType<int>(json, r'consultationNoteId'),
         medicationTitle: mapValueOfType<String>(json, r'medicationTitle'),
         withComposation: mapValueOfType<bool>(json, r'withComposation'),
-        medicationFormat: mapValueOfType<int>(json, r'medicationFormat'),
         medicationAmount: mapValueOfType<int>(json, r'medicationAmount'),
-        treatmendDuration: mapValueOfType<int>(json, r'treatmendDuration'),
-        package: mapValueOfType<String>(json, r'package'),
+        medicationFormat: mapValueOfType<String>(json, r'medicationFormat'),
+        treatmentDuration: mapValueOfType<int>(json, r'treatmentDuration'),
+        treatmentPeriod: mapValueOfType<int>(json, r'treatmentPeriod'),
+        package: mapValueOfType<int>(json, r'package'),
         packageType: mapValueOfType<String>(json, r'packageType'),
-        packageValue: mapValueOfType<int>(json, r'packageValue'),
         usageType: mapValueOfType<int>(json, r'usageType'),
-        dosageType: mapValueOfType<int>(json, r'dosageType'),
         dosage: mapValueOfType<int>(json, r'dosage'),
-        frequencyType: mapValueOfType<int>(json, r'frequencyType'),
+        dosageType: mapValueOfType<String>(json, r'dosageType'),
         frequency: mapValueOfType<int>(json, r'frequency'),
+        frequencyType: mapValueOfType<int>(json, r'frequencyType'),
         everyHour: mapValueOfType<int>(json, r'everyHour'),
         timingType: mapValueOfType<int>(json, r'timingType'),
         recommendation: mapValueOfType<String>(json, r'recommendation'),
