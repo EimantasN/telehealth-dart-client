@@ -22,7 +22,7 @@ class UpsertPrescriptionCmd {
     this.medicationFormat,
     this.treatmentDuration,
     this.treatmentPeriod,
-    this.package,
+    this.packageValue,
     this.packageType,
     this.usageType,
     this.dosage,
@@ -65,7 +65,7 @@ class UpsertPrescriptionCmd {
 
   int? treatmentPeriod;
 
-  int? package;
+  int? packageValue;
 
   String? packageType;
 
@@ -98,7 +98,7 @@ class UpsertPrescriptionCmd {
      other.medicationFormat == medicationFormat &&
      other.treatmentDuration == treatmentDuration &&
      other.treatmentPeriod == treatmentPeriod &&
-     other.package == package &&
+     other.packageValue == packageValue &&
      other.packageType == packageType &&
      other.usageType == usageType &&
      other.dosage == dosage &&
@@ -122,7 +122,7 @@ class UpsertPrescriptionCmd {
     (medicationFormat == null ? 0 : medicationFormat!.hashCode) +
     (treatmentDuration == null ? 0 : treatmentDuration!.hashCode) +
     (treatmentPeriod == null ? 0 : treatmentPeriod!.hashCode) +
-    (package == null ? 0 : package!.hashCode) +
+    (packageValue == null ? 0 : packageValue!.hashCode) +
     (packageType == null ? 0 : packageType!.hashCode) +
     (usageType == null ? 0 : usageType!.hashCode) +
     (dosage == null ? 0 : dosage!.hashCode) +
@@ -135,7 +135,7 @@ class UpsertPrescriptionCmd {
     (infoToPharmacist == null ? 0 : infoToPharmacist!.hashCode);
 
   @override
-  String toString() => 'UpsertPrescriptionCmd[id=$id, patientId=$patientId, consultationNoteId=$consultationNoteId, medicationTitle=$medicationTitle, withComposation=$withComposation, medicationAmount=$medicationAmount, medicationFormat=$medicationFormat, treatmentDuration=$treatmentDuration, treatmentPeriod=$treatmentPeriod, package=$package, packageType=$packageType, usageType=$usageType, dosage=$dosage, dosageType=$dosageType, frequency=$frequency, frequencyType=$frequencyType, everyHour=$everyHour, timingType=$timingType, recommendation=$recommendation, infoToPharmacist=$infoToPharmacist]';
+  String toString() => 'UpsertPrescriptionCmd[id=$id, patientId=$patientId, consultationNoteId=$consultationNoteId, medicationTitle=$medicationTitle, withComposation=$withComposation, medicationAmount=$medicationAmount, medicationFormat=$medicationFormat, treatmentDuration=$treatmentDuration, treatmentPeriod=$treatmentPeriod, packageValue=$packageValue, packageType=$packageType, usageType=$usageType, dosage=$dosage, dosageType=$dosageType, frequency=$frequency, frequencyType=$frequencyType, everyHour=$everyHour, timingType=$timingType, recommendation=$recommendation, infoToPharmacist=$infoToPharmacist]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -184,10 +184,10 @@ class UpsertPrescriptionCmd {
     } else {
       json[r'treatmentPeriod'] = null;
     }
-    if (this.package != null) {
-      json[r'package'] = this.package;
+    if (this.packageValue != null) {
+      json[r'packageValue'] = this.packageValue;
     } else {
-      json[r'package'] = null;
+      json[r'packageValue'] = null;
     }
     if (this.packageType != null) {
       json[r'packageType'] = this.packageType;
@@ -270,7 +270,7 @@ class UpsertPrescriptionCmd {
         medicationFormat: mapValueOfType<String>(json, r'medicationFormat'),
         treatmentDuration: mapValueOfType<int>(json, r'treatmentDuration'),
         treatmentPeriod: mapValueOfType<int>(json, r'treatmentPeriod'),
-        package: mapValueOfType<int>(json, r'package'),
+        packageValue: mapValueOfType<int>(json, r'packageValue'),
         packageType: mapValueOfType<String>(json, r'packageType'),
         usageType: mapValueOfType<int>(json, r'usageType'),
         dosage: mapValueOfType<int>(json, r'dosage'),
