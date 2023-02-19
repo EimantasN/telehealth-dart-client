@@ -18,4 +18,4 @@ RUN git config --global user.name "Eimantas Noreika"
 
 RUN git add .
 RUN git commit --allow-empty -m "$COMMIT"
-RUN git push $GIT_REPO
+RUN git push -f $GIT_REPO
