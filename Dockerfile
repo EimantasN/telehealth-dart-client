@@ -8,7 +8,7 @@ COPY . /src
 WORKDIR /src
 RUN git checkout -B $GIT_BRANCH
 
-RUN npx @openapitools/openapi-generator-cli generate -g dart -i https://api.telehealth.endev.lt/swagger/v1/swagger.json -o /src/generated
+RUN npx @openapitools/openapi-generator-cli generate -g dart -i https://api.viallies.com/swagger/v1/swagger.json -o /src/generated
 # Renew generated files
 RUN rm -rf /src/lib
 RUN cp -r /src/generated/lib /src
