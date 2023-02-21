@@ -25,6 +25,7 @@ class UserInfoDto {
     this.city,
     this.country,
     this.doctor,
+    this.isDoctorApproved,
     this.height,
     this.specialization,
     this.provider,
@@ -78,6 +79,14 @@ class UserInfoDto {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  bool? isDoctorApproved;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   int? height;
 
   String? specialization;
@@ -110,6 +119,7 @@ class UserInfoDto {
      other.city == city &&
      other.country == country &&
      other.doctor == doctor &&
+     other.isDoctorApproved == isDoctorApproved &&
      other.height == height &&
      other.specialization == specialization &&
      other.provider == provider &&
@@ -135,6 +145,7 @@ class UserInfoDto {
     (city == null ? 0 : city!.hashCode) +
     (country == null ? 0 : country!.hashCode) +
     (doctor == null ? 0 : doctor!.hashCode) +
+    (isDoctorApproved == null ? 0 : isDoctorApproved!.hashCode) +
     (height == null ? 0 : height!.hashCode) +
     (specialization == null ? 0 : specialization!.hashCode) +
     (provider == null ? 0 : provider!.hashCode) +
@@ -146,7 +157,7 @@ class UserInfoDto {
     (impersonated == null ? 0 : impersonated!.hashCode);
 
   @override
-  String toString() => 'UserInfoDto[id=$id, email=$email, userName=$userName, firstName=$firstName, lastName=$lastName, phoneNumber=$phoneNumber, gender=$gender, street=$street, postcode=$postcode, city=$city, country=$country, doctor=$doctor, height=$height, specialization=$specialization, provider=$provider, licenseNr=$licenseNr, imageBase64=$imageBase64, language=$language, dateOfBirth=$dateOfBirth, lastLoginTime=$lastLoginTime, impersonated=$impersonated]';
+  String toString() => 'UserInfoDto[id=$id, email=$email, userName=$userName, firstName=$firstName, lastName=$lastName, phoneNumber=$phoneNumber, gender=$gender, street=$street, postcode=$postcode, city=$city, country=$country, doctor=$doctor, isDoctorApproved=$isDoctorApproved, height=$height, specialization=$specialization, provider=$provider, licenseNr=$licenseNr, imageBase64=$imageBase64, language=$language, dateOfBirth=$dateOfBirth, lastLoginTime=$lastLoginTime, impersonated=$impersonated]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -209,6 +220,11 @@ class UserInfoDto {
       json[r'doctor'] = this.doctor;
     } else {
       json[r'doctor'] = null;
+    }
+    if (this.isDoctorApproved != null) {
+      json[r'isDoctorApproved'] = this.isDoctorApproved;
+    } else {
+      json[r'isDoctorApproved'] = null;
     }
     if (this.height != null) {
       json[r'height'] = this.height;
@@ -289,6 +305,7 @@ class UserInfoDto {
         city: mapValueOfType<String>(json, r'city'),
         country: mapValueOfType<String>(json, r'country'),
         doctor: mapValueOfType<bool>(json, r'doctor'),
+        isDoctorApproved: mapValueOfType<bool>(json, r'isDoctorApproved'),
         height: mapValueOfType<int>(json, r'height'),
         specialization: mapValueOfType<String>(json, r'specialization'),
         provider: mapValueOfType<String>(json, r'provider'),
