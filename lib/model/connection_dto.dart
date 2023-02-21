@@ -22,7 +22,8 @@ class ConnectionDto {
     this.state,
     this.created,
     this.modified,
-    this.reminderCount,
+    this.patientReminderCount,
+    this.doctorReminderCount,
     this.permissions = const [],
     this.requestedPermissions = const [],
   });
@@ -93,7 +94,15 @@ class ConnectionDto {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? reminderCount;
+  int? patientReminderCount;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? doctorReminderCount;
 
   List<PermissionDto> permissions;
 
@@ -110,7 +119,8 @@ class ConnectionDto {
      other.state == state &&
      other.created == created &&
      other.modified == modified &&
-     other.reminderCount == reminderCount &&
+     other.patientReminderCount == patientReminderCount &&
+     other.doctorReminderCount == doctorReminderCount &&
      other.permissions == permissions &&
      other.requestedPermissions == requestedPermissions;
 
@@ -126,12 +136,13 @@ class ConnectionDto {
     (state == null ? 0 : state!.hashCode) +
     (created == null ? 0 : created!.hashCode) +
     (modified == null ? 0 : modified!.hashCode) +
-    (reminderCount == null ? 0 : reminderCount!.hashCode) +
+    (patientReminderCount == null ? 0 : patientReminderCount!.hashCode) +
+    (doctorReminderCount == null ? 0 : doctorReminderCount!.hashCode) +
     (permissions.hashCode) +
     (requestedPermissions.hashCode);
 
   @override
-  String toString() => 'ConnectionDto[id=$id, endTime=$endTime, connected=$connected, lastConsultation=$lastConsultation, patientId=$patientId, doctorId=$doctorId, state=$state, created=$created, modified=$modified, reminderCount=$reminderCount, permissions=$permissions, requestedPermissions=$requestedPermissions]';
+  String toString() => 'ConnectionDto[id=$id, endTime=$endTime, connected=$connected, lastConsultation=$lastConsultation, patientId=$patientId, doctorId=$doctorId, state=$state, created=$created, modified=$modified, patientReminderCount=$patientReminderCount, doctorReminderCount=$doctorReminderCount, permissions=$permissions, requestedPermissions=$requestedPermissions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -180,10 +191,15 @@ class ConnectionDto {
     } else {
       json[r'modified'] = null;
     }
-    if (this.reminderCount != null) {
-      json[r'reminderCount'] = this.reminderCount;
+    if (this.patientReminderCount != null) {
+      json[r'patientReminderCount'] = this.patientReminderCount;
     } else {
-      json[r'reminderCount'] = null;
+      json[r'patientReminderCount'] = null;
+    }
+    if (this.doctorReminderCount != null) {
+      json[r'doctorReminderCount'] = this.doctorReminderCount;
+    } else {
+      json[r'doctorReminderCount'] = null;
     }
       json[r'permissions'] = this.permissions;
       json[r'requestedPermissions'] = this.requestedPermissions;
@@ -218,7 +234,8 @@ class ConnectionDto {
         state: mapValueOfType<String>(json, r'state'),
         created: mapDateTime(json, r'created', ''),
         modified: mapDateTime(json, r'modified', ''),
-        reminderCount: mapValueOfType<int>(json, r'reminderCount'),
+        patientReminderCount: mapValueOfType<int>(json, r'patientReminderCount'),
+        doctorReminderCount: mapValueOfType<int>(json, r'doctorReminderCount'),
         permissions: PermissionDto.listFromJson(json[r'permissions']) ?? const [],
         requestedPermissions: RequestedPermissionDto.listFromJson(json[r'requestedPermissions']) ?? const [],
       );
