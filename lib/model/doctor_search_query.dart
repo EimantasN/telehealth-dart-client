@@ -14,21 +14,26 @@ class DoctorSearchQuery {
   /// Returns a new [DoctorSearchQuery] instance.
   DoctorSearchQuery({
     this.query,
+    this.filterActive,
   });
 
   String? query;
 
+  bool? filterActive;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is DoctorSearchQuery &&
-     other.query == query;
+     other.query == query &&
+     other.filterActive == filterActive;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (query == null ? 0 : query!.hashCode);
+    (query == null ? 0 : query!.hashCode) +
+    (filterActive == null ? 0 : filterActive!.hashCode);
 
   @override
-  String toString() => 'DoctorSearchQuery[query=$query]';
+  String toString() => 'DoctorSearchQuery[query=$query, filterActive=$filterActive]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -36,6 +41,11 @@ class DoctorSearchQuery {
       json[r'query'] = this.query;
     } else {
       json[r'query'] = null;
+    }
+    if (this.filterActive != null) {
+      json[r'filterActive'] = this.filterActive;
+    } else {
+      json[r'filterActive'] = null;
     }
     return json;
   }
@@ -60,6 +70,7 @@ class DoctorSearchQuery {
 
       return DoctorSearchQuery(
         query: mapValueOfType<String>(json, r'query'),
+        filterActive: mapValueOfType<bool>(json, r'filterActive'),
       );
     }
     return null;

@@ -22,7 +22,8 @@ class ConnectionListItemDto {
     this.lastConsultation,
     this.created,
     this.modified,
-    this.reminderCount,
+    this.patientReminderCount,
+    this.doctorReminderCount,
   });
 
   ///
@@ -91,7 +92,15 @@ class ConnectionListItemDto {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? reminderCount;
+  int? patientReminderCount;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? doctorReminderCount;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ConnectionListItemDto &&
@@ -104,7 +113,8 @@ class ConnectionListItemDto {
      other.lastConsultation == lastConsultation &&
      other.created == created &&
      other.modified == modified &&
-     other.reminderCount == reminderCount;
+     other.patientReminderCount == patientReminderCount &&
+     other.doctorReminderCount == doctorReminderCount;
 
   @override
   int get hashCode =>
@@ -118,10 +128,11 @@ class ConnectionListItemDto {
     (lastConsultation == null ? 0 : lastConsultation!.hashCode) +
     (created == null ? 0 : created!.hashCode) +
     (modified == null ? 0 : modified!.hashCode) +
-    (reminderCount == null ? 0 : reminderCount!.hashCode);
+    (patientReminderCount == null ? 0 : patientReminderCount!.hashCode) +
+    (doctorReminderCount == null ? 0 : doctorReminderCount!.hashCode);
 
   @override
-  String toString() => 'ConnectionListItemDto[id=$id, patientId=$patientId, doctorId=$doctorId, state=$state, endTime=$endTime, connected=$connected, lastConsultation=$lastConsultation, created=$created, modified=$modified, reminderCount=$reminderCount]';
+  String toString() => 'ConnectionListItemDto[id=$id, patientId=$patientId, doctorId=$doctorId, state=$state, endTime=$endTime, connected=$connected, lastConsultation=$lastConsultation, created=$created, modified=$modified, patientReminderCount=$patientReminderCount, doctorReminderCount=$doctorReminderCount]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -170,10 +181,15 @@ class ConnectionListItemDto {
     } else {
       json[r'modified'] = null;
     }
-    if (this.reminderCount != null) {
-      json[r'reminderCount'] = this.reminderCount;
+    if (this.patientReminderCount != null) {
+      json[r'patientReminderCount'] = this.patientReminderCount;
     } else {
-      json[r'reminderCount'] = null;
+      json[r'patientReminderCount'] = null;
+    }
+    if (this.doctorReminderCount != null) {
+      json[r'doctorReminderCount'] = this.doctorReminderCount;
+    } else {
+      json[r'doctorReminderCount'] = null;
     }
     return json;
   }
@@ -206,7 +222,8 @@ class ConnectionListItemDto {
         lastConsultation: mapDateTime(json, r'lastConsultation', ''),
         created: mapDateTime(json, r'created', ''),
         modified: mapDateTime(json, r'modified', ''),
-        reminderCount: mapValueOfType<int>(json, r'reminderCount'),
+        patientReminderCount: mapValueOfType<int>(json, r'patientReminderCount'),
+        doctorReminderCount: mapValueOfType<int>(json, r'doctorReminderCount'),
       );
     }
     return null;
