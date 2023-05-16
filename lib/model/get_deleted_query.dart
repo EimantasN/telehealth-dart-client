@@ -109,8 +109,8 @@ class GetDeletedQuery {
       }());
 
       return GetDeletedQuery(
-        filters: FilterModel.listFromJson(json[r'filters']) ?? const [],
-        orderBy: OrderModel.listFromJson(json[r'orderBy']) ?? const [],
+        filters: FilterModel.listFromJson(json[r'filters']),
+        orderBy: OrderModel.listFromJson(json[r'orderBy']),
         order: mapValueOfType<String>(json, r'order'),
         pageNumber: mapValueOfType<int>(json, r'pageNumber'),
         pageSize: mapValueOfType<int>(json, r'pageSize'),
@@ -119,7 +119,7 @@ class GetDeletedQuery {
     return null;
   }
 
-  static List<GetDeletedQuery>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<GetDeletedQuery> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <GetDeletedQuery>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -150,12 +150,10 @@ class GetDeletedQuery {
   static Map<String, List<GetDeletedQuery>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<GetDeletedQuery>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = GetDeletedQuery.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = GetDeletedQuery.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

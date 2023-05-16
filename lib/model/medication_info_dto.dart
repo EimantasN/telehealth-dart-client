@@ -122,7 +122,7 @@ class MedicationInfoDto {
     return null;
   }
 
-  static List<MedicationInfoDto>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<MedicationInfoDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <MedicationInfoDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -153,12 +153,10 @@ class MedicationInfoDto {
   static Map<String, List<MedicationInfoDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<MedicationInfoDto>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = MedicationInfoDto.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = MedicationInfoDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

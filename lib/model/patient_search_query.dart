@@ -82,7 +82,7 @@ class PatientSearchQuery {
     return null;
   }
 
-  static List<PatientSearchQuery>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<PatientSearchQuery> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <PatientSearchQuery>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -113,12 +113,10 @@ class PatientSearchQuery {
   static Map<String, List<PatientSearchQuery>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<PatientSearchQuery>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = PatientSearchQuery.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = PatientSearchQuery.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

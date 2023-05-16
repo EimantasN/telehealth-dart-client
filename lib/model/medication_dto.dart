@@ -205,13 +205,13 @@ class MedicationDto {
         recommendation: mapValueOfType<String>(json, r'recommendation'),
         notice: mapValueOfType<String>(json, r'notice'),
         doctorId: mapValueOfType<int>(json, r'doctorId'),
-        frequencies: FrequencyDto.listFromJson(json[r'frequencies']) ?? const [],
+        frequencies: FrequencyDto.listFromJson(json[r'frequencies']),
       );
     }
     return null;
   }
 
-  static List<MedicationDto>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<MedicationDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <MedicationDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -242,12 +242,10 @@ class MedicationDto {
   static Map<String, List<MedicationDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<MedicationDto>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = MedicationDto.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = MedicationDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

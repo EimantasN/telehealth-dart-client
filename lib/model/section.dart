@@ -72,13 +72,13 @@ class Section {
 
       return Section(
         title: mapValueOfType<String>(json, r'title'),
-        questions: Question.listFromJson(json[r'questions']) ?? const [],
+        questions: Question.listFromJson(json[r'questions']),
       );
     }
     return null;
   }
 
-  static List<Section>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<Section> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <Section>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -109,12 +109,10 @@ class Section {
   static Map<String, List<Section>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<Section>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = Section.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = Section.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

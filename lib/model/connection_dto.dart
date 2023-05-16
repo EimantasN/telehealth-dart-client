@@ -236,14 +236,14 @@ class ConnectionDto {
         modified: mapDateTime(json, r'modified', ''),
         patientReminderCount: mapValueOfType<int>(json, r'patientReminderCount'),
         doctorReminderCount: mapValueOfType<int>(json, r'doctorReminderCount'),
-        permissions: PermissionDto.listFromJson(json[r'permissions']) ?? const [],
-        requestedPermissions: RequestedPermissionDto.listFromJson(json[r'requestedPermissions']) ?? const [],
+        permissions: PermissionDto.listFromJson(json[r'permissions']),
+        requestedPermissions: RequestedPermissionDto.listFromJson(json[r'requestedPermissions']),
       );
     }
     return null;
   }
 
-  static List<ConnectionDto>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ConnectionDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <ConnectionDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -274,12 +274,10 @@ class ConnectionDto {
   static Map<String, List<ConnectionDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<ConnectionDto>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = ConnectionDto.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = ConnectionDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

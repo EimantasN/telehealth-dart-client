@@ -109,8 +109,8 @@ class GetMedicationsQuery {
       }());
 
       return GetMedicationsQuery(
-        filters: FilterModel.listFromJson(json[r'filters']) ?? const [],
-        orderBy: OrderModel.listFromJson(json[r'orderBy']) ?? const [],
+        filters: FilterModel.listFromJson(json[r'filters']),
+        orderBy: OrderModel.listFromJson(json[r'orderBy']),
         order: mapValueOfType<String>(json, r'order'),
         pageNumber: mapValueOfType<int>(json, r'pageNumber'),
         pageSize: mapValueOfType<int>(json, r'pageSize'),
@@ -119,7 +119,7 @@ class GetMedicationsQuery {
     return null;
   }
 
-  static List<GetMedicationsQuery>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<GetMedicationsQuery> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <GetMedicationsQuery>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -150,12 +150,10 @@ class GetMedicationsQuery {
   static Map<String, List<GetMedicationsQuery>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<GetMedicationsQuery>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = GetMedicationsQuery.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = GetMedicationsQuery.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

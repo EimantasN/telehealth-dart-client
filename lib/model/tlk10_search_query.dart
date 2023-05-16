@@ -71,7 +71,7 @@ class Tlk10SearchQuery {
     return null;
   }
 
-  static List<Tlk10SearchQuery>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<Tlk10SearchQuery> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <Tlk10SearchQuery>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -102,12 +102,10 @@ class Tlk10SearchQuery {
   static Map<String, List<Tlk10SearchQuery>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<Tlk10SearchQuery>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = Tlk10SearchQuery.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = Tlk10SearchQuery.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

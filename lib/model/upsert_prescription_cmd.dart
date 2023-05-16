@@ -286,7 +286,7 @@ class UpsertPrescriptionCmd {
     return null;
   }
 
-  static List<UpsertPrescriptionCmd>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<UpsertPrescriptionCmd> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <UpsertPrescriptionCmd>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -317,12 +317,10 @@ class UpsertPrescriptionCmd {
   static Map<String, List<UpsertPrescriptionCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<UpsertPrescriptionCmd>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = UpsertPrescriptionCmd.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = UpsertPrescriptionCmd.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

@@ -156,7 +156,7 @@ class ConsultationNoteOwnerDto {
     return null;
   }
 
-  static List<ConsultationNoteOwnerDto>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ConsultationNoteOwnerDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <ConsultationNoteOwnerDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -187,12 +187,10 @@ class ConsultationNoteOwnerDto {
   static Map<String, List<ConsultationNoteOwnerDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<ConsultationNoteOwnerDto>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = ConsultationNoteOwnerDto.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = ConsultationNoteOwnerDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

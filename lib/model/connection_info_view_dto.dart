@@ -149,14 +149,14 @@ class ConnectionInfoViewDto {
         permissions: json[r'permissions'] is List
             ? (json[r'permissions'] as List).cast<String>()
             : const [],
-        consultations: ConnectionConsultationDto.listFromJson(json[r'consultations']) ?? const [],
-        prescriptions: ConnectionPrescriptionDto.listFromJson(json[r'prescriptions']) ?? const [],
+        consultations: ConnectionConsultationDto.listFromJson(json[r'consultations']),
+        prescriptions: ConnectionPrescriptionDto.listFromJson(json[r'prescriptions']),
       );
     }
     return null;
   }
 
-  static List<ConnectionInfoViewDto>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ConnectionInfoViewDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <ConnectionInfoViewDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -187,12 +187,10 @@ class ConnectionInfoViewDto {
   static Map<String, List<ConnectionInfoViewDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<ConnectionInfoViewDto>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = ConnectionInfoViewDto.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = ConnectionInfoViewDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

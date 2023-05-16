@@ -82,7 +82,7 @@ class CreateFolderCmd {
     return null;
   }
 
-  static List<CreateFolderCmd>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<CreateFolderCmd> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CreateFolderCmd>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -113,12 +113,10 @@ class CreateFolderCmd {
   static Map<String, List<CreateFolderCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<CreateFolderCmd>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = CreateFolderCmd.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = CreateFolderCmd.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

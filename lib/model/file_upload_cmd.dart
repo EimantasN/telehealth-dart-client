@@ -160,7 +160,7 @@ class FileUploadCmd {
     return null;
   }
 
-  static List<FileUploadCmd>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<FileUploadCmd> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <FileUploadCmd>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -191,12 +191,10 @@ class FileUploadCmd {
   static Map<String, List<FileUploadCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<FileUploadCmd>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = FileUploadCmd.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = FileUploadCmd.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

@@ -65,7 +65,7 @@ class SearchLicenseQuery {
     return null;
   }
 
-  static List<SearchLicenseQuery>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<SearchLicenseQuery> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <SearchLicenseQuery>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -96,12 +96,10 @@ class SearchLicenseQuery {
   static Map<String, List<SearchLicenseQuery>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<SearchLicenseQuery>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = SearchLicenseQuery.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = SearchLicenseQuery.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

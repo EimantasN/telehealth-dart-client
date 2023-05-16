@@ -104,7 +104,7 @@ class ConnectionStateUpdateCmd {
     return null;
   }
 
-  static List<ConnectionStateUpdateCmd>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ConnectionStateUpdateCmd> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <ConnectionStateUpdateCmd>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -135,12 +135,10 @@ class ConnectionStateUpdateCmd {
   static Map<String, List<ConnectionStateUpdateCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<ConnectionStateUpdateCmd>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = ConnectionStateUpdateCmd.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = ConnectionStateUpdateCmd.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

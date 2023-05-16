@@ -191,13 +191,13 @@ class SelfNoteDto {
         reminderCount: mapValueOfType<int>(json, r'reminderCount'),
         created: mapDateTime(json, r'created', ''),
         modified: mapDateTime(json, r'modified', ''),
-        answers: AnswerDto.listFromJson(json[r'answers']) ?? const [],
+        answers: AnswerDto.listFromJson(json[r'answers']),
       );
     }
     return null;
   }
 
-  static List<SelfNoteDto>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<SelfNoteDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <SelfNoteDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -228,12 +228,10 @@ class SelfNoteDto {
   static Map<String, List<SelfNoteDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<SelfNoteDto>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = SelfNoteDto.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = SelfNoteDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
