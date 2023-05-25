@@ -27,6 +27,7 @@ part 'auth/oauth.dart';
 part 'auth/http_basic_auth.dart';
 part 'auth/http_bearer_auth.dart';
 
+part 'api/admin_api.dart';
 part 'api/connection_api.dart';
 part 'api/consultation_note_api.dart';
 part 'api/impersonate_api.dart';
@@ -165,6 +166,7 @@ part 'model/update_reminder_cmd.dart';
 part 'model/upsert_consultation_node_cmd.dart';
 part 'model/upsert_medication_cmd.dart';
 part 'model/upsert_prescription_cmd.dart';
+part 'model/user_dto.dart';
 part 'model/user_info_dto.dart';
 part 'model/user_info_dto_impersonated.dart';
 part 'model/user_list_item_dto.dart';
