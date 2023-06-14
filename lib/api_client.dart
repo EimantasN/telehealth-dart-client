@@ -187,6 +187,8 @@ class ApiClient {
           return AnswerSubmitDto.fromJson(value);
         case 'BatchCmd':
           return BatchCmd.fromJson(value);
+        case 'ConnectUserCmd':
+          return ConnectUserCmd.fromJson(value);
         case 'ConnectionConsultationDto':
           return ConnectionConsultationDto.fromJson(value);
         case 'ConnectionDto':

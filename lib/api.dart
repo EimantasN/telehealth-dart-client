@@ -49,6 +49,7 @@ part 'api/user_api.dart';
 part 'model/answer_dto.dart';
 part 'model/answer_submit_dto.dart';
 part 'model/batch_cmd.dart';
+part 'model/connect_user_cmd.dart';
 part 'model/connection_consultation_dto.dart';
 part 'model/connection_dto.dart';
 part 'model/connection_info_view_dto.dart';

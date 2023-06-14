@@ -14,6 +14,7 @@ class UserDto {
   /// Returns a new [UserDto] instance.
   UserDto({
     this.id,
+    this.userId,
     this.email,
     this.userName,
     this.firstName,
@@ -42,6 +43,14 @@ class UserDto {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? id;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? userId;
 
   String? email;
 
@@ -96,6 +105,7 @@ class UserDto {
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserDto &&
      other.id == id &&
+     other.userId == userId &&
      other.email == email &&
      other.userName == userName &&
      other.firstName == firstName &&
@@ -120,6 +130,7 @@ class UserDto {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id == null ? 0 : id!.hashCode) +
+    (userId == null ? 0 : userId!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
     (userName == null ? 0 : userName!.hashCode) +
     (firstName == null ? 0 : firstName!.hashCode) +
@@ -141,7 +152,7 @@ class UserDto {
     (lastLoginTime == null ? 0 : lastLoginTime!.hashCode);
 
   @override
-  String toString() => 'UserDto[id=$id, email=$email, userName=$userName, firstName=$firstName, lastName=$lastName, phoneNumber=$phoneNumber, gender=$gender, street=$street, postcode=$postcode, city=$city, country=$country, doctor=$doctor, isDoctorApproved=$isDoctorApproved, height=$height, specialization=$specialization, provider=$provider, licenseNr=$licenseNr, language=$language, dateOfBirth=$dateOfBirth, lastLoginTime=$lastLoginTime]';
+  String toString() => 'UserDto[id=$id, userId=$userId, email=$email, userName=$userName, firstName=$firstName, lastName=$lastName, phoneNumber=$phoneNumber, gender=$gender, street=$street, postcode=$postcode, city=$city, country=$country, doctor=$doctor, isDoctorApproved=$isDoctorApproved, height=$height, specialization=$specialization, provider=$provider, licenseNr=$licenseNr, language=$language, dateOfBirth=$dateOfBirth, lastLoginTime=$lastLoginTime]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -149,6 +160,11 @@ class UserDto {
       json[r'id'] = this.id;
     } else {
       json[r'id'] = null;
+    }
+    if (this.userId != null) {
+      json[r'userId'] = this.userId;
+    } else {
+      json[r'userId'] = null;
     }
     if (this.email != null) {
       json[r'email'] = this.email;
@@ -268,6 +284,7 @@ class UserDto {
 
       return UserDto(
         id: mapValueOfType<int>(json, r'id'),
+        userId: mapValueOfType<String>(json, r'userId'),
         email: mapValueOfType<String>(json, r'email'),
         userName: mapValueOfType<String>(json, r'userName'),
         firstName: mapValueOfType<String>(json, r'firstName'),
