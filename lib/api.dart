@@ -30,6 +30,7 @@ part 'auth/http_bearer_auth.dart';
 part 'api/admin_api.dart';
 part 'api/connection_api.dart';
 part 'api/consultation_note_api.dart';
+part 'api/dashboard_api.dart';
 part 'api/impersonate_api.dart';
 part 'api/library_api.dart';
 part 'api/medication_api.dart';
