@@ -106,13 +106,13 @@ class Question {
         id: mapValueOfType<int>(json, r'id'),
         title: mapValueOfType<String>(json, r'title'),
         view: mapValueOfType<String>(json, r'view'),
-        options: QuestionOption.listFromJson(json[r'options']) ?? const [],
+        options: QuestionOption.listFromJson(json[r'options']),
       );
     }
     return null;
   }
 
-  static List<Question>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<Question> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <Question>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -143,12 +143,10 @@ class Question {
   static Map<String, List<Question>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<Question>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = Question.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = Question.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

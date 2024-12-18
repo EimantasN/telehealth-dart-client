@@ -72,7 +72,7 @@ class ShareLinkCmd {
     return null;
   }
 
-  static List<ShareLinkCmd>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ShareLinkCmd> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <ShareLinkCmd>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -103,12 +103,10 @@ class ShareLinkCmd {
   static Map<String, List<ShareLinkCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<ShareLinkCmd>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = ShareLinkCmd.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = ShareLinkCmd.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

@@ -65,7 +65,7 @@ class SearchProviderQuery {
     return null;
   }
 
-  static List<SearchProviderQuery>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<SearchProviderQuery> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <SearchProviderQuery>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -96,12 +96,10 @@ class SearchProviderQuery {
   static Map<String, List<SearchProviderQuery>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<SearchProviderQuery>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = SearchProviderQuery.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = SearchProviderQuery.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

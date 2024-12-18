@@ -10,11 +10,10 @@
 
 part of openapi.api;
 
-class ImpersonateStatusDto {
-  /// Returns a new [ImpersonateStatusDto] instance.
-  ImpersonateStatusDto({
-    this.isActive,
-    this.impersonatedUserId,
+class ConnectUserCmd {
+  /// Returns a new [ConnectUserCmd] instance.
+  ConnectUserCmd({
+    this.userId,
   });
 
   ///
@@ -23,43 +22,34 @@ class ImpersonateStatusDto {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  bool? isActive;
-
-  int? impersonatedUserId;
+  int? userId;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ImpersonateStatusDto &&
-     other.isActive == isActive &&
-     other.impersonatedUserId == impersonatedUserId;
+  bool operator ==(Object other) => identical(this, other) || other is ConnectUserCmd &&
+     other.userId == userId;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (isActive == null ? 0 : isActive!.hashCode) +
-    (impersonatedUserId == null ? 0 : impersonatedUserId!.hashCode);
+    (userId == null ? 0 : userId!.hashCode);
 
   @override
-  String toString() => 'ImpersonateStatusDto[isActive=$isActive, impersonatedUserId=$impersonatedUserId]';
+  String toString() => 'ConnectUserCmd[userId=$userId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.isActive != null) {
-      json[r'isActive'] = this.isActive;
+    if (this.userId != null) {
+      json[r'userId'] = this.userId;
     } else {
-      json[r'isActive'] = null;
-    }
-    if (this.impersonatedUserId != null) {
-      json[r'impersonatedUserId'] = this.impersonatedUserId;
-    } else {
-      json[r'impersonatedUserId'] = null;
+      json[r'userId'] = null;
     }
     return json;
   }
 
-  /// Returns a new [ImpersonateStatusDto] instance and imports its values from
+  /// Returns a new [ConnectUserCmd] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ImpersonateStatusDto? fromJson(dynamic value) {
+  static ConnectUserCmd? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -68,25 +58,24 @@ class ImpersonateStatusDto {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ImpersonateStatusDto[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ImpersonateStatusDto[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ConnectUserCmd[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ConnectUserCmd[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ImpersonateStatusDto(
-        isActive: mapValueOfType<bool>(json, r'isActive'),
-        impersonatedUserId: mapValueOfType<int>(json, r'impersonatedUserId'),
+      return ConnectUserCmd(
+        userId: mapValueOfType<int>(json, r'userId'),
       );
     }
     return null;
   }
 
-  static List<ImpersonateStatusDto> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ImpersonateStatusDto>[];
+  static List<ConnectUserCmd> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ConnectUserCmd>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ImpersonateStatusDto.fromJson(row);
+        final value = ConnectUserCmd.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -95,12 +84,12 @@ class ImpersonateStatusDto {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ImpersonateStatusDto> mapFromJson(dynamic json) {
-    final map = <String, ImpersonateStatusDto>{};
+  static Map<String, ConnectUserCmd> mapFromJson(dynamic json) {
+    final map = <String, ConnectUserCmd>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ImpersonateStatusDto.fromJson(entry.value);
+        final value = ConnectUserCmd.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -109,14 +98,14 @@ class ImpersonateStatusDto {
     return map;
   }
 
-  // maps a json object with a list of ImpersonateStatusDto-objects as value to a dart map
-  static Map<String, List<ImpersonateStatusDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ImpersonateStatusDto>>{};
+  // maps a json object with a list of ConnectUserCmd-objects as value to a dart map
+  static Map<String, List<ConnectUserCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ConnectUserCmd>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ImpersonateStatusDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ConnectUserCmd.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

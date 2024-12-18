@@ -88,7 +88,7 @@ class SelectedTimeDto {
     return null;
   }
 
-  static List<SelectedTimeDto>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<SelectedTimeDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <SelectedTimeDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -119,12 +119,10 @@ class SelectedTimeDto {
   static Map<String, List<SelectedTimeDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<SelectedTimeDto>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = SelectedTimeDto.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = SelectedTimeDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

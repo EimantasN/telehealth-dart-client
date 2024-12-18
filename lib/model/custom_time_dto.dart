@@ -136,13 +136,13 @@ class CustomTimeDto {
         selections: json[r'selections'] is List
             ? (json[r'selections'] as List).cast<int>()
             : const [],
-        times: SelectedTimeDto.listFromJson(json[r'times']) ?? const [],
+        times: SelectedTimeDto.listFromJson(json[r'times']),
       );
     }
     return null;
   }
 
-  static List<CustomTimeDto>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<CustomTimeDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CustomTimeDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -173,12 +173,10 @@ class CustomTimeDto {
   static Map<String, List<CustomTimeDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<CustomTimeDto>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = CustomTimeDto.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = CustomTimeDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

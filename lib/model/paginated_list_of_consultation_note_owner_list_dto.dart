@@ -135,7 +135,7 @@ class PaginatedListOfConsultationNoteOwnerListDto {
       }());
 
       return PaginatedListOfConsultationNoteOwnerListDto(
-        items: ConsultationNoteOwnerListDto.listFromJson(json[r'items']) ?? const [],
+        items: ConsultationNoteOwnerListDto.listFromJson(json[r'items']),
         pageNumber: mapValueOfType<int>(json, r'pageNumber'),
         totalPages: mapValueOfType<int>(json, r'totalPages'),
         totalCount: mapValueOfType<int>(json, r'totalCount'),
@@ -146,7 +146,7 @@ class PaginatedListOfConsultationNoteOwnerListDto {
     return null;
   }
 
-  static List<PaginatedListOfConsultationNoteOwnerListDto>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<PaginatedListOfConsultationNoteOwnerListDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <PaginatedListOfConsultationNoteOwnerListDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -177,12 +177,10 @@ class PaginatedListOfConsultationNoteOwnerListDto {
   static Map<String, List<PaginatedListOfConsultationNoteOwnerListDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<PaginatedListOfConsultationNoteOwnerListDto>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = PaginatedListOfConsultationNoteOwnerListDto.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = PaginatedListOfConsultationNoteOwnerListDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

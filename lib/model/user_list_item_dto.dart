@@ -127,7 +127,7 @@ class UserListItemDto {
     return null;
   }
 
-  static List<UserListItemDto>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<UserListItemDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <UserListItemDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -158,12 +158,10 @@ class UserListItemDto {
   static Map<String, List<UserListItemDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<UserListItemDto>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = UserListItemDto.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = UserListItemDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

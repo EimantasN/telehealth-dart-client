@@ -109,7 +109,7 @@ class GetReminderReviewQuery {
     return null;
   }
 
-  static List<GetReminderReviewQuery>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<GetReminderReviewQuery> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <GetReminderReviewQuery>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -140,12 +140,10 @@ class GetReminderReviewQuery {
   static Map<String, List<GetReminderReviewQuery>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<GetReminderReviewQuery>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = GetReminderReviewQuery.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = GetReminderReviewQuery.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

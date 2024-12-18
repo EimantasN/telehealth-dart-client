@@ -111,13 +111,13 @@ class EventBaseModel {
         fromUserId: mapValueOfType<int>(json, r'fromUserId'),
         toUserId: mapValueOfType<int>(json, r'toUserId'),
         info: mapValueOfType<String>(json, r'info'),
-        properties: EventProperty.listFromJson(json[r'properties']) ?? const [],
+        properties: EventProperty.listFromJson(json[r'properties']),
       );
     }
     return null;
   }
 
-  static List<EventBaseModel>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<EventBaseModel> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <EventBaseModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -148,12 +148,10 @@ class EventBaseModel {
   static Map<String, List<EventBaseModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<EventBaseModel>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = EventBaseModel.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = EventBaseModel.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

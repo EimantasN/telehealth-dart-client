@@ -83,7 +83,7 @@ class HardDeleteCmd {
     return null;
   }
 
-  static List<HardDeleteCmd>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<HardDeleteCmd> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <HardDeleteCmd>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -114,12 +114,10 @@ class HardDeleteCmd {
   static Map<String, List<HardDeleteCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<HardDeleteCmd>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = HardDeleteCmd.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = HardDeleteCmd.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

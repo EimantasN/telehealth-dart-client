@@ -11,7 +11,7 @@
 part of openapi.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'https://api.viallies.com', this.authentication,});
+  ApiClient({this.basePath = 'https://api.telehealth.endev.lt', this.authentication,});
 
   final String basePath;
   final Authentication? authentication;
@@ -187,6 +187,8 @@ class ApiClient {
           return AnswerSubmitDto.fromJson(value);
         case 'BatchCmd':
           return BatchCmd.fromJson(value);
+        case 'ConnectUserCmd':
+          return ConnectUserCmd.fromJson(value);
         case 'ConnectionConsultationDto':
           return ConnectionConsultationDto.fromJson(value);
         case 'ConnectionDto':
@@ -421,6 +423,8 @@ class ApiClient {
           return UpsertMedicationCmd.fromJson(value);
         case 'UpsertPrescriptionCmd':
           return UpsertPrescriptionCmd.fromJson(value);
+        case 'UserDto':
+          return UserDto.fromJson(value);
         case 'UserInfoDto':
           return UserInfoDto.fromJson(value);
         case 'UserInfoDtoImpersonated':

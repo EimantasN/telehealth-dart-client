@@ -116,7 +116,7 @@ class ConnectionPrescriptionDto {
     return null;
   }
 
-  static List<ConnectionPrescriptionDto>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ConnectionPrescriptionDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <ConnectionPrescriptionDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -147,12 +147,10 @@ class ConnectionPrescriptionDto {
   static Map<String, List<ConnectionPrescriptionDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<ConnectionPrescriptionDto>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = ConnectionPrescriptionDto.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = ConnectionPrescriptionDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

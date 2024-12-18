@@ -135,7 +135,7 @@ class PaginatedListOfNotificationDto {
       }());
 
       return PaginatedListOfNotificationDto(
-        items: NotificationDto.listFromJson(json[r'items']) ?? const [],
+        items: NotificationDto.listFromJson(json[r'items']),
         pageNumber: mapValueOfType<int>(json, r'pageNumber'),
         totalPages: mapValueOfType<int>(json, r'totalPages'),
         totalCount: mapValueOfType<int>(json, r'totalCount'),
@@ -146,7 +146,7 @@ class PaginatedListOfNotificationDto {
     return null;
   }
 
-  static List<PaginatedListOfNotificationDto>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<PaginatedListOfNotificationDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <PaginatedListOfNotificationDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -177,12 +177,10 @@ class PaginatedListOfNotificationDto {
   static Map<String, List<PaginatedListOfNotificationDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<PaginatedListOfNotificationDto>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = PaginatedListOfNotificationDto.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = PaginatedListOfNotificationDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

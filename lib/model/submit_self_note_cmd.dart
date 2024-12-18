@@ -123,7 +123,7 @@ class SubmitSelfNoteCmd {
       }());
 
       return SubmitSelfNoteCmd(
-        answers: AnswerSubmitDto.listFromJson(json[r'answers']) ?? const [],
+        answers: AnswerSubmitDto.listFromJson(json[r'answers']),
         id: mapValueOfType<int>(json, r'id'),
         title: mapValueOfType<String>(json, r'title'),
         place: mapValueOfType<String>(json, r'place'),
@@ -134,7 +134,7 @@ class SubmitSelfNoteCmd {
     return null;
   }
 
-  static List<SubmitSelfNoteCmd>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<SubmitSelfNoteCmd> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <SubmitSelfNoteCmd>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -165,12 +165,10 @@ class SubmitSelfNoteCmd {
   static Map<String, List<SubmitSelfNoteCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<SubmitSelfNoteCmd>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = SubmitSelfNoteCmd.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = SubmitSelfNoteCmd.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

@@ -76,7 +76,7 @@ class Tlk10DiagnoseDto {
     return null;
   }
 
-  static List<Tlk10DiagnoseDto>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<Tlk10DiagnoseDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <Tlk10DiagnoseDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -107,12 +107,10 @@ class Tlk10DiagnoseDto {
   static Map<String, List<Tlk10DiagnoseDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<Tlk10DiagnoseDto>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = Tlk10DiagnoseDto.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = Tlk10DiagnoseDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

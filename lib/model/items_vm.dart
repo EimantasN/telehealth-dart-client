@@ -61,14 +61,14 @@ class ItemsVm {
       }());
 
       return ItemsVm(
-        folders: FolderDto.listFromJson(json[r'folders']) ?? const [],
-        files: FileDto.listFromJson(json[r'files']) ?? const [],
+        folders: FolderDto.listFromJson(json[r'folders']),
+        files: FileDto.listFromJson(json[r'files']),
       );
     }
     return null;
   }
 
-  static List<ItemsVm>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ItemsVm> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <ItemsVm>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -99,12 +99,10 @@ class ItemsVm {
   static Map<String, List<ItemsVm>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<ItemsVm>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = ItemsVm.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = ItemsVm.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

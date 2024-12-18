@@ -71,7 +71,7 @@ class DoctorImpersonateCmd {
     return null;
   }
 
-  static List<DoctorImpersonateCmd>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<DoctorImpersonateCmd> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <DoctorImpersonateCmd>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -102,12 +102,10 @@ class DoctorImpersonateCmd {
   static Map<String, List<DoctorImpersonateCmd>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<DoctorImpersonateCmd>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = DoctorImpersonateCmd.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = DoctorImpersonateCmd.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

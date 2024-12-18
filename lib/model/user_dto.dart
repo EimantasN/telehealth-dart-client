@@ -10,10 +10,11 @@
 
 part of openapi.api;
 
-class UserInfoDto {
-  /// Returns a new [UserInfoDto] instance.
-  UserInfoDto({
+class UserDto {
+  /// Returns a new [UserDto] instance.
+  UserDto({
     this.id,
+    this.userId,
     this.email,
     this.userName,
     this.firstName,
@@ -30,11 +31,9 @@ class UserInfoDto {
     this.specialization,
     this.provider,
     this.licenseNr,
-    this.imageBase64,
     this.language,
     this.dateOfBirth,
     this.lastLoginTime,
-    this.impersonated,
   });
 
   ///
@@ -44,6 +43,14 @@ class UserInfoDto {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? id;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? userId;
 
   String? email;
 
@@ -81,12 +88,6 @@ class UserInfoDto {
   ///
   bool? isDoctorApproved;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   int? height;
 
   String? specialization;
@@ -95,19 +96,16 @@ class UserInfoDto {
 
   String? licenseNr;
 
-  String? imageBase64;
-
   String? language;
 
   DateTime? dateOfBirth;
 
   DateTime? lastLoginTime;
 
-  UserInfoDtoImpersonated? impersonated;
-
   @override
-  bool operator ==(Object other) => identical(this, other) || other is UserInfoDto &&
+  bool operator ==(Object other) => identical(this, other) || other is UserDto &&
      other.id == id &&
+     other.userId == userId &&
      other.email == email &&
      other.userName == userName &&
      other.firstName == firstName &&
@@ -124,16 +122,15 @@ class UserInfoDto {
      other.specialization == specialization &&
      other.provider == provider &&
      other.licenseNr == licenseNr &&
-     other.imageBase64 == imageBase64 &&
      other.language == language &&
      other.dateOfBirth == dateOfBirth &&
-     other.lastLoginTime == lastLoginTime &&
-     other.impersonated == impersonated;
+     other.lastLoginTime == lastLoginTime;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id == null ? 0 : id!.hashCode) +
+    (userId == null ? 0 : userId!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
     (userName == null ? 0 : userName!.hashCode) +
     (firstName == null ? 0 : firstName!.hashCode) +
@@ -150,14 +147,12 @@ class UserInfoDto {
     (specialization == null ? 0 : specialization!.hashCode) +
     (provider == null ? 0 : provider!.hashCode) +
     (licenseNr == null ? 0 : licenseNr!.hashCode) +
-    (imageBase64 == null ? 0 : imageBase64!.hashCode) +
     (language == null ? 0 : language!.hashCode) +
     (dateOfBirth == null ? 0 : dateOfBirth!.hashCode) +
-    (lastLoginTime == null ? 0 : lastLoginTime!.hashCode) +
-    (impersonated == null ? 0 : impersonated!.hashCode);
+    (lastLoginTime == null ? 0 : lastLoginTime!.hashCode);
 
   @override
-  String toString() => 'UserInfoDto[id=$id, email=$email, userName=$userName, firstName=$firstName, lastName=$lastName, phoneNumber=$phoneNumber, gender=$gender, street=$street, postcode=$postcode, city=$city, country=$country, doctor=$doctor, isDoctorApproved=$isDoctorApproved, height=$height, specialization=$specialization, provider=$provider, licenseNr=$licenseNr, imageBase64=$imageBase64, language=$language, dateOfBirth=$dateOfBirth, lastLoginTime=$lastLoginTime, impersonated=$impersonated]';
+  String toString() => 'UserDto[id=$id, userId=$userId, email=$email, userName=$userName, firstName=$firstName, lastName=$lastName, phoneNumber=$phoneNumber, gender=$gender, street=$street, postcode=$postcode, city=$city, country=$country, doctor=$doctor, isDoctorApproved=$isDoctorApproved, height=$height, specialization=$specialization, provider=$provider, licenseNr=$licenseNr, language=$language, dateOfBirth=$dateOfBirth, lastLoginTime=$lastLoginTime]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -165,6 +160,11 @@ class UserInfoDto {
       json[r'id'] = this.id;
     } else {
       json[r'id'] = null;
+    }
+    if (this.userId != null) {
+      json[r'userId'] = this.userId;
+    } else {
+      json[r'userId'] = null;
     }
     if (this.email != null) {
       json[r'email'] = this.email;
@@ -246,11 +246,6 @@ class UserInfoDto {
     } else {
       json[r'licenseNr'] = null;
     }
-    if (this.imageBase64 != null) {
-      json[r'imageBase64'] = this.imageBase64;
-    } else {
-      json[r'imageBase64'] = null;
-    }
     if (this.language != null) {
       json[r'language'] = this.language;
     } else {
@@ -266,18 +261,13 @@ class UserInfoDto {
     } else {
       json[r'lastLoginTime'] = null;
     }
-    if (this.impersonated != null) {
-      json[r'impersonated'] = this.impersonated;
-    } else {
-      json[r'impersonated'] = null;
-    }
     return json;
   }
 
-  /// Returns a new [UserInfoDto] instance and imports its values from
+  /// Returns a new [UserDto] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static UserInfoDto? fromJson(dynamic value) {
+  static UserDto? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -286,14 +276,15 @@ class UserInfoDto {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "UserInfoDto[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "UserInfoDto[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "UserDto[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "UserDto[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return UserInfoDto(
+      return UserDto(
         id: mapValueOfType<int>(json, r'id'),
+        userId: mapValueOfType<String>(json, r'userId'),
         email: mapValueOfType<String>(json, r'email'),
         userName: mapValueOfType<String>(json, r'userName'),
         firstName: mapValueOfType<String>(json, r'firstName'),
@@ -310,21 +301,19 @@ class UserInfoDto {
         specialization: mapValueOfType<String>(json, r'specialization'),
         provider: mapValueOfType<String>(json, r'provider'),
         licenseNr: mapValueOfType<String>(json, r'licenseNr'),
-        imageBase64: mapValueOfType<String>(json, r'imageBase64'),
         language: mapValueOfType<String>(json, r'language'),
         dateOfBirth: mapDateTime(json, r'dateOfBirth', ''),
         lastLoginTime: mapDateTime(json, r'lastLoginTime', ''),
-        impersonated: UserInfoDtoImpersonated.fromJson(json[r'impersonated']),
       );
     }
     return null;
   }
 
-  static List<UserInfoDto> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <UserInfoDto>[];
+  static List<UserDto> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <UserDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = UserInfoDto.fromJson(row);
+        final value = UserDto.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -333,12 +322,12 @@ class UserInfoDto {
     return result.toList(growable: growable);
   }
 
-  static Map<String, UserInfoDto> mapFromJson(dynamic json) {
-    final map = <String, UserInfoDto>{};
+  static Map<String, UserDto> mapFromJson(dynamic json) {
+    final map = <String, UserDto>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = UserInfoDto.fromJson(entry.value);
+        final value = UserDto.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -347,14 +336,14 @@ class UserInfoDto {
     return map;
   }
 
-  // maps a json object with a list of UserInfoDto-objects as value to a dart map
-  static Map<String, List<UserInfoDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<UserInfoDto>>{};
+  // maps a json object with a list of UserDto-objects as value to a dart map
+  static Map<String, List<UserDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<UserDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = UserInfoDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = UserDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
